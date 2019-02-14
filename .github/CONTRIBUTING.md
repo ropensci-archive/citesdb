@@ -1,6 +1,6 @@
-# Contributing to the monetpkg R package
+# Contributing to the citesdb R package
 
-You want to contribute to **monetpkg**? Great! 
+You want to contribute to **citesdb**? Great! 
 
 Please submit questions, bug reports, and requests in the [issues tracker](https://github.com/ecohealthalliance/citesdb/issues). Please submit bug
 reports with a minimal  [reprex](https://www.tidyverse.org/help/#reprex).

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# monetpkg
+# citesdb
 
 Author: *Noam Ross*
 
@@ -15,12 +15,12 @@ public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus
 status](https://ci.appveyor.com/api/projects/status/github/ecohealthalliance/citesdb?branch=master&svg=true)](https://ci.appveyor.com/project/ecohealthalliance/citesdb)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/monetpkg)](https://cran.r-project.org/package=monetpkg)
+status](https://www.r-pkg.org/badges/version/citesdb)](https://cran.r-project.org/package=citesdb)
 
 
 ## Installation
 
-Install the **monetpkg** package with this command:
+Install the **citesdb** package with this command:
 
 ``` r
 source("https://install-github.me/ecohealthalliance/citesdb")
@@ -29,7 +29,7 @@ source("https://install-github.me/ecohealthalliance/citesdb")
 ## Usage
 
 ``` r
-#library(monetpkg)
+#library(citesdb)
 
 # some example code
 ```
@@ -37,7 +37,7 @@ source("https://install-github.me/ecohealthalliance/citesdb")
 # Current Verison
 
 ``` r
-#packageVersion("monetpkg")
+#packageVersion("citesdb")
 ```
 
 ## Contributing

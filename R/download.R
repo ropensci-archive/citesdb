@@ -17,3 +17,7 @@ cites_db_download <- function(codes = NULL, db = cites_db(), new_only = TRUE, ve
 
 
 }
+
+# Look at https://github.com/cboettig/taxadb/blob/master/R/td_create.R for this,
+# But use the MonetDB import functions (monetdb.read.csv) for speed.
+#

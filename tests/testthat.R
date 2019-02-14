@@ -1,4 +1,4 @@
 library(testthat)
-library(monetpkg)
+library(citesdb)
 
-test_check("monetpkg")
+test_check("citesdb")

@@ -27,8 +27,8 @@ jobs:
             mkdir /root/main/artifacts
             R -e "devtools::install()"
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))"
-            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/monetpkg-coverage.html', browse=FALSE); covr::codecov(coverage=cv)"
-            R CMD Rd2pdf --force --output='/root/main/artifacts/monetpkg-manual.pdf' .
+            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)"
+            R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' .
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts

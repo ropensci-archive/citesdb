@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(dplyr)
 ```
 # citesdb
 
@@ -30,7 +31,7 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 [![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
   [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ecohealthalliance/citesdb?branch=master&svg=true){data-external="1"}](https://ci.appveyor.com/project/ecohealthalliance/citesdb)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
-[![CRAN status](https://www.r-pkg.org/badges/version/monetpkg){data-external="1"}](https://cran.r-project.org/package=monetpkg)
+[![CRAN status](https://www.r-pkg.org/badges/version/citesdb){data-external="1"}](https://cran.r-project.org/package=citesdb)
 
 
 Features:
@@ -64,7 +65,7 @@ options(width=120)
 # Current Verison
 
 ```{r version}
-packageVersion("monetpkg")
+packageVersion("citesdb")
 ```
 
 ## Contributing

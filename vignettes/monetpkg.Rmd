@@ -1,5 +1,5 @@
 ---
-title: "The monetpkg package"
+title: "The citesdb package"
 author: "Noam Ross"
 date: "`r Sys.Date()`"
 output:
