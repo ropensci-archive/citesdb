@@ -1,0 +1,12 @@
+^mkrpkg\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README\.md$
+^LICENSE\.md$
+^\.github$
+^data-raw$
+^\.circleci$
+^_pkgdown\.yml$
+^docs$
+^appveyor\.yml$
+^codemeta\.json$

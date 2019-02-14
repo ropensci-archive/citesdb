@@ -1,0 +1,28 @@
+Package: citesdb
+Version: 0.0.0.9000
+Title: Historical CITES trade data served via databae
+Description: It does some stuff
+Authors@R: c(
+    person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
+   person("Evan", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut")),
+    person("Carlos", "Zambrana-Torrelio", , "zambrana@ecohealthalliance.org", role = c("aut")),
+    person("EcoHealth Alliance", role="cph"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+URL: https://github.com/ecohealthalliancec/citesdb
+BugReports: https://github.com/ecohealthalliancce/citesdb/issues
+Imports:
+  MonetDBLite,
+  rappdirs,
+  datastorr,
+  DBI,
+  pool,
+  fs
+Suggests:
+    spelling, 
+  testthat,
+  roxygen2
+RoxygenNote: 6.1.1
+Language: en-US

@@ -1,0 +1,29 @@
+---
+title: "The monetpkg package"
+author: "Noam Ross"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# tl,dr
+
+_real quick how to use this thing_
+
+## Introduction
+
+yada yada...
+
+## More Examples
