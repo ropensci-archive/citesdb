@@ -3,7 +3,7 @@
 
 # citesdb
 
-Author: *Noam Ross*
+Authors: *Noam Ross, Evan Eskew, and Carlos Zambrana-Torrelio*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -17,6 +17,10 @@ status](https://ci.appveyor.com/api/projects/status/github/ecohealthalliance/cit
 [![CRAN
 status](https://www.r-pkg.org/badges/version/citesdb)](https://cran.r-project.org/package=citesdb)
 
+Features: - Local caching of versions of database - Metadata in
+**[dataspice](https://github.com/ropenscilabs/dataspice)**/\<schema.org\>
+format - RStudio connection pane with browsable database -
+HTMLwidget-enhanced help files for browsing metadata?
 
 ## Installation
 

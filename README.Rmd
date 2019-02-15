@@ -21,7 +21,7 @@ library(dplyr)
 unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>% 
   purrr::keep(~"aut" %in% .$role) %>% 
   purrr::map_chr(~paste(.$given, .$family)) %>% 
-  paste(collapse = ", ") %>% 
+  glue::glue_collapse(sep = ", ", last = ", and ") %>% 
   paste0("Authors: _", ., "_") %>% 
   cat()
 ```
@@ -65,7 +65,7 @@ options(width=120)
 # Current Verison
 
 ```{r version}
-packageVersion("citesdb")
+#packageVersion("citesdb")
 ```
 
 ## Contributing
