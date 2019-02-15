@@ -10,11 +10,10 @@
 #'
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
-#'   in_pkgdown <- any(grepl("as_html.tag_Sexpr", sapply(sys.calls(), function(a) paste(deparse(a), collapse = "\n"))))
-#'     if(in_pkgdown || !require(DT)) {
-#'       mytext <- c('In RStudio help, this help file includes a searchable table of values if you install the DT package')
-#'     } else {
+#'     if(cites:::is_js_ok()) {
 #'       mytext <- cites:::rd_datatable(cites::cites_codes())
+#'     } else {
+#'       mytext <- c('In RStudio help, this help file includes a searchable table of values if you install the DT package')
 #'     }
 #'     mytext
 #'   }
@@ -23,8 +22,6 @@
 #' \if{text,latex}{The HTML version of this help file includes a searchable table of the CITES codes.}
 #'
 #' @return A tibble with fields and descriptions
-#' @importFrom DT datatable
-#' @aliases codes
 #' @seealso [cites_metadata()] [cites_data()]
 #' @export
 cites_codes <- function() {
@@ -41,11 +38,10 @@ cites_codes <- function() {
 #'
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
-#'   in_pkgdown <- any(grepl("as_html.tag_Sexpr", sapply(sys.calls(), function(a) paste(deparse(a), collapse = "\n"))))
-#'     if(in_pkgdown) {
-#'       mytext <- cites:::tabular(cites::cites_metadata())
-#'     } else {
+#'     if (is_js_ok()) {
 #'       mytext <- cites:::rd_datatable(cites::cites_metadata())
+#'     } else {
+#'       mytext <- cites:::tabular(cites::cites_metadata())
 #'     }
 #'     mytext
 #'   }
@@ -54,9 +50,6 @@ cites_codes <- function() {
 #' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{cites:::tabular(cites::cites_metadata())}}
 #'
 #' @return A tibble with field, code, and code description
-#' @importFrom DT datatable
-#' @importFrom htmlwidgets saveWidget
-#' @importFrom stringi stri_subset_regex
 #' @aliases metadata
 #' @seealso [cites_codes()] [cites_data()] [cites_parties()]
 #' @export
@@ -73,11 +66,10 @@ cites_metadata <- function() {
 #'
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
-#'   in_pkgdown <- any(grepl("as_html.tag_Sexpr", sapply(sys.calls(), function(a) paste(deparse(a), collapse = "\n"))))
-#'     if(in_pkgdown) {
-#'       mytext <- cites:::tabular(cites::cites_parties())
-#'     } else {
+#'     if (is_js_ok()) {
 #'       mytext <- cites:::rd_datatable(cites::cites_parties())
+#'     } else {
+#'       mytext <- cites:::tabular(cites::cites_parties())
 #'     }
 #'     mytext
 #'   }
@@ -86,9 +78,6 @@ cites_metadata <- function() {
 #' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{cites:::tabular(cites::cites_metadata())}}
 #'
 #' @return A tibble
-#' @importFrom DT datatable
-#' @importFrom htmlwidgets saveWidget
-#' @importFrom stringi stri_subset_regex
 #' @aliases parties
 #' @seealso [cites_codes()] [cites_metadata()]
 #' @export
