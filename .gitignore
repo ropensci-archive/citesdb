@@ -2,8 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
-.DS_Store
+*.DS_Store
 src/*.o
 src/*.so
 src/*.dll
-data-raw/
+data-raw/*
+!data-raw/*.R
+scraps/

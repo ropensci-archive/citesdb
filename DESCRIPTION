@@ -1,5 +1,5 @@
 Package: citesdb
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Title: Historical CITES trade data served via databae
 Description: It does some stuff
 Authors@R: c(
