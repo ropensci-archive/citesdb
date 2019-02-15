@@ -1,3 +1,5 @@
+^pkgdown$
+^\.travis\.yml$
 ^mkrpkg\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
