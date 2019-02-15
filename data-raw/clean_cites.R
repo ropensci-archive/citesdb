@@ -27,8 +27,12 @@ write_tsv(cites.test,
 
 # Release the compressed data
 
+# datastorr::github_release_info(
+#   "ecohealthalliance/citesdb",
+#   read = read_tsv,
+#   filename = h("data-raw", "cites_test_data.tsv.gz")
+# ) %>%
 # datastorr::github_release_create(
-#   description = "Release of CITES sample data (v0.0.0.91)",
-#   filename = h("data-raw", "cites_test_data.tsv.gz"),
+#   description = "Release of CITES sample data (v0.0.0.9001)",
 #   target = "master", ignore_dirty = FALSE
 # )
