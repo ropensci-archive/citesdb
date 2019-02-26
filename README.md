@@ -49,13 +49,14 @@ When you first load the package you will see a message like this:
 Not to worry, just do as it says and run `cites_db_download()`. This
 will fetch the most recent database from online. Currently this is test
 data that is approximately 80MB. It will expand to over 400MB in the
-database and during the import proccess up to 1GB of disk space may be
-used temporarily.
+database. During up to 1GB of disk space may be used temporarily.
 
 Once you fetch the data you can connect to the database with the
 `cites_db()` command. If you have the **dplyr** package installed, you
-can use the `cites_shipments()` command to load a remote `tibble()`. You
-can use this to analyze CITES data without ever loading it into memory:
+can use the `cites_shipments()` command to load a remote `tibble` that
+is backed by the database but not loaded into R. You can use this to
+analyze CITES data without ever loading it into memory, then gather your
+results with `collect()`:
 
 ``` r
 library(citesdb)
@@ -97,8 +98,12 @@ ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 0.5050302 secs
+#> Time difference of 1.7182 secs
 ```
+
+If you are using RStudio interactively, loading the CITES package also
+brings up a browable pane in the “Connections” tab that lets you explore
+and preview the database, as well.
 
 ### Contributing
 
