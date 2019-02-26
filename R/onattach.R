@@ -1,5 +1,4 @@
 .onAttach <- function(libname, pkgname) {
-
   MonetDBLite::monetdblite_shutdown()
   if (interactive() && Sys.getenv("RSTUDIO") == "1") {
     cites_pane()
@@ -35,15 +34,18 @@ cites_db_delete <- function() {
 #' @importFrom tools toTitleCase
 #' @examples
 #' cites_db_status()
-#'
 cites_db_status <- function(verbose = TRUE) {
   if (dbExistsTable(cites_db(), "shipments") &&
-      dbExistsTable(cites_db(), "status")) {
+    dbExistsTable(cites_db(), "status")) {
     status <- DBI::dbReadTable(cites_db(), "status")
     status_msg <-
-      paste0("CITES database status:\n",
-             paste0(toTitleCase(gsub("_", " ", names(status))),
-                    ": ", as.matrix(status), collapse = "\n"))
+      paste0(
+        "CITES database status:\n",
+        paste0(toTitleCase(gsub("_", " ", names(status))),
+          ": ", as.matrix(status),
+          collapse = "\n"
+        )
+      )
     out <- TRUE
   } else {
     status_msg <- "Local CITES database empty or corrupt. Download with cites_db_download()"

@@ -6,7 +6,7 @@ library(stringr)
 
 h <- here::here
 
-#==============================================================================
+# ==============================================================================
 
 
 # Import CITES data sample
@@ -21,8 +21,9 @@ colnames(cites.test) <- colnames(cites.test) %>%
 
 # Write compressed data to local disk
 
-write_tsv(cites.test,
-          h("data-raw", "cites_test_data.tsv.gz")
+write_tsv(
+  cites.test,
+  h("data-raw", "cites_test_data.tsv.gz")
 )
 
 # Release the compressed data

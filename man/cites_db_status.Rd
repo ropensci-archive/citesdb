@@ -17,5 +17,4 @@ Get the status of the current local CITES database
 }
 \examples{
 cites_db_status()
-
 }

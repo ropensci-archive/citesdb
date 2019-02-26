@@ -19,7 +19,8 @@ tabular <- function(df, col_names = TRUE, ...) {
 
   paste(
     "\\tabular{", paste(col_align, collapse = ""), "}{\n  ",
-    contents, "\n}\n", sep = ""
+    contents, "\n}\n",
+    sep = ""
   )
 }
 
@@ -34,17 +35,20 @@ wrap_widget <- function(widget) {
   htmlwidgets::saveWidget(widget, tmp)
   widg <- paste(
     grep("^</?(!DOCTYPE|meta|body|html|head|title)",
-         readLines(tmp), value = TRUE, invert = TRUE),
-    collapse = "\n")
+      readLines(tmp),
+      value = TRUE, invert = TRUE
+    ),
+    collapse = "\n"
+  )
   paste("\\out{", escape_rd(widg), "}\n", sep = "\n")
 }
 
 #' @noRd
 escape_rd <- function(x) {
   x <- gsub("\\", "\\\\", x, fixed = TRUE)
-  x <- gsub("%",  "\\%",  x, fixed = TRUE)
-  x <- gsub("{",  "\\{",  x, fixed = TRUE)
-  x <- gsub("}",  "\\}",  x, fixed = TRUE)
+  x <- gsub("%", "\\%", x, fixed = TRUE)
+  x <- gsub("{", "\\{", x, fixed = TRUE)
+  x <- gsub("}", "\\}", x, fixed = TRUE)
   x
 }
 

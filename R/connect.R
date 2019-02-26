@@ -22,7 +22,7 @@ cites_path <- function() {
 #'
 #' @examples
 #' cites_db()
-cites_db <- function(dbdir = cites_path()){
+cites_db <- function(dbdir = cites_path()) {
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     if (DBI::dbIsValid(db)) {
@@ -46,24 +46,28 @@ cites_db <- function(dbdir = cites_path()){
 #' @examples
 #' cites_shipments()
 cites_shipments <- function() {
-  if (!cites_db_status(FALSE))
+  if (!cites_db_status(FALSE)) {
     stop("Local CITES database empty or corrupt. Download with cites_db_download()")
-  if (!suppressPackageStartupMessages(require(dplyr)))
+  }
+  if (!suppressPackageStartupMessages(require(dplyr))) {
     stop("Install the dplyr package to use convenience functions like cites_trans()")
+  }
   dplyr::tbl(cites_db(), "shipments")
 }
 
 #' @export
-cites_disconnect <- function(env=cites_cache, shutdown = TRUE){
+cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
   db <- mget("cites_db", envir = env, ifnotfound = NA)[[1]]
-  if (inherits(db, "DBIConnection"))
+  if (inherits(db, "DBIConnection")) {
     MonetDBLite::monetdblite_shutdown()
+  }
   observer <- getOption("connectionObserver")
-  if (!is.null(observer))
+  if (!is.null(observer)) {
     observer$connectionClosed("MonetDB", "citesdb")
+  }
 }
 
-cites_clean <- function(db = db_connect()){
+cites_clean <- function(db = db_connect()) {
   tables <- DBI::dbListTables(db)
   drop <- tables[ !grepl("_", tables) ]
   lapply(drop, function(x) DBI::dbRemoveTable(db, x))
@@ -72,5 +76,3 @@ cites_clean <- function(db = db_connect()){
 
 cites_cache <- new.env()
 reg.finalizer(cites_cache, cites_disconnect, onexit = TRUE)
-
-
