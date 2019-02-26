@@ -49,7 +49,7 @@ cites_shipments <- function() {
   if (!cites_db_status(FALSE)) {
     stop("Local CITES database empty or corrupt. Download with cites_db_download()")
   }
-  if (!suppressPackageStartupMessages(require(dplyr))) {
+  if (!suppressWarnings(suppressPackageStartupMessages(require(dplyr)))) {
     stop("Install the dplyr package to use convenience functions like cites_trans()")
   }
   dplyr::tbl(cites_db(), "shipments")
