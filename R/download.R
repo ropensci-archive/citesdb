@@ -1,8 +1,8 @@
 #' Download the CITES database to your local computer
 #'
 #' This command downloads the CITES shipments database and populates a local
-#' database.  The download is large (>200MB), and the database will be at least
-#' twice that on disk. During import over 1GB of disk space may be used.
+#' database.  The download is large (>80MB), and the database will be at least
+#' twice that on disk.  During import over 1GB of disk space may be used.
 #'
 #' @param tag What release tag of data to download. Defaults to the most recent
 #' @param destdir Where to download the compressed file.
@@ -50,6 +50,9 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   dbWriteTable(cites_db(), "status", make_status_table(version = ver),
     overwrite = TRUE
   )
+
+  load_citesdb_metadata()
+
   file.remove(temp_tsv)
   if (verbose) cites_db_status()
   update_cites_pane()

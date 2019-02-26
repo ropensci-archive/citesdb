@@ -18,8 +18,8 @@ cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
 }
 \description{
 This command downloads the CITES shipments database and populates a local
-database.  The download is large (>200MB), and the database will be at least
-twice that on disk. During import over 1GB of disk space may be used.
+database.  The download is large (>80MB), and the database will be at least
+twice that on disk.  During import over 1GB of disk space may be used.
 }
 \examples{
 cites_db_download()

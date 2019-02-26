@@ -3,7 +3,7 @@
   if (interactive() && Sys.getenv("RSTUDIO") == "1") {
     cites_pane()
   }
-  cites_db_status()
+  if (interactive()) cites_db_status()
 }
 
 #' Remove the local CITES database
@@ -53,4 +53,17 @@ cites_db_status <- function(verbose = TRUE) {
   }
   if (verbose) message(status_msg)
   invisible(out)
+}
+
+
+load_citesdb_metadata <- function() {
+  tsvs <- list.files(system.file("extdata", package = "citesdb"),
+                     pattern = "\\.tsv$", full.names = TRUE)
+  tblnames <- tools::file_path_sans_ext(basename(tsvs))
+  for (i in seq_along(tsvs)) {
+    suppressMessages(dbWriteTable(cites_db(), tblnames[i],
+                 read.table(tsvs[i], stringsAsFactors = FALSE, sep = "\t",
+                            header = TRUE,  quote = "\""),
+                 overwrite = TRUE))
+  }
 }

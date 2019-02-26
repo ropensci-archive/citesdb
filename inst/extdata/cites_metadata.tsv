@@ -1,0 +1,17 @@
+variable	description
+year	year in which trade occurred
+app	CITES Appendix of taxon concerned
+taxon	scientific name of animal or plant concerned
+class	scientific name of animal or plant concerned
+order	scientific name of animal or plant concerned
+family	scientific name of animal or plant concerned
+genus	scientific name of animal or plant concerned
+importer	country of import (where exports are reported, this is the declared country of destination)
+exporter	country of export (where imports are reported, this is the declared country from which the specimens were consigned)
+origin	country of origin (this column is blank if the country of export is the country of origin, or if the country of origin is not reported)
+importer_reported_quantity	quantity of specimens reported as imports by the importing country
+exporter_reported_quantity	quantity of specimens reported as (re-)exports by the (re-)exporting country
+term	description of specimens traded, as reported by the importing country
+unit	unit associated with the quantity reported by the importing country, e.g. 'KIL' (kilograms). If no unit is shown, the figure represents the total number of specimens
+purpose	purpose of the transaction (see Annex 2), as reported by the importing country
+source	source of the specimen (see Annex 2), as reported by the importing country

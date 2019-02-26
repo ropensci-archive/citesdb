@@ -1,0 +1,166 @@
+field	code	description
+term	BAL	Baleen
+term	BAR	Bark
+term	BEL	Belts
+term	BOC	Bone carvings
+term	BOD	Bodies
+term	BON	Bones
+term	BOP	Bone pieces
+term	BPR	Bone products
+term	BUL	Bulbs
+term	CAL	Calipee
+term	CAP	Carapaces
+term	CAR	Carvings
+term	CAV	Caviar
+term	CHP	Chips
+term	CLA	Claws
+term	CLO	Cloth
+term	COR	Raw corals
+term	COS	Coral sand
+term	CST	Chess sets
+term	CUL	Cultures
+term	DER	Derivatives
+term	DPL	Dried plants
+term	EAR	Ears
+term	EGG	Eggs
+term	EGL	Eggs (live)
+term	EXT	Extract
+term	FEA	Feathers
+term	FIB	Fibres
+term	FIG	Fingerlings
+term	FIN	Fins
+term	FLO	Flowers
+term	FOO	Feet
+term	FPT	Flower pots
+term	FRA	Spectacle frames
+term	FRN	Items of furniture
+term	FRU	Fruit
+term	GAB	Gall bladders
+term	GAL	Gall
+term	GAR	Garments
+term	GEN	Genitalia
+term	GRS	Graft rootstocks
+term	HAI	Hair
+term	HAN	Handbags
+term	HAP	Hair products
+term	HEA	Heads
+term	HOC	Horn carvings
+term	HOP	Horn pieces
+term	HOR	Horns
+term	HOS	Horn scraps
+term	HPR	Horn products
+term	IVC	Ivory carvings
+term	IVP	Ivory pieces
+term	IVS	Ivory scraps
+term	LEA	Leather
+term	LEG	Frog legs
+term	LIV	Live
+term	LOG	Logs
+term	LPL	Large leather products
+term	LPS	Small leather products
+term	LVS	Leaves
+term	MEA	Meat
+term	MED	Medicine
+term	MUS	Musk
+term	OIL	Oil
+term	OTH	Other
+term	PEA	Pearls
+term	PIE	Pieces
+term	PKY	Piano keys
+term	PLA	Plates
+term	PLY	Plywood
+term	POW	Powder
+term	QUI	Quills
+term	ROO	Roots
+term	SAW	Sawn wood
+term	SCA	Scales
+term	SCR	Scraps
+term	SEE	Seeds
+term	SHE	Shells (applies to egg and mollusc shells)
+term	SHO	Pairs of shoes
+term	SID	Sides
+term	SKE	Skeletons
+term	SKI	Skins
+term	SKO	Leather items
+term	SKP	Skin pieces
+term	SKS	Skin scraps
+term	SKU	Skulls
+term	SOU	Soup
+term	SPE	Scientific specimens
+term	STE	Stems
+term	SWI	Swim bladders
+term	TAI	Tails
+term	TEE	Teeth
+term	TIC	Timber carvings
+term	TIM	Timber
+term	TIP	Timber pieces
+term	TIS	Tissue cultures
+term	TRO	Trophies
+term	TUS	Tusks
+term	UNS	Unspecified
+term	VEN	Veneer
+term	VNM	Venom
+term	WAL	Wallets
+term	WAT	Watchstraps
+term	WAX	Wax
+term	WHO	Whole
+term	WOO	Wood products
+unit	BAG	Bags
+unit	BAK	Back skins
+unit	BOT	Bottles
+unit	BOX	Boxes
+unit	BSK	Belly skins
+unit	CAN	Cans
+unit	CAS	Cases
+unit	CCM	Cubic centimetres
+unit	CRT	Cartons
+unit	CTM	Centimetres
+unit	CUF	Cubic feet
+unit	CUM	Cubic metres
+unit	FEE	Feet
+unit	FLA	Flasks
+unit	GRM	Grams
+unit	HRN	Hornback skins
+unit	INC	Inches
+unit	ITE	Items
+unit	KIL	Kilograms
+unit	LTR	Litres
+unit	MGM	Milligrams
+unit	MLT	Millilitres
+unit	MTR	Metres
+unit	MYG	Micrograms
+unit	OUN	Ounces
+unit	PAI	Pairs
+unit	PCS	Pieces
+unit	PND	Pounds
+unit	SET	Sets
+unit	SHP	Shipments
+unit	SID	Sides
+unit	SKI	Skins
+unit	SQC	Square centimetres
+unit	SQD	Square decimetres
+unit	SQF	Square feet
+unit	SQM	Square metres
+unit	TON	Metric tons
+purpose	B	Breeding in captivity or artificial propagation
+purpose	E	Educational
+purpose	G	Botanical garden
+purpose	H	Hunting trophy
+purpose	L	Law enforcement / judicial / forensic
+purpose	M	Medical (including biomedical research)
+purpose	N	Reintroduction or introduction into the wild
+purpose	P	Personal
+purpose	Q	Circus or travelling exhibition
+purpose	S	Scientific
+purpose	T	Commercial
+purpose	Z	Zoo
+source	A	Plants that are artificially propagated in accordance with Resolution Conf. 11.11 (Rev. CoP15), as well as parts and derivatives thereof, exported under the provisions of Article VII, paragraph 5, of the Convention (specimens of species included in Appendix I that have been propagated artificially for non-commercial purposes and specimens of species included in Appendices II and III).
+source	C	Animals bred in captivity in accordance with Resolution Conf. 10.16 (Rev.), as well as parts and derivatives thereof, exported under the provisions of Article VII, paragraph 5, of the Convention.
+source	D	Appendix-I animals bred in captivity for commercial purposes in operations included in the Secretariat's Register, in accordance with Resolution Conf. 12.10 (Rev. CoP15), and Appendix-I plants artificially propagated for commercial purposes, as well as parts and derivatives thereof, exported under the provisions of Article VII, paragraph 4, of the Convention.
+source	F	Animals born in captivity (F1 or subsequent generations) that do not fulfil the definition of 'bred in captivity' in Resolution Conf. 10.16 (Rev.), as well as parts and derivatives thereof.
+source	I	Confiscated or seized specimens
+source	O	Pre-Convention specimens
+source	R	Ranched specimens: specimens of animals reared in a controlled environment, taken as eggs or juveniles from the wild, where they would otherwise have had a very low probability of surviving to adulthood.
+source	U	Source unknown.
+source	W	Specimens taken from the wild.
+source	X	"Specimens taken in ""the marine environment not under the jurisdiction of any State""."

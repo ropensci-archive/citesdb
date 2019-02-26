@@ -55,6 +55,12 @@ cites_shipments <- function() {
   dplyr::tbl(cites_db(), "shipments")
 }
 
+#' Discconnect from the CITES database
+#'
+#' A utility function for disconnecting from the database.
+#'
+#' @examples
+#' cites_disconnecct()
 #' @export
 cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
   db <- mget("cites_db", envir = env, ifnotfound = NA)[[1]]
@@ -63,7 +69,7 @@ cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
-    observer$connectionClosed("MonetDB", "citesdb")
+    observer$connectionClosed("CITESDB", "citesdb")
   }
 }
 
