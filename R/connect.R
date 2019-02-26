@@ -6,8 +6,23 @@ cites_path <- function() {
   }
 }
 
+
+#' The local CITES database
+#'
+#' Returns a connecction to the local CITES database.  This is a DBI-complient
+#' [MonetDBLite::MonetDBLite]() database.
+#'
+#' @param dbdir The location of the database on disk.  Defaults to
+#' `citesdb` under [MonetDBLite::MonetDBLite], or `getOption("CITES_DB_DIR")`.
+#'
+#' @return A MonetDBLite DBI connection
+#' @importFrom DBI dbIsValid dbConnect
+#' @importFrom MonetDBLite MonetDBLite
 #' @export
-cites_connect <- function(dbdir = cites_path()){
+#'
+#' @examples
+#' cites_db()
+cites_db <- function(dbdir = cites_path()){
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     if (DBI::dbIsValid(db)) {
@@ -16,23 +31,33 @@ cites_connect <- function(dbdir = cites_path()){
   }
   dbname <- dbdir
   dir.create(dbname, FALSE)
-  db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbname)
+  db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
   assign("cites_db", db, envir = cites_cache)
   db
 }
 
-cites_db <- cites_connect
-cites_trans <- function() {
-  if (!require(dplyr))
+
+#' CITES Shipment Data
+#'
+#' Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
+#' @return A dplyr remote tibble ([dplyr::tbl()])
+#' @export
+#'
+#' @examples
+#' cites_shipments()
+cites_shipments <- function() {
+  if (!cites_db_status(FALSE))
+    stop("Local CITES database empty or corrupt. Download with cites_db_download()")
+  if (!suppressPackageStartupMessages(require(dplyr)))
     stop("Install the dplyr package to use convenience functions like cites_trans()")
-  dplyr::tbl(cites_connect(), "transactions")
+  dplyr::tbl(cites_db(), "shipments")
 }
 
 #' @export
 cites_disconnect <- function(env=cites_cache, shutdown = TRUE){
   db <- mget("cites_db", envir = env, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection"))
-    DBI::dbDisconnect(db, shutdown)
+    MonetDBLite::monetdblite_shutdown()
   observer <- getOption("connectionObserver")
   if (!is.null(observer))
     observer$connectionClosed("MonetDB", "citesdb")
@@ -48,10 +73,4 @@ cites_clean <- function(db = db_connect()){
 cites_cache <- new.env()
 reg.finalizer(cites_cache, cites_disconnect, onexit = TRUE)
 
-
-.onAttach <- function(libname, pkgname) {
-  if (interactive() && Sys.getenv("RSTUDIO") == "1") {
-    cites_pane()
-  }
-}
 

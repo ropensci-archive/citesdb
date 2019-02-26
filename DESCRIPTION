@@ -17,12 +17,16 @@ Imports:
   MonetDBLite,
   rappdirs,
   DBI,
+  httr,
+  R.utils,
+  purrr,
+  tools
 Suggests:
   spelling, 
   testthat,
   roxygen2,
   dplyr,
   DT,
-  htmlwidgets,
+  htmlwidgets
 RoxygenNote: 6.1.1
 Language: en-US

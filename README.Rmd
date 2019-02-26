@@ -33,12 +33,18 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![CRAN status](https://www.r-pkg.org/badges/version/citesdb){data-external="1"}](https://cran.r-project.org/package=citesdb)
 
+**citesdb** provides access to the full history of CITES shipments for analysis.
+
 
 Features:
--  Local caching of versions of database
--  Metadata in **[dataspice](https://github.com/ropenscilabs/dataspice)**/<schema.org> format
+
+-  Local caching of database
 -  RStudio connection pane with browsable database
--  HTMLwidget-enhanced help files for browsing metadata?
+-  HTMLwidget-enhanced help files for browsing metadata
+
+While this repository is private you must have a GitHub Personal Access Token
+(`GITHUB_PAT`) installed in order to access data.  Instructions for setting this up are found
+[here](https://happygitwithr.com/github-pat.html).
 
 
 ## Installation
@@ -53,22 +59,50 @@ source("https://install-github.me/ecohealthalliance/citesdb")
 options(width=120)
 ```
 
-## Usage
+## Getting the data
 
-```{r example}
-#library(citesdb)
+When you first load the package you will see a message like this:
 
-# some example code
+    library(citesdb)
+    #> Local CITES database empty or corrupt. Download with cites_db_download()
+
+Not to worry, just do as it says and run `cites_db_download()`.  This will
+fetch the most recent database from online.  Currently this is test data that
+is approximately 80MB.  It will expand to over 400MB in the database and during
+the import proccess up to 1GB of disk space may be used temporarily.
+
+Once you fetch the data you can connect to the database with the `cites_db()`
+command.  If you have the **dplyr** package installed, you can use the
+`cites_shipments()` command to load a remote `tibble()`.  You can use this
+to analyze CITES data without ever loading it into memory:
+
+```{r, warning = FALSE}
+library(citesdb)
+library(dplyr)
+start <- Sys.time()
+
+cites_shipments() %>%
+  group_by(year) %>%
+  summarize(number = n()) %>%
+  arrange(desc(year)) %>% 
+  collect()
+
+stop <- Sys.time()
 ```
 
+The back-end database, [MonetDB](https://monetdb.org) is very fast and powerful, making such
+analyses quite snappy even on such large data and normal desktops and laptops. Here's the
+timing of the above query on an ordinary laptop:
 
-# Current Verison
-
-```{r version}
-#packageVersion("citesdb")
+```{r}
+stop - start
 ```
 
-## Contributing
+If you are using RStudio interactively, loading the CITES package also brings
+up a browable pane in the "Connections" tab that lets you explore and preview
+the database, as well.
+
+### Contributing
 
 Want have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request. 
 

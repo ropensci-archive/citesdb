@@ -2,14 +2,23 @@
 % Please edit documentation in R/download.R
 \name{cites_db_download}
 \alias{cites_db_download}
-\title{Title}
+\title{Download the CITES database to your local computer}
 \usage{
-cites_db_download(codes = NULL, db = cites_db(), new_only = TRUE,
-  verbose = TRUE, temp_dir = tempdir(), cleanup = TRUEs)
+cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
+  verbose = interactive())
 }
 \arguments{
-\item{cleanup}{}
+\item{tag}{What release tag of data to download. Defaults to the most recent}
+
+\item{destdir}{Where to download the compressed file.}
+
+\item{cleanup}{Whether to delete the compressed file after loading into the database.}
+
+\item{verbose}{Whether to display messages and download progress}
 }
 \description{
-Title
+This command downloads the
+}
+\examples{
+cites_db_download()
 }
