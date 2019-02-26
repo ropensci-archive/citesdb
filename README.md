@@ -48,8 +48,9 @@ When you first load the package you will see a message like this:
 
 Not to worry, just do as it says and run `cites_db_download()`. This
 will fetch the most recent database from online. Currently this is test
-data that is approximately 80MB. It will expand to over 400MB in the
-database. During up to 1GB of disk space may be used temporarily.
+data that is approximately 80MB. It will expand to over 200MB in the
+database. During the downloaad and database building up to 1GB of disk
+space may be used temporarily.
 
 Once you fetch the data you can connect to the database with the
 `cites_db()` command. If you have the **dplyr** package installed, you
@@ -60,11 +61,6 @@ results with `collect()`:
 
 ``` r
 library(citesdb)
-#> CITES database status:
-#> Time Imported: 2019-02-26 00:59:19
-#> Version: 0.0.0.9001
-#> Number of Records: 4,071,507
-#> Size on Disk: 496.5 Mb
 library(dplyr)
 start <- Sys.time()
 
@@ -98,7 +94,7 @@ ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 1.7182 secs
+#> Time difference of 1.664912 secs
 ```
 
 If you are using RStudio interactively, loading the CITES package also
