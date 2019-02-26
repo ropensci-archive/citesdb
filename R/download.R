@@ -100,7 +100,7 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
   if (!length(release_obj)) stop("No release tagged \"", release, "\"")
 
   if (release_obj[[1]]$prerelease) {
-    message("This is pre-release data! It has not been validated.")
+    message("This is pre-release/sample data! It has not been cleaned or validated.")
   }
 
   download_url <- release_obj[[1]]$assets[[1]]$url
