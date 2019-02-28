@@ -21,15 +21,15 @@ from the CITES websites.
 \if{html}{
   \Sexpr[echo=FALSE, results=rd, stage=build]{
     if (citesdb:::is_js_ok()) {
-      mytext <- cites:::rd_datatable(cites::cites_metadata())
+      mytext <- citesdb:::rd_datatable(citesdb::cites_metadata())
     } else {
-      mytext <- cites:::tabular(cites::cites_metadata())
+      mytext <- citesdb:::tabular(citesdb::cites_metadata())
     }
     mytext
   }
 }
 
-\if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{cites:::tabular(cites::cites_metadata())}}
+\if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{citesdb:::tabular(citesdb::cites_metadata())}}
 }
 \seealso{
 [cites_codes()] [cites_data()] [cites_parties()]

@@ -11,7 +11,7 @@
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
 #'     if(citesdb:::is_js_ok()) {
-#'       mytext <- cites:::rd_datatable(cites::cites_codes())
+#'       mytext <- citesdb:::rd_datatable(citesdb::cites_codes())
 #'     } else {
 #'       mytext <- c('In RStudio help, this help file includes a searchable table of values if you install the DT package')
 #'     }
@@ -39,15 +39,15 @@ cites_codes <- function() {
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
 #'     if (citesdb:::is_js_ok()) {
-#'       mytext <- cites:::rd_datatable(cites::cites_metadata())
+#'       mytext <- citesdb:::rd_datatable(citesdb::cites_metadata())
 #'     } else {
-#'       mytext <- cites:::tabular(cites::cites_metadata())
+#'       mytext <- citesdb:::tabular(citesdb::cites_metadata())
 #'     }
 #'     mytext
 #'   }
 #' }
 #'
-#' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{cites:::tabular(cites::cites_metadata())}}
+#' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{citesdb:::tabular(citesdb::cites_metadata())}}
 #'
 #' @return A tibble with field, code, and code description
 #' @aliases metadata
@@ -67,15 +67,15 @@ cites_metadata <- function() {
 #' \if{html}{
 #'   \Sexpr[echo=FALSE, results=rd, stage=build]{
 #'     if (citesdb:::is_js_ok()) {
-#'       mytext <- cites:::rd_datatable(cites::cites_parties())
+#'       mytext <- citesdb:::rd_datatable(citesdb::cites_parties())
 #'     } else {
-#'       mytext <- cites:::tabular(cites::cites_parties())
+#'       mytext <- citesdb:::tabular(citesdb::cites_parties())
 #'     }
 #'     mytext
 #'   }
 #' }
 #'
-#' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{cites:::tabular(cites::cites_metadata())}}
+#' \if{text,latex}{ \Sexpr[echo=FALSE, results=rd, stage=build]{citesdb:::tabular(citesdb::cites_metadata())}}
 #'
 #' @return A tibble
 #' @aliases parties

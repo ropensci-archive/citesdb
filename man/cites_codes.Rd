@@ -22,7 +22,7 @@ from the CITES website.
 \if{html}{
   \Sexpr[echo=FALSE, results=rd, stage=build]{
     if(citesdb:::is_js_ok()) {
-      mytext <- cites:::rd_datatable(cites::cites_codes())
+      mytext <- citesdb:::rd_datatable(citesdb::cites_codes())
     } else {
       mytext <- c('In RStudio help, this help file includes a searchable table of values if you install the DT package')
     }
