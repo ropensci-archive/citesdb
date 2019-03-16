@@ -58,7 +58,7 @@ fetch the most recent database from online, an approximately 158 MB download.
 It will expand to over 1 GB in the local database. During
 the download and database building up to 3.5 GB of disk space may be used temporarily.
 
-### Using the Database
+### Using the database
 
 Once you fetch the data you can connect to the database with the `cites_db()`
 command.  You can use the

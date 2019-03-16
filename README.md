@@ -41,7 +41,7 @@ download. It will expand to over 1 GB in the local database. During the
 download and database building up to 3.5 GB of disk space may be used
 temporarily.
 
-### Using the Database
+### Using the database
 
 Once you fetch the data you can connect to the database with the
 `cites_db()` command. You can use the `cites_shipments()` command to
@@ -84,7 +84,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.45902 secs
+#> Time difference of 4.463236 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
