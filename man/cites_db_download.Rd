@@ -8,7 +8,7 @@ cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
   verbose = interactive())
 }
 \arguments{
-\item{tag}{What release tag of data to download. Defaults to the most recent}
+\item{tag}{What release tag of data to download. Defaults to the most recent.}
 
 \item{destdir}{Where to download the compressed file.}
 
@@ -18,8 +18,8 @@ cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
 }
 \description{
 This command downloads the CITES shipments database and populates a local
-database.  The download is large (>80MB), and the database will be at least
-twice that on disk.  During import over 1GB of disk space may be used.
+database.  The download is large (~158 MB), and the database will be over
+1 GB on disk.  During import over 3.5 GB of disk space may be used temporarily.
 }
 \examples{
 cites_db_download()

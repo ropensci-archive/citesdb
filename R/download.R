@@ -1,10 +1,10 @@
 #' Download the CITES database to your local computer
 #'
 #' This command downloads the CITES shipments database and populates a local
-#' database.  The download is large (>80MB), and the database will be at least
-#' twice that on disk.  During import over 1GB of disk space may be used.
+#' database.  The download is large (~158 MB), and the database will be over
+#' 1 GB on disk.  During import over 3.5 GB of disk space may be used temporarily.
 #'
-#' @param tag What release tag of data to download. Defaults to the most recent
+#' @param tag What release tag of data to download. Defaults to the most recent.
 #' @param destdir Where to download the compressed file.
 #' @param cleanup Whether to delete the compressed file after loading into the database.
 #' @param verbose Whether to display messages and download progress
@@ -97,8 +97,7 @@ make_status_table <- function(version) {
 get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
                                 overwrite = TRUE, verbose = interactive()) {
   releases <- GET(
-    paste0("https://api.github.com/repos/", repo, "/releases"),
-    add_headers("Authorization" = paste("token", Sys.getenv("GITHUB_PAT")))
+    paste0("https://api.github.com/repos/", repo, "/releases")
   )
   httr::stop_for_status(releases, "finding releases")
 
@@ -120,7 +119,7 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
   filename <- basename(release_obj[[1]]$assets[[1]]$browser_download_url)
   out_path <- normalizePath(file.path(destdir, filename), mustWork = FALSE)
   response <- GET(
-    paste0(download_url, "?access_token=", Sys.getenv("GITHUB_PAT")),
+    download_url,
     httr::accept("application/octet-stream"),
     write_disk(path = out_path, overwrite = overwrite),
     if (verbose) progress()
