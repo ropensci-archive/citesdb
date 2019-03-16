@@ -16,7 +16,7 @@ shipment-level wildlife trade database, available at
 <https://trade.cites.org/>. This data consists of over 20 million
 records of reported shipments of wildlife and wildlife products subject
 to oversight under the Convention on International Trade in Endangered
-Species).
+Species.
 
 ## Installation
 
@@ -78,13 +78,13 @@ stop <- Sys.time()
 ```
 
 The back-end database, [MonetDB](https://monetdb.org) is very fast and
-powerful, making such analyses quite snappy even on such large data and
-normal desktops and laptops. Here’s the timing of the above query, which
-procecsses over 20 million records, on an ordinary laptop:
+powerful, making such analyses quite snappy even on such large data
+using normal desktops and laptops. Here’s the timing of the above query,
+which procecses over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 5.287588 secs
+#> Time difference of 4.454709 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
