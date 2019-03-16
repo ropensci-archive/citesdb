@@ -10,18 +10,13 @@ MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/
 [![Project Status: WIP - Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg)](https://circleci.com/gh/ecohealthalliance/citesdb)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/ecohealthalliance/citesdb?branch=master&svg=true)](https://ci.appveyor.com/project/ecohealthalliance/citesdb)
-[![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/citesdb)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/citesdb)](https://cran.r-project.org/package=citesdb)
 
 **citesdb** is a package to conveniently analyze the full CITES
 shipment-level wildlife trade database, available at
-<https://trade.cites.org/>.
-
-More details on the database can be found in the `?guidance` help file.
+<https://trade.cites.org/>. This data consists of over 20 million
+records of reported shipments of wildlife and wildlife products subject
+to oversight under the Convention on International Trade in Endangered
+Species).
 
 ## Installation
 
@@ -89,7 +84,7 @@ procecsses over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.42517 secs
+#> Time difference of 5.287588 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
