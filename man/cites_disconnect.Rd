@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect.R
 \name{cites_disconnect}
 \alias{cites_disconnect}
-\title{Discconnect from the CITES database}
+\title{Disconnect from the CITES database}
 \usage{
 cites_disconnect(env = cites_cache, shutdown = TRUE)
 }
@@ -10,5 +10,5 @@ cites_disconnect(env = cites_cache, shutdown = TRUE)
 A utility function for disconnecting from the database.
 }
 \examples{
-cites_disconnecct()
+cites_disconnect()
 }

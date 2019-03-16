@@ -8,11 +8,11 @@
 \description{
 \strong{citesdb} provides over 40 years of trade data from the \href{https://www.cites.org}{Convention on International Trade in Endangered Species of Wild Fauna and Flora}.
 These data on imports and exports of CITES annex species are provided by
-CITES membere countries to the CITES secratariat.
+CITES member countries to the CITES secretariat.
 }
 \details{
-This package allows you to download the full database of histric transactions
-to anayze locally on your computer. Because of the large size of this data,
+This package allows you to download the full database of historic transactions
+to analyze locally on your computer. Because of the large size of this data,
 the \strong{citesdb} package stores it as an on-disk \href{https://www.monetdb.org/}{MonetDB}
 that can be queried without loading into RAM.
 }

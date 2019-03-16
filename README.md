@@ -15,8 +15,8 @@ public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus
 shipment-level wildlife trade database, available at
 <https://trade.cites.org/>. This data consists of over 20 million
 records of reported shipments of wildlife and wildlife products subject
-to oversight under the Convention on International Trade in Endangered
-Species.
+to oversight under the [Convention on International Trade in Endangered
+Species of Wild Fauna and Flora](https://www.cites.org)
 
 ## Installation
 
@@ -38,7 +38,7 @@ When you first load the package you will see a message like this:
 Not to worry, just do as it says and run `cites_db_download()`. This
 will fetch the most recent database from online, an approximately 158 MB
 download. It will expand to over 1 GB in the local database. During the
-downloaad and database building up to 3.5 GB of disk space may be used
+download and database building up to 3.5 GB of disk space may be used
 temporarily.
 
 ### Using the Database
@@ -80,17 +80,17 @@ stop <- Sys.time()
 The back-end database, [MonetDB](https://monetdb.org) is very fast and
 powerful, making such analyses quite snappy even on such large data
 using normal desktops and laptops. Here’s the timing of the above query,
-which procecses over 20 million records, on an ordinary laptop:
+which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.454709 secs
+#> Time difference of 4.45902 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
 CITES package also brings up a browsable pane in the “Connections” tab
 that lets you explore and preview the database, as well as interact with
-it direcctly via SQL commands.
+it directly via SQL commands.
 
 ### Metadata
 
@@ -139,5 +139,5 @@ Please note that this project is released with a [Contributor Code of
 Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.
 
-[![EcoHealth
-Allinace](https://github.com/ecohealthalliance/citesdb/blob/master/inst/img/eha-footer.png)](https://www.ecohealthalliance.org/)
+[![Created by EcoHealth
+Alliance](https://github.com/ecohealthalliance/citesdb/blob/master/inst/img/eha-footer.png)](https://www.ecohealthalliance.org/)

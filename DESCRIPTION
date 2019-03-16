@@ -1,7 +1,10 @@
 Package: citesdb
 Version: 0.1.0
-Title: Historical CITES trade data served via databae
-Description: It does some stuff
+Title: Historical shipment-level 'CITES' trade data served via database
+Description: Provides convenient access to 40 years and 20 million records of
+    endangered wildlife trade data from the Convention on  International Trade
+    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
+    out-of memory 'MonetDB' database for bulk analysis.
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Evan", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut")),

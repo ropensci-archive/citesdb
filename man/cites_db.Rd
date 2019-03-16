@@ -14,8 +14,8 @@ cites_db(dbdir = cites_path())
 A MonetDBLite DBI connection
 }
 \description{
-Returns a connecction to the local CITES database.  This is a DBI-complient
-\url{MonetDBLite::MonetDBLite} database.
+Returns a connection to the local CITES database.  This is a DBI-compliant
+\url{MonetDBLite::MonetDBLite} database connection.
 }
 \examples{
 cites_db()

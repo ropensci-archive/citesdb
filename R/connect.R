@@ -9,8 +9,8 @@ cites_path <- function() {
 
 #' The local CITES database
 #'
-#' Returns a connecction to the local CITES database.  This is a DBI-complient
-#' [MonetDBLite::MonetDBLite]() database.
+#' Returns a connection to the local CITES database.  This is a DBI-compliant
+#' [MonetDBLite::MonetDBLite]() database connection.
 #'
 #' @param dbdir The location of the database on disk.  Defaults to
 #' `citesdb` under [MonetDBLite::MonetDBLite], or `getOption("CITES_DB_DIR")`.
@@ -57,9 +57,9 @@ cites_shipments <- function() {
 #'
 #' @description
 #'
-#' The CITES database also includes tables of column-levelel metadata and
-#' meanings of codes in colums, as well as a listing of CITES parties.
-#' convenience functions acccess these tables. As they are small, the functions
+#' The CITES database also includes tables of column-level metadata and
+#' meanings of codes in columns, as well as a listing of CITES parties.
+#' convenience functions access these tables. As they are small, the functions
 #' collect the into R session memory, rather than returning a remote table.
 #'
 #' This information is drawn from
@@ -77,7 +77,7 @@ cites_shipments <- function() {
 #' cites_metadata()
 #' cites_codes()
 #' cites_shipments()
-#' 
+#'
 #' # For remote connections to these tables,
 #' # access the database directly:
 #' dplyr::tbl(cites_db(), "cites_metadata")
@@ -108,12 +108,12 @@ cites_parties <- function() {
   as_tibble(dbReadTable(cites_db(), "cites_metadata"))
 }
 
-#' Discconnect from the CITES database
+#' Disconnect from the CITES database
 #'
 #' A utility function for disconnecting from the database.
 #'
 #' @examples
-#' cites_disconnecct()
+#' cites_disconnect()
 #' @export
 cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
   db <- mget("cites_db", envir = env, ifnotfound = NA)[[1]]

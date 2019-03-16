@@ -17,9 +17,9 @@ cites_parties()
 A tibble of metadata
 }
 \description{
-The CITES database also includes tables of column-levelel metadata and
-meanings of codes in colums, as well as a listing of CITES parties.
-convenience functions acccess these tables. As they are small, the functions
+The CITES database also includes tables of column-level metadata and
+meanings of codes in columns, as well as a listing of CITES parties.
+convenience functions access these tables. As they are small, the functions
 collect the into R session memory, rather than returning a remote table.
 
 This information is drawn from
