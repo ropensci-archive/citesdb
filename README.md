@@ -16,7 +16,7 @@ shipment-level wildlife trade database, available at
 <https://trade.cites.org/>. This data consists of over 20 million
 records of reported shipments of wildlife and wildlife products subject
 to oversight under the [Convention on International Trade in Endangered
-Species of Wild Fauna and Flora](https://www.cites.org)
+Species of Wild Fauna and Flora](https://www.cites.org).
 
 ## Installation
 
@@ -84,7 +84,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.463236 secs
+#> Time difference of 4.39248 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
