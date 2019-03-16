@@ -77,14 +77,14 @@ cites_shipments() %>%
 stop <- Sys.time()
 ```
 
-The back-end database, [MonetDB](https://monetdb.org) is very fast and
+The back-end database, [MonetDB](https://monetdb.org), is very fast and
 powerful, making such analyses quite snappy even on such large data
 using normal desktops and laptops. Here’s the timing of the above query,
 which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.39248 secs
+#> Time difference of 4.45276 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
