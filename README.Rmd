@@ -93,6 +93,10 @@ If you are using a recent version of RStudio interactively, loading the CITES pa
 up a browsable pane in the "Connections" tab that lets you explore and preview
 the database, as well as interact with it directly via SQL commands.
 
+If you don't need any of the bells and whistles of this package, you can download
+the raw data as a single compressed TSV from the [releases page](https://github.com/ecohealthalliance/citesdb/releases),
+or as a `.zip` file of many CSV files from original source at <https://trade.cites.org/>.
+
 ### Metadata
 
 The database also contains tables of field metadata, codes used, and CITES countries. This information

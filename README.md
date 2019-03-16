@@ -84,13 +84,19 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 4.45276 secs
+#> Time difference of 4.395773 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
 CITES package also brings up a browsable pane in the “Connections” tab
 that lets you explore and preview the database, as well as interact with
 it directly via SQL commands.
+
+If you don’t need any of the bells and whistles of this package, you can
+download the raw data as a single compressed TSV from the [releases
+page](https://github.com/ecohealthalliance/citesdb/releases), or as a
+`.zip` file of many CSV files from original source at
+<https://trade.cites.org/>.
 
 ### Metadata
 
