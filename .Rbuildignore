@@ -1,7 +1,7 @@
+^citesdb\.Rproj$
+^\.Rproj\.user$
 ^pkgdown$
 ^\.travis\.yml$
-^mkrpkg\.Rproj$
-^\.Rproj\.user$
 ^README\.Rmd$
 ^README\.md$
 ^LICENSE\.md$
@@ -12,3 +12,4 @@
 ^docs$
 ^appveyor\.yml$
 ^codemeta\.json$
+^docker$

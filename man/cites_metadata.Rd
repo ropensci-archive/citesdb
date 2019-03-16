@@ -28,13 +28,14 @@ from the CITES website. More information the the shipment-level data can be
 found in the \link{guidance} help file.
 }
 \examples{
-cites_metadata()
-cites_codes()
-cites_shipments()
+if (cites_status()) {
+  cites_metadata()
+  cites_codes()
+  cites_shipments()
 
-# For remote connections to these tables,
-# access the database directly:
-dplyr::tbl(cites_db(), "cites_metadata")
-dplyr::tbl(cites_db(), "cites_codes")
-dplyr::tbl(cites_db(), "cites_parties")
+  # For remote connections to these tables,
+  # access the database directly:
+  dplyr::tbl(cites_db(), "cites_metadata")
+  dplyr::tbl(cites_db(), "cites_codes")
+}
 }

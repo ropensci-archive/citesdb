@@ -4,7 +4,7 @@
 \alias{cites_disconnect}
 \title{Disconnect from the CITES database}
 \usage{
-cites_disconnect(env = cites_cache, shutdown = TRUE)
+cites_disconnect()
 }
 \description{
 A utility function for disconnecting from the database.

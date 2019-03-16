@@ -10,5 +10,9 @@ cites_db_delete()
 Deletes all tables from the local database
 }
 \examples{
+\donttest{
+\dontrun{
 cites_db_delete()
+}
+}
 }

@@ -15,7 +15,11 @@
 #' @importFrom R.utils gunzip
 #'
 #' @examples
+#' \donttest{
+#' \dontrun{
 #' cites_db_download()
+#' }
+#' }
 cites_db_download <- function(tag = NULL, destdir = tempdir(),
                               cleanup = TRUE, verbose = interactive()) {
   if (verbose) message("Downloading data...\n")
@@ -109,7 +113,7 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
     release_obj <- purrr::keep(releases, function(x) x$tag_name == tag_name)
   }
 
-  if (!length(release_obj)) stop("No release tagged \"", release, "\"")
+  if (!length(release_obj)) stop("No release tagged \"", tag_name, "\"")
 
   if (release_obj[[1]]$prerelease) {
     message("This is pre-release/sample data! It has not been cleaned or validated.")

@@ -27,9 +27,13 @@ Imports:
   dplyr,
   dbplyr,
 Suggests:
-  spelling, 
+  spelling,
   testthat,
-  roxygen2
+  roxygen2,
+  knitr,
+  rmarkdown,
+  rstudioapi
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Language: en-US
+VignetteBuilder: knitr

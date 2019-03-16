@@ -17,7 +17,17 @@ sql_action <- function() {
   }
 }
 
+#' Open CITES database connecction pane in RStudio
+#'
+#' This function launches the RStudio "Connection" pane to interactively
+#' explore the database.
+#'
+#' @return NULL
 #' @export
+#'
+#' @examples
+#' if (!is.null(getOption("connectionObserver")))
+#'   cites_pane()
 cites_pane <- function() {
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {

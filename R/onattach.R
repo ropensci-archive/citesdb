@@ -15,7 +15,11 @@
 #' @importFrom DBI dbListTables dbRemoveTable
 #'
 #' @examples
+#' \donttest{
+#' \dontrun{
 #' cites_db_delete()
+#' }
+#' }
 cites_db_delete <- function() {
   for (t in dbListTables(cites_db())) {
     dbRemoveTable(cites_db(), t)
@@ -56,6 +60,7 @@ cites_status <- function(verbose = TRUE) {
 }
 
 
+#' @importFrom utils read.table
 load_citesdb_metadata <- function() {
   tsvs <- list.files(system.file("extdata", package = "citesdb"),
     pattern = "\\.tsv$", full.names = TRUE

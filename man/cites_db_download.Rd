@@ -22,5 +22,9 @@ database.  The download is large (~158 MB), and the database will be over
 1 GB on disk.  During import over 3.5 GB of disk space may be used temporarily.
 }
 \examples{
+\donttest{
+\dontrun{
 cites_db_download()
+}
+}
 }

@@ -44,6 +44,7 @@ cites_db <- function(dbdir = cites_path()) {
 #' @export
 #'
 #' @examples
+#' if (cites_status())
 #' cites_shipments()
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
@@ -74,15 +75,16 @@ cites_shipments <- function() {
 #' @importFrom dplyr as_tibble
 #' @aliases metadata cites_metadata
 #' @examples
-#' cites_metadata()
-#' cites_codes()
-#' cites_shipments()
+#' if (cites_status()) {
+#'   cites_metadata()
+#'   cites_codes()
+#'   cites_shipments()
 #'
-#' # For remote connections to these tables,
-#' # access the database directly:
-#' dplyr::tbl(cites_db(), "cites_metadata")
-#' dplyr::tbl(cites_db(), "cites_codes")
-#' dplyr::tbl(cites_db(), "cites_parties")
+#'   # For remote connections to these tables,
+#'   # access the database directly:
+#'   dplyr::tbl(cites_db(), "cites_metadata")
+#'   dplyr::tbl(cites_db(), "cites_codes")
+#' }
 cites_metadata <- function() {
   if (!cites_status(FALSE)) {
     stop("Local CITES database empty or corrupt. Download with cites_db_download()")
@@ -115,8 +117,12 @@ cites_parties <- function() {
 #' @examples
 #' cites_disconnect()
 #' @export
-cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
-  db <- mget("cites_db", envir = env, ifnotfound = NA)[[1]]
+#'
+cites_disconnect <- function() {
+  cites_disconnect_()
+}
+cites_disconnect_ <- function(environment = cites_cache) {
+  db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     MonetDBLite::monetdblite_shutdown()
   }
@@ -126,12 +132,5 @@ cites_disconnect <- function(env = cites_cache, shutdown = TRUE) {
   }
 }
 
-cites_clean <- function(db = db_connect()) {
-  tables <- DBI::dbListTables(db)
-  drop <- tables[ !grepl("_", tables) ]
-  lapply(drop, function(x) DBI::dbRemoveTable(db, x))
-  invisible(TRUE)
-}
-
 cites_cache <- new.env()
-reg.finalizer(cites_cache, cites_disconnect, onexit = TRUE)
+reg.finalizer(cites_cache, cites_disconnect_, onexit = TRUE)

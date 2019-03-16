@@ -13,5 +13,6 @@ A dplyr remote tibble (\code{\link[dplyr:tbl]{dplyr::tbl()}})
 Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
 }
 \examples{
+if (cites_status())
 cites_shipments()
 }
