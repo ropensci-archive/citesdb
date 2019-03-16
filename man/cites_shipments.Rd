@@ -7,7 +7,7 @@
 cites_shipments()
 }
 \value{
-A dplyr remote tibble ([dplyr::tbl()])
+A dplyr remote tibble (\code{\link[dplyr:tbl]{dplyr::tbl()}})
 }
 \description{
 Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.

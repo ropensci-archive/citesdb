@@ -8,14 +8,14 @@ cites_db(dbdir = cites_path())
 }
 \arguments{
 \item{dbdir}{The location of the database on disk.  Defaults to
-`citesdb` under [MonetDBLite::MonetDBLite], or `getOption("CITES_DB_DIR")`.}
+\code{citesdb} under \link[MonetDBLite:MonetDBLite]{MonetDBLite::MonetDBLite}, or \code{getOption("CITES_DB_DIR")}.}
 }
 \value{
 A MonetDBLite DBI connection
 }
 \description{
 Returns a connecction to the local CITES database.  This is a DBI-complient
-[MonetDBLite::MonetDBLite]() database.
+\url{MonetDBLite::MonetDBLite} database.
 }
 \examples{
 cites_db()

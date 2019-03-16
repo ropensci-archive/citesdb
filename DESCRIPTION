@@ -1,5 +1,5 @@
 Package: citesdb
-Version: 0.0.0.9001
+Version: 0.1.0
 Title: Historical CITES trade data served via databae
 Description: It does some stuff
 Authors@R: c(
@@ -20,13 +20,13 @@ Imports:
   httr,
   R.utils,
   purrr,
-  tools
+  tools,
+  dplyr,
+  dbplyr,
 Suggests:
   spelling, 
   testthat,
-  roxygen2,
-  dplyr,
-  DT,
-  htmlwidgets
+  roxygen2
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
 Language: en-US

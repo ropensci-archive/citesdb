@@ -3,7 +3,7 @@
   if (interactive() && Sys.getenv("RSTUDIO") == "1") {
     cites_pane()
   }
-  if (interactive()) cites_db_status()
+  if (interactive()) cites_status()
 }
 
 #' Remove the local CITES database
@@ -33,11 +33,11 @@ cites_db_delete <- function() {
 #' @importFrom DBI dbExistsTable
 #' @importFrom tools toTitleCase
 #' @examples
-#' cites_db_status()
-cites_db_status <- function(verbose = TRUE) {
-  if (dbExistsTable(cites_db(), "shipments") &&
-    dbExistsTable(cites_db(), "status")) {
-    status <- DBI::dbReadTable(cites_db(), "status")
+#' cites_status()
+cites_status <- function(verbose = TRUE) {
+  if (dbExistsTable(cites_db(), "cites_shipments") &&
+    dbExistsTable(cites_db(), "cites_status")) {
+    status <- DBI::dbReadTable(cites_db(), "cites_status")
     status_msg <-
       paste0(
         "CITES database status:\n",
@@ -58,12 +58,16 @@ cites_db_status <- function(verbose = TRUE) {
 
 load_citesdb_metadata <- function() {
   tsvs <- list.files(system.file("extdata", package = "citesdb"),
-                     pattern = "\\.tsv$", full.names = TRUE)
+    pattern = "\\.tsv$", full.names = TRUE
+  )
   tblnames <- tools::file_path_sans_ext(basename(tsvs))
   for (i in seq_along(tsvs)) {
     suppressMessages(dbWriteTable(cites_db(), tblnames[i],
-                 read.table(tsvs[i], stringsAsFactors = FALSE, sep = "\t",
-                            header = TRUE,  quote = "\""),
-                 overwrite = TRUE))
+      read.table(tsvs[i],
+        stringsAsFactors = FALSE, sep = "\t",
+        header = TRUE, quote = "\""
+      ),
+      overwrite = TRUE
+    ))
   }
 }

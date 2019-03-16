@@ -1,17 +1,20 @@
 variable	description
-year	year in which trade occurred
-app	CITES Appendix of taxon concerned
-taxon	scientific name of animal or plant concerned
-class	scientific name of animal or plant concerned
-order	scientific name of animal or plant concerned
-family	scientific name of animal or plant concerned
-genus	scientific name of animal or plant concerned
-importer	country of import (where exports are reported, this is the declared country of destination)
-exporter	country of export (where imports are reported, this is the declared country from which the specimens were consigned)
-origin	country of origin (this column is blank if the country of export is the country of origin, or if the country of origin is not reported)
-importer_reported_quantity	quantity of specimens reported as imports by the importing country
-exporter_reported_quantity	quantity of specimens reported as (re-)exports by the (re-)exporting country
-term	description of specimens traded, as reported by the importing country
-unit	unit associated with the quantity reported by the importing country, e.g. 'KIL' (kilograms). If no unit is shown, the figure represents the total number of specimens
-purpose	purpose of the transaction (see Annex 2), as reported by the importing country
-source	source of the specimen (see Annex 2), as reported by the importing country
+Year	year in which trade occurred
+Appendix	CITES Appendix of taxon concerned
+Taxon	scientific name of animal or plant concerned
+Class	scientific name of animal or plant concerned
+Order	scientific name of animal or plant concerned
+Family	scientific name of animal or plant concerned
+Genus	scientific name of animal or plant concerned
+Term	description of specimens traded, as reported by the importing country
+Quantity	amount of specimens
+Unit	unit associated with the quantity reported by the importing country, e.g. 'KIL' (kilograms). If no unit is shown, the figure represents the
+Importer	country of import (where exports are reported, this is the declared country of destination)
+Exporter	country of export (where imports are reported, this is the declared country from which the specimens were consigned)
+Origin	country of origin (this column is blank if the country of export is the country of origin, or if the country of origin is not reported)
+Purpose	purpose of the transaction (see Annex 2), as reported by the importing country
+Source	source of the specimen (see Annex 2), as reported by the importing country
+Reporter.type	reported by importer (I) or exporter (E)
+Import.permit.RandomID	cryptographic hash of importer permit ID
+Export.permit.RandomID	cryptographic hash of exporter permit ID
+Origin.permit.RandomID	cryptographic hash of origin permit ID (under re-export)

@@ -1,3 +1,22 @@
+sql_action <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) &&
+    exists("documentNew", asNamespace("rstudioapi"))) {
+    contents <- paste(
+      "-- !preview conn=citesdb::cites_db()",
+      "",
+      "SELECT * FROM cites_shipments LIMIT 100",
+      "",
+      sep = "\n"
+    )
+
+    rstudioapi::documentNew(
+      text = contents, type = "sql",
+      position = rstudioapi::document_position(2, 25),
+      execute = FALSE
+    )
+  }
+}
+
 #' @export
 cites_pane <- function() {
   observer <- getOption("connectionObserver")
@@ -34,9 +53,13 @@ cites_pane <- function() {
         DBI::dbGetQuery(cites_db(), paste("SELECT * FROM", table, "LIMIT", rowLimit))
       },
       actions = list(
-        status = list(
+        Status = list(
           icon = system.file("img", "cites-logo.png", package = "citesdb"),
-          callback = cites_db_status
+          callback = cites_status
+        ),
+        SQL = list(
+          icon = system.file("img", "edit-sql.png", package = "citesdb"),
+          callback = sql_action
         )
       ),
       connectionObject = cites_db()

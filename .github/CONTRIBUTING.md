@@ -18,4 +18,3 @@ their permission) for most contributions that go beyond small typos in code or d
 submitting your change.
 
 
-## Roadmap

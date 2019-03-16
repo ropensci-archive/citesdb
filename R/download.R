@@ -28,7 +28,7 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   temp_tsv <- tempfile(fileext = ".tsv")
   R.utils::gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
 
-  tblname <- "shipments"
+  tblname <- "cites_shipments"
   if (dbExistsTable(cites_db(), tblname)) {
     dbRemoveTable(cites_db(), tblname)
   }
@@ -47,24 +47,37 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
     )
   )
 
-  dbWriteTable(cites_db(), "status", make_status_table(version = ver),
+  dbWriteTable(cites_db(), "cites_status", make_status_table(version = ver),
     overwrite = TRUE
   )
 
   load_citesdb_metadata()
 
   file.remove(temp_tsv)
-  if (verbose) cites_db_status()
+  if (verbose) cites_status()
   update_cites_pane()
 }
 
 cites_field_types <- c(
-  id = "INTEGER", year = "INTEGER", appendix = "STRING", taxon = "STRING",
-  taxon_id = "INTEGER", class = "STRING", order = "STRING", family = "STRING",
-  genus = "STRING", reported_taxon = "STRING", reported_taxon_id = "INTEGER",
-  term = "STRING", quantity = "DOUBLE PRECISION", unit = "STRING", importer = "STRING",
-  exporter = "STRING", origin = "STRING", purpose = "STRING", source = "STRING",
-  reporter_type = "STRING"
+  Year = "INTEGER",
+  Appendix = "STRING",
+  Taxon = "STRING",
+  Class = "STRING",
+  Order = "STRING",
+  Family = "STRING",
+  Genus = "STRING",
+  Term = "STRING",
+  Quantity = "DOUBLE PRECISION",
+  Unit = "STRING",
+  Importer = "STRING",
+  Exporter = "STRING",
+  Origin = "STRING",
+  Purpose = "STRING",
+  Source = "STRING",
+  Reporter.type = "STRING",
+  Import.permit.RandomID = "STRING",
+  Export.permit.RandomID = "STRING",
+  Origin.permit.RandomID = "STRING"
 )
 
 #' @importFrom DBI dbGetQuery
@@ -74,7 +87,7 @@ make_status_table <- function(version) {
   data.frame(
     time_imported = Sys.time(),
     version = version,
-    number_of_records = formatC(DBI::dbGetQuery(cites_db(), "SELECT COUNT(*) FROM shipments;")[[1]], format = "d", big.mark = ","),
+    number_of_records = formatC(DBI::dbGetQuery(cites_db(), "SELECT COUNT(*) FROM cites_shipments;")[[1]], format = "d", big.mark = ","),
     size_on_disk = format(sz, "auto")
   )
 }
