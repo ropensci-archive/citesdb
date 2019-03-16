@@ -60,12 +60,12 @@ file_delete(
 )
 # Release the compressed data
 
-# datastorr::github_release_info(
-#   "ecohealthalliance/citesdb",
-#   read = read_tsv,
-#   filename = h("data-raw", "cites_trade_db.tsv.bz2")
-# ) %>%
-# datastorr::github_release_create(
-#   description = "Release of CITES shipment data (v2019.2)",
-#   target = "master", ignore_dirty = FALSE
-# )
+datastorr::github_release_info(
+  "ecohealthalliance/citesdb",
+  read = read_tsv,
+  filename = "cites_trade_db.tsv.bz2"
+) %>%
+datastorr::github_release_create(
+  description = "Release of CITES shipment data (v2019.2)",
+  target = "master", ignore_dirty = TRUE
+)

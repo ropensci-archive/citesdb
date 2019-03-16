@@ -28,14 +28,9 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg){data-external="1"}](https://opensource.org/licenses/MIT)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
-  [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ecohealthalliance/citesdb?branch=master&svg=true){data-external="1"}](https://ci.appveyor.com/project/ecohealthalliance/citesdb)
-[![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
-[![CRAN status](https://www.r-pkg.org/badges/version/citesdb){data-external="1"}](https://cran.r-project.org/package=citesdb)
 
-**citesdb** is a package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>.
-
-More details on the database can be found in the `?guidance` help file.
+**citesdb** is a package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife
+products subject to oversight under the Convention on International Trade in Endangered Species).
 
 ## Installation
 
