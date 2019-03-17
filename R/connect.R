@@ -20,7 +20,7 @@ check_status <- function() {
 #' [MonetDBLite::MonetDBLite()] database connection.
 #'
 #' @param dbdir The location of the database on disk.  Defaults to
-#' `citesdb` under [rappdirs::user_data_dir()], or the environment variabel `CITES_DB_DIR`.
+#' `citesdb` under [rappdirs::user_data_dir()], or the environment variable `CITES_DB_DIR`.
 #'
 #' @return A MonetDBLite DBI connection
 #' @importFrom DBI dbIsValid dbConnect
