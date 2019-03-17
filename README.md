@@ -7,6 +7,7 @@ Authors: *Noam Ross, Evan Eskew, and Carlos Zambrana-Torrelio*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=svg)](https://circleci.com/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
@@ -84,7 +85,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 1.007326 secs
+#> Time difference of 1.029182 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the

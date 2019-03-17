@@ -30,7 +30,7 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   ver <- attr(zfile, "ver")
   if (verbose) message("Decompressing and building local database...\n")
   temp_tsv <- tempfile(fileext = ".tsv")
-  R.utils::gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
+  gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
 
   tblname <- "cites_shipments"
   if (dbExistsTable(cites_db(), tblname)) {
@@ -86,24 +86,30 @@ cites_field_types <- c(
 
 #' @importFrom DBI dbGetQuery
 make_status_table <- function(version) {
-  sz <- sum(file.info(list.files(cites_path(), all.files = TRUE, recursive = TRUE, full.names = TRUE))$size)
+  sz <- sum(file.info(list.files(cites_path(),
+                                 all.files = TRUE,
+                                 recursive = TRUE,
+                                 full.names = TRUE))$size)
   class(sz) <- "object_size"
   data.frame(
     time_imported = Sys.time(),
     version = version,
-    number_of_records = formatC(DBI::dbGetQuery(cites_db(), "SELECT COUNT(*) FROM cites_shipments;")[[1]], format = "d", big.mark = ","),
+    number_of_records = formatC(
+      DBI::dbGetQuery(cites_db(),
+                      "SELECT COUNT(*) FROM cites_shipments;")[[1]],
+      format = "d", big.mark = ","),
     size_on_disk = format(sz, "auto")
   )
 }
 
-#' @import httr
+#' @importFrom httr GET stop_for_status content accept write_disk progress
 #' @importFrom purrr keep
 get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
                                 overwrite = TRUE, verbose = interactive()) {
   releases <- GET(
     paste0("https://api.github.com/repos/", repo, "/releases")
   )
-  httr::stop_for_status(releases, "finding releases")
+  stop_for_status(releases, "finding releases")
 
   releases <- content(releases)
 
@@ -116,7 +122,7 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
   if (!length(release_obj)) stop("No release tagged \"", tag_name, "\"")
 
   if (release_obj[[1]]$prerelease) {
-    message("This is pre-release/sample data! It has not been cleaned or validated.")
+    message("This is pre-release/sample data! It has not been cleaned or validated.")  #nolint
   }
 
   download_url <- release_obj[[1]]$assets[[1]]$url
@@ -124,11 +130,11 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
   out_path <- normalizePath(file.path(destdir, filename), mustWork = FALSE)
   response <- GET(
     download_url,
-    httr::accept("application/octet-stream"),
+    accept("application/octet-stream"),
     write_disk(path = out_path, overwrite = overwrite),
     if (verbose) progress()
   )
-  httr::stop_for_status(response, "downloading data")
+  stop_for_status(response, "downloading data")
 
   attr(out_path, "ver") <- release_obj[[1]]$tag_name
   return(out_path)

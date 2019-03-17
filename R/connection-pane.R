@@ -11,7 +11,7 @@ sql_action <- function() {
 
     rstudioapi::documentNew(
       text = contents, type = "sql",
-      position = rstudioapi::document_position(2, 25),
+      position = rstudioapi::document_position(2, 40),
       execute = FALSE
     )
   }
@@ -52,15 +52,17 @@ cites_pane <- function() {
         )
       },
       listColumns = function(table) {
-        res <- DBI::dbSendQuery(cites_db(), paste("SELECT * FROM", table, "LIMIT 1"))
+        res <- DBI::dbSendQuery(cites_db(),
+                                paste("SELECT * FROM", table, "LIMIT 1"))
         on.exit(DBI::dbClearResult(res))
         data.frame(
           name = res@env$info$names, type = res@env$info$types,
           stringsAsFactors = FALSE
         )
       },
-      previewObject = function(rowLimit, table) {
-        DBI::dbGetQuery(cites_db(), paste("SELECT * FROM", table, "LIMIT", rowLimit))
+      previewObject = function(rowLimit, table) {  #nolint
+        DBI::dbGetQuery(cites_db(),
+                        paste("SELECT * FROM", table, "LIMIT", rowLimit))
       },
       actions = list(
         Status = list(

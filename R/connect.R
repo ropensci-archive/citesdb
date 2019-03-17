@@ -6,14 +6,19 @@ cites_path <- function() {
   }
 }
 
+check_status <- function() {
+  if (!cites_status(FALSE)) {
+    stop("Local CITES database empty or corrupt. Download with cites_db_download()")  #nolint
+  }
+}
 
 #' The local CITES database
 #'
 #' Returns a connection to the local CITES database.  This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite]() database connection.
+#' [MonetDBLite::MonetDBLite()] database connection.
 #'
 #' @param dbdir The location of the database on disk.  Defaults to
-#' `citesdb` under [MonetDBLite::MonetDBLite], or `getOption("CITES_DB_DIR")`.
+#' `citesdb` under [MonetDBLite::MonetDBLite()], or `getOption("CITES_DB_DIR")`.
 #'
 #' @return A MonetDBLite DBI connection
 #' @importFrom DBI dbIsValid dbConnect
@@ -48,9 +53,7 @@ cites_db <- function(dbdir = cites_path()) {
 #' cites_shipments()
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
-  if (!cites_status(FALSE)) {
-    stop("Local CITES database empty or corrupt. Download with cites_db_download()")
-  }
+  check_status()
   tbl(cites_db(), "cites_shipments")
 }
 
@@ -86,27 +89,21 @@ cites_shipments <- function() {
 #'   dplyr::tbl(cites_db(), "cites_codes")
 #' }
 cites_metadata <- function() {
-  if (!cites_status(FALSE)) {
-    stop("Local CITES database empty or corrupt. Download with cites_db_download()")
-  }
+  check_status
   as_tibble(dbReadTable(cites_db(), "cites_metadata"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_codes <- function() {
-  if (!cites_status(FALSE)) {
-    stop("Local CITES database empty or corrupt. Download with cites_db_download()")
-  }
+  check_status()
   as_tibble(dbReadTable(cites_db(), "cites_codes"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_parties <- function() {
-  if (!cites_status(FALSE)) {
-    stop("Local CITES database empty or corrupt. Download with cites_db_download()")
-  }
+  check_status()
   as_tibble(dbReadTable(cites_db(), "cites_metadata"))
 }
 
@@ -121,7 +118,7 @@ cites_parties <- function() {
 cites_disconnect <- function() {
   cites_disconnect_()
 }
-cites_disconnect_ <- function(environment = cites_cache) {
+cites_disconnect_ <- function(environment = cites_cache) { #nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     MonetDBLite::monetdblite_shutdown()

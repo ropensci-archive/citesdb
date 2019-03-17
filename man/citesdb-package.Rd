@@ -19,9 +19,9 @@ that can be queried without loading into RAM.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ecohealthalliancec/citesdb}
+  \item \url{https://github.com/ecohealthalliance/citesdb}
   \item \url{https://www.cites.org/}
-  \item Report bugs at \url{https://github.com/ecohealthalliancce/citesdb/issues}
+  \item Report bugs at \url{https://github.com/ecohealthalliance/citesdb/issues}
 }
 
 }

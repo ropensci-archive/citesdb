@@ -14,8 +14,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-URL: https://github.com/ecohealthalliancec/citesdb, https://www.cites.org/
-BugReports: https://github.com/ecohealthalliancce/citesdb/issues
+URL: https://github.com/ecohealthalliance/citesdb, https://www.cites.org/
+BugReports: https://github.com/ecohealthalliance/citesdb/issues
 Imports:
   MonetDBLite,
   rappdirs,
@@ -32,8 +32,8 @@ Suggests:
   roxygen2,
   knitr,
   rmarkdown,
-  rstudioapi
+  rstudioapi,
+  lintr
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Language: en-US
-VignetteBuilder: knitr

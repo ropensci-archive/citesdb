@@ -52,7 +52,7 @@ cites_status <- function(verbose = TRUE) {
       )
     out <- TRUE
   } else {
-    status_msg <- "Local CITES database empty or corrupt. Download with cites_db_download()"
+    status_msg <- "Local CITES database empty or corrupt. Download with cites_db_download()" #nolint
     out <- FALSE
   }
   if (verbose) message(status_msg)
