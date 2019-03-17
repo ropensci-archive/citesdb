@@ -10,3 +10,4 @@ src/*.dll
 data-raw/*
 !data-raw/*.R
 scraps/
+localdb

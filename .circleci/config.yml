@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/main
     docker:
       - image: rocker/verse:latest
+    environment:
+      NOT_CRAN: true
     steps:
       - checkout
       - restore_cache:

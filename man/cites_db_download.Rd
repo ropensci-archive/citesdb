@@ -21,6 +21,10 @@ This command downloads the CITES shipments database and populates a local
 database.  The download is large (~158 MB), and the database will be over
 1 GB on disk.  During import over 3.5 GB of disk space may be used temporarily.
 }
+\details{
+The database is stored by default under \code{\link[rappdirs:user_data_dir]{rappdirs::user_data_dir()}}, or its
+location can be set with the environment variable \code{CITES_DB_DIR}.
+}
 \examples{
 \donttest{
 \dontrun{

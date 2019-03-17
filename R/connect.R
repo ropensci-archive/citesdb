@@ -2,7 +2,9 @@
 cites_path <- function() {
   sys_cites_path <- Sys.getenv("CITES_DB_DIR")
   if (sys_cites_path == "") {
-    rappdirs::user_data_dir("citesdb")
+    return(rappdirs::user_data_dir("citesdb"))
+  } else {
+    return(sys_cites_path)
   }
 }
 
@@ -18,7 +20,7 @@ check_status <- function() {
 #' [MonetDBLite::MonetDBLite()] database connection.
 #'
 #' @param dbdir The location of the database on disk.  Defaults to
-#' `citesdb` under [MonetDBLite::MonetDBLite()], or `getOption("CITES_DB_DIR")`.
+#' `citesdb` under [rappdirs::user_data_dir()], or the environment variabel `CITES_DB_DIR`.
 #'
 #' @return A MonetDBLite DBI connection
 #' @importFrom DBI dbIsValid dbConnect
