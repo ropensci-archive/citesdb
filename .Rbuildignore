@@ -13,4 +13,5 @@
 ^codemeta\.json$
 ^docker$
 ^localdb$
+^tests/testthat/localdb$
 ^artifacts$

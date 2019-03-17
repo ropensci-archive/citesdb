@@ -12,3 +12,4 @@ data-raw/*
 scraps/
 localdb
 artifacts
+tests/testthat/localdb
