@@ -12,32 +12,39 @@ jobs:
             - deps1-{{ .Branch }}
             - deps1-
       - run:
+          name: Install packages
           command: |
-            R -e "devtools::install_deps(dependencies = TRUE)"
-            R -e "if(!require(DT)) devtools::install_cran('DT', dependencies = TRUE)"
-            R -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
-            R -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
-            R -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
+            Rscript -e "devtools::install_deps(dependencies = TRUE)"
+            Rscript -e "if(!require(DT)) devtools::install_cran('DT', dependencies = TRUE)"
+            Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
+            Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
+            Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
       - run:
+          name: Check package
           command: |
-            R -e 'devtools::check()'
+            Rscript -e 'devtools::check()'
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
       - run:
+          name: Check on r-hub
+          when: on_success
+          background: true
+          command: |
+            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
+      - run:
+          name: Extra diagnostics
+          when: on_success
           command: |
             mkdir /root/main/artifacts
-            R -e "devtools::install()" || true
-            R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
-            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
+            Rscript -e "devtools::install()" || true
+            Rscript -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
+            Rscript -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
             R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
-      - run:
-          command: |
-            R -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
 
 workflows:
    version: 2
