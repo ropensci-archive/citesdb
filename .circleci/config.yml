@@ -14,6 +14,7 @@ jobs:
       - run:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
+            R -e "if(!require(rhub)) devtools::install_cran('DT', dependencies = TRUE)"
             R -e "if(!require(rhub)) devtools::install_cran('covr', dependencies = TRUE)"
             R -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
             R -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
@@ -31,7 +32,7 @@ jobs:
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
             R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
             R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
-            R -e "rhub::check_for_cran()" || true
+            R -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran()" || true
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
