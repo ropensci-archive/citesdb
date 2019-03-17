@@ -3,6 +3,7 @@
 ^pkgdown$
 ^\.travis\.yml$
 ^README\.Rmd$
+^README\.md$
 ^LICENSE\.md$
 ^\.github$
 ^data-raw$
