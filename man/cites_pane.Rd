@@ -2,7 +2,7 @@
 % Please edit documentation in R/connection-pane.R
 \name{cites_pane}
 \alias{cites_pane}
-\title{Open CITES database connecction pane in RStudio}
+\title{Open CITES database connection pane in RStudio}
 \usage{
 cites_pane()
 }

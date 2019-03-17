@@ -17,7 +17,7 @@ sql_action <- function() {
   }
 }
 
-#' Open CITES database connecction pane in RStudio
+#' Open CITES database connection pane in RStudio
 #'
 #' This function launches the RStudio "Connection" pane to interactively
 #' explore the database.

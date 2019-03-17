@@ -1,4 +1,6 @@
 browsable
+CircleCI
+codecov
 cryptographic
 cryptographically
 csv
@@ -17,6 +19,7 @@ SHA
 th
 tibble
 Torrelio
+TSV
 UNEP
 WCMC
 WIP
