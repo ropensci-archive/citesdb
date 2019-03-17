@@ -14,8 +14,9 @@ jobs:
       - run:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
-            R -e "if(!require(goodpractice)) devtools::install_cran('goodpractice')"
-            R -e "if(!require(rhub)) devtools::install_cran('rhub')"
+            R -e "if(!require(rhub)) devtools::install_cran('covr', dependencies = TRUE)"
+            R -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
+            R -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
       - run:
           command: |
             R -e 'devtools::check()'
