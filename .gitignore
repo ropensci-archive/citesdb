@@ -11,3 +11,4 @@ data-raw/*
 !data-raw/*.R
 scraps/
 localdb
+artifacts

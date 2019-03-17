@@ -13,3 +13,4 @@
 ^codemeta\.json$
 ^docker$
 ^localdb$
+^artifacts$
