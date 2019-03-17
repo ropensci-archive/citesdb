@@ -28,12 +28,6 @@ jobs:
           paths:
             - "/usr/local/lib/R/site-library"
       - run:
-          name: Check on r-hub
-          when: on_success
-          background: true
-          command: |
-            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
-      - run:
           name: Extra diagnostics
           when: on_success
           command: |
@@ -45,6 +39,11 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
+      - run:
+          name: Check on r-hub
+          when: on_success
+          command: |
+            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
 
 workflows:
    version: 2

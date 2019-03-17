@@ -27,7 +27,7 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 ```
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg){data-external="1"}](https://opensource.org/licenses/MIT)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=sheild){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
 
