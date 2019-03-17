@@ -40,5 +40,4 @@ workflows:
    commit:
      jobs:
        - build
-     jobs:
-       - build
+
