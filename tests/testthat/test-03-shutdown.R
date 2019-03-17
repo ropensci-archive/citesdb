@@ -11,8 +11,7 @@ test_that("Disconnetion works", {
   skip_if_not(cites_status())
 
   cites_disconnect()
-  expect_error(
-    {
+  expect_error({
       success <- callr::r(function() {
         options(CITES_DB_DIR = "localdb")
         con <- DBI::dbConnect(
