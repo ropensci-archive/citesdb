@@ -35,7 +35,7 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
-       run:
+      - run:
           command: |
             R -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
 
