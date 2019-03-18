@@ -21,7 +21,7 @@ jobs:
             Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
             Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
             Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
-            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"=
+            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
       - run:
           name: Check package
           command: |
