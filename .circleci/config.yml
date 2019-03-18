@@ -48,8 +48,17 @@ jobs:
             Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
 
 workflows:
-   version: 2
-   commit:
-     jobs:
-       - build
-
+  version: 2
+  commit:
+    jobs:
+      - build
+  weekly:
+    triggers:
+      - schedule:
+          cron: "0 1 * * 7"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
