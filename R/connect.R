@@ -10,7 +10,7 @@ cites_path <- function() {
 
 check_status <- function() {
   if (!cites_status(FALSE)) {
-    stop("Local CITES database empty or corrupt. Download with cites_db_download()")  #nolint
+    stop("Local CITES database empty or corrupt. Download with cites_db_download()") # nolint
   }
 }
 
@@ -38,7 +38,24 @@ cites_db <- function(dbdir = cites_path()) {
   }
   dbname <- dbdir
   dir.create(dbname, FALSE)
-  db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
+
+  tryCatch(
+    db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir),
+    error = function(e) {
+      if (grepl("Database lock", e)) {
+        stop(paste(
+          "Local taxadb database is locked by another R session.\n",
+          "Try closing or running cites_disconect() in that session."
+        ),
+        call. = FALSE
+        )
+      } else {
+        stop(e)
+      }
+    },
+    finally = NULL
+  )
+
   assign("cites_db", db, envir = cites_cache)
   db
 }
@@ -51,8 +68,9 @@ cites_db <- function(dbdir = cites_path()) {
 #' @export
 #'
 #' @examples
-#' if (cites_status())
-#' cites_shipments()
+#' if (cites_status()) {
+#'   cites_shipments()
+#' }
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
   check_status()
@@ -121,7 +139,7 @@ cites_parties <- function() {
 cites_disconnect <- function() {
   cites_disconnect_()
 }
-cites_disconnect_ <- function(environment = cites_cache) { #nolint
+cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     MonetDBLite::monetdblite_shutdown()
