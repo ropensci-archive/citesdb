@@ -26,16 +26,16 @@ jobs:
           name: Check package
           command: |
             Rscript -e 'devtools::check()'
+      - save_cache:
+          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - "/usr/local/lib/R/site-library"
       - run:
           name: Build and deploy pkgdown site
           when: on_success
           command: |
             Rscript -e "devtools::install()" || true
             Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
-      - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-          paths:
-            - "/usr/local/lib/R/site-library"
       - run:
           name: Extra diagnostics
           when: on_success
