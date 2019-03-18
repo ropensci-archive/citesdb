@@ -79,6 +79,9 @@ cites_shipments() %>%
 stop <- Sys.time()
 ```
 
+(*Note that running `collect()` on all of `cites_shipments()` will load
+a \>3GB data frame into memory\!*)
+
 The back-end database, [MonetDB](https://monetdb.org), is very fast and
 powerful, making such analyses quite snappy even on such large data
 using normal desktops and laptops. Here’s the timing of the above query,
