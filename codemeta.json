@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
   "description": "Provides convenient access to 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on  International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
@@ -249,23 +252,20 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "71.683KB",
-  "contIntegration": ["https://circleci.com/gh/ecohealthalliance/citesdb", "https://codecov.io/gh/ecohealthalliance/citesdb"],
+  "fileSize": "73.251KB",
+  "contIntegration": [
+    "https://circleci.com/gh/ecohealthalliance/citesdb",
+    "https://codecov.io/gh/ecohealthalliance/citesdb"
+  ],
   "developmentStatus": "http://www.repostatus.org/#wip",
-  "keywords": ["r", "rstats", "r-package", "wildlife", "dataset"],
+  "keywords": [
+    "r",
+    "rstats",
+    "r-package",
+    "wildlife",
+    "dataset"
+  ],
   "citation": [
-    {
-      "@type": "CreativeWork",
-      "datePublished": "2019",
-      "author": [
-        {
-          "@type": "Organization",
-          "name": "UNEP-WCMC"
-        }
-      ],
-      "name": "Full CITES Trade Database Download. Version 2019.2",
-      "url": "https://trade.cites.org"
-    },
     {
       "@type": "CreativeWork",
       "datePublished": "2019",
@@ -284,6 +284,18 @@
       "name": "citesdb: Historical shipment-level 'CITES' trade data served via database",
       "url": "https://github.com/ecohealthalliance/citesdb",
       "description": "v0.1.0"
+    },
+    {
+      "@type": "CreativeWork",
+      "datePublished": "2019",
+      "author": [
+        {
+          "@type": "Organization",
+          "name": "UNEP-WCMC"
+        }
+      ],
+      "name": "Full CITES Trade Database Download. Version 2019.2",
+      "url": "https://trade.cites.org"
     }
   ]
 }
