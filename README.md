@@ -167,4 +167,4 @@ Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_O
 By participating in this project you agree to abide by its terms.
 
 [![Created by EcoHealth
-Alliance](https://github.com/ecohealthalliance/citesdb/blob/master/inst/img/eha-footer.png)](https://www.ecohealthalliance.org/)
+Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png)](https://www.ecohealthalliance.org/)

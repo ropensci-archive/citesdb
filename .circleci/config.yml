@@ -63,7 +63,7 @@ workflows:
       - build
     branches:
       ignore:
-        - gh-pages
+        - "gh-pages"
   weekly:
     triggers:
       - schedule:

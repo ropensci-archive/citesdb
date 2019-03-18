@@ -148,4 +148,4 @@ Want have feedback or want to contribute? Great! Please take a look at the [cont
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![Created by EcoHealth Alliance](https://github.com/ecohealthalliance/citesdb/blob/master/inst/img/eha-footer.png)](https://www.ecohealthalliance.org/)
+[![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png)](https://www.ecohealthalliance.org/)

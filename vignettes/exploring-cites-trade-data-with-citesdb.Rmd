@@ -124,3 +124,4 @@ If you use **citesdb** in a publication, please cite both the package and source
 print(citation("citesdb"), style = "textVersion")
 ```
 
+[![Created by EcoHealth Alliance](reference/figures/eha-footer.png)](https://www.ecohealthalliance.org/)
