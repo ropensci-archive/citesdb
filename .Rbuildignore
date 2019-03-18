@@ -17,3 +17,5 @@
 ^tests/testthat/localdb$
 ^artifacts$
 ^codemeta.json$
+^README_cache$
+cache$
