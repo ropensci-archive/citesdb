@@ -61,6 +61,9 @@ workflows:
   commit:
     jobs:
       - build
+    branches:
+      ignore:
+        - gh-pages
   weekly:
     triggers:
       - schedule:
