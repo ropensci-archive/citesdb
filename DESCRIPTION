@@ -33,7 +33,8 @@ Suggests:
   rmarkdown,
   rstudioapi,
   lintr,
-  callr
+  callr,
+  here
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Language: en-US

@@ -148,6 +148,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=callr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "here",
+      "name": "here",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=here"
     }
   ],
   "softwareRequirements": [
@@ -255,7 +267,7 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "121.856KB",
+  "fileSize": "118.315KB",
   "contIntegration": [
     "https://circleci.com/gh/ecohealthalliance/citesdb",
     "https://codecov.io/gh/ecohealthalliance/citesdb"
