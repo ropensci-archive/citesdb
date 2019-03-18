@@ -86,7 +86,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 0.914443 secs
+#> Time difference of 1.046732 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -135,6 +135,12 @@ head(cites_codes())
 
 More information on the release of shipment-level data can be found in
 the `?guidance` help file.
+
+### Related work
+
+The [**rcites**](https://github.com/ropensci/rcites) package provides
+access to the Speciesplus/CITES Checklist API, which includes metadata
+about species and their protected status through time.
 
 ### Citation
 
