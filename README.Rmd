@@ -44,6 +44,7 @@ source("https://install-github.me/ecohealthalliance/citesdb")
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
 options(width=120)
+knitr::opts_chunk$set(cache = TRUE)
 ```
 
 ## Usage
@@ -68,6 +69,10 @@ command.  You can use the
 database but not loaded into R.  You can use this
 to analyze CITES data without ever loading it into memory, then gather your
 results with `collect()`. For example:
+
+```{r getdata, include = FALSE}
+if (!citesdb::cites_status()) citesdb::cites_db_download()
+```
 
 ```{r, warning = FALSE}
 library(citesdb)

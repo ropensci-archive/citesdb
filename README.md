@@ -86,7 +86,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 1.046732 secs
+#> Time difference of 3.503845 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
