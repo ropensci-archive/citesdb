@@ -49,7 +49,7 @@ jobs:
           name: Build and deploy pkgdown site
           when: on_success
           command: |
-            Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'))" || true
+            Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - run:
           name: Check on r-hub
           when: on_success

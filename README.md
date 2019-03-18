@@ -86,7 +86,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 3.503845 secs
+#> Time difference of 5.557563 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -142,7 +142,7 @@ The [**rcites**](https://github.com/ropensci/rcites) package provides
 access to the Speciesplus/CITES Checklist API, which includes metadata
 about species and their protected status through time.
 
-### Citation
+## Citation
 
 If you use **citesdb** in a publication, please cite both the package
 and source data:
@@ -155,7 +155,7 @@ UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,
 Cambridge, UK. Available at: <https://trade.cites.org>.
 
-### Contributing
+## Contributing
 
 Want have feedback or want to contribute? Great\! Please take a look at
 the [contributing
