@@ -26,6 +26,11 @@ jobs:
           name: Check package
           command: |
             Rscript -e 'devtools::check()'
+      - run:
+          name: Build and deploy pkgdown site
+          when: on_success
+          command: |
+            Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
@@ -45,11 +50,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "c2:61:e0:aa:b8:6c:23:92:e0:f8:c9:6e:6f:ca:6a:ee"
-      - run:
-          name: Build and deploy pkgdown site
-          when: on_success
-          command: |
-            Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - run:
           name: Check on r-hub
           when: on_success
