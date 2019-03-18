@@ -24,13 +24,15 @@
       "@type": "Person",
       "givenName": "Noam",
       "familyName": "Ross",
-      "email": "ross@ecohealthalliance.org"
+      "email": "ross@ecohealthalliance.org",
+      "@id": "https://orcid.org/0000-0002-2136-0000"
     },
     {
       "@type": "Person",
       "givenName": "Evan",
       "familyName": "Eskew",
-      "email": "eskew@ecohealthalliance.org"
+      "email": "eskew@ecohealthalliance.org",
+      "@id": "https://orcid.org/0000-0002-1153-5356"
     }
   ],
   "contributor": {},
@@ -46,7 +48,8 @@
       "@type": "Person",
       "givenName": "Noam",
       "familyName": "Ross",
-      "email": "ross@ecohealthalliance.org"
+      "email": "ross@ecohealthalliance.org",
+      "@id": "https://orcid.org/0000-0002-2136-0000"
     }
   ],
   "softwareSuggestions": [
@@ -252,7 +255,7 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "73.251KB",
+  "fileSize": "105.218KB",
   "contIntegration": [
     "https://circleci.com/gh/ecohealthalliance/citesdb",
     "https://codecov.io/gh/ecohealthalliance/citesdb"
