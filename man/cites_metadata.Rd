@@ -31,11 +31,12 @@ found in the \link{guidance} help file.
 if (cites_status()) {
   cites_metadata()
   cites_codes()
-  cites_shipments()
+  cites_parties()
 
   # For remote connections to these tables,
   # access the database directly:
   dplyr::tbl(cites_db(), "cites_metadata")
   dplyr::tbl(cites_db(), "cites_codes")
+  dplyr::tbl(cites_db(), "cites_parties")
 }
 }
