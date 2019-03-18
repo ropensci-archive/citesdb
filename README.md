@@ -136,7 +136,7 @@ head(cites_codes())
 More information on the release of shipment-level data can be found in
 the `?guidance` help file.
 
-### Related work
+## Related work
 
 The [**rcites**](https://github.com/ropensci/rcites) package provides
 access to the Speciesplus/CITES Checklist API, which includes metadata

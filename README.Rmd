@@ -127,7 +127,7 @@ cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
 
-### Related work
+## Related work
 
 The [**rcites**](https://github.com/ropensci/rcites) package provides
 access to the Speciesplus/CITES Checklist API, which includes metadata about
