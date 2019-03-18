@@ -30,6 +30,7 @@ jobs:
           name: Build and deploy pkgdown site
           when: on_success
           command: |
+            Rscript -e "devtools::install()" || true
             Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - save_cache:
           key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
@@ -40,7 +41,6 @@ jobs:
           when: on_success
           command: |
             mkdir /root/main/artifacts
-            Rscript -e "devtools::install()" || true
             Rscript -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
             Rscript -e "Sys.setenv(CI='');cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
             R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
