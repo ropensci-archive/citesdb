@@ -30,11 +30,15 @@ jobs:
           key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
+      - add_ssh_keys:
+          fingerprints:
+            - "c2:61:e0:aa:b8:6c:23:92:e0:f8:c9:6e:6f:ca:6a:ee"
       - run:
           name: Build and deploy pkgdown site
           when: on_success
           command: |
             Rscript -e "devtools::install()" || true
+            Rscript -e "git2r::config(global = TRUE, user.name = 'Noam Ross', user.email = 'ross@ecohealthalliance.org')" || true
             Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - run:
           name: Extra diagnostics
@@ -47,9 +51,6 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
-      - add_ssh_keys:
-          fingerprints:
-            - "c2:61:e0:aa:b8:6c:23:92:e0:f8:c9:6e:6f:ca:6a:ee"
       - run:
           name: Check on r-hub
           when: on_success

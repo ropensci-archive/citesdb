@@ -1,2 +1,6 @@
 destination: docs
 bootswatch: flatly
+
+navbar:
+  title: citesdb
+  type: inverse
