@@ -255,7 +255,7 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "105.218KB",
+  "fileSize": "121.856KB",
   "contIntegration": [
     "https://circleci.com/gh/ecohealthalliance/citesdb",
     "https://codecov.io/gh/ecohealthalliance/citesdb"

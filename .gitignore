@@ -13,3 +13,5 @@ scraps/
 localdb
 artifacts
 tests/testthat/localdb
+docs
+*_cache

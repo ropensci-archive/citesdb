@@ -1,3 +1,3 @@
-# citesdb 0.0.0.9000
+# citesdb 0.1.0
 
-* Initial commit
+* First release with public data

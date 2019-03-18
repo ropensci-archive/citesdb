@@ -21,6 +21,7 @@ jobs:
             Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
             Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
             Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"=
       - run:
           name: Check package
           command: |
@@ -41,6 +42,14 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
+      - add_ssh_keys:
+          fingerprints:
+            - "c2:61:e0:aa:b8:6c:23:92:e0:f8:c9:6e:6f:ca:6a:ee"
+      - run:
+          name: Build and deploy pkgdown site
+          when: on_success
+          command: |
+            Rscript -e "pkgdown::deploy_site_github()"
       - run:
           name: Check on r-hub
           when: on_success
