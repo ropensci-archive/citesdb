@@ -119,7 +119,7 @@ More information on the release of shipment-level data can be found in the
 
 If you use **citesdb** in a publication, please cite both the package and source data:
 
-```{r, results = "asis"}
+```{r, results = "asis", echo = FALSE}
 print(citation("citesdb"), style = "textVersion")
 ```
 

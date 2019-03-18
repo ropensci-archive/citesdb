@@ -86,7 +86,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 0.847688 secs
+#> Time difference of 0.914443 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -140,10 +140,6 @@ the `?guidance` help file.
 
 If you use **citesdb** in a publication, please cite both the package
 and source data:
-
-``` r
-print(citation("citesdb"), style = "textVersion")
-```
 
 Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level
 ‘CITES’ trade data served via database. R package v0.1.0. EcoHealth
