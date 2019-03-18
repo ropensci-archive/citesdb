@@ -10,9 +10,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps1-{{ .Branch }}
-            - deps1-
+            - deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps2-{{ .Branch }}
+            - deps2-
       - run:
           name: Install packages
           command: |
@@ -32,7 +32,7 @@ jobs:
           command: |
             Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
       - run:
