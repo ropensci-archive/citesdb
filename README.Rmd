@@ -21,7 +21,7 @@ library(dplyr)
 unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
   purrr::keep(~"aut" %in% .$role) %>%
   purrr::map_chr(~paste(.$given, .$family)) %>%
-  glue::glue_collapse(sep = ", ", last = ", and ") %>%
+  glue::glue_collapse(sep = ", ", last = " and ") %>%
   paste0("Authors: _", ., "_") %>%
   cat()
 ```
@@ -114,6 +114,15 @@ head(cites_codes())
 
 More information on the release of shipment-level data can be found in the
 `?guidance` help file.
+
+### Citation
+
+If you use **citesdb** in a publication, please cite both the package and source data:
+
+```{r, results = "asis"}
+print(citation("citesdb"), style = "textVersion")
+```
+
 
 ### Contributing
 

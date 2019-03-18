@@ -3,7 +3,7 @@
 
 # citesdb
 
-Authors: *Noam Ross, Evan Eskew, and Carlos Zambrana-Torrelio*
+Authors: *Noam Ross and Evan Eskew*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -86,7 +86,7 @@ which processes over 20 million records, on an ordinary laptop:
 
 ``` r
 stop - start
-#> Time difference of 1.424006 secs
+#> Time difference of 0.847688 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -135,6 +135,23 @@ head(cites_codes())
 
 More information on the release of shipment-level data can be found in
 the `?guidance` help file.
+
+### Citation
+
+If you use **citesdb** in a publication, please cite both the package
+and source data:
+
+``` r
+print(citation("citesdb"), style = "textVersion")
+```
+
+Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level
+‘CITES’ trade data served via database. R package v0.1.0. EcoHealth
+Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>
+
+UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
+2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,
+Cambridge, UK. Available at: <https://trade.cites.org>.
 
 ### Contributing
 

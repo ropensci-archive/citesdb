@@ -16,3 +16,4 @@
 ^localdb$
 ^tests/testthat/localdb$
 ^artifacts$
+^codemeta.json$
