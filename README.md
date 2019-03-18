@@ -82,7 +82,7 @@ stop <- Sys.time()
 The back-end database, [MonetDB](https://monetdb.org), is very fast and
 powerful, making such analyses quite snappy even on such large data
 using normal desktops and laptops. Here’s the timing of the above query,
-which processes over 20 million records, on an ordinary laptop:
+which processes over 20 million records:
 
 ``` r
 stop - start
