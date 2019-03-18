@@ -1,0 +1,78 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/main
+    docker:
+      - image: rocker/verse:latest
+    environment:
+      NOT_CRAN: true
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps2-{{ .Branch }}
+            - deps2-
+      - run:
+          name: Install packages
+          command: |
+            Rscript -e "devtools::install_deps(dependencies = TRUE)"
+            Rscript -e "if(!require(DT)) devtools::install_cran('DT', dependencies = TRUE)"
+            Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
+            Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
+            Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
+      - run:
+          name: Check package
+          command: |
+            Rscript -e 'devtools::check()'
+      - save_cache:
+          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - "/usr/local/lib/R/site-library"
+      - add_ssh_keys:
+          fingerprints:
+            - "c2:61:e0:aa:b8:6c:23:92:e0:f8:c9:6e:6f:ca:6a:ee"
+      - run:
+          name: Build and deploy pkgdown site
+          when: on_success
+          command: |
+            Rscript -e "devtools::install()" || true
+            Rscript -e "git2r::config(global = TRUE, user.name = 'Noam Ross', user.email = 'ross@ecohealthalliance.org')" || true
+            Rscript -e "pkgdown:::deploy_local(pkg = '.', repo_slug = NULL, pkgdown:::construct_commit_message('.'), examples = FALSE)" || true
+      - run:
+          name: Extra diagnostics
+          when: on_success
+          command: |
+            mkdir /root/main/artifacts
+            Rscript -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
+            Rscript -e "Sys.setenv(CI='');cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
+            R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
+      - store_artifacts:
+          path: /root/main/artifacts/
+          destination: artifacts
+      - run:
+          name: Check on r-hub
+          when: on_success
+          command: |
+            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+  weekly:
+    triggers:
+      - schedule:
+          cron: "0 1 * * 6"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
