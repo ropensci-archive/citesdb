@@ -95,10 +95,7 @@ cites_shipments <- function() {
 #' @export
 #'
 #' @importFrom DBI dbReadTable
-#' @importFrom dplyr arrange
 #' @importFrom dplyr as_tibble
-#' @importFrom tidyr gather
-#' @importFrom tidyr separate
 #' @aliases metadata cites_metadata
 #' @examples
 #' if (cites_status()) {
@@ -121,29 +118,14 @@ cites_metadata <- function() {
 #' @rdname cites_metadata
 cites_codes <- function() {
   check_status()
-  arrange(as_tibble(dbReadTable(cites_db(), "cites_codes")), field, code)
+  as_tibble(dbReadTable(cites_db(), "cites_codes"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_parties <- function() {
   check_status()
-  raw_table <- dbReadTable(cites_db(), "cites_parties")
-  mod_table <- raw_table
-  mod_table[mod_table$country == "Namibia", "code"] <- "NA"
-  mod_table <- separate(mod_table, code,
-                        into = c("code1", "code2"),
-                        sep = ", formerly| ex-",
-                        fill = "right")
-  mod_table$code1 <- gsub(" *", "", mod_table$code1)
-  mod_table$code2 <- gsub(" *", "", mod_table$code2)
-  mod_table <- gather(mod_table, key = code_version, value = code, -country, -date)
-  mod_table <- mod_table[!is.na(mod_table$code), ]
-  mod_table$code_version <- ifelse(mod_table$code_version == "code2", TRUE, FALSE)
-  mod_table <- mod_table[ , c(1, 4, 3, 2)]
-  colnames(mod_table) <- c("country", "code", "former_code", "date")
-  mod_table <- arrange(mod_table, country, desc(former_code))
-  as_tibble(mod_table)
+  as_tibble(dbReadTable(cites_db(), "cites_parties"))
 }
 
 #' Disconnect from the CITES database

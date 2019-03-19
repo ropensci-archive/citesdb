@@ -161,11 +161,6 @@ the `?guidance` help file.
 
 library(ggplot2)
 library(cowplot)
-#> 
-#> Attaching package: 'cowplot'
-#> The following object is masked from 'package:ggplot2':
-#> 
-#>     ggsave
 
 breaks <- seq(from = 1975, to = 2020, by = 5)
 

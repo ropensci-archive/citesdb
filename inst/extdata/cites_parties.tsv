@@ -1,181 +1,185 @@
-country	code	date
-United States of America	US	1975-07-01
-Nigeria	NG	1975-07-01
-Switzerland	CH	1975-07-01
-Tunisia	TN	1975-07-01
-Sweden	SE	1975-07-01
-Cyprus	CY	1975-07-01
-Ecuador	EC	1975-07-01
-Chile	CL	1975-07-01
-Uruguay	UY	1975-07-01
-Canada	CA	1975-07-09
-Mauritius	MU	1975-07-27
-Nepal	NP	1975-09-16
-Peru	PE	1975-09-25
-Costa Rica	CR	1975-09-28
-South Africa	ZA	1975-10-13
-Brazil	BR	1975-11-04
-Madagascar	MG	1975-11-18
-Niger	NE	1975-12-07
-Morocco	MA	1976-01-14
-Ghana	GH	1976-02-12
-Papua New Guinea	PG	1976-03-11
-Germany	DE	1976-06-20
-Pakistan	PK	1976-07-19
-Finland	FI	1976-08-08
-India	IN	1976-10-18
-Democratic Republic of the Congo	CD , formerly ZR	1976-10-18
-Norway	NO	1976-10-25
-Australia	AU	1976-10-27
-United Kingdom of Great Britain and Northern Ireland	GB	1976-10-31
-Iran, Islamic Republic of	IR	1976-11-01
-Paraguay	PY	1977-02-13
-Seychelles	SC	1977-05-09
-Guyana	GY	1977-08-25
-Denmark	DK	1977-10-24
-Senegal	SN	1977-11-03
-Nicaragua	NI	1977-11-04
-Gambia	GM	1977-11-24
-Malaysia	MY	1978-01-18
-Venezuela, Bolivarian Republic of	VE	1978-01-22
-Botswana	BW	1978-02-12
-Egypt	EG	1978-04-04
-Monaco	MC	1978-07-18
-France	FR	1978-08-09
-Panama	PA	1978-11-15
-Togo	TG	1979-01-21
-Kenya	KE	1979-03-13
-Jordan	JO	1979-03-14
-Indonesia	ID	1979-03-28
-Sri Lanka	LK	1979-08-02
-Bahamas	BS	1979-09-18
-Bolivia, Plurinational State of	BO	1979-10-04
-Italy	IT	1979-12-31
-Guatemala	GT	1980-02-05
-United Republic of Tanzania	TZ	1980-02-27
-Liechtenstein	LI	1980-02-28
-Israel	IL	1980-03-17
-Japan	JP	1980-11-04
-Central African Republic	CF	1980-11-25
-Rwanda	RW	1981-01-18
-Suriname	SR	1981-02-15
-Zambia	ZM	1981-02-22
-Portugal	PT	1981-03-11
-China	CN	1981-04-08
-Argentina	AR	1981-04-08
-Liberia	LR	1981-06-09
-Mozambique	MZ	1981-06-23
-Zimbabwe	ZW	1981-08-17
-Cameroon	CM	1981-09-03
-Belize	BZ	1981-09-21
-Philippines	PH	1981-11-16
-Colombia	CO	1981-11-29
-Guinea	GN	1981-12-20
-Bangladesh	BD	1982-02-18
-Austria	AT	1982-04-27
-Malawi	MW	1982-05-06
-Sudan	SD	1983-01-24
-Saint Lucia	LC	1983-03-15
-Thailand	TH	1983-04-21
-Congo	CG	1983-05-01
-Belgium	BE	1984-01-01
-Algeria	DZ	1984-02-21
-Luxembourg	LU	1984-03-12
-Trinidad and Tobago	TT	1984-04-18
-Benin	BJ	1984-05-28
-Netherlands	NL	1984-07-18
-Honduras	HN	1985-06-13
-Hungary	HU	1985-08-29
-Afghanistan	AF	1986-01-28
-Somalia	SO	1986-03-02
-Spain	ES	1986-08-28
-Singapore	SG	1987-02-28
-Dominican Republic	DO	1987-03-17
-El Salvador	SV	1987-07-29
-Burundi	BI	1988-11-06
-Saint Vincent and the Grenadines	VC	1989-02-28
-Chad	TD	1989-05-03
-Gabon	GA	1989-05-15
-Ethiopia	ET	1989-07-04
-Malta	MT	1989-07-16
-New Zealand	NZ	1989-08-08
-Vanuatu	VU	1989-10-15
-Burkina Faso	BF	1990-01-15
-Poland	PL	1990-03-12
-United Arab Emirates	AE	1990-05-12
-Cuba	CU	1990-07-19
-Guinea-Bissau	GW	1990-08-14
-Brunei Darussalam	BN	1990-08-20
-Namibia	"NA"	1991-03-18
-Bulgaria	BG	1991-04-16
-Mexico	MX	1991-09-30
-Uganda	UG	1991-10-16
-Russian Federation	RU	1992-01-01
-Djibouti	DJ	1992-05-07
-Czech Republic	CZ, formerly CS	1992-05-28
-Slovakia	SK ex-CS	1992-05-28
-Equatorial Guinea	GQ	1992-06-08
-Estonia	EE	1992-10-20
-Greece	GR	1993-01-06
-Barbados	BB	1993-03-09
-Korea, Republic of	KR	1993-10-07
-Viet Nam	VN	1994-04-20
-Saint Kitts and Nevis	KN	1994-05-15
-Mali	ML	1994-10-16
-Romania	RO	1994-11-16
-Eritrea	ER	1995-01-22
-Sierra Leone	SL	1995-01-26
-Côte d'Ivoire	CI	1995-02-19
-Comoros	KM	1995-02-21
-Dominica	DM	1995-11-02
-Belarus	BY	1995-11-08
-Mongolia	MN	1996-04-04
-Saudi Arabia	SA	1996-06-10
-Georgia	GE	1996-12-12
-Turkey	TR	1996-12-22
-Latvia	LV	1997-05-12
-Swaziland	SZ	1997-05-27
-Jamaica	JM	1997-07-22
-Yemen	YE	1997-08-03
-Myanmar	MM	1997-09-11
-Cambodia	KH	1997-10-02
-Antigua and Barbuda	AG	1997-10-06
-Uzbekistan	UZ	1997-10-08
-Fiji	FJ	1997-12-29
-Mauritania	MR	1998-06-11
-Azerbaijan	AZ	1999-02-21
-Grenada	GD	1999-11-28
-Ukraine	UA	2000-03-29
-Iceland	IS	2000-04-02
-Kazakhstan	KZ	2000-04-19
-Slovenia	SI	2000-04-23
-Croatia	HR	2000-06-12
-Macedonia	MK	2000-10-02
-Republic of Moldova	MD	2001-06-27
-Qatar	QA	2001-08-06
-Sao Tome and Principe	ST	2001-11-07
-Lithuania	LT	2002-03-09
-Ireland	IE	2002-04-08
-Serbia and Montenegro	CS ex-YU	2002-05-28
-Kuwait	KW	2002-11-10
-Bhutan	BT	2002-11-13
-Libya	LY	2003-04-28
-Syrian Arab Republic	SY	2003-07-29
-Albania	AL	2003-09-25
-Lesotho	LS	2003-12-30
-Lao People's Democratic Republic	LA	2004-05-30
-Palau	PW	2004-07-15
-Samoa	WS	2005-02-07
-San Marino	SM	2005-10-20
-Cape Verde	CV	2005-11-08
-Serbia	RS	2006-06-03
-Montenegro	ME	2006-06-03
-Solomon Islands	SB	2007-06-24
-Kyrgyzstan	KG	2007-09-02
-Oman	OM	2008-06-17
-Armenia	AM	2009-01-21
-Bosnia and Herzegovina	BA	2009-04-21
-Bahrain	BH	2012-11-17
-Maldives	MV	2013-03-12
-Lebanon	LB	2013-05-26
-Angola	AO	2013-12-31
+country	code	former_code	date
+Afghanistan	AF	FALSE	1986-01-28
+Albania	AL	FALSE	2003-09-25
+Algeria	DZ	FALSE	1984-02-21
+Angola	AO	FALSE	2013-12-31
+Antigua and Barbuda	AG	FALSE	1997-10-06
+Argentina	AR	FALSE	1981-04-08
+Armenia	AM	FALSE	2009-01-21
+Australia	AU	FALSE	1976-10-27
+Austria	AT	FALSE	1982-04-27
+Azerbaijan	AZ	FALSE	1999-02-21
+Bahamas	BS	FALSE	1979-09-18
+Bahrain	BH	FALSE	2012-11-17
+Bangladesh	BD	FALSE	1982-02-18
+Barbados	BB	FALSE	1993-03-09
+Belarus	BY	FALSE	1995-11-08
+Belgium	BE	FALSE	1984-01-01
+Belize	BZ	FALSE	1981-09-21
+Benin	BJ	FALSE	1984-05-28
+Bhutan	BT	FALSE	2002-11-13
+Bolivia, Plurinational State of	BO	FALSE	1979-10-04
+Bosnia and Herzegovina	BA	FALSE	2009-04-21
+Botswana	BW	FALSE	1978-02-12
+Brazil	BR	FALSE	1975-11-04
+Brunei Darussalam	BN	FALSE	1990-08-20
+Bulgaria	BG	FALSE	1991-04-16
+Burkina Faso	BF	FALSE	1990-01-15
+Burundi	BI	FALSE	1988-11-06
+Cambodia	KH	FALSE	1997-10-02
+Cameroon	CM	FALSE	1981-09-03
+Canada	CA	FALSE	1975-07-09
+Cape Verde	CV	FALSE	2005-11-08
+Central African Republic	CF	FALSE	1980-11-25
+Chad	TD	FALSE	1989-05-03
+Chile	CL	FALSE	1975-07-01
+China	CN	FALSE	1981-04-08
+Colombia	CO	FALSE	1981-11-29
+Comoros	KM	FALSE	1995-02-21
+Congo	CG	FALSE	1983-05-01
+Costa Rica	CR	FALSE	1975-09-28
+Côte d'Ivoire	CI	FALSE	1995-02-19
+Croatia	HR	FALSE	2000-06-12
+Cuba	CU	FALSE	1990-07-19
+Cyprus	CY	FALSE	1975-07-01
+Czech Republic	CS	TRUE	1992-05-28
+Czech Republic	CZ	FALSE	1992-05-28
+Democratic Republic of the Congo	ZR	TRUE	1976-10-18
+Democratic Republic of the Congo	CD	FALSE	1976-10-18
+Denmark	DK	FALSE	1977-10-24
+Djibouti	DJ	FALSE	1992-05-07
+Dominica	DM	FALSE	1995-11-02
+Dominican Republic	DO	FALSE	1987-03-17
+Ecuador	EC	FALSE	1975-07-01
+Egypt	EG	FALSE	1978-04-04
+El Salvador	SV	FALSE	1987-07-29
+Equatorial Guinea	GQ	FALSE	1992-06-08
+Eritrea	ER	FALSE	1995-01-22
+Estonia	EE	FALSE	1992-10-20
+Ethiopia	ET	FALSE	1989-07-04
+Fiji	FJ	FALSE	1997-12-29
+Finland	FI	FALSE	1976-08-08
+France	FR	FALSE	1978-08-09
+Gabon	GA	FALSE	1989-05-15
+Gambia	GM	FALSE	1977-11-24
+Georgia	GE	FALSE	1996-12-12
+Germany	DE	FALSE	1976-06-20
+Ghana	GH	FALSE	1976-02-12
+Greece	GR	FALSE	1993-01-06
+Grenada	GD	FALSE	1999-11-28
+Guatemala	GT	FALSE	1980-02-05
+Guinea	GN	FALSE	1981-12-20
+Guinea-Bissau	GW	FALSE	1990-08-14
+Guyana	GY	FALSE	1977-08-25
+Honduras	HN	FALSE	1985-06-13
+Hungary	HU	FALSE	1985-08-29
+Iceland	IS	FALSE	2000-04-02
+India	IN	FALSE	1976-10-18
+Indonesia	ID	FALSE	1979-03-28
+Iran, Islamic Republic of	IR	FALSE	1976-11-01
+Ireland	IE	FALSE	2002-04-08
+Israel	IL	FALSE	1980-03-17
+Italy	IT	FALSE	1979-12-31
+Jamaica	JM	FALSE	1997-07-22
+Japan	JP	FALSE	1980-11-04
+Jordan	JO	FALSE	1979-03-14
+Kazakhstan	KZ	FALSE	2000-04-19
+Kenya	KE	FALSE	1979-03-13
+Korea, Republic of	KR	FALSE	1993-10-07
+Kuwait	KW	FALSE	2002-11-10
+Kyrgyzstan	KG	FALSE	2007-09-02
+Lao People's Democratic Republic	LA	FALSE	2004-05-30
+Latvia	LV	FALSE	1997-05-12
+Lebanon	LB	FALSE	2013-05-26
+Lesotho	LS	FALSE	2003-12-30
+Liberia	LR	FALSE	1981-06-09
+Libya	LY	FALSE	2003-04-28
+Liechtenstein	LI	FALSE	1980-02-28
+Lithuania	LT	FALSE	2002-03-09
+Luxembourg	LU	FALSE	1984-03-12
+Macedonia	MK	FALSE	2000-10-02
+Madagascar	MG	FALSE	1975-11-18
+Malawi	MW	FALSE	1982-05-06
+Malaysia	MY	FALSE	1978-01-18
+Maldives	MV	FALSE	2013-03-12
+Mali	ML	FALSE	1994-10-16
+Malta	MT	FALSE	1989-07-16
+Mauritania	MR	FALSE	1998-06-11
+Mauritius	MU	FALSE	1975-07-27
+Mexico	MX	FALSE	1991-09-30
+Monaco	MC	FALSE	1978-07-18
+Mongolia	MN	FALSE	1996-04-04
+Montenegro	ME	FALSE	2006-06-03
+Morocco	MA	FALSE	1976-01-14
+Mozambique	MZ	FALSE	1981-06-23
+Myanmar	MM	FALSE	1997-09-11
+Namibia	"NA"	FALSE	1991-03-18
+Nepal	NP	FALSE	1975-09-16
+Netherlands	NL	FALSE	1984-07-18
+New Zealand	NZ	FALSE	1989-08-08
+Nicaragua	NI	FALSE	1977-11-04
+Niger	NE	FALSE	1975-12-07
+Nigeria	NG	FALSE	1975-07-01
+Norway	NO	FALSE	1976-10-25
+Oman	OM	FALSE	2008-06-17
+Pakistan	PK	FALSE	1976-07-19
+Palau	PW	FALSE	2004-07-15
+Panama	PA	FALSE	1978-11-15
+Papua New Guinea	PG	FALSE	1976-03-11
+Paraguay	PY	FALSE	1977-02-13
+Peru	PE	FALSE	1975-09-25
+Philippines	PH	FALSE	1981-11-16
+Poland	PL	FALSE	1990-03-12
+Portugal	PT	FALSE	1981-03-11
+Qatar	QA	FALSE	2001-08-06
+Republic of Moldova	MD	FALSE	2001-06-27
+Romania	RO	FALSE	1994-11-16
+Russian Federation	RU	FALSE	1992-01-01
+Rwanda	RW	FALSE	1981-01-18
+Saint Kitts and Nevis	KN	FALSE	1994-05-15
+Saint Lucia	LC	FALSE	1983-03-15
+Saint Vincent and the Grenadines	VC	FALSE	1989-02-28
+Samoa	WS	FALSE	2005-02-07
+San Marino	SM	FALSE	2005-10-20
+Sao Tome and Principe	ST	FALSE	2001-11-07
+Saudi Arabia	SA	FALSE	1996-06-10
+Senegal	SN	FALSE	1977-11-03
+Serbia	RS	FALSE	2006-06-03
+Serbia and Montenegro	YU	TRUE	2002-05-28
+Serbia and Montenegro	CS	FALSE	2002-05-28
+Seychelles	SC	FALSE	1977-05-09
+Sierra Leone	SL	FALSE	1995-01-26
+Singapore	SG	FALSE	1987-02-28
+Slovakia	CS	TRUE	1992-05-28
+Slovakia	SK	FALSE	1992-05-28
+Slovenia	SI	FALSE	2000-04-23
+Solomon Islands	SB	FALSE	2007-06-24
+Somalia	SO	FALSE	1986-03-02
+South Africa	ZA	FALSE	1975-10-13
+Spain	ES	FALSE	1986-08-28
+Sri Lanka	LK	FALSE	1979-08-02
+Sudan	SD	FALSE	1983-01-24
+Suriname	SR	FALSE	1981-02-15
+Swaziland	SZ	FALSE	1997-05-27
+Sweden	SE	FALSE	1975-07-01
+Switzerland	CH	FALSE	1975-07-01
+Syrian Arab Republic	SY	FALSE	2003-07-29
+Thailand	TH	FALSE	1983-04-21
+Togo	TG	FALSE	1979-01-21
+Trinidad and Tobago	TT	FALSE	1984-04-18
+Tunisia	TN	FALSE	1975-07-01
+Turkey	TR	FALSE	1996-12-22
+Uganda	UG	FALSE	1991-10-16
+Ukraine	UA	FALSE	2000-03-29
+United Arab Emirates	AE	FALSE	1990-05-12
+United Kingdom of Great Britain and Northern Ireland	GB	FALSE	1976-10-31
+United Republic of Tanzania	TZ	FALSE	1980-02-27
+United States of America	US	FALSE	1975-07-01
+Uruguay	UY	FALSE	1975-07-01
+Uzbekistan	UZ	FALSE	1997-10-08
+Vanuatu	VU	FALSE	1989-10-15
+Venezuela, Bolivarian Republic of	VE	FALSE	1978-01-22
+Viet Nam	VN	FALSE	1994-04-20
+Yemen	YE	FALSE	1997-08-03
+Zambia	ZM	FALSE	1981-02-22
+Zimbabwe	ZW	FALSE	1981-08-17

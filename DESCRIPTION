@@ -24,8 +24,7 @@ Imports:
   purrr,
   tools,
   dplyr,
-  dbplyr,
-  tidyr
+  dbplyr
 Suggests:
   spelling,
   testthat,
