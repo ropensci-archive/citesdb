@@ -148,7 +148,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3GB data frame into memory!</em>)</p>
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records, on an ordinary laptop:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.5612578 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.5397146 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
@@ -191,18 +191,159 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()
-<span class="co">#&gt; # A tibble: 6 x 19</span>
-<span class="co">#&gt;    Year Appendix Taxon Class Order Family Genus Term  Quantity Unit  Importer Exporter Origin Purpose Source</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; </span>
-<span class="co">#&gt; 1  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 2  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 3  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 4  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 5  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         3 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 6  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         3 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; # … with 4 more variables: Reporter.type &lt;chr&gt;, Import.permit.RandomID &lt;chr&gt;, Export.permit.RandomID &lt;chr&gt;,</span>
-<span class="co">#&gt; #   Origin.permit.RandomID &lt;chr&gt;</span></code></pre></div>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Year</th>
+<th align="left">Appendix</th>
+<th align="left">Taxon</th>
+<th align="left">Class</th>
+<th align="left">Order</th>
+<th align="left">Family</th>
+<th align="left">Genus</th>
+<th align="left">Term</th>
+<th align="right">Quantity</th>
+<th align="left">Unit</th>
+<th align="left">Importer</th>
+<th align="left">Exporter</th>
+<th align="left">Origin</th>
+<th align="left">Purpose</th>
+<th align="left">Source</th>
+<th align="left">Reporter.type</th>
+<th align="left">Import.permit.RandomID</th>
+<th align="left">Export.permit.RandomID</th>
+<th align="left">Origin.permit.RandomID</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum appletonianum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">2</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum appletonianum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">2</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">E</td>
+<td align="left">NA</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum armeniacum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum armeniacum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">E</td>
+<td align="left">NA</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum callosum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">3</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum callosum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">3</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">E</td>
+<td align="left">NA</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
 <p>See that each pair of shipments is identical, except that the <code>Reporter.type</code>, indicating that the shipment was reported both from the U.S. and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.</p>
 <p>How to deal with repeat records? If you are aggregating records to calculate total shipments it is best to remove them, but not every record is recorded twice. This code filters to use only the importer’s records, should all fields other than <code>Reporter.type</code> and <code>Import.permit.RandomID</code> be the same:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
@@ -211,22 +352,167 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">|</span><span class="st"> </span>n <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()
-<span class="co">#&gt; # A tibble: 76 x 20</span>
-<span class="co">#&gt;     Year Appendix Taxon Class Order Family Genus Term  Quantity Unit  Importer Exporter Origin Purpose Source</span>
-<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; </span>
-<span class="co">#&gt;  1  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  2  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  3  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         3 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  4  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  5  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  6  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  7  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         9 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  8  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt;  9  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; 10  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; # … with 66 more rows, and 5 more variables: Reporter.type &lt;chr&gt;, Import.permit.RandomID &lt;chr&gt;,</span>
-<span class="co">#&gt; #   Export.permit.RandomID &lt;chr&gt;, Origin.permit.RandomID &lt;chr&gt;, n &lt;int&gt;</span></code></pre></div>
+<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Year</th>
+<th align="left">Appendix</th>
+<th align="left">Taxon</th>
+<th align="left">Class</th>
+<th align="left">Order</th>
+<th align="left">Family</th>
+<th align="left">Genus</th>
+<th align="left">Term</th>
+<th align="right">Quantity</th>
+<th align="left">Unit</th>
+<th align="left">Importer</th>
+<th align="left">Exporter</th>
+<th align="left">Origin</th>
+<th align="left">Purpose</th>
+<th align="left">Source</th>
+<th align="left">Reporter.type</th>
+<th align="left">Import.permit.RandomID</th>
+<th align="left">Export.permit.RandomID</th>
+<th align="left">Origin.permit.RandomID</th>
+<th align="right">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum appletonianum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">2</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum armeniacum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum callosum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">3</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum charlesworthii</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">2</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum concolor</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">I</td>
+<td align="left">Paphiopedilum dayanum</td>
+<td align="left">NA</td>
+<td align="left">Orchidales</td>
+<td align="left">Orchidaceae</td>
+<td align="left">Paphiopedilum</td>
+<td align="left">live</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">DE</td>
+<td align="left">US</td>
+<td align="left">NA</td>
+<td align="left">T</td>
+<td align="left">D</td>
+<td align="left">I</td>
+<td align="left">e75ff00c16</td>
+<td align="left">ce63001ff5</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="related-work" class="section level2">
