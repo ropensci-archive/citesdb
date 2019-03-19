@@ -148,7 +148,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3GB data frame into memory!</em>)</p>
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records, on an ordinary laptop:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.6245551 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.5612578 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
@@ -240,7 +240,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>If you use <strong>citesdb</strong> in a publication, please cite both the package and source data:</p>
 <p>Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level ‘CITES’ trade data served via database. R package v0.1.0. EcoHealth Alliance: New York, NY. <a href="https://github.com/ecohealthalliance/citesdb" class="uri">https://github.com/ecohealthalliance/citesdb</a></p>
 <p>UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC, Cambridge, UK. Available at: <a href="https://trade.cites.org" class="uri">https://trade.cites.org</a>.</p>
-<p><a href="https://www.ecohealthalliance.org/"><img src="https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png" alt="Created by EcoHealth Alliance" data-external="1"></a></p>
+<p><a href="https://www.ecohealthalliance.org/"><img src="../man/figures/eha-footer.png" alt="Created by EcoHealth Alliance"></a></p>
 </div>
   </div>
 
