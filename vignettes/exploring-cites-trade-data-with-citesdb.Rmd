@@ -107,10 +107,46 @@ head(cites_codes())
 More information on the release of shipment-level data can be found in the
 `?guidance` help file.
 
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
-cites_disconnect()
-MonetDBLite::monetdblite_shutdown()
+
+## Pitfalls
+
+The CITES shipment database is a valuable resource for understanding part of
+the global wildlife trade.  However, care must be taken in working with and
+interpreting this data.
+
+### Repeated records of the same shipment
+
+Single shipments may be recorded multiple times, as they may be reported by
+both exporting and importing countries.  Take, for example, this set of
+shipments of orchids from a U.S. exporter to the Netherlands:
+
+```{r}
+cites_shipments() %>% 
+  filter(Year == 2016, Export.permit.RandomID == "ce63001ff5", Genus == "Paphiopedilum") %>% 
+  collect() %>% 
+  head()
 ```
+
+See that each pair of shipments is identical, except that the `Reporter.type`,
+indicating that the shipment was reported both from the U.S. and from the
+Netherlands.  Note that while the importer reported both import and export
+permit numbers, the exporter reported only the export permit numbers.
+
+How to deal with repeat records? If you are aggregating records to calculate
+total shipments it is best to remove them, but not every record is recorded twice.
+This code filters to use only the importer's records, should all fields other
+than `Reporter.type` and `Import.permit.RandomID` be the same:
+
+```{r}
+cites_shipments() %>% 
+  filter(Year == 2016, Export.permit.RandomID == "ce63001ff5", Genus == "Paphiopedilum") %>% 
+  collect() %>% 
+  group_by_at(vars(-Reporter.type, -Import.permit.RandomID)) %>% 
+  mutate(n = n()) %>% 
+  filter((n > 1 & Reporter.type == "I") | n == 1) %>% 
+  ungroup()
+```
+
 
 ## Related work
 
@@ -124,6 +160,11 @@ If you use **citesdb** in a publication, please cite both the package and source
 
 ```{r, results = "asis", echo = FALSE}
 print(citation("citesdb"), style = "textVersion")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+cites_disconnect()
+MonetDBLite::monetdblite_shutdown()
 ```
 
 [![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png){data-external="1"}](https://www.ecohealthalliance.org/)
