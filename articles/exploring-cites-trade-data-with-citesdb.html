@@ -148,7 +148,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3GB data frame into memory!</em>)</p>
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records, on an ordinary laptop:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.6796165 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.5517781 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
@@ -210,9 +210,9 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(n <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">|</span><span class="st"> </span>n <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()
-<span class="co">#&gt; # A tibble: 41 x 20</span>
+<span class="co">#&gt; # A tibble: 76 x 20</span>
 <span class="co">#&gt;     Year Appendix Taxon Class Order Family Genus Term  Quantity Unit  Importer Exporter Origin Purpose Source</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; </span>
 <span class="co">#&gt;  1  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
@@ -225,7 +225,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <span class="co">#&gt;  8  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
 <span class="co">#&gt;  9  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         2 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
 <span class="co">#&gt; 10  2016 I        Paph… &lt;NA&gt;  Orch… Orchi… Paph… live         1 &lt;NA&gt;  DE       US       &lt;NA&gt;   T       D     </span>
-<span class="co">#&gt; # … with 31 more rows, and 5 more variables: Reporter.type &lt;chr&gt;, Import.permit.RandomID &lt;chr&gt;,</span>
+<span class="co">#&gt; # … with 66 more rows, and 5 more variables: Reporter.type &lt;chr&gt;, Import.permit.RandomID &lt;chr&gt;,</span>
 <span class="co">#&gt; #   Export.permit.RandomID &lt;chr&gt;, Origin.permit.RandomID &lt;chr&gt;, n &lt;int&gt;</span></code></pre></div>
 </div>
 </div>
