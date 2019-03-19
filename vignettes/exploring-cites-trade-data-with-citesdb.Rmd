@@ -150,18 +150,6 @@ cites_shipments() %>%
   knitr::kable()
 ```
 
-```{r}
-library(rcites)
-spp <- spp_taxonconcept("Paphiopedilum appletonianum")
-spc <- spp_cites_legislation(spp$general$id)
-eu <- spp_eu_legislation(spp$general$id)
-cites_shipments() %>% 
-  filter(Taxon == "Paphiopedilum appletonianum") %>% 
-  count(Year) %>% 
-  collect() %>% 
-  ggplot(aes(x = Year, y = n)) + geom_line()
-```
-
 ## Related work
 
 The [**rcites**](https://github.com/ropensci/rcites) package provides
