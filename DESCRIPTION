@@ -7,8 +7,8 @@ Description: Provides convenient access to 40 years and 20 million records of
     out-of memory 'MonetDB' database for bulk analysis.
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-2136-0000")),
-    person("Evan", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut"),  comment = c(ORCID = "0000-0002-1153-5356")),
-    person("EcoHealth Alliance", role="cph"))
+    person("Evan A.", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut"), comment = c(ORCID = "0000-0002-1153-5356")),
+    person("EcoHealth Alliance", role = "cph"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -25,6 +25,7 @@ Imports:
   tools,
   dplyr,
   dbplyr,
+  tidyr
 Suggests:
   spelling,
   testthat,

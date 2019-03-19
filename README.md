@@ -3,7 +3,7 @@
 
 # citesdb
 
-Authors: *Noam Ross and Evan Eskew*
+Authors: *Noam Ross and Evan A. Eskew*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -25,6 +25,7 @@ Species of Wild Fauna and Flora](https://www.cites.org).
 Install the **citesdb** package with this command:
 
 ``` r
+
 source("https://install-github.me/ecohealthalliance/citesdb")
 ```
 
@@ -52,8 +53,10 @@ into R. You can use this to analyze CITES data without ever loading it
 into memory, then gather your results with `collect()`. For example:
 
 ``` r
+
 library(citesdb)
 library(dplyr)
+
 start <- Sys.time()
 
 cites_shipments() %>%
@@ -88,8 +91,9 @@ using normal desktops and laptops. Here’s the timing of the above query,
 which processes over 20 million records:
 
 ``` r
+
 stop - start
-#> Time difference of 5.557563 secs
+#> Time difference of 1.039782 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -113,6 +117,7 @@ on the CITES website. Convenience functions `cites_metadata()`,
 `cites_codes()`, and `cites_parties()` access this information:
 
 ``` r
+
 head(cites_metadata())
 #> # A tibble: 6 x 2
 #>   variable description                                 
@@ -126,18 +131,71 @@ head(cites_metadata())
 
 head(cites_codes())
 #> # A tibble: 6 x 3
-#>   field code  description  
-#>   <chr> <chr> <chr>        
-#> 1 Term  BAL   Baleen       
-#> 2 Term  BAR   Bark         
-#> 3 Term  BEL   Belts        
-#> 4 Term  BOC   Bone carvings
-#> 5 Term  BOD   Bodies       
-#> 6 Term  BON   Bones
+#>   field   code  description                                    
+#>   <chr>   <chr> <chr>                                          
+#> 1 Purpose B     Breeding in captivity or artificial propagation
+#> 2 Purpose E     Educational                                    
+#> 3 Purpose G     Botanical garden                               
+#> 4 Purpose H     Hunting trophy                                 
+#> 5 Purpose L     Law enforcement / judicial / forensic          
+#> 6 Purpose M     Medical (including biomedical research)
+
+head(cites_parties())
+#> # A tibble: 6 x 4
+#>   country             code  former_code date      
+#>   <chr>               <chr> <lgl>       <chr>     
+#> 1 Afghanistan         AF    FALSE       1986-01-28
+#> 2 Albania             AL    FALSE       2003-09-25
+#> 3 Algeria             DZ    FALSE       1984-02-21
+#> 4 Angola              AO    FALSE       2013-12-31
+#> 5 Antigua and Barbuda AG    FALSE       1997-10-06
+#> 6 Argentina           AR    FALSE       1981-04-08
 ```
 
 More information on the release of shipment-level data can be found in
 the `?guidance` help file.
+
+### Basic analyses
+
+``` r
+
+library(ggplot2)
+library(cowplot)
+#> 
+#> Attaching package: 'cowplot'
+#> The following object is masked from 'package:ggplot2':
+#> 
+#>     ggsave
+
+breaks <- seq(from = 1975, to = 2020, by = 5)
+
+plot1 <- cites_shipments() %>%
+  group_by(Year) %>%
+  summarize(n_records = n()) %>%
+  mutate(log10_n_records = log10(n_records)) %>%
+  ggplot(aes(x = Year, y = n_records)) +
+  geom_point() +
+  geom_line(linetype = "dashed", size = 0.2) +
+  ylab("Number of Records") +
+  theme_minimal() +
+  scale_x_continuous(breaks = breaks)
+
+plot2 <- cites_shipments() %>%
+  group_by(Year) %>%
+  summarize(n_records = n()) %>%
+  mutate(log10_n_records = log10(n_records)) %>%
+  ggplot(aes(x = Year, y = log10_n_records)) +
+  geom_point() +
+  geom_line(linetype = "dashed", size = 0.2) +
+  ylab("log10(Number of Records)") +
+  ylim(1.5, 6.5) +
+  theme_minimal() +
+  scale_x_continuous(breaks = breaks)
+
+plot_grid(plot1, plot2, nrow = 2)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ## Related work
 
@@ -150,7 +208,7 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level
+Ross, Noam and Evan A. Eskew. (2019). citesdb: Historical shipment-level
 ‘CITES’ trade data served via database. R package v0.1.0. EcoHealth
 Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>
 

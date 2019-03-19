@@ -7,17 +7,22 @@ output:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
 library(dplyr)
 ```
+
+
 # citesdb
 
 ```{r authors, echo = FALSE, results = 'asis'}
+
 unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
   purrr::keep(~"aut" %in% .$role) %>%
   purrr::map_chr(~paste(.$given, .$family)) %>%
@@ -34,22 +39,27 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 **citesdb** is a package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife
 products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 
+
 ## Installation
 
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
+
 source("https://install-github.me/ecohealthalliance/citesdb")
 ```
 
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
+
 options(width=120)
 knitr::opts_chunk$set(cache = TRUE)
 citesdb::cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
 
+
 ## Usage
+
 
 ### Getting the data
 
@@ -63,6 +73,7 @@ fetch the most recent database from online, an approximately 158 MB download.
 It will expand to over 1 GB in the local database. During
 the download and database building up to 3.5 GB of disk space may be used temporarily.
 
+
 ### Using the database
 
 Once you fetch the data you can connect to the database with the `cites_db()`
@@ -73,12 +84,15 @@ to analyze CITES data without ever loading it into memory, then gather your
 results with `collect()`. For example:
 
 ```{r getdata, include = FALSE}
+
 if (!citesdb::cites_status()) citesdb::cites_db_download()
 ```
 
 ```{r, warning = FALSE}
+
 library(citesdb)
 library(dplyr)
+
 start <- Sys.time()
 
 cites_shipments() %>%
@@ -97,6 +111,7 @@ analyses quite snappy even on such large data using normal desktops and laptops.
 timing of the above query, which processes over 20 million records:
 
 ```{r}
+
 stop - start
 ```
 
@@ -108,6 +123,7 @@ If you don't need any of the bells and whistles of this package, you can downloa
 the raw data as a single compressed TSV from the [releases page](https://github.com/ecohealthalliance/citesdb/releases),
 or as a `.zip` file of many CSV files from original source at <https://trade.cites.org/>.
 
+
 ### Metadata
 
 The database also contains tables of field metadata, codes used, and CITES countries. This information
@@ -116,18 +132,59 @@ on the CITES website.  Convenience functions `cites_metadata()`, `cites_codes()`
 access this information:
 
 ```{r}
+
 head(cites_metadata())
 
 head(cites_codes())
+
+head(cites_parties())
 ```
 
 More information on the release of shipment-level data can be found in the
 `?guidance` help file.
 
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+
+### Basic analyses
+
+```{r warning = FALSE}
+
+library(ggplot2)
+library(cowplot)
+
+breaks <- seq(from = 1975, to = 2020, by = 5)
+
+plot1 <- cites_shipments() %>%
+  group_by(Year) %>%
+  summarize(n_records = n()) %>%
+  mutate(log10_n_records = log10(n_records)) %>%
+  ggplot(aes(x = Year, y = n_records)) +
+  geom_point() +
+  geom_line(linetype = "dashed", size = 0.2) +
+  ylab("Number of Records") +
+  theme_minimal() +
+  scale_x_continuous(breaks = breaks)
+
+plot2 <- cites_shipments() %>%
+  group_by(Year) %>%
+  summarize(n_records = n()) %>%
+  mutate(log10_n_records = log10(n_records)) %>%
+  ggplot(aes(x = Year, y = log10_n_records)) +
+  geom_point() +
+  geom_line(linetype = "dashed", size = 0.2) +
+  ylab("log10(Number of Records)") +
+  ylim(1.5, 6.5) +
+  theme_minimal() +
+  scale_x_continuous(breaks = breaks)
+
+plot_grid(plot1, plot2, nrow = 2)
+```
+
+```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
+
 cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
+
 
 ## Related work
 
@@ -135,11 +192,13 @@ The [**rcites**](https://github.com/ropensci/rcites) package provides
 access to the Speciesplus/CITES Checklist API, which includes metadata about
 species and their protected status through time.
 
+
 ## Citation
 
 If you use **citesdb** in a publication, please cite both the package and source data:
 
 ```{r, results = "asis", echo = FALSE}
+
 print(citation("citesdb"), style = "textVersion")
 ```
 
