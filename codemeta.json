@@ -5,8 +5,8 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
-  "description": "Provides convenient access to 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on  International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
-  "name": "citesdb: A high-performance database of shipment-level 'CITES' trade data",
+  "description": "Provides convenient access to >40 years and >20 million records of\n    endangered wildlife trade data from the Convention on  International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
+  "name": "citesdb: A high-performance database of shipment-level CITES trade data",
   "codeRepository": "https://github.com/ecohealthalliance/citesdb",
   "relatedLink": "https://www.cites.org/",
   "issueTracker": "https://github.com/ecohealthalliance/citesdb/issues",
@@ -308,7 +308,7 @@
           "familyName": "Eskew"
         }
       ],
-      "name": "citesdb: a high-performance database of shipment-level 'CITES' trade data",
+      "name": "citesdb: A high-performance database of shipment-level CITES trade data",
       "url": "https://github.com/ecohealthalliance/citesdb",
       "description": "v0.1.0"
     },

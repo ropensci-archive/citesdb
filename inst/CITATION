@@ -1,14 +1,14 @@
 citHeader("If you use citesdb in a publication, please cite both the package and source data:")
 
 citEntry(entry = "misc",
-  title        = "citesdb: a high-performance database of shipment-level 'CITES' trade data",
+  title        = "citesdb: A high-performance database of shipment-level CITES trade data",
   author       = personList(as.person("Noam Ross"), as.person("Evan A. Eskew")),
   institution  = "EcoHealth Alliance",
   address      = "New York, NY",
   note = "v0.1.0",
   year = "2019",
   url = "https://github.com/ecohealthalliance/citesdb",
-  textVersion  = "Ross, Noam and Evan A. Eskew. (2019). citesdb: a high-performance database of shipment-level 'CITES' trade data. R package v0.1.0. EcoHealth Alliance: New York, NY. https://github.com/ecohealthalliance/citesdb"
+  textVersion  = "Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.1.0. EcoHealth Alliance: New York, NY. https://github.com/ecohealthalliance/citesdb."
 )
 
 citEntry(entry = "misc",

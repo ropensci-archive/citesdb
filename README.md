@@ -93,7 +93,7 @@ which processes over 20 million records:
 ``` r
 
 stop - start
-#> Time difference of 1.074236 secs
+#> Time difference of 1.065003 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -203,10 +203,9 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam and Evan A. Eskew. (2019). citesdb: a high-performance
-database of shipment-level ‘CITES’ trade data. R package v0.1.0.
-EcoHealth Alliance: New York, NY.
-<https://github.com/ecohealthalliance/citesdb>
+Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
+of shipment-level CITES trade data. R package v0.1.0. EcoHealth
+Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>.
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,
