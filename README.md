@@ -93,7 +93,7 @@ which processes over 20 million records:
 ``` r
 
 stop - start
-#> Time difference of 1.039782 secs
+#> Time difference of 1.112194 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -131,25 +131,25 @@ head(cites_metadata())
 
 head(cites_codes())
 #> # A tibble: 6 x 3
-#>   field   code  description                                    
-#>   <chr>   <chr> <chr>                                          
-#> 1 Purpose B     Breeding in captivity or artificial propagation
-#> 2 Purpose E     Educational                                    
-#> 3 Purpose G     Botanical garden                               
-#> 4 Purpose H     Hunting trophy                                 
-#> 5 Purpose L     Law enforcement / judicial / forensic          
-#> 6 Purpose M     Medical (including biomedical research)
+#>   field code  description  
+#>   <chr> <chr> <chr>        
+#> 1 Term  BAL   Baleen       
+#> 2 Term  BAR   Bark         
+#> 3 Term  BEL   Belts        
+#> 4 Term  BOC   Bone carvings
+#> 5 Term  BOD   Bodies       
+#> 6 Term  BON   Bones
 
 head(cites_parties())
-#> # A tibble: 6 x 4
-#>   country             code  former_code date      
-#>   <chr>               <chr> <lgl>       <chr>     
-#> 1 Afghanistan         AF    FALSE       1986-01-28
-#> 2 Albania             AL    FALSE       2003-09-25
-#> 3 Algeria             DZ    FALSE       1984-02-21
-#> 4 Angola              AO    FALSE       2013-12-31
-#> 5 Antigua and Barbuda AG    FALSE       1997-10-06
-#> 6 Argentina           AR    FALSE       1981-04-08
+#> # A tibble: 6 x 2
+#>   variable description                                 
+#>   <chr>    <chr>                                       
+#> 1 Year     year in which trade occurred                
+#> 2 Appendix CITES Appendix of taxon concerned           
+#> 3 Taxon    scientific name of animal or plant concerned
+#> 4 Class    scientific name of animal or plant concerned
+#> 5 Order    scientific name of animal or plant concerned
+#> 6 Family   scientific name of animal or plant concerned
 ```
 
 More information on the release of shipment-level data can be found in
@@ -203,7 +203,7 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam and Evan A. Eskew. (2019). citesdb: Historical shipment-level
+Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level
 ‘CITES’ trade data served via database. R package v0.1.0. EcoHealth
 Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>
 

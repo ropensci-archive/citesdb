@@ -6,7 +6,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
   "description": "Provides convenient access to 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on  International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
-  "name": "citesdb: Historical shipment-level 'CITES' trade data served via database",
+  "name": "citesdb: A high-performance database of shipment-level 'CITES' trade data",
   "codeRepository": "https://github.com/ecohealthalliance/citesdb",
   "relatedLink": "https://www.cites.org/",
   "issueTracker": "https://github.com/ecohealthalliance/citesdb/issues",
@@ -29,7 +29,7 @@
     },
     {
       "@type": "Person",
-      "givenName": "Evan",
+      "givenName": "Evan A.",
       "familyName": "Eskew",
       "email": "eskew@ecohealthalliance.org",
       "@id": "https://orcid.org/0000-0002-1153-5356"
@@ -263,11 +263,23 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=dbplyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyr",
+      "name": "tidyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyr"
     }
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "118.315KB",
+  "fileSize": "164.58KB",
   "contIntegration": [
     "https://circleci.com/gh/ecohealthalliance/citesdb",
     "https://codecov.io/gh/ecohealthalliance/citesdb"
@@ -292,11 +304,11 @@
         },
         {
           "@type": "Person",
-          "givenName": "Evan",
+          "givenName": ["Evan", "A."],
           "familyName": "Eskew"
         }
       ],
-      "name": "citesdb: Historical shipment-level 'CITES' trade data served via database",
+      "name": "citesdb: a high-performance database of shipment-level 'CITES' trade data",
       "url": "https://github.com/ecohealthalliance/citesdb",
       "description": "v0.1.0"
     },
