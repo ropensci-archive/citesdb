@@ -1,0 +1,11 @@
+﻿country,code,former_code,non_ISO_code,data_source
+Saint Barthélemy,BL,FALSE,FALSE,Manually curated
+"Bonaire, Sint Eustatius and Saba",BQ,FALSE,FALSE,Manually curated
+Clipperton Island,CP,FALSE,FALSE,Manually curated
+Curaçao,CW,FALSE,FALSE,Manually curated
+Kosovo,KV,FALSE,TRUE,Manually curated
+Saint Martin (French part),MF,FALSE,FALSE,Manually curated
+Neutral Zone,NT,TRUE,FALSE,Manually curated
+South Sudan,SS,FALSE,FALSE,Manually curated
+Sint Maarten (Dutch part),SX,FALSE,FALSE,Manually curated
+"Yemen, Democratic",YD,TRUE,FALSE,Manually curated

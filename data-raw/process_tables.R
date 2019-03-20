@@ -10,7 +10,8 @@ h <- here::here
 
 # Prepare cites_metadata table
 
-cites_metadata <- read_tsv(h("data-raw", "cites_metadata.tsv"))
+cites_metadata <- h("data-raw", "cites_metadata.tsv") %>%
+  read_tsv()
 
 write_tsv(cites_metadata, h("inst", "extdata", "cites_metadata.tsv"))
 
@@ -19,7 +20,8 @@ write_tsv(cites_metadata, h("inst", "extdata", "cites_metadata.tsv"))
 
 # Prepare cites_codes table
 
-cites_codes <- read_tsv(h("data-raw", "cites_codes.tsv")) %>%
+cites_codes <- h("data-raw", "cites_codes.tsv") %>%
+  read_tsv() %>%
   arrange(field, code) %>%
   filter(field != "Term", field != "Unit")
 
@@ -33,7 +35,8 @@ write_tsv(cites_codes, h("inst", "extdata", "cites_codes.tsv"))
 
 # Prepare cites_parties table
 
-cites_parties <- read_tsv(h("data-raw", "cites_parties.tsv")) %>%
+cites_parties <- h("data-raw", "cites_parties.tsv") %>%
+  read_tsv() %>%
   mutate(code = ifelse(country == "Namibia", "NA", code)) %>%
   separate(., code, into = c("code1", "code2"),
            sep = ", formerly| ex-", fill = "right") %>%
@@ -42,21 +45,20 @@ cites_parties <- read_tsv(h("data-raw", "cites_parties.tsv")) %>%
   gather(., key = code_version, value = code, -country, -date) %>%
   filter(!is.na(code)) %>%
   mutate(code_version = ifelse(code_version == "code2", TRUE, FALSE)) %>%
-  select(country, code, code_version, date) %>%
   rename(former_code = code_version) %>%
+  select(country, code, former_code, date) %>%
+  mutate(data_source = "'A guide to using the CITES Trade Database', Version 8, Annex 4") %>%
   filter(!(country == "Slovakia" & former_code == TRUE),
          !(country == "Czech Republic" & former_code == TRUE))
 
-countries_raw <- h("data-raw", "en-CITES_Trade_Database_Guide.pdf") %>%
+countries_raw <- h("data-raw", "country_code_data", "en-CITES_Trade_Database_Guide.pdf") %>%
   extract_areas(., pages = c(14, 15, 16))
 
 countries_raw2 <- do.call(rbind, countries_raw)
 
 countries <-
-  tibble(
-    code = c(countries_raw2[, c(1, 3)]),
-    country = c(countries_raw2[, c(2, 4)])
-  ) %>%
+  tibble(code = c(countries_raw2[, c(1, 3)]),
+         country = c(countries_raw2[, c(2, 4)])) %>%
   filter(country != "" | code != "",
          country != "ISLANDS",
          country != "AND NORTHERN IRELAND") %>%
@@ -82,13 +84,22 @@ countries <-
   )) %>%
   mutate(former_code = FALSE)
 
-cites_parties <- full_join(cites_parties, countries,
+joined_parties <- full_join(cites_parties, countries,
                   by = c("code", "country", "former_code")) %>%
-  select(country, code, former_code, non_ISO_code, date) %>%
-  arrange(country, desc(former_code)) %>%
-  mutate(non_ISO_code = ifelse(non_ISO_code == "", FALSE, non_ISO_code)) %>%
+  mutate(data_source =
+           ifelse(is.na(data_source),
+                  "'A guide to using the CITES Trade Database', Version 8, Annex 3", data_source),
+         non_ISO_code = ifelse(is.na(non_ISO_code), FALSE, non_ISO_code)
+         ) %>%
+  select(country, code, former_code, non_ISO_code, date, data_source) %>%
   # Deal with CS and YU code issues
-  filter(!(country == "Former Serbia and Montenegro" & is.na(former_code)),
+  filter(!(country == "Former Serbia and Montenegro"),
          !(country == "Serbia and Montenegro" & former_code == TRUE))
 
-write_tsv(cites_parties, h("inst", "extdata", "cites_parties.tsv"))
+manual_countries <- h("data-raw", "country_code_data", "cites_manual_country_code_entries.csv") %>%
+  read_csv()
+
+final_parties <- bind_rows(joined_parties, manual_countries) %>%
+  arrange(country, desc(former_code))
+
+write_tsv(final_parties, h("inst", "extdata", "cites_parties.tsv"))

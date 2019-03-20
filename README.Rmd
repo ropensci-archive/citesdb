@@ -68,7 +68,7 @@ When you first load the package you will see a message like this:
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
 
-Not to worry, just do as it says and run `cites_db_download()`.  This will
+Not to worry, just do as it says and run `cites_db_download()`. This will
 fetch the most recent database from online, an approximately 158 MB download.
 It will expand to over 1 GB in the local database. During
 the download and database building up to 3.5 GB of disk space may be used temporarily.
@@ -77,9 +77,9 @@ the download and database building up to 3.5 GB of disk space may be used tempor
 ### Using the database
 
 Once you fetch the data you can connect to the database with the `cites_db()`
-command.  You can use the
+command. You can use the
 `cites_shipments()` command to load a remote `tibble` that is backed by the
-database but not loaded into R.  You can use this
+database but not loaded into R. You can use this
 to analyze CITES data without ever loading it into memory, then gather your
 results with `collect()`. For example:
 
@@ -128,7 +128,7 @@ or as a `.zip` file of many CSV files from original source at <https://trade.cit
 
 The database also contains tables of field metadata, codes used, and CITES countries. This information
 comes from ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
-on the CITES website.  Convenience functions `cites_metadata()`, `cites_codes()`, and `cites_parties()`
+on the CITES website. Convenience functions `cites_metadata()`, `cites_codes()`, and `cites_parties()`
 access this information:
 
 ```{r}

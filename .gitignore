@@ -9,6 +9,7 @@ src/*.so
 src/*.dll
 data-raw/*
 !data-raw/*.R
+!data-raw/country_code_data
 scraps/
 localdb
 artifacts

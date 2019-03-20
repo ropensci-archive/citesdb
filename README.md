@@ -93,7 +93,7 @@ which processes over 20 million records:
 ``` r
 
 stop - start
-#> Time difference of 1.112194 secs
+#> Time difference of 1.074236 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -131,25 +131,25 @@ head(cites_metadata())
 
 head(cites_codes())
 #> # A tibble: 6 x 3
-#>   field code  description  
-#>   <chr> <chr> <chr>        
-#> 1 Term  BAL   Baleen       
-#> 2 Term  BAR   Bark         
-#> 3 Term  BEL   Belts        
-#> 4 Term  BOC   Bone carvings
-#> 5 Term  BOD   Bodies       
-#> 6 Term  BON   Bones
+#>   field   code  description                                    
+#>   <chr>   <chr> <chr>                                          
+#> 1 Purpose B     Breeding in captivity or artificial propagation
+#> 2 Purpose E     Educational                                    
+#> 3 Purpose G     Botanical garden                               
+#> 4 Purpose H     Hunting trophy                                 
+#> 5 Purpose L     Law enforcement / judicial / forensic          
+#> 6 Purpose M     Medical (including biomedical research)
 
 head(cites_parties())
-#> # A tibble: 6 x 2
-#>   variable description                                 
-#>   <chr>    <chr>                                       
-#> 1 Year     year in which trade occurred                
-#> 2 Appendix CITES Appendix of taxon concerned           
-#> 3 Taxon    scientific name of animal or plant concerned
-#> 4 Class    scientific name of animal or plant concerned
-#> 5 Order    scientific name of animal or plant concerned
-#> 6 Family   scientific name of animal or plant concerned
+#> # A tibble: 6 x 6
+#>   country        code  former_code non_ISO_code date       data_source                                                  
+#>   <chr>          <chr> <lgl>       <lgl>        <chr>      <chr>                                                        
+#> 1 Afghanistan    AF    FALSE       FALSE        1986-01-28 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 2 Africa         XF    FALSE       TRUE         <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 3 Åland Islands  AX    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 4 Albania        AL    FALSE       FALSE        2003-09-25 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 5 Algeria        DZ    FALSE       FALSE        1984-02-21 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 6 American Samoa AS    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
 ```
 
 More information on the release of shipment-level data can be found in
@@ -203,9 +203,10 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level
-‘CITES’ trade data served via database. R package v0.1.0. EcoHealth
-Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>
+Ross, Noam and Evan A. Eskew. (2019). citesdb: a high-performance
+database of shipment-level ‘CITES’ trade data. R package v0.1.0.
+EcoHealth Alliance: New York, NY.
+<https://github.com/ecohealthalliance/citesdb>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,

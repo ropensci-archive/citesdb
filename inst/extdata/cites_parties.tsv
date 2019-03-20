@@ -1,262 +1,271 @@
-country	code	former_code	non_ISO_code	date
-Afghanistan	AF	FALSE	FALSE	1986-01-28
-Africa	XF	FALSE	TRUE	NA
-Åland Islands	AX	FALSE	FALSE	NA
-Albania	AL	FALSE	FALSE	2003-09-25
-Algeria	DZ	FALSE	FALSE	1984-02-21
-American Samoa	AS	FALSE	FALSE	NA
-Andorra	AD	FALSE	FALSE	NA
-Angola	AO	FALSE	FALSE	2013-12-31
-Anguilla	AI	FALSE	FALSE	NA
-Antarctica	AQ	FALSE	FALSE	NA
-Antigua and Barbuda	AG	FALSE	FALSE	1997-10-06
-Argentina	AR	FALSE	FALSE	1981-04-08
-Armenia	AM	FALSE	FALSE	2009-01-21
-Aruba	AW	FALSE	FALSE	NA
-Asia	XS	FALSE	TRUE	NA
-Australia	AU	FALSE	FALSE	1976-10-27
-Austria	AT	FALSE	FALSE	1982-04-27
-Azerbaijan	AZ	FALSE	FALSE	1999-02-21
-Bahamas	BS	FALSE	FALSE	1979-09-18
-Bahrain	BH	FALSE	FALSE	2012-11-17
-Bangladesh	BD	FALSE	FALSE	1982-02-18
-Barbados	BB	FALSE	FALSE	1993-03-09
-Belarus	BY	FALSE	FALSE	1995-11-08
-Belgium	BE	FALSE	FALSE	1984-01-01
-Belize	BZ	FALSE	FALSE	1981-09-21
-Benin	BJ	FALSE	FALSE	1984-05-28
-Bermuda	BM	FALSE	FALSE	NA
-Bhutan	BT	FALSE	FALSE	2002-11-13
-Bolivia, Plurinational State of	BO	FALSE	FALSE	1979-10-04
-Bosnia and Herzegovina	BA	FALSE	FALSE	2009-04-21
-Botswana	BW	FALSE	FALSE	1978-02-12
-Bouvet Island	BV	FALSE	FALSE	NA
-Brazil	BR	FALSE	FALSE	1975-11-04
-British Indian Ocean Territory	IO	FALSE	FALSE	NA
-Brunei Darussalam	BN	FALSE	FALSE	1990-08-20
-Bulgaria	BG	FALSE	FALSE	1991-04-16
-Burkina Faso	BF	FALSE	FALSE	1990-01-15
-Burundi	BI	FALSE	FALSE	1988-11-06
-Cambodia	KH	FALSE	FALSE	1997-10-02
-Cameroon	CM	FALSE	FALSE	1981-09-03
-Canada	CA	FALSE	FALSE	1975-07-09
-Cape Verde	CV	FALSE	FALSE	2005-11-08
-Caribbean	XC	FALSE	TRUE	NA
-Cayman Islands	KY	FALSE	FALSE	NA
-Central African Republic	CF	FALSE	FALSE	1980-11-25
-Chad	TD	FALSE	FALSE	1989-05-03
-Chile	CL	FALSE	FALSE	1975-07-01
-China	CN	FALSE	FALSE	1981-04-08
-Christmas Island	CX	FALSE	FALSE	NA
-Cocos (Keeling) Islands	CC	FALSE	FALSE	NA
-Colombia	CO	FALSE	FALSE	1981-11-29
-Comoros	KM	FALSE	FALSE	1995-02-21
-Congo	CG	FALSE	FALSE	1983-05-01
-Cook Islands	CK	FALSE	FALSE	NA
-Costa Rica	CR	FALSE	FALSE	1975-09-28
-Côte d'Ivoire	CI	FALSE	FALSE	1995-02-19
-Croatia	HR	FALSE	FALSE	2000-06-12
-Cuba	CU	FALSE	FALSE	1990-07-19
-Cyprus	CY	FALSE	FALSE	1975-07-01
-Czech Republic	CZ	FALSE	FALSE	1992-05-28
-Democratic Republic of the Congo	ZR	TRUE	NA	1976-10-18
-Democratic Republic of the Congo	CD	FALSE	FALSE	1976-10-18
-Denmark	DK	FALSE	FALSE	1977-10-24
-Djibouti	DJ	FALSE	FALSE	1992-05-07
-Dominica	DM	FALSE	FALSE	1995-11-02
-Dominican Republic	DO	FALSE	FALSE	1987-03-17
-Ecuador	EC	FALSE	FALSE	1975-07-01
-Egypt	EG	FALSE	FALSE	1978-04-04
-El Salvador	SV	FALSE	FALSE	1987-07-29
-Equatorial Guinea	GQ	FALSE	FALSE	1992-06-08
-Eritrea	ER	FALSE	FALSE	1995-01-22
-Estonia	EE	FALSE	FALSE	1992-10-20
-Ethiopia	ET	FALSE	FALSE	1989-07-04
-Europe	XE	FALSE	TRUE	NA
-Falkland Islands (Malvinas)	FK	FALSE	FALSE	NA
-Faroe Islands	FO	FALSE	FALSE	NA
-Fiji	FJ	FALSE	FALSE	1997-12-29
-Finland	FI	FALSE	FALSE	1976-08-08
-Former Czechoslovakia	ZC	FALSE	TRUE	NA
-Former East Germany	DD	FALSE	FALSE	NA
-Former Pacific Trust Territory	PC	FALSE	FALSE	NA
-Former Serbia and Montenegro	CS	FALSE	FALSE	NA
-Former Soviet Union	SU	FALSE	FALSE	NA
-Former Yugoslavia	YU	FALSE	FALSE	NA
-France	FR	FALSE	FALSE	1978-08-09
-French Antilles	XA	FALSE	TRUE	NA
-French Guiana	GF	FALSE	FALSE	NA
-French Polynesia	PF	FALSE	FALSE	NA
-French Southern Territories	TF	FALSE	FALSE	NA
-Gabon	GA	FALSE	FALSE	1989-05-15
-Gambia	GM	FALSE	FALSE	1977-11-24
-Georgia	GE	FALSE	FALSE	1996-12-12
-Germany	DE	FALSE	FALSE	1976-06-20
-Ghana	GH	FALSE	FALSE	1976-02-12
-Gibraltar	GI	FALSE	FALSE	NA
-Greece	GR	FALSE	FALSE	1993-01-06
-Greenland	GL	FALSE	FALSE	NA
-Grenada	GD	FALSE	FALSE	1999-11-28
-Guadeloupe	GP	FALSE	FALSE	NA
-Guam	GU	FALSE	FALSE	NA
-Guatemala	GT	FALSE	FALSE	1980-02-05
-Guernsey	GG	FALSE	FALSE	NA
-Guinea	GN	FALSE	FALSE	1981-12-20
-Guinea-Bissau	GW	FALSE	FALSE	1990-08-14
-Guyana	GY	FALSE	FALSE	1977-08-25
-Haiti	HT	FALSE	FALSE	NA
-Heard and Mcdonald Islands	HM	FALSE	FALSE	NA
-Holy See	VA	FALSE	FALSE	NA
-Honduras	HN	FALSE	FALSE	1985-06-13
-Hong Kong	HK	FALSE	FALSE	NA
-Hungary	HU	FALSE	FALSE	1985-08-29
-Iceland	IS	FALSE	FALSE	2000-04-02
-India	IN	FALSE	FALSE	1976-10-18
-Indonesia	ID	FALSE	FALSE	1979-03-28
-Introduction From the Sea	ZZ	FALSE	TRUE	NA
-Iran, Islamic Republic of	IR	FALSE	FALSE	1976-11-01
-Iraq	IQ	FALSE	FALSE	NA
-Ireland	IE	FALSE	FALSE	2002-04-08
-Isle of Man	IM	FALSE	FALSE	NA
-Israel	IL	FALSE	FALSE	1980-03-17
-Italy	IT	FALSE	FALSE	1979-12-31
-Jamaica	JM	FALSE	FALSE	1997-07-22
-Japan	JP	FALSE	FALSE	1980-11-04
-Jersey	JE	FALSE	FALSE	NA
-Jordan	JO	FALSE	FALSE	1979-03-14
-Kazakhstan	KZ	FALSE	FALSE	2000-04-19
-Kenya	KE	FALSE	FALSE	1979-03-13
-Kiribati	KI	FALSE	FALSE	NA
-Korea, Democratic People's Republic of	KP	FALSE	FALSE	NA
-Korea, Republic of	KR	FALSE	FALSE	1993-10-07
-Kuwait	KW	FALSE	FALSE	2002-11-10
-Kyrgyzstan	KG	FALSE	FALSE	2007-09-02
-Lao People's Democratic Republic	LA	FALSE	FALSE	2004-05-30
-Latvia	LV	FALSE	FALSE	1997-05-12
-Lebanon	LB	FALSE	FALSE	2013-05-26
-Lesotho	LS	FALSE	FALSE	2003-12-30
-Liberia	LR	FALSE	FALSE	1981-06-09
-Libya	LY	FALSE	FALSE	2003-04-28
-Liechtenstein	LI	FALSE	FALSE	1980-02-28
-Lithuania	LT	FALSE	FALSE	2002-03-09
-Luxembourg	LU	FALSE	FALSE	1984-03-12
-Macau	MO	FALSE	FALSE	NA
-Macedonia	MK	FALSE	FALSE	2000-10-02
-Madagascar	MG	FALSE	FALSE	1975-11-18
-Malawi	MW	FALSE	FALSE	1982-05-06
-Malaysia	MY	FALSE	FALSE	1978-01-18
-Maldives	MV	FALSE	FALSE	2013-03-12
-Mali	ML	FALSE	FALSE	1994-10-16
-Malta	MT	FALSE	FALSE	1989-07-16
-Marshall Islands	MH	FALSE	FALSE	NA
-Martinique	MQ	FALSE	FALSE	NA
-Mauritania	MR	FALSE	FALSE	1998-06-11
-Mauritius	MU	FALSE	FALSE	1975-07-27
-Mayotte	YT	FALSE	FALSE	NA
-Mexico	MX	FALSE	FALSE	1991-09-30
-Micronesia, Federated States of	FM	FALSE	FALSE	NA
-Monaco	MC	FALSE	FALSE	1978-07-18
-Mongolia	MN	FALSE	FALSE	1996-04-04
-Montenegro	ME	FALSE	FALSE	2006-06-03
-Montserrat	MS	FALSE	FALSE	NA
-Morocco	MA	FALSE	FALSE	1976-01-14
-Mozambique	MZ	FALSE	FALSE	1981-06-23
-Myanmar	MM	FALSE	FALSE	1997-09-11
-Namibia	"NA"	FALSE	FALSE	1991-03-18
-Nauru	NR	FALSE	FALSE	NA
-Nepal	NP	FALSE	FALSE	1975-09-16
-Netherlands	NL	FALSE	FALSE	1984-07-18
-Netherlands Antilles	AN	FALSE	FALSE	NA
-New Caledonia	NC	FALSE	FALSE	NA
-New Zealand	NZ	FALSE	FALSE	1989-08-08
-Nicaragua	NI	FALSE	FALSE	1977-11-04
-Niger	NE	FALSE	FALSE	1975-12-07
-Nigeria	NG	FALSE	FALSE	1975-07-01
-Niue	NU	FALSE	FALSE	NA
-Norfolk Island	NF	FALSE	FALSE	NA
-Northern Mariana Islands	MP	FALSE	FALSE	NA
-Norway	NO	FALSE	FALSE	1976-10-25
-Occupied Palestinian Territory	PS	FALSE	FALSE	NA
-Oman	OM	FALSE	FALSE	2008-06-17
-Pakistan	PK	FALSE	FALSE	1976-07-19
-Palau	PW	FALSE	FALSE	2004-07-15
-Panama	PA	FALSE	FALSE	1978-11-15
-Papua New Guinea	PG	FALSE	FALSE	1976-03-11
-Paraguay	PY	FALSE	FALSE	1977-02-13
-Peru	PE	FALSE	FALSE	1975-09-25
-Philippines	PH	FALSE	FALSE	1981-11-16
-Pitcairn	PN	FALSE	FALSE	NA
-Poland	PL	FALSE	FALSE	1990-03-12
-Portugal	PT	FALSE	FALSE	1981-03-11
-Puerto Rico	PR	FALSE	FALSE	NA
-Qatar	QA	FALSE	FALSE	2001-08-06
-Republic of Moldova	MD	FALSE	FALSE	2001-06-27
-Réunion	RE	FALSE	FALSE	NA
-Romania	RO	FALSE	FALSE	1994-11-16
-Russian Federation	RU	FALSE	FALSE	1992-01-01
-Rwanda	RW	FALSE	FALSE	1981-01-18
-Saint Helena and Dependencies	SH	FALSE	FALSE	NA
-Saint Kitts and Nevis	KN	FALSE	FALSE	1994-05-15
-Saint Lucia	LC	FALSE	FALSE	1983-03-15
-Saint Pierre and Miquelon	PM	FALSE	FALSE	NA
-Saint Vincent and the Grenadines	VC	FALSE	FALSE	1989-02-28
-Samoa	WS	FALSE	FALSE	2005-02-07
-San Marino	SM	FALSE	FALSE	2005-10-20
-Sao Tome and Principe	ST	FALSE	FALSE	2001-11-07
-Saudi Arabia	SA	FALSE	FALSE	1996-06-10
-Senegal	SN	FALSE	FALSE	1977-11-03
-Serbia	RS	FALSE	FALSE	2006-06-03
-Serbia and Montenegro	CS	FALSE	NA	2002-05-28
-Seychelles	SC	FALSE	FALSE	1977-05-09
-Sierra Leone	SL	FALSE	FALSE	1995-01-26
-Singapore	SG	FALSE	FALSE	1987-02-28
-Slovakia	SK	FALSE	FALSE	1992-05-28
-Slovenia	SI	FALSE	FALSE	2000-04-23
-Solomon Islands	SB	FALSE	FALSE	2007-06-24
-Somalia	SO	FALSE	FALSE	1986-03-02
-South Africa	ZA	FALSE	FALSE	1975-10-13
-South America	XM	FALSE	TRUE	NA
-South Georgia and the South Sandwich Islands	GS	FALSE	FALSE	NA
-Spain	ES	FALSE	FALSE	1986-08-28
-Sri Lanka	LK	FALSE	FALSE	1979-08-02
-Sudan	SD	FALSE	FALSE	1983-01-24
-Suriname	SR	FALSE	FALSE	1981-02-15
-Svalbard and Jan Mayen Islands	SJ	FALSE	FALSE	NA
-Swaziland	SZ	FALSE	FALSE	1997-05-27
-Sweden	SE	FALSE	FALSE	1975-07-01
-Switzerland	CH	FALSE	FALSE	1975-07-01
-Syrian Arab Republic	SY	FALSE	FALSE	2003-07-29
-Taiwan Province of China	TW	FALSE	FALSE	NA
-Tajikistan	TJ	FALSE	FALSE	NA
-Thailand	TH	FALSE	FALSE	1983-04-21
-Timor-Leste	TL	FALSE	FALSE	NA
-Togo	TG	FALSE	FALSE	1979-01-21
-Tokelau	TK	FALSE	FALSE	NA
-Tonga	TO	FALSE	FALSE	NA
-Trinidad and Tobago	TT	FALSE	FALSE	1984-04-18
-Tunisia	TN	FALSE	FALSE	1975-07-01
-Turkey	TR	FALSE	FALSE	1996-12-22
-Turkmenistan	TM	FALSE	FALSE	NA
-Turks and Caicos Islands	TC	FALSE	FALSE	NA
-Tuvalu	TV	FALSE	FALSE	NA
-Uganda	UG	FALSE	FALSE	1991-10-16
-Ukraine	UA	FALSE	FALSE	2000-03-29
-United Arab Emirates	AE	FALSE	FALSE	1990-05-12
-United Kingdom of Great Britain and Northern Ireland	GB	FALSE	FALSE	1976-10-31
-United Republic of Tanzania	TZ	FALSE	FALSE	1980-02-27
-United States Minor Outlying Islands	UM	FALSE	FALSE	NA
-United States of America	US	FALSE	FALSE	1975-07-01
-Unknown	XX	FALSE	TRUE	NA
-Uruguay	UY	FALSE	FALSE	1975-07-01
-Uzbekistan	UZ	FALSE	FALSE	1997-10-08
-Vanuatu	VU	FALSE	FALSE	1989-10-15
-Various	XV	FALSE	TRUE	NA
-Venezuela, Bolivarian Republic of	VE	FALSE	FALSE	1978-01-22
-Viet Nam	VN	FALSE	FALSE	1994-04-20
-Virgin Islands (British)	VG	FALSE	FALSE	NA
-Virgin Islands (U.S.)	VI	FALSE	FALSE	NA
-Wallis and Futuna Islands	WF	FALSE	FALSE	NA
-Western Sahara	EH	FALSE	FALSE	NA
-Yemen	YE	FALSE	FALSE	1997-08-03
-Zambia	ZM	FALSE	FALSE	1981-02-22
-Zimbabwe	ZW	FALSE	FALSE	1981-08-17
+country	code	former_code	non_ISO_code	date	data_source
+Afghanistan	AF	FALSE	FALSE	1986-01-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Africa	XF	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Åland Islands	AX	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Albania	AL	FALSE	FALSE	2003-09-25	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Algeria	DZ	FALSE	FALSE	1984-02-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+American Samoa	AS	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Andorra	AD	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Angola	AO	FALSE	FALSE	2013-12-31	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Anguilla	AI	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Antarctica	AQ	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Antigua and Barbuda	AG	FALSE	FALSE	1997-10-06	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Argentina	AR	FALSE	FALSE	1981-04-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Armenia	AM	FALSE	FALSE	2009-01-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Aruba	AW	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Asia	XS	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Australia	AU	FALSE	FALSE	1976-10-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Austria	AT	FALSE	FALSE	1982-04-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Azerbaijan	AZ	FALSE	FALSE	1999-02-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bahamas	BS	FALSE	FALSE	1979-09-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bahrain	BH	FALSE	FALSE	2012-11-17	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bangladesh	BD	FALSE	FALSE	1982-02-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Barbados	BB	FALSE	FALSE	1993-03-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Belarus	BY	FALSE	FALSE	1995-11-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Belgium	BE	FALSE	FALSE	1984-01-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Belize	BZ	FALSE	FALSE	1981-09-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Benin	BJ	FALSE	FALSE	1984-05-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bermuda	BM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Bhutan	BT	FALSE	FALSE	2002-11-13	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bolivia, Plurinational State of	BO	FALSE	FALSE	1979-10-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bonaire, Sint Eustatius and Saba	BQ	FALSE	FALSE	NA	Manually curated
+Bosnia and Herzegovina	BA	FALSE	FALSE	2009-04-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Botswana	BW	FALSE	FALSE	1978-02-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bouvet Island	BV	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Brazil	BR	FALSE	FALSE	1975-11-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+British Indian Ocean Territory	IO	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Brunei Darussalam	BN	FALSE	FALSE	1990-08-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Bulgaria	BG	FALSE	FALSE	1991-04-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Burkina Faso	BF	FALSE	FALSE	1990-01-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Burundi	BI	FALSE	FALSE	1988-11-06	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Cambodia	KH	FALSE	FALSE	1997-10-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Cameroon	CM	FALSE	FALSE	1981-09-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Canada	CA	FALSE	FALSE	1975-07-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Cape Verde	CV	FALSE	FALSE	2005-11-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Caribbean	XC	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Cayman Islands	KY	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Central African Republic	CF	FALSE	FALSE	1980-11-25	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Chad	TD	FALSE	FALSE	1989-05-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Chile	CL	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+China	CN	FALSE	FALSE	1981-04-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Christmas Island	CX	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Clipperton Island	CP	FALSE	FALSE	NA	Manually curated
+Cocos (Keeling) Islands	CC	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Colombia	CO	FALSE	FALSE	1981-11-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Comoros	KM	FALSE	FALSE	1995-02-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Congo	CG	FALSE	FALSE	1983-05-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Cook Islands	CK	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Costa Rica	CR	FALSE	FALSE	1975-09-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Côte d'Ivoire	CI	FALSE	FALSE	1995-02-19	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Croatia	HR	FALSE	FALSE	2000-06-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Cuba	CU	FALSE	FALSE	1990-07-19	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Curaçao	CW	FALSE	FALSE	NA	Manually curated
+Cyprus	CY	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Czech Republic	CZ	FALSE	FALSE	1992-05-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Democratic Republic of the Congo	ZR	TRUE	FALSE	1976-10-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Democratic Republic of the Congo	CD	FALSE	FALSE	1976-10-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Denmark	DK	FALSE	FALSE	1977-10-24	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Djibouti	DJ	FALSE	FALSE	1992-05-07	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Dominica	DM	FALSE	FALSE	1995-11-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Dominican Republic	DO	FALSE	FALSE	1987-03-17	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Ecuador	EC	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Egypt	EG	FALSE	FALSE	1978-04-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+El Salvador	SV	FALSE	FALSE	1987-07-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Equatorial Guinea	GQ	FALSE	FALSE	1992-06-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Eritrea	ER	FALSE	FALSE	1995-01-22	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Estonia	EE	FALSE	FALSE	1992-10-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Ethiopia	ET	FALSE	FALSE	1989-07-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Europe	XE	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Falkland Islands (Malvinas)	FK	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Faroe Islands	FO	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Fiji	FJ	FALSE	FALSE	1997-12-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Finland	FI	FALSE	FALSE	1976-08-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Former Czechoslovakia	ZC	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Former East Germany	DD	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Former Pacific Trust Territory	PC	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Former Soviet Union	SU	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Former Yugoslavia	YU	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+France	FR	FALSE	FALSE	1978-08-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+French Antilles	XA	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+French Guiana	GF	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+French Polynesia	PF	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+French Southern Territories	TF	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Gabon	GA	FALSE	FALSE	1989-05-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Gambia	GM	FALSE	FALSE	1977-11-24	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Georgia	GE	FALSE	FALSE	1996-12-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Germany	DE	FALSE	FALSE	1976-06-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Ghana	GH	FALSE	FALSE	1976-02-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Gibraltar	GI	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Greece	GR	FALSE	FALSE	1993-01-06	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Greenland	GL	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Grenada	GD	FALSE	FALSE	1999-11-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Guadeloupe	GP	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Guam	GU	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Guatemala	GT	FALSE	FALSE	1980-02-05	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Guernsey	GG	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Guinea	GN	FALSE	FALSE	1981-12-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Guinea-Bissau	GW	FALSE	FALSE	1990-08-14	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Guyana	GY	FALSE	FALSE	1977-08-25	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Haiti	HT	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Heard and Mcdonald Islands	HM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Holy See	VA	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Honduras	HN	FALSE	FALSE	1985-06-13	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Hong Kong	HK	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Hungary	HU	FALSE	FALSE	1985-08-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Iceland	IS	FALSE	FALSE	2000-04-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+India	IN	FALSE	FALSE	1976-10-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Indonesia	ID	FALSE	FALSE	1979-03-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Introduction From the Sea	ZZ	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Iran, Islamic Republic of	IR	FALSE	FALSE	1976-11-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Iraq	IQ	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Ireland	IE	FALSE	FALSE	2002-04-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Isle of Man	IM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Israel	IL	FALSE	FALSE	1980-03-17	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Italy	IT	FALSE	FALSE	1979-12-31	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Jamaica	JM	FALSE	FALSE	1997-07-22	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Japan	JP	FALSE	FALSE	1980-11-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Jersey	JE	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Jordan	JO	FALSE	FALSE	1979-03-14	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Kazakhstan	KZ	FALSE	FALSE	2000-04-19	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Kenya	KE	FALSE	FALSE	1979-03-13	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Kiribati	KI	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Korea, Democratic People's Republic of	KP	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Korea, Republic of	KR	FALSE	FALSE	1993-10-07	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Kosovo	KV	FALSE	TRUE	NA	Manually curated
+Kuwait	KW	FALSE	FALSE	2002-11-10	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Kyrgyzstan	KG	FALSE	FALSE	2007-09-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Lao People's Democratic Republic	LA	FALSE	FALSE	2004-05-30	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Latvia	LV	FALSE	FALSE	1997-05-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Lebanon	LB	FALSE	FALSE	2013-05-26	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Lesotho	LS	FALSE	FALSE	2003-12-30	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Liberia	LR	FALSE	FALSE	1981-06-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Libya	LY	FALSE	FALSE	2003-04-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Liechtenstein	LI	FALSE	FALSE	1980-02-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Lithuania	LT	FALSE	FALSE	2002-03-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Luxembourg	LU	FALSE	FALSE	1984-03-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Macau	MO	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Macedonia	MK	FALSE	FALSE	2000-10-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Madagascar	MG	FALSE	FALSE	1975-11-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Malawi	MW	FALSE	FALSE	1982-05-06	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Malaysia	MY	FALSE	FALSE	1978-01-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Maldives	MV	FALSE	FALSE	2013-03-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Mali	ML	FALSE	FALSE	1994-10-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Malta	MT	FALSE	FALSE	1989-07-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Marshall Islands	MH	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Martinique	MQ	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Mauritania	MR	FALSE	FALSE	1998-06-11	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Mauritius	MU	FALSE	FALSE	1975-07-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Mayotte	YT	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Mexico	MX	FALSE	FALSE	1991-09-30	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Micronesia, Federated States of	FM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Monaco	MC	FALSE	FALSE	1978-07-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Mongolia	MN	FALSE	FALSE	1996-04-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Montenegro	ME	FALSE	FALSE	2006-06-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Montserrat	MS	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Morocco	MA	FALSE	FALSE	1976-01-14	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Mozambique	MZ	FALSE	FALSE	1981-06-23	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Myanmar	MM	FALSE	FALSE	1997-09-11	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Namibia	"NA"	FALSE	FALSE	1991-03-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Nauru	NR	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Nepal	NP	FALSE	FALSE	1975-09-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Netherlands	NL	FALSE	FALSE	1984-07-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Netherlands Antilles	AN	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Neutral Zone	NT	TRUE	FALSE	NA	Manually curated
+New Caledonia	NC	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+New Zealand	NZ	FALSE	FALSE	1989-08-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Nicaragua	NI	FALSE	FALSE	1977-11-04	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Niger	NE	FALSE	FALSE	1975-12-07	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Nigeria	NG	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Niue	NU	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Norfolk Island	NF	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Northern Mariana Islands	MP	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Norway	NO	FALSE	FALSE	1976-10-25	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Occupied Palestinian Territory	PS	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Oman	OM	FALSE	FALSE	2008-06-17	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Pakistan	PK	FALSE	FALSE	1976-07-19	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Palau	PW	FALSE	FALSE	2004-07-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Panama	PA	FALSE	FALSE	1978-11-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Papua New Guinea	PG	FALSE	FALSE	1976-03-11	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Paraguay	PY	FALSE	FALSE	1977-02-13	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Peru	PE	FALSE	FALSE	1975-09-25	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Philippines	PH	FALSE	FALSE	1981-11-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Pitcairn	PN	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Poland	PL	FALSE	FALSE	1990-03-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Portugal	PT	FALSE	FALSE	1981-03-11	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Puerto Rico	PR	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Qatar	QA	FALSE	FALSE	2001-08-06	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Republic of Moldova	MD	FALSE	FALSE	2001-06-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Réunion	RE	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Romania	RO	FALSE	FALSE	1994-11-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Russian Federation	RU	FALSE	FALSE	1992-01-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Rwanda	RW	FALSE	FALSE	1981-01-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Saint Barthélemy	BL	FALSE	FALSE	NA	Manually curated
+Saint Helena and Dependencies	SH	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Saint Kitts and Nevis	KN	FALSE	FALSE	1994-05-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Saint Lucia	LC	FALSE	FALSE	1983-03-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Saint Martin (French part)	MF	FALSE	FALSE	NA	Manually curated
+Saint Pierre and Miquelon	PM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Saint Vincent and the Grenadines	VC	FALSE	FALSE	1989-02-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Samoa	WS	FALSE	FALSE	2005-02-07	'A guide to using the CITES Trade Database', Version 8, Annex 4
+San Marino	SM	FALSE	FALSE	2005-10-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sao Tome and Principe	ST	FALSE	FALSE	2001-11-07	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Saudi Arabia	SA	FALSE	FALSE	1996-06-10	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Senegal	SN	FALSE	FALSE	1977-11-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Serbia	RS	FALSE	FALSE	2006-06-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Serbia and Montenegro	CS	FALSE	FALSE	2002-05-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Seychelles	SC	FALSE	FALSE	1977-05-09	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sierra Leone	SL	FALSE	FALSE	1995-01-26	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Singapore	SG	FALSE	FALSE	1987-02-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sint Maarten (Dutch part)	SX	FALSE	FALSE	NA	Manually curated
+Slovakia	SK	FALSE	FALSE	1992-05-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Slovenia	SI	FALSE	FALSE	2000-04-23	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Solomon Islands	SB	FALSE	FALSE	2007-06-24	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Somalia	SO	FALSE	FALSE	1986-03-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+South Africa	ZA	FALSE	FALSE	1975-10-13	'A guide to using the CITES Trade Database', Version 8, Annex 4
+South America	XM	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+South Georgia and the South Sandwich Islands	GS	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+South Sudan	SS	FALSE	FALSE	NA	Manually curated
+Spain	ES	FALSE	FALSE	1986-08-28	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sri Lanka	LK	FALSE	FALSE	1979-08-02	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sudan	SD	FALSE	FALSE	1983-01-24	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Suriname	SR	FALSE	FALSE	1981-02-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Svalbard and Jan Mayen Islands	SJ	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Swaziland	SZ	FALSE	FALSE	1997-05-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Sweden	SE	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Switzerland	CH	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Syrian Arab Republic	SY	FALSE	FALSE	2003-07-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Taiwan Province of China	TW	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Tajikistan	TJ	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Thailand	TH	FALSE	FALSE	1983-04-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Timor-Leste	TL	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Togo	TG	FALSE	FALSE	1979-01-21	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Tokelau	TK	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Tonga	TO	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Trinidad and Tobago	TT	FALSE	FALSE	1984-04-18	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Tunisia	TN	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Turkey	TR	FALSE	FALSE	1996-12-22	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Turkmenistan	TM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Turks and Caicos Islands	TC	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Tuvalu	TV	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Uganda	UG	FALSE	FALSE	1991-10-16	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Ukraine	UA	FALSE	FALSE	2000-03-29	'A guide to using the CITES Trade Database', Version 8, Annex 4
+United Arab Emirates	AE	FALSE	FALSE	1990-05-12	'A guide to using the CITES Trade Database', Version 8, Annex 4
+United Kingdom of Great Britain and Northern Ireland	GB	FALSE	FALSE	1976-10-31	'A guide to using the CITES Trade Database', Version 8, Annex 4
+United Republic of Tanzania	TZ	FALSE	FALSE	1980-02-27	'A guide to using the CITES Trade Database', Version 8, Annex 4
+United States Minor Outlying Islands	UM	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+United States of America	US	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Unknown	XX	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Uruguay	UY	FALSE	FALSE	1975-07-01	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Uzbekistan	UZ	FALSE	FALSE	1997-10-08	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Vanuatu	VU	FALSE	FALSE	1989-10-15	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Various	XV	FALSE	TRUE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Venezuela, Bolivarian Republic of	VE	FALSE	FALSE	1978-01-22	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Viet Nam	VN	FALSE	FALSE	1994-04-20	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Virgin Islands (British)	VG	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Virgin Islands (U.S.)	VI	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Wallis and Futuna Islands	WF	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Western Sahara	EH	FALSE	FALSE	NA	'A guide to using the CITES Trade Database', Version 8, Annex 3
+Yemen	YE	FALSE	FALSE	1997-08-03	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Yemen, Democratic	YD	TRUE	FALSE	NA	Manually curated
+Zambia	ZM	FALSE	FALSE	1981-02-22	'A guide to using the CITES Trade Database', Version 8, Annex 4
+Zimbabwe	ZW	FALSE	FALSE	1981-08-17	'A guide to using the CITES Trade Database', Version 8, Annex 4
