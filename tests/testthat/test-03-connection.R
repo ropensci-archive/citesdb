@@ -15,7 +15,7 @@ test_that("Database lock gives informative error", {
       citesdb::cites_db()
     })
   },
-  "Local citesdbs database is locked by another R session"
+  "Local citesdb database is locked by another R session"
   )
 })
 
