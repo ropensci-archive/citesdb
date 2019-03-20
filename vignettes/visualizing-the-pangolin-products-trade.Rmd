@@ -1,0 +1,90 @@
+---
+title: "Visualizing the Pangolin Products Trade"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualizing the Pangolin Products Trade}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(citesdb)
+library(tidyverse)
+library(CoordinateCleaner)
+library(gganimate)
+```
+
+```{r}
+pangolin_shipments <- cites_shipments() %>%
+  filter(Order == "Pholidota", Purpose %in% c(NA_character_, "T")) %>%
+  select(-Purpose, -Import.permit.RandomID, -Export.permit.RandomID, -Origin.permit.RandomID, -Class, -Order, -Family, -Genus) %>% 
+  collect()
+cites_disconnect()
+```
+```{r}
+cref <- CoordinateCleaner::countryref %>% 
+  filter(type == "country") %>% 
+  distinct(iso2, .keep_all = TRUE) %>% 
+  select(iso2, centroid.lon, centroid.lat)
+
+pangolin_shipments <- pangolin_shipments %>% 
+  mutate(start = coalesce(Origin, Exporter)) %>% 
+  left_join(cref, by = c("start" = "iso2")) %>% 
+  rename(start.lon = centroid.lon, start.lat = centroid.lat) %>% 
+  left_join(cref, by = c("Importer" = "iso2")) %>% 
+  rename(end.lon = centroid.lon, end.lat = centroid.lat) %>% 
+  filter(Importer != start) %>% 
+  filter(!is.na(start.lon), !is.na(end.lon), !is.na(start.lat), !is.na(end.lat)) %>% 
+  mutate(id = seq_len(n()))
+```
+
+http://www.minchunzhou.com/travelhistory.html
+https://weiminwang.blog/2015/06/24/use-r-to-plot-flight-routes-on-a-fancy-world-background/
+https://stackoverflow.com/questions/52510967/create-a-flyover-map-animation-using-ggmap-and-gganimate
+
+
+
+```{r}
+library(geosphere) #use gcIntermediate to make points? Center map on SE Asia?
+# color countries by CITES membership
+
+library(sf)
+library(rnaturalearth)
+
+# natural earth data
+countries <- ne_countries(returnclass = "sf") %>% 
+  st_transform(crs = "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>% 
+  st_geometry()
+ggplot() +
+  geom_sf(data = countries)
+
+```
+
+```{r}
+pg <- pangolin_shipments %>% 
+  gather("type", "coord", start.lat, start.lon, end.lat, end.lon) %>% 
+  separate(type, into =  c("type", "axis")) %>% 
+  spread(axis, coord) %>% 
+  arrange(id, Year) %>% 
+  group_by(Year) %>% 
+  mutate(time = seq(0, 1, length.out = n() + 1)[-1])
+  
+
+gga <- ggplot(data = filter(pg, Year == 1979), aes(x = lon, y = lat, group = id, col = Term)) +
+    geom_point() +
+    shadow_wake(wake_length = 0.1, falloff = "linear", size = NULL) +
+    transition_time(time)
+```
+```{r}
+anim <- gga %>% animate(detail = 25, type = "cairo", fps = 30, duration = 10, renderer = av_renderer("pangolin_trade.mp4"), width = 1280, height = 720)
+anim
+anim_save("out.gif", anim)
+```
+
