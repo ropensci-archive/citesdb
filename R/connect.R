@@ -44,7 +44,7 @@ cites_db <- function(dbdir = cites_path()) {
     error = function(e) {
       if (grepl("Database lock", e)) {
         stop(paste(
-          "Local taxadb database is locked by another R session.\n",
+          "Local citesdb database is locked by another R session.\n",
           "Try closing or running cites_disconect() in that session."
         ),
         call. = FALSE

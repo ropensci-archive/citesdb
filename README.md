@@ -13,7 +13,7 @@ MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/
 has not yet been a stable, usable release suitable for the
 public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
-**citesdb** is a package to conveniently analyze the full CITES
+**citesdb** is an R package to conveniently analyze the full CITES
 shipment-level wildlife trade database, available at
 <https://trade.cites.org/>. This data consists of over 20 million
 records of reported shipments of wildlife and wildlife products subject

@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-**citesdb** is a package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife
 products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 
 ## Installation
