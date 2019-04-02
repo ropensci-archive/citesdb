@@ -6,19 +6,24 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
+  
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+collapse = TRUE,
+comment = "#>"
 )
 ```
-
+  
 ```{r setup}
 library(citesdb)
 library(tidyverse)
 library(CoordinateCleaner)
+library(ggplot2)
 library(gganimate)
+library(sf)
+library(rnaturalearth)
+library(png)
+library(grid)
 ```
 
 ```{r}
@@ -52,39 +57,68 @@ https://stackoverflow.com/questions/52510967/create-a-flyover-map-animation-usin
 
 
 ```{r}
-library(geosphere) #use gcIntermediate to make points? Center map on SE Asia?
-# color countries by CITES membership
-
-library(sf)
-library(rnaturalearth)
-
-# natural earth data
-countries <- ne_countries(returnclass = "sf") %>% 
-  st_transform(crs = "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>% 
-  st_geometry()
-ggplot() +
-  geom_sf(data = countries)
-
-```
-
-```{r}
 pg <- pangolin_shipments %>% 
   gather("type", "coord", start.lat, start.lon, end.lat, end.lon) %>% 
   separate(type, into =  c("type", "axis")) %>% 
   spread(axis, coord) %>% 
   arrange(id, Year) %>% 
   group_by(Year) %>% 
-  mutate(time = seq(0, 1, length.out = n() + 1)[-1])
-  
+  mutate(time = seq(0, 1, length.out = n() + 1)[-1]) %>% 
+  ungroup() %>% 
+  mutate(time = min(Year) + time)
 
-gga <- ggplot(data = filter(pg, Year == 1979), aes(x = lon, y = lat, group = id, col = Term)) +
-    geom_point() +
-    shadow_wake(wake_length = 0.1, falloff = "linear", size = NULL) +
-    transition_time(time)
+pt <- pg %>% 
+  st_as_sf(coords = c("lon", "lat")) %>% 
+  sf::st_set_crs(4326) %>% 
+  st_transform(crs = "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>% 
+  as_tibble() %>% 
+  mutate(x = st_coordinates(geometry)[,1], y = st_coordinates(geometry)[,2])
+
+
+countries <- ne_countries(returnclass = "sf") %>% 
+  filter(name != "Antarctica") %>% 
+  st_transform(crs = "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>% 
+  st_geometry()
+
+left_join(countries, cites_parties(), by = "")
 ```
+
 ```{r}
-anim <- gga %>% animate(detail = 25, type = "cairo", fps = 30, duration = 10, renderer = av_renderer("pangolin_trade.mp4"), width = 1280, height = 720)
-anim
-anim_save("out.gif", anim)
+img <- readPNG(here::here("vignettes", "EHA_Logo_369C.png"))
+g <- rasterGrob(img, interpolate = FALSE)
+
+gga <- ggplot(data = pt) +
+  geom_sf(data = countries, color = "#FFFFFF", fill = NA) +
+  geom_point(data = filter(pt, Year <= 1982), aes(x = x, y = y, group = id, col = Term), size = 2, inherit.aes = FALSE) +
+  scale_x_continuous(limits = c(-14000000, 18000000), expand = c(0,0)) +
+  scale_y_continuous(limits = c(-8500000, 9200000), expand = c(0,0)) +
+  coord_cartesian(clip = 'off') +
+  annotation_custom(g, xmin = 8500000, xmax = 17500000, ymin = -8300000 , ymax = -5310000) +
+  shadow_wake(wake_length = 0.1, falloff = "linear", size = NULL) +
+  transition_time(time) +
+  #  labs(title = "Year") +
+  labs(subtitle = "Year: {round(frame_time, 0)}") +
+  theme(
+    text = element_text(color = "#FFFFFF", family = "Avenir"),
+    title = element_text(size = 28),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    axis.line = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_line(color = "#00505C"),
+    panel.background = element_rect(fill = "#00505C", color = "#00505C"),
+    plot.background = element_rect(fill = "#00505C", color = "#00505C"),
+    legend.position = "none", #c(0.85, 0.85),
+    legend.background = element_rect(fill = "#00505C", color = "#00505C"),
+    plot.margin = margin(t = 0.5, r = 0.2, b = 0.2, l = 0, unit = "in"),
+)
+
+
+png("static.png", width = 1280, height = 720, bg = "#00505C")
+plot(gga)
+dev.off()
+
+anim <- gga %>% animate(detail = 1, type = "cairo", fps = 10, duration = 10, renderer = av_renderer("pangolin_trade.mp4"), width = 1280, height = 720)
+
 ```
 
