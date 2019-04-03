@@ -36,8 +36,7 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
 
-**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife
-products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 
 
 ## Installation
@@ -51,7 +50,7 @@ source("https://install-github.me/ecohealthalliance/citesdb")
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 
-options(width=120)
+options(width = 120)
 knitr::opts_chunk$set(cache = TRUE)
 citesdb::cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
@@ -60,7 +59,6 @@ MonetDBLite::monetdblite_shutdown()
 
 ## Usage
 
-
 ### Getting the data
 
 When you first load the package you will see a message like this:
@@ -68,20 +66,11 @@ When you first load the package you will see a message like this:
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
 
-Not to worry, just do as it says and run `cites_db_download()`. This will
-fetch the most recent database from online, an approximately 158 MB download.
-It will expand to over 1 GB in the local database. During
-the download and database building up to 3.5 GB of disk space may be used temporarily.
-
+Not to worry, just do as it says and run `cites_db_download()`. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.
 
 ### Using the database
 
-Once you fetch the data you can connect to the database with the `cites_db()`
-command. You can use the
-`cites_shipments()` command to load a remote `tibble` that is backed by the
-database but not loaded into R. You can use this
-to analyze CITES data without ever loading it into memory, then gather your
-results with `collect()`. For example:
+Once you fetch the data you can connect to the database with the `cites_db()` command. You can use the `cites_shipments()` command to load a remote `tibble` that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the `dplyr` function `collect()`. For example:
 
 ```{r getdata, include = FALSE}
 
@@ -97,39 +86,29 @@ start <- Sys.time()
 
 cites_shipments() %>%
   group_by(Year) %>%
-  summarize(number = n()) %>%
+  summarize(n_records = n()) %>%
   arrange(desc(Year)) %>%
   collect()
 
 stop <- Sys.time()
 ```
 
-(_Note that running `collect()` on all of `cites_shipments()` will load a >3GB data frame into memory!_)
+(_Note that running `collect()` on all of `cites_shipments()` will load a >3 GB data frame into memory!_)
 
-The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making such
-analyses quite snappy even on such large data using normal desktops and laptops. Here's the
-timing of the above query, which processes over 20 million records:
+The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
 
 ```{r}
 
 stop - start
 ```
 
-If you are using a recent version of RStudio interactively, loading the CITES package also brings
-up a browsable pane in the "Connections" tab that lets you explore and preview
-the database, as well as interact with it directly via SQL commands.
+If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the "Connections" tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.
 
-If you don't need any of the bells and whistles of this package, you can download
-the raw data as a single compressed TSV from the [releases page](https://github.com/ecohealthalliance/citesdb/releases),
-or as a `.zip` file of many CSV files from original source at <https://trade.cites.org/>.
-
+If you don't need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the [releases page](https://github.com/ecohealthalliance/citesdb/releases), or as a `.zip` file of many CSV files from original source at <https://trade.cites.org/>.
 
 ### Metadata
 
-The database also contains tables of field metadata, codes used, and CITES countries. This information
-comes from ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
-on the CITES website. Convenience functions `cites_metadata()`, `cites_codes()`, and `cites_parties()`
-access this information:
+The package database also contains tables of field metadata, codes used, and CITES countries. This information comes from ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf), on the CITES website. Convenience functions `cites_metadata()`, `cites_codes()`, and `cites_parties()` access this information:
 
 ```{r}
 
@@ -140,57 +119,18 @@ head(cites_codes())
 head(cites_parties())
 ```
 
-More information on the release of shipment-level data can be found in the
-`?guidance` help file.
-
-
-### Basic analyses
-
-```{r message = FALSE, warning = FALSE}
-
-library(ggplot2)
-library(cowplot)
-
-breaks <- seq(from = 1975, to = 2020, by = 5)
-
-plot1 <- cites_shipments() %>%
-  group_by(Year) %>%
-  summarize(n_records = n()) %>%
-  mutate(log10_n_records = log10(n_records)) %>%
-  ggplot(aes(x = Year, y = n_records)) +
-  geom_point() +
-  geom_line(linetype = "dashed", size = 0.2) +
-  ylab("Number of Records") +
-  theme_minimal() +
-  scale_x_continuous(breaks = breaks)
-
-plot2 <- cites_shipments() %>%
-  group_by(Year) %>%
-  summarize(n_records = n()) %>%
-  mutate(log10_n_records = log10(n_records)) %>%
-  ggplot(aes(x = Year, y = log10_n_records)) +
-  geom_point() +
-  geom_line(linetype = "dashed", size = 0.2) +
-  ylab("log10(Number of Records)") +
-  ylim(1.5, 6.5) +
-  theme_minimal() +
-  scale_x_continuous(breaks = breaks)
-
-plot_grid(plot1, plot2, nrow = 2)
-```
-
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 
-cites_disconnect()
+citesdb::cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
+
+More information on the release of shipment-level CITES data can be found in the `?guidance` help file.
 
 
 ## Related work
 
-The [**rcites**](https://github.com/ropensci/rcites) package provides
-access to the Speciesplus/CITES Checklist API, which includes metadata about
-species and their protected status through time.
+The [**rcites**](https://github.com/ropensci/rcites) package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time.
 
 
 ## Citation
@@ -205,7 +145,7 @@ print(citation("citesdb"), style = "textVersion")
 
 ## Contributing
 
-Want have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
+Have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 

@@ -50,7 +50,8 @@ Once you fetch the data you can connect to the database with the
 `cites_db()` command. You can use the `cites_shipments()` command to
 load a remote `tibble` that is backed by the database but not loaded
 into R. You can use this to analyze CITES data without ever loading it
-into memory, then gather your results with `collect()`. For example:
+into memory, then gather your results with the `dplyr` function
+`collect()`. For example:
 
 ``` r
 
@@ -83,7 +84,7 @@ stop <- Sys.time()
 ```
 
 (*Note that running `collect()` on all of `cites_shipments()` will load
-a \>3GB data frame into memory\!*)
+a \>3 GB data frame into memory\!*)
 
 The back-end database, [MonetDB](https://monetdb.org), is very fast and
 powerful, making such analyses quite snappy even on such large data
@@ -102,15 +103,15 @@ that lets you explore and preview the database, as well as interact with
 it directly via SQL commands.
 
 If you don’t need any of the bells and whistles of this package, you can
-download the raw data as a single compressed TSV from the [releases
+download the raw data as a single compressed TSV file from the [releases
 page](https://github.com/ecohealthalliance/citesdb/releases), or as a
 `.zip` file of many CSV files from original source at
 <https://trade.cites.org/>.
 
 ### Metadata
 
-The database also contains tables of field metadata, codes used, and
-CITES countries. This information comes from [“A guide to using the
+The package database also contains tables of field metadata, codes used,
+and CITES countries. This information comes from [“A guide to using the
 CITES Trade
 Database”](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
 on the CITES website. Convenience functions `cites_metadata()`,
@@ -152,45 +153,8 @@ head(cites_parties())
 #> 6 American Samoa AS    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
 ```
 
-More information on the release of shipment-level data can be found in
-the `?guidance` help file.
-
-### Basic analyses
-
-``` r
-
-library(ggplot2)
-library(cowplot)
-
-breaks <- seq(from = 1975, to = 2020, by = 5)
-
-plot1 <- cites_shipments() %>%
-  group_by(Year) %>%
-  summarize(n_records = n()) %>%
-  mutate(log10_n_records = log10(n_records)) %>%
-  ggplot(aes(x = Year, y = n_records)) +
-  geom_point() +
-  geom_line(linetype = "dashed", size = 0.2) +
-  ylab("Number of Records") +
-  theme_minimal() +
-  scale_x_continuous(breaks = breaks)
-
-plot2 <- cites_shipments() %>%
-  group_by(Year) %>%
-  summarize(n_records = n()) %>%
-  mutate(log10_n_records = log10(n_records)) %>%
-  ggplot(aes(x = Year, y = log10_n_records)) +
-  geom_point() +
-  geom_line(linetype = "dashed", size = 0.2) +
-  ylab("log10(Number of Records)") +
-  ylim(1.5, 6.5) +
-  theme_minimal() +
-  scale_x_continuous(breaks = breaks)
-
-plot_grid(plot1, plot2, nrow = 2)
-```
-
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+More information on the release of shipment-level CITES data can be
+found in the `?guidance` help file.
 
 ## Related work
 
@@ -213,8 +177,8 @@ Cambridge, UK. Available at: <https://trade.cites.org>.
 
 ## Contributing
 
-Want have feedback or want to contribute? Great\! Please take a look at
-the [contributing
+Have feedback or want to contribute? Great\! Please take a look at the
+[contributing
 guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md)
 before filing an issue or pull request.
 
