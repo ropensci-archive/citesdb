@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A high-performance database of shipment-level CITES trade data">
-<meta property="og:description" content="Provides convenient access to &gt;40 years and &gt;20 million records of
+<meta property="og:description" content="Provides convenient access to over 40 years and 20 million records of
     endangered wildlife trade data from the Convention on International Trade
     in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
     out-of memory 'MonetDB' database for bulk analysis.">
@@ -146,7 +146,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.5190532 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.5572174 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
