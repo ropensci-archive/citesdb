@@ -1,11 +1,8 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
-  "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on  International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
+  "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
   "name": "citesdb: A high-performance database of shipment-level CITES trade data",
   "codeRepository": "https://github.com/ecohealthalliance/citesdb",
   "relatedLink": "https://www.cites.org/",
@@ -160,6 +157,30 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=here"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rcites",
+      "name": "rcites",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rcites"
     }
   ],
   "softwareRequirements": [
@@ -263,35 +284,14 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=dbplyr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyr",
-      "name": "tidyr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyr"
     }
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "164.58KB",
-  "contIntegration": [
-    "https://circleci.com/gh/ecohealthalliance/citesdb",
-    "https://codecov.io/gh/ecohealthalliance/citesdb"
-  ],
+  "fileSize": "1192.673KB",
+  "contIntegration": ["https://circleci.com/gh/ecohealthalliance/citesdb", "https://codecov.io/gh/ecohealthalliance/citesdb"],
   "developmentStatus": "http://www.repostatus.org/#wip",
-  "keywords": [
-    "r",
-    "rstats",
-    "r-package",
-    "wildlife",
-    "dataset"
-  ],
+  "keywords": ["r", "rstats", "r-package", "wildlife", "dataset"],
   "citation": [
     {
       "@type": "CreativeWork",
@@ -309,8 +309,11 @@
         }
       ],
       "name": "citesdb: A high-performance database of shipment-level CITES trade data",
+      "identifier": "10.5281/zenodo.2630836",
       "url": "https://github.com/ecohealthalliance/citesdb",
-      "description": "v0.1.0"
+      "description": "v0.1.0",
+      "@id": "https://doi.org/10.5281/zenodo.2630836",
+      "sameAs": "https://doi.org/10.5281/zenodo.2630836"
     },
     {
       "@type": "CreativeWork",

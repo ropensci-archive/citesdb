@@ -30,6 +30,7 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 ```
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg){data-external="1"}](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg){data-external="1"}](https://doi.org/10.5281/zenodo.2630836)
 [![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
@@ -92,7 +93,6 @@ stop <- Sys.time()
 The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
 
 ```{r}
-
 stop - start
 ```
 
