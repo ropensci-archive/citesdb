@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 6,
+  fig.width = 6.5,
   fig.align = "center"
 )
 ```
@@ -115,33 +115,66 @@ head(cites_parties())
 
 More information on the release of shipment-level data can be found in the `?guidance` help file.
 
-### Incorporating species-level metadata
+### Accessing species-level metadata using the `rcites` package
 
-The [**rcites**](https://github.com/ropensci/rcites) package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To access the functionality of this package, users will first need to  [sign up for an API account](https://api.speciesplus.net/users/sign_up) in order to generate an access token. This token can then be stored in a user's R environment using `rcites::set_token()`.
+Suppose we were interested in CITES data on sharks from the order Lamniformes. We might begin an analysis by visualizing shipments of these organisms and their derived products over time:
 
 ```{r}
 cites_shipments() %>%
-  filter(Taxon == "Gorilla gorilla",
-         Term %in% c("live", "specimens")) %>%
-  group_by(Year, Term) %>%
+  filter(Order == "Lamniformes") %>%
+  group_by(Year, Taxon) %>%
   summarize(n_records = n()) %>%
-  ggplot(aes(x = Year, y = n_records, color = Term)) +
+  ggplot(aes(x = Year, y = n_records, color = Taxon)) +
   geom_point() +
   geom_line(linetype = "dashed", size = 0.2) +
   ylab("Number of Records") +
   theme_minimal() +
-  scale_x_continuous(breaks = breaks)
+  scale_x_continuous(breaks = breaks, limits = c(1990, max(breaks)))
 ```
+
+What accounts for the temporal differences in the number of CITES records we observe? Why are there no data prior to 2001? It would be helpful to know more about the history of these particular species within CITES.
+
+Fortunately, the [**rcites**](https://github.com/ropensci/rcites) package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to [sign up for a Speciesplus API account](https://api.speciesplus.net/users/sign_up) in order to generate a personal access token. This token can then be set for the current R session using `rcites::set_token()` or can be stored permanently if written to the user's `.Renviron` file (the approach taken in this tutorial). See [here](https://ropensci.github.io/rcites/articles/get_started.html) for more information on use of the API access tokens.
+
+As an initial step in `rcites` workflows, it will typically be most useful to call `spp_taxonconcept()` on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (*Carcharodon carcharias*), as a query taxon, we can see that this function returns a variety of information: 
 
 ```{r}
 library(rcites)
 
-gorilla_id <- spp_taxonconcept("Gorilla gorilla")$general$id
-
-spp_distributions(gorilla_id)$distributions
-
-spp_cites_legislation(gorilla_id)$cites_listings
+spp_taxonconcept(query_taxon = "Carcharodon carcharias")$general$id
 ```
+
+Importantly, we can collect the ID for our taxon of interest from this output and store it as an object for ease of reference:
+
+```{r}
+great_white_id <- spp_taxonconcept("Carcharodon carcharias")$general$id
+```
+
+Using our stored ID variable, we can query other `rcites` functions like `spp_cites_legislation()`, which returns the CITES listing and reservation status for the query taxon. Note that [reservations](https://www.cites.org/eng/app/reserve_intro.php) are essentially exemptions declared by particular CITES Parties in reference to specific taxa.
+
+```{r}
+spp_cites_legislation(great_white_id)$cites_listings
+```
+
+So this function query reveals that the great white is listed under CITES Appendix II (as of 12 January 2005) and that three CITES Parties have active reservations for this species.
+
+To reveal the full listing and reservation history, rather than just current information, we use the `scope = "all"` argument:
+
+```{r}
+spp_cites_legislation(great_white_id, scope = "all")$cites_listings
+```
+
+Here, we see that the species was in fact listed under CITES Appendix III as early as 29 October 2001. This may account for the CITES trade records for this species that date prior to its uplisting to Appendix II, a status which affords more stringent protection and monitoring. 
+
+In general, the historical listing information provides critical context for CITES data interpretation. In this case, for instance, it is clear that the lack of CITES data for great white sharks prior to the year 2002 should not be taken as an indication of a lack of trade in this species during that time frame but rather a lack of intergovernmental oversight and data collection.
+
+`rcites` also offers functions that return other useful metadata such as species distribution information:
+
+```{r}
+spp_distributions(great_white_id)$distributions
+```
+
+More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://ropensci.github.io/rcites/index.html).
 
 
 ## Pitfalls
