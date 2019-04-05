@@ -221,7 +221,7 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <div id="direct-database-connection" class="section level2">
 <h2 class="hasAnchor">
 <a href="#direct-database-connection" class="anchor"></a>Direct Database Connection</h2>
-<p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the <code><a href="../reference/citesdb-package.html">citesdb()</a></code> command:</p>
+<p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the <code><a href="../reference/cites_db.html">cites_db()</a></code> command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cites_db.html">cites_db</a></span>()
 DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbListTables">dbListTables</a></span>(con)
 <span class="co">#&gt; [1] "cites_codes"     "cites_metadata"  "cites_parties"   "cites_shipments" "cites_status"</span></code></pre></div>
