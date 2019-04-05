@@ -1,0 +1,25 @@
+{
+  "title": "citesdb",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [{
+    "name": "Ross, Noam",
+    "affiliation": "EcoHealth Alliance, New York, NY, USA",
+    "orcid": "0000-0002-2136-0000"
+  },{
+    "name": "Eskew, Evan A.",
+    "affiliation": "EcoHealth Alliance, New York, NY, USA",
+    "orcid": "0000-0002-1153-5356"
+  }],
+  "description": "A high-performance database of shipment-level CITES trade data.",
+  "access_right": "open",
+  "related_identifiers": [{
+      "identifier": "https://trade.cites.org/",
+      "relation": "hasPart",
+      "scheme": "url"
+    }, {
+    "identifier": "http://github.com/ecohealthalliance/citesdb",
+    "relation": "isIdenticalTo",
+    "scheme": "url"
+  }]
+}
