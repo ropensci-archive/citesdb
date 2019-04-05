@@ -118,7 +118,7 @@ More information on the release of shipment-level data can be found in the `?gui
 
 ## Direct Database Connection 
 
-**citesdb** stores data in an on-disk [MonetDB](https://www.monetdb.org/) SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the `citesdb()` command:
+**citesdb** stores data in an on-disk [MonetDB](https://www.monetdb.org/) SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the `cites_db()` command:
 
 ```{r}
 con <- cites_db()
