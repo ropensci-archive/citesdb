@@ -98,13 +98,12 @@
 <a href="#citesdb" class="anchor"></a>citesdb</h1></div>
 <p>Authors: <em>Noam Ross and Evan A. Eskew</em></p>
 <p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" data-external="1"></a> <a href="https://circleci.com/gh/ecohealthalliance/citesdb"><img src="https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield" alt="CircleCI" data-external="1"></a> <a href="https://codecov.io/gh/ecohealthalliance/citesdb"><img src="https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg" alt="codecov" data-external="1"></a> <a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." data-external="1"></a></p>
-<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
+<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the <strong>citesdb</strong> package with this command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -121,8 +120,7 @@
 <h3 class="hasAnchor">
 <a href="#using-the-database" class="anchor"></a>Using the database</h3>
 <p>Once you fetch the data you can connect to the database with the <code><a href="reference/cites_db.html">cites_db()</a></code> command. You can use the <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> command to load a remote <code>tibble</code> that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
 
 start &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()
@@ -152,7 +150,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.6318102 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.6387286 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>

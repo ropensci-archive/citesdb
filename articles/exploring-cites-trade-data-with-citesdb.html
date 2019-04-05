@@ -96,7 +96,7 @@
 
     
     
-<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
+<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -220,20 +220,20 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 </div>
 <div id="direct-database-connection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#direct-database-connection" class="anchor"></a>Direct database connection</h2>
-<p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries, or for other reasons directly access the database connection, use the <code><a href="../reference/citesdb-package.html">citesdb()</a></code> command:</p>
+<a href="#direct-database-connection" class="anchor"></a>Direct Database Connection</h2>
+<p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the <code><a href="../reference/citesdb-package.html">citesdb()</a></code> command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cites_db.html">cites_db</a></span>()
 DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbListTables">dbListTables</a></span>(con)
 <span class="co">#&gt; [1] "cites_codes"     "cites_metadata"  "cites_parties"   "cites_shipments" "cites_status"</span></code></pre></div>
-<p>Note that MonetDB, as implemented by the <a href="https://github.com/MonetDB/MonetDBLite-R/">MonetDBLite</a> package, currently has a limitation of only one connection to the database at a time. If you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:</p>
+<p>Note that MonetDB, as implemented by the <a href="https://github.com/MonetDB/MonetDBLite-R/">MonetDBLite</a> package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:</p>
 <pre><code>Error: Local citesdb database is locked by another R session.
  Try closing or running cites_disconect() in that session.</code></pre>
 <p><code><a href="../reference/cites_disconnect.html">cites_disconnect()</a></code> shuts down the current connection, freeing up your other session to connect.</p>
-<p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database.</p>
+<p>If you are using a recent version of RStudio interactively, loading the <code>citesdb</code> package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database tables.</p>
 <div class="figure">
 <img src="figures/cites_pane.gif">
 </div>
-<p>Click on arrows to see the data types in each table, or the table icon to the right for a preview of the table. The <strong>SQL</strong> button (which appears in RStudio &gt;=1.2), open an SQL document to <a href="https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/">write and preview SQL queries directly</a>.</p>
+<p>Click on the arrows to see the data types in each table, or the table icon to the right for a preview of the table. The <strong>SQL</strong> button (which appears in RStudio &gt;=1.2) opens an SQL document to <a href="https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/">write and preview SQL queries directly</a>.</p>
 </div>
 <div id="cites-metadata-with-rcites" class="section level2">
 <h2 class="hasAnchor">
@@ -313,8 +313,8 @@ DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentatio
 </div>
 <div id="pitfalls-of-working-with-cites-trade-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pitfalls-of-working-with-cites-trade-data" class="anchor"></a>Pitfalls of working with CITES trade data</h2>
-<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working wit this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. <span class="citation">Harrington (<a href="#ref-Harrington_2015">2015</a>)</span>, <span class="citation">Berec, Vršecká, and Šetlíková (<a href="#ref-Berec_2018">2018</a>)</span>, <span class="citation">Robinson and Sinovas (<a href="#ref-Robinson_2018">2018</a>)</span>, all provide greater detail on challenges related to analyzing CITES trade data. Also note the shipment-level guidance provided by CITES, which can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
+<a href="#pitfalls-of-working-with-cites-trade-data" class="anchor"></a>Pitfalls of Working with CITES Trade Data</h2>
+<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. <span class="citation">Harrington (<a href="#ref-Harrington_2015">2015</a>)</span>, <span class="citation">Berec, Vršecká, and Šetlíková (<a href="#ref-Berec_2018">2018</a>)</span>, and <span class="citation">Robinson and Sinovas (<a href="#ref-Robinson_2018">2018</a>)</span> all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
 <p>As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -472,7 +472,7 @@ DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentatio
 </tr>
 </tbody>
 </table>
-<p>See that each pair of shipments is identical, except that the <code>Reporter.type</code>, indicating that the shipment was reported both from the US and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.</p>
+<p>See that each pair of shipments is identical except for <code>Reporter.type</code>, indicating that the shipment was reported both from the US and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.</p>
 <p>How to deal with repeat records? If you are aggregating records to calculate total shipments it is best to remove them, but not every record is recorded twice. This code filters to use only the importer’s records, should all fields other than <code>Reporter.type</code> and <code>Import.permit.RandomID</code> be the same:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -660,13 +660,13 @@ DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentatio
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs">
 <div id="ref-Berec_2018">
-<p>Berec, Michal, Lucie Vršecká, and Irena Šetlíková. 2018. “What Is the Reality of Wildlife Trade Volume? CITES Trade Database Limitations.” <em>Biological Conservation</em> 224 (August). Elsevier BV: 111–16. doi:<a href="https://doi.org/10.1016/j.biocon.2018.05.025">10.1016/j.biocon.2018.05.025</a>.</p>
+<p>Berec, Michal, Lucie Vršecká, and Irena Šetlíková. 2018. “What Is the Reality of Wildlife Trade Volume? CITES Trade Database Limitations.” <em>Biological Conservation</em> 224: 111–16. doi:<a href="https://doi.org/10.1016/j.biocon.2018.05.025">10.1016/j.biocon.2018.05.025</a>.</p>
 </div>
 <div id="ref-Harrington_2015">
-<p>Harrington, Lauren A. 2015. “International Commercial Trade in Live Carnivores and Primates 2006-2012: Response to Bush et Al. 2014.” <em>Conservation Biology</em> 29 (1). Wiley: 293–96. doi:<a href="https://doi.org/10.1111/cobi.12448">10.1111/cobi.12448</a>.</p>
+<p>Harrington, Lauren A. 2015. “International Commercial Trade in Live Carnivores and Primates 2006-2012: Response to Bush et Al. 2014.” <em>Conservation Biology</em> 29: 293–96. doi:<a href="https://doi.org/10.1111/cobi.12448">10.1111/cobi.12448</a>.</p>
 </div>
 <div id="ref-Robinson_2018">
-<p>Robinson, Janine E., and Pablo Sinovas. 2018. “Challenges of Analyzing the Global Trade in CITES-Listed Wildlife.” <em>Conservation Biology</em> 32 (5). Wiley: 1203–6. doi:<a href="https://doi.org/10.1111/cobi.13095">10.1111/cobi.13095</a>.</p>
+<p>Robinson, Janine E., and Pablo Sinovas. 2018. “Challenges of Analyzing the Global Trade in CITES-Listed Wildlife.” <em>Conservation Biology</em> 32: 1203–6. doi:<a href="https://doi.org/10.1111/cobi.13095">10.1111/cobi.13095</a>.</p>
 </div>
 </div>
 <p><a href="https://www.ecohealthalliance.org/"><img src="figures/eha-footer.png" alt="Created by EcoHealth Alliance"></a></p>
@@ -680,9 +680,9 @@ DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentatio
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#installation">Installation</a></li>
       <li><a href="#usage">Usage</a></li>
-      <li><a href="#direct-database-connection">Direct database connection</a></li>
+      <li><a href="#direct-database-connection">Direct Database Connection</a></li>
       <li><a href="#cites-metadata-with-rcites">CITES Metadata with <code>rcites</code></a></li>
-      <li><a href="#pitfalls-of-working-with-cites-trade-data">Pitfalls of working with CITES trade data</a></li>
+      <li><a href="#pitfalls-of-working-with-cites-trade-data">Pitfalls of Working with CITES Trade Data</a></li>
       <li><a href="#citation">Citation</a></li>
       <li><a href="#contributing">Contributing</a></li>
       <li><a href="#references">References</a></li>
