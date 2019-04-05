@@ -1,13 +1,17 @@
+
+
 library(httr)
 library(here)
 library(readr)
 library(fs)
 library(purrr)
 library(dplyr)
+
 GET(
   "https://trade.cites.org/cites_trade/download_db",
   write_disk(here("data-raw", "Trade_database.zip"), overwrite = TRUE)
 )
+
 unzip(here("data-raw", "Trade_database.zip"),
   overwrite = TRUE,
   exdir = here("data-raw"),
@@ -58,8 +62,8 @@ write_tsv(
 file_delete(
   dir_ls(here("data-raw"), regexp = "(zip|csv|docx)$")
 )
-# Release the compressed data
 
+# Release the compressed data
 datastorr::github_release_info(
   "ecohealthalliance/citesdb",
   read = read_tsv,

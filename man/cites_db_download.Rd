@@ -9,7 +9,7 @@ cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
 }
 \arguments{
 \item{tag}{What release tag of data to download. Defaults to the most recent.
-Releases are expected to come twice per year.  See all releases at
+Releases are expected to come twice per year. See all releases at
 \url{https://github.com/ecohealthalliance/citesdb/releases}.}
 
 \item{destdir}{Where to download the compressed file.}
@@ -20,8 +20,8 @@ Releases are expected to come twice per year.  See all releases at
 }
 \description{
 This command downloads the CITES shipments database and populates a local
-database.  The download is large (~158 MB), and the database will be over
-1 GB on disk.  During import over 3.5 GB of disk space may be used temporarily.
+database. The download is large (~158 MB), and the database will be over
+1 GB on disk. During import over 3.5 GB of disk space may be used temporarily.
 }
 \details{
 The database is stored by default under \code{\link[rappdirs:user_data_dir]{rappdirs::user_data_dir()}}, or its

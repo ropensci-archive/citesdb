@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 
-**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 
 
 ## Installation
@@ -115,37 +115,30 @@ head(cites_parties())
 
 More information on the release of shipment-level data can be found in the `?guidance` help file.
 
-## Direct database connection 
 
-**citesdb** stores data in an on-disk [MonetDB](https://www.monetdb.org/) SQL
-database.  If you want to use SQL commands for complex queries, or for other
-reasons directly access the database connection, use the `citesdb()` command:
+## Direct Database Connection 
+
+**citesdb** stores data in an on-disk [MonetDB](https://www.monetdb.org/) SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the `citesdb()` command:
 
 ```{r}
 con <- cites_db()
 DBI::dbListTables(con)
 ```
 
-Note that MonetDB, as implemented by the [MonetDBLite](https://github.com/MonetDB/MonetDBLite-R/) package, currently has a limitation of only one connection to the database at a time.
-If you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:
+Note that MonetDB, as implemented by the [MonetDBLite](https://github.com/MonetDB/MonetDBLite-R/) package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:
 
 ```
 Error: Local citesdb database is locked by another R session.
  Try closing or running cites_disconect() in that session.
 ```
 
-`cites_disconnect()` shuts down the current connection, freeing up your other
-session to connect.
+`cites_disconnect()` shuts down the current connection, freeing up your other session to connect.
 
-If you are using a recent version of RStudio interactively, loading the CITES
-package also brings up a browsable pane in the "Connections" tab that lets you
-explore and preview the database.
+If you are using a recent version of RStudio interactively, loading the `citesdb` package also brings up a browsable pane in the "Connections" tab that lets you explore and preview the database tables.
 
 ![](figures/cites_pane.gif)
 
-Click on arrows to see the data types in each table, or the table icon to the
-right for a preview of the table.  The **SQL** button (which appears in
-RStudio >=1.2), open an SQL document to [write and preview SQL queries directly](https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/).
+Click on the arrows to see the data types in each table, or the table icon to the right for a preview of the table. The **SQL** button (which appears in RStudio >=1.2) opens an SQL document to [write and preview SQL queries directly](https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/).
 
 
 ## CITES Metadata with `rcites`
@@ -210,9 +203,9 @@ spp_distributions(great_white_id)$distributions
 More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://ropensci.github.io/rcites/index.html).
 
 
-## Pitfalls of working with CITES trade data
+## Pitfalls of Working with CITES Trade Data
 
-The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working wit this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions.  @Harrington_2015, @Berec_2018, @Robinson_2018, all provide greater detail on challenges related to analyzing CITES trade data. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
+The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. @Harrington_2015, @Berec_2018, and @Robinson_2018 all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
 
 As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:
 
@@ -224,7 +217,7 @@ cites_shipments() %>%
   knitr::kable()
 ```
 
-See that each pair of shipments is identical, except that the `Reporter.type`, indicating that the shipment was reported both from the US and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.
+See that each pair of shipments is identical except for `Reporter.type`, indicating that the shipment was reported both from the US and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.
 
 How to deal with repeat records? If you are aggregating records to calculate total shipments it is best to remove them, but not every record is recorded twice. This code filters to use only the importer's records, should all fields other than `Reporter.type` and `Import.permit.RandomID` be the same:
 
@@ -245,6 +238,7 @@ citesdb::cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
 
+
 ## Citation
 
 If you use **citesdb** in a publication, please cite both the package and source data:
@@ -260,11 +254,9 @@ Have feedback or want to contribute? Great! Please take a look at the [contribut
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
+
 ## References
 
 <div id="refs"></div>
 
-
 [![Created by EcoHealth Alliance](figures/eha-footer.png)](https://www.ecohealthalliance.org/)
-
-

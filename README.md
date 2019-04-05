@@ -15,17 +15,16 @@ public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus
 
 **citesdb** is an R package to conveniently analyze the full CITES
 shipment-level wildlife trade database, available at
-<https://trade.cites.org/>. This data consists of over 20 million
-records of reported shipments of wildlife and wildlife products subject
-to oversight under the [Convention on International Trade in Endangered
-Species of Wild Fauna and Flora](https://www.cites.org).
+<https://trade.cites.org/>. This data consists of over 40 years and 20
+million records of reported shipments of wildlife and wildlife products
+subject to oversight under the [Convention on International Trade in
+Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 
 ## Installation
 
 Install the **citesdb** package with this command:
 
 ``` r
-
 source("https://install-github.me/ecohealthalliance/citesdb")
 ```
 
@@ -54,7 +53,6 @@ into memory, then gather your results with the `dplyr` function
 `collect()`. For example:
 
 ``` r
-
 library(citesdb)
 library(dplyr)
 
@@ -94,7 +92,7 @@ which processes over 20 million records:
 ``` r
 
 stop - start
-#> Time difference of 1.112194 secs
+#> Time difference of 1.065003 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -141,15 +139,15 @@ head(cites_codes())
 #> 6 Purpose M     Medical (including biomedical research)
 
 head(cites_parties())
-#> # A tibble: 6 x 5
-#>   country        code  former_code non_ISO_code date      
-#>   <chr>          <chr> <lgl>       <lgl>        <chr>     
-#> 1 Afghanistan    AF    FALSE       FALSE        1986-01-28
-#> 2 Africa         XF    FALSE       TRUE         <NA>      
-#> 3 Åland Islands  AX    FALSE       FALSE        <NA>      
-#> 4 Albania        AL    FALSE       FALSE        2003-09-25
-#> 5 Algeria        DZ    FALSE       FALSE        1984-02-21
-#> 6 American Samoa AS    FALSE       FALSE        <NA>
+#> # A tibble: 6 x 6
+#>   country        code  former_code non_ISO_code date       data_source                                                  
+#>   <chr>          <chr> <lgl>       <lgl>        <chr>      <chr>                                                        
+#> 1 Afghanistan    AF    FALSE       FALSE        1986-01-28 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 2 Africa         XF    FALSE       TRUE         <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 3 Åland Islands  AX    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 4 Albania        AL    FALSE       FALSE        2003-09-25 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 5 Algeria        DZ    FALSE       FALSE        1984-02-21 'A guide to using the CITES Trade Database', Version 8, Anne…
+#> 6 American Samoa AS    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
 ```
 
 More information on the release of shipment-level CITES data can be
