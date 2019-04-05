@@ -1,7 +1,7 @@
 Package: citesdb
 Version: 0.1.0
 Title: A high-performance database of shipment-level CITES trade data
-Description: Provides convenient access to >40 years and >20 million records of
+Description: Provides convenient access to over 40 years and 20 million records of
     endangered wildlife trade data from the Convention on International Trade
     in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
     out-of memory 'MonetDB' database for bulk analysis.
