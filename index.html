@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historical shipment-level 'CITES' trade data served via database • citesdb</title>
+<title>A high-performance database of shipment-level CITES trade data • citesdb</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Historical shipment-level 'CITES' trade data served via database">
-<meta property="og:description" content="Provides convenient access to 40 years and 20 million records of
-    endangered wildlife trade data from the Convention on  International Trade
+<script src="pkgdown.js"></script><meta property="og:title" content="A high-performance database of shipment-level CITES trade data">
+<meta property="og:description" content="Provides convenient access to &gt;40 years and &gt;20 million records of
+    endangered wildlife trade data from the Convention on International Trade
     in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
     out-of memory 'MonetDB' database for bulk analysis.">
 <meta name="twitter:card" content="summary">
@@ -90,14 +90,15 @@
 <div id="citesdb" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#citesdb" class="anchor"></a>citesdb</h1></div>
-<p>Authors: <em>Noam Ross and Evan Eskew</em></p>
+<p>Authors: <em>Noam Ross and Evan A. Eskew</em></p>
 <p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" data-external="1"></a> <a href="https://circleci.com/gh/ecohealthalliance/citesdb"><img src="https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield" alt="CircleCI" data-external="1"></a> <a href="https://codecov.io/gh/ecohealthalliance/citesdb"><img src="https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg" alt="codecov" data-external="1"></a> <a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." data-external="1"></a></p>
-<p><strong>citesdb</strong> is a package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
+<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the <strong>citesdb</strong> package with this command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -113,44 +114,48 @@
 <div id="using-the-database" class="section level3">
 <h3 class="hasAnchor">
 <a href="#using-the-database" class="anchor"></a>Using the database</h3>
-<p>Once you fetch the data you can connect to the database with the <code><a href="reference/cites_db.html">cites_db()</a></code> command. You can use the <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> command to load a remote <code>tibble</code> that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)
+<p>Once you fetch the data you can connect to the database with the <code><a href="reference/cites_db.html">cites_db()</a></code> command. You can use the <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> command to load a remote <code>tibble</code> that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
+
 start &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()
 
 <span class="kw"><a href="reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Year) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">number =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n_records =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(Year)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>()
 <span class="co">#&gt; # A tibble: 44 x 2</span>
-<span class="co">#&gt;     Year  number</span>
-<span class="co">#&gt;    &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  2018    1326</span>
-<span class="co">#&gt;  2  2017 1015719</span>
-<span class="co">#&gt;  3  2016 1262632</span>
-<span class="co">#&gt;  4  2015 1296532</span>
-<span class="co">#&gt;  5  2014 1109872</span>
-<span class="co">#&gt;  6  2013 1127363</span>
-<span class="co">#&gt;  7  2012 1096645</span>
-<span class="co">#&gt;  8  2011  950144</span>
-<span class="co">#&gt;  9  2010  894011</span>
-<span class="co">#&gt; 10  2009  908669</span>
+<span class="co">#&gt;     Year n_records</span>
+<span class="co">#&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  2018      1326</span>
+<span class="co">#&gt;  2  2017   1015719</span>
+<span class="co">#&gt;  3  2016   1262632</span>
+<span class="co">#&gt;  4  2015   1296532</span>
+<span class="co">#&gt;  5  2014   1109872</span>
+<span class="co">#&gt;  6  2013   1127363</span>
+<span class="co">#&gt;  7  2012   1096645</span>
+<span class="co">#&gt;  8  2011    950144</span>
+<span class="co">#&gt;  9  2010    894011</span>
+<span class="co">#&gt; 10  2009    908669</span>
 <span class="co">#&gt; # … with 34 more rows</span>
 
 stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()</code></pre></div>
-<p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3GB data frame into memory!</em>)</p>
+<p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3 GB data frame into memory!</em>)</p>
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stop <span class="op">-</span><span class="st"> </span>start
-<span class="co">#&gt; Time difference of 0.4836266 secs</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+stop <span class="op">-</span><span class="st"> </span>start
+<span class="co">#&gt; Time difference of 0.5190532 secs</span></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
-<p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
+<p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
 <div id="metadata" class="section level3">
 <h3 class="hasAnchor">
 <a href="#metadata" class="anchor"></a>Metadata</h3>
-<p>The database also contains tables of field metadata, codes used, and CITES countries. This information comes from <a href="https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf">“A guide to using the CITES Trade Database”</a>, on the CITES website. Convenience functions <code><a href="reference/cites_metadata.html">cites_metadata()</a></code>, <code><a href="reference/cites_metadata.html">cites_codes()</a></code>, and <code><a href="reference/cites_metadata.html">cites_parties()</a></code> access this information:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="reference/cites_metadata.html">cites_metadata</a></span>())
+<p>The package database also contains tables of field metadata, codes used, and CITES countries. This information comes from <a href="https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf">“A guide to using the CITES Trade Database”</a>, on the CITES website. Convenience functions <code><a href="reference/cites_metadata.html">cites_metadata()</a></code>, <code><a href="reference/cites_metadata.html">cites_codes()</a></code>, and <code><a href="reference/cites_metadata.html">cites_parties()</a></code> access this information:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="reference/cites_metadata.html">cites_metadata</a></span>())
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   variable description                                 </span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                       </span>
@@ -163,15 +168,26 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 
 <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="reference/cites_metadata.html">cites_codes</a></span>())
 <span class="co">#&gt; # A tibble: 6 x 3</span>
-<span class="co">#&gt;   field code  description  </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        </span>
-<span class="co">#&gt; 1 Term  BAL   Baleen       </span>
-<span class="co">#&gt; 2 Term  BAR   Bark         </span>
-<span class="co">#&gt; 3 Term  BEL   Belts        </span>
-<span class="co">#&gt; 4 Term  BOC   Bone carvings</span>
-<span class="co">#&gt; 5 Term  BOD   Bodies       </span>
-<span class="co">#&gt; 6 Term  BON   Bones</span></code></pre></div>
-<p>More information on the release of shipment-level data can be found in the <code><a href="reference/guidance.html">?guidance</a></code> help file.</p>
+<span class="co">#&gt;   field   code  description                                    </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;                                          </span>
+<span class="co">#&gt; 1 Purpose B     Breeding in captivity or artificial propagation</span>
+<span class="co">#&gt; 2 Purpose E     Educational                                    </span>
+<span class="co">#&gt; 3 Purpose G     Botanical garden                               </span>
+<span class="co">#&gt; 4 Purpose H     Hunting trophy                                 </span>
+<span class="co">#&gt; 5 Purpose L     Law enforcement / judicial / forensic          </span>
+<span class="co">#&gt; 6 Purpose M     Medical (including biomedical research)</span>
+
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="reference/cites_metadata.html">cites_parties</a></span>())
+<span class="co">#&gt; # A tibble: 6 x 6</span>
+<span class="co">#&gt;   country        code  former_code non_ISO_code date       data_source                                                  </span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt; &lt;lgl&gt;       &lt;lgl&gt;        &lt;chr&gt;      &lt;chr&gt;                                                        </span>
+<span class="co">#&gt; 1 Afghanistan    AF    FALSE       FALSE        1986-01-28 'A guide to using the CITES Trade Database', Version 8, Anne…</span>
+<span class="co">#&gt; 2 Africa         XF    FALSE       TRUE         &lt;NA&gt;       'A guide to using the CITES Trade Database', Version 8, Anne…</span>
+<span class="co">#&gt; 3 Åland Islands  AX    FALSE       FALSE        &lt;NA&gt;       'A guide to using the CITES Trade Database', Version 8, Anne…</span>
+<span class="co">#&gt; 4 Albania        AL    FALSE       FALSE        2003-09-25 'A guide to using the CITES Trade Database', Version 8, Anne…</span>
+<span class="co">#&gt; 5 Algeria        DZ    FALSE       FALSE        1984-02-21 'A guide to using the CITES Trade Database', Version 8, Anne…</span>
+<span class="co">#&gt; 6 American Samoa AS    FALSE       FALSE        &lt;NA&gt;       'A guide to using the CITES Trade Database', Version 8, Anne…</span></code></pre></div>
+<p>More information on the release of shipment-level CITES data can be found in the <code><a href="reference/guidance.html">?guidance</a></code> help file.</p>
 </div>
 </div>
 <div id="related-work" class="section level2">
@@ -183,13 +199,13 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <h2 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h2>
 <p>If you use <strong>citesdb</strong> in a publication, please cite both the package and source data:</p>
-<p>Ross, Noam and Evan Eskew. (2019). citesdb: Historical shipment-level ‘CITES’ trade data served via database. R package v0.1.0. EcoHealth Alliance: New York, NY. <a href="https://github.com/ecohealthalliance/citesdb" class="uri">https://github.com/ecohealthalliance/citesdb</a></p>
+<p>Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.1.0. EcoHealth Alliance: New York, NY. <a href="https://github.com/ecohealthalliance/citesdb" class="uri">https://github.com/ecohealthalliance/citesdb</a>.</p>
 <p>UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC, Cambridge, UK. Available at: <a href="https://trade.cites.org" class="uri">https://trade.cites.org</a>.</p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>Want have feedback or want to contribute? Great! Please take a look at the <a href="https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md">contributing guidelines</a> before filing an issue or pull request.</p>
+<p>Have feedback or want to contribute? Great! Please take a look at the <a href="https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md">contributing guidelines</a> before filing an issue or pull request.</p>
 <p>Please note that this project is released with a <a href="https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <p><a href="https://www.ecohealthalliance.org/"><img src="https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png" alt="Created by EcoHealth Alliance" data-external="1"></a></p>
 </div>
@@ -223,7 +239,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Noam Ross <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-2136-0000" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Evan Eskew <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1153-5356" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>Evan A. Eskew <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1153-5356" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -234,7 +250,7 @@ stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 
 
       <footer><div class="copyright">
-  <p>Developed by Noam Ross, Evan Eskew.</p>
+  <p>Developed by Noam Ross, Evan A. Eskew.</p>
 </div>
 
 <div class="pkgdown">
