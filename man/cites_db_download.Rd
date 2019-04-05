@@ -8,7 +8,9 @@ cites_db_download(tag = NULL, destdir = tempdir(), cleanup = TRUE,
   verbose = interactive())
 }
 \arguments{
-\item{tag}{What release tag of data to download. Defaults to the most recent.}
+\item{tag}{What release tag of data to download. Defaults to the most recent.
+Releases are expected to come twice per year.  See all releases at
+\url{https://github.com/ecohealthalliance/citesdb/releases}.}
 
 \item{destdir}{Where to download the compressed file.}
 

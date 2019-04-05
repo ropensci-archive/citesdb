@@ -8,6 +8,8 @@
 #' location can be set with the environment variable `CITES_DB_DIR`.
 #'
 #' @param tag What release tag of data to download. Defaults to the most recent.
+#'   Releases are expected to come twice per year.  See all releases at
+#'   <https://github.com/ecohealthalliance/citesdb/releases>.
 #' @param destdir Where to download the compressed file.
 #' @param cleanup Whether to delete the compressed file after loading into the database.
 #' @param verbose Whether to display messages and download progress
