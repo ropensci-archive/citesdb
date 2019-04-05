@@ -111,7 +111,6 @@ If you don't need any of the bells and whistles of this package, you can downloa
 The package database also contains tables of field metadata, codes used, and CITES countries. This information comes from ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf), on the CITES website. Convenience functions `cites_metadata()`, `cites_codes()`, and `cites_parties()` access this information:
 
 ```{r}
-
 head(cites_metadata())
 
 head(cites_codes())
@@ -149,4 +148,4 @@ Have feedback or want to contribute? Great! Please take a look at the [contribut
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png){data-external="1"}](https://www.ecohealthalliance.org/)
+[![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/eha-footer.png){data-external="1"}](https://www.ecohealthalliance.org/)
