@@ -178,7 +178,6 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks)</code></pre></div>
 <p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-4-2.png" width="624" style="display: block; margin: auto;"></p>
-<p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 </div>
 <div id="metadata" class="section level3">
 <h3 class="hasAnchor">
@@ -219,6 +218,23 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <p>More information on the release of shipment-level data can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
 </div>
 </div>
+<div id="direct-database-connection" class="section level2">
+<h2 class="hasAnchor">
+<a href="#direct-database-connection" class="anchor"></a>Direct database connection</h2>
+<p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries, or for other reasons directly access the database connection, use the <code><a href="../reference/citesdb-package.html">citesdb()</a></code> command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cites_db.html">cites_db</a></span>()
+DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbListTables">dbListTables</a></span>(con)
+<span class="co">#&gt; [1] "cites_codes"     "cites_metadata"  "cites_parties"   "cites_shipments" "cites_status"</span></code></pre></div>
+<p>Note that MonetDB, as implemented by the <a href="https://github.com/MonetDB/MonetDBLite-R/">MonetDBLite</a> package, currently has a limitation of only one connection to the database at a time. If you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:</p>
+<pre><code>Error: Local citesdb database is locked by another R session.
+ Try closing or running cites_disconect() in that session.</code></pre>
+<p><code><a href="../reference/cites_disconnect.html">cites_disconnect()</a></code> shuts down the current connection, freeing up your other session to connect.</p>
+<p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database.</p>
+<div class="figure">
+<img src="figures/cites_pane.png">
+</div>
+<p>Click on arrows to see the data types in each table, or the table icon to the right for a preview of the table. The <strong>SQL</strong> button (which appears in RStudio &gt;=1.2), open an SQL document to <a href="https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/">write and preview SQL queries directly</a>.</p>
+</div>
 <div id="cites-metadata-with-rcites" class="section level2">
 <h2 class="hasAnchor">
 <a href="#cites-metadata-with-rcites" class="anchor"></a>CITES Metadata with <code>rcites</code>
@@ -234,7 +250,7 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">ylab</a></span>(<span class="st">"Number of Records"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks, <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1990</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(breaks)))</code></pre></div>
-<p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-6-1.png" width="624" style="display: block; margin: auto;"></p>
+<p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-7-1.png" width="624" style="display: block; margin: auto;"></p>
 <p>What accounts for the temporal differences in the number of CITES records we observe? Why are there no data prior to 2001? It would be helpful to know more about the history of these particular species within CITES.</p>
 <p>Fortunately, the <a href="https://github.com/ropensci/rcites"><strong>rcites</strong></a> package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to <a href="https://api.speciesplus.net/users/sign_up">sign up for a Speciesplus API account</a> in order to generate a personal access token. This token can then be set for the current R session using <code><a href="https://www.rdocumentation.org/packages/rcites/topics/set_token">rcites::set_token()</a></code> or can be stored permanently if written to the user’s <code>.Renviron</code> file (the approach taken in this tutorial). See <a href="https://ropensci.github.io/rcites/articles/get_started.html">here</a> for more information on use of the API access tokens.</p>
 <p>As an initial step in <code>rcites</code> workflows, it will typically be most useful to call <code><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept()</a></code> on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (<em>Carcharodon carcharias</em>), as a query taxon, we can see that this function returns a variety of information:</p>
@@ -295,14 +311,11 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <span class="co">#&gt; # … with 86 more rows</span></code></pre></div>
 <p>More in-depth description of <code>rcites</code> and usage tutorials can be found via the package <a href="http://joss.theoj.org/papers/10.21105/joss.01091">publication</a> and <a href="https://ropensci.github.io/rcites/index.html">website</a>.</p>
 </div>
-<div id="pitfalls" class="section level2">
+<div id="pitfalls-of-working-with-cites-trade-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pitfalls" class="anchor"></a>Pitfalls</h2>
-<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with and interpreting this data.</p>
-<div id="repeated-records-of-the-same-shipment" class="section level3">
-<h3 class="hasAnchor">
-<a href="#repeated-records-of-the-same-shipment" class="anchor"></a>Repeated records of the same shipment</h3>
-<p>Single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Take, for example, this set of shipments of orchids from a US exporter to the Netherlands:</p>
+<a href="#pitfalls-of-working-with-cites-trade-data" class="anchor"></a>Pitfalls of working with CITES trade data</h2>
+<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working wit this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. <span class="citation">Harrington (<a href="#ref-Harrington_2015">2015</a>)</span>, <span class="citation">Berec, Vršecká, and Šetlíková (<a href="#ref-Berec_2018">2018</a>)</span>, <span class="citation">Robinson and Sinovas (<a href="#ref-Robinson_2018">2018</a>)</span>, all provide greater detail on challenges related to analyzing CITES trade data. Also note the shipment-level guidance provided by CITES, which can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
+<p>As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
@@ -629,6 +642,34 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 </tbody>
 </table>
 </div>
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
+<p>If you use <strong>citesdb</strong> in a publication, please cite both the package and source data:</p>
+<p>Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.1.0. EcoHealth Alliance: New York, NY. <a href="https://github.com/ecohealthalliance/citesdb" class="uri">https://github.com/ecohealthalliance/citesdb</a>.</p>
+<p>UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC, Cambridge, UK. Available at: <a href="https://trade.cites.org" class="uri">https://trade.cites.org</a>.</p>
+</div>
+<div id="contributing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#contributing" class="anchor"></a>Contributing</h2>
+<p>Have feedback or want to contribute? Great! Please take a look at the <a href="https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md">contributing guidelines</a> before filing an issue or pull request.</p>
+<p>Please note that this project is released with a <a href="https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<div id="refs">
+<div id="ref-Berec_2018">
+<p>Berec, Michal, Lucie Vršecká, and Irena Šetlíková. 2018. “What Is the Reality of Wildlife Trade Volume? CITES Trade Database Limitations.” <em>Biological Conservation</em> 224 (August). Elsevier BV: 111–16. doi:<a href="https://doi.org/10.1016/j.biocon.2018.05.025">10.1016/j.biocon.2018.05.025</a>.</p>
+</div>
+<div id="ref-Harrington_2015">
+<p>Harrington, Lauren A. 2015. “International Commercial Trade in Live Carnivores and Primates 2006-2012: Response to Bush et Al. 2014.” <em>Conservation Biology</em> 29 (1). Wiley: 293–96. doi:<a href="https://doi.org/10.1111/cobi.12448">10.1111/cobi.12448</a>.</p>
+</div>
+<div id="ref-Robinson_2018">
+<p>Robinson, Janine E., and Pablo Sinovas. 2018. “Challenges of Analyzing the Global Trade in CITES-Listed Wildlife.” <em>Conservation Biology</em> 32 (5). Wiley: 1203–6. doi:<a href="https://doi.org/10.1111/cobi.13095">10.1111/cobi.13095</a>.</p>
+</div>
+</div>
+<p><a href="https://www.ecohealthalliance.org/"><img src="figures/eha-footer.png" alt="Created by EcoHealth Alliance"></a></p>
 </div>
   </div>
 
@@ -639,8 +680,12 @@ breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#installation">Installation</a></li>
       <li><a href="#usage">Usage</a></li>
+      <li><a href="#direct-database-connection">Direct database connection</a></li>
       <li><a href="#cites-metadata-with-rcites">CITES Metadata with <code>rcites</code></a></li>
-      <li><a href="#pitfalls">Pitfalls</a></li>
+      <li><a href="#pitfalls-of-working-with-cites-trade-data">Pitfalls of working with CITES trade data</a></li>
+      <li><a href="#citation">Citation</a></li>
+      <li><a href="#contributing">Contributing</a></li>
+      <li><a href="#references">References</a></li>
       </ul>
 </div>
       </div>
