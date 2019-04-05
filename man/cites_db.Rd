@@ -7,14 +7,14 @@
 cites_db(dbdir = cites_path())
 }
 \arguments{
-\item{dbdir}{The location of the database on disk.  Defaults to
+\item{dbdir}{The location of the database on disk. Defaults to
 \code{citesdb} under \code{\link[rappdirs:user_data_dir]{rappdirs::user_data_dir()}}, or the environment variable \code{CITES_DB_DIR}.}
 }
 \value{
 A MonetDBLite DBI connection
 }
 \description{
-Returns a connection to the local CITES database.  This is a DBI-compliant
+Returns a connection to the local CITES database. This is a DBI-compliant
 \code{\link[MonetDBLite:MonetDBLite]{MonetDBLite::MonetDBLite()}} database connection.
 }
 \examples{

@@ -115,7 +115,8 @@ head(cites_parties())
 
 More information on the release of shipment-level data can be found in the `?guidance` help file.
 
-### Accessing species-level metadata using the `rcites` package
+
+## CITES Metadata with `rcites`
 
 Suppose we were interested in CITES data on sharks from the order Lamniformes. We might begin an analysis by visualizing shipments of these organisms and their derived products over time:
 

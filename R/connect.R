@@ -16,10 +16,10 @@ check_status <- function() {
 
 #' The local CITES database
 #'
-#' Returns a connection to the local CITES database.  This is a DBI-compliant
+#' Returns a connection to the local CITES database. This is a DBI-compliant
 #' [MonetDBLite::MonetDBLite()] database connection.
 #'
-#' @param dbdir The location of the database on disk.  Defaults to
+#' @param dbdir The location of the database on disk. Defaults to
 #' `citesdb` under [rappdirs::user_data_dir()], or the environment variable `CITES_DB_DIR`.
 #'
 #' @return A MonetDBLite DBI connection
@@ -61,7 +61,7 @@ cites_db <- function(dbdir = cites_path()) {
 }
 
 
-#' CITES Shipment Data
+#' CITES shipment data
 #'
 #' Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
 #' @return A dplyr remote tibble ([dplyr::tbl()])
@@ -77,18 +77,18 @@ cites_shipments <- function() {
   tbl(cites_db(), "cites_shipments")
 }
 
-#' Cites shipment metadata
+#' CITES shipment metadata
 #'
 #' @description
 #'
 #' The CITES database also includes tables of column-level metadata and
-#' meanings of codes in columns, as well as a listing of CITES parties.
-#' convenience functions access these tables. As they are small, the functions
-#' collect the into R session memory, rather than returning a remote table.
+#' meanings of codes in columns, as well as a listing of CITES Parties/country abbreviations.
+#' Convenience functions access these tables. As they are small, the functions
+#' collect the tables into R session memory, rather than returning a remote table.
 #'
 #' This information is drawn from
 #' ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
-#' from the CITES website. More information the the shipment-level data can be
+#' from the CITES website. More information on the shipment-level data can be
 #' found in the [guidance] help file.
 #'
 #' @return A tibble of metadata

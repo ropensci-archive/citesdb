@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect.R
 \name{cites_shipments}
 \alias{cites_shipments}
-\title{CITES Shipment Data}
+\title{CITES shipment data}
 \usage{
 cites_shipments()
 }

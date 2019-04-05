@@ -5,7 +5,7 @@
 \alias{metadata}
 \alias{cites_codes}
 \alias{cites_parties}
-\title{Cites shipment metadata}
+\title{CITES shipment metadata}
 \usage{
 cites_metadata()
 
@@ -18,13 +18,13 @@ A tibble of metadata
 }
 \description{
 The CITES database also includes tables of column-level metadata and
-meanings of codes in columns, as well as a listing of CITES parties.
-convenience functions access these tables. As they are small, the functions
-collect the into R session memory, rather than returning a remote table.
+meanings of codes in columns, as well as a listing of CITES Parties/country abbreviations.
+Convenience functions access these tables. As they are small, the functions
+collect the tables into R session memory, rather than returning a remote table.
 
 This information is drawn from
 \href{https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf}{"A guide to using the CITES Trade Database"},
-from the CITES website. More information the the shipment-level data can be
+from the CITES website. More information on the shipment-level data can be
 found in the \link{guidance} help file.
 }
 \examples{
