@@ -141,7 +141,7 @@ If you are using a recent version of RStudio interactively, loading the CITES
 package also brings up a browsable pane in the "Connections" tab that lets you
 explore and preview the database.
 
-![](figures/cites_pane.png)
+![](figures/cites_pane.gif)
 
 Click on arrows to see the data types in each table, or the table icon to the
 right for a preview of the table.  The **SQL** button (which appears in
