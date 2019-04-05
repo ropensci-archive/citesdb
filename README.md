@@ -62,22 +62,22 @@ start <- Sys.time()
 
 cites_shipments() %>%
   group_by(Year) %>%
-  summarize(number = n()) %>%
+  summarize(n_records = n()) %>%
   arrange(desc(Year)) %>%
   collect()
 #> # A tibble: 44 x 2
-#>     Year  number
-#>    <int>   <dbl>
-#>  1  2018    1326
-#>  2  2017 1015719
-#>  3  2016 1262632
-#>  4  2015 1296532
-#>  5  2014 1109872
-#>  6  2013 1127363
-#>  7  2012 1096645
-#>  8  2011  950144
-#>  9  2010  894011
-#> 10  2009  908669
+#>     Year n_records
+#>    <int>     <dbl>
+#>  1  2018      1326
+#>  2  2017   1015719
+#>  3  2016   1262632
+#>  4  2015   1296532
+#>  5  2014   1109872
+#>  6  2013   1127363
+#>  7  2012   1096645
+#>  8  2011    950144
+#>  9  2010    894011
+#> 10  2009    908669
 #> # … with 34 more rows
 
 stop <- Sys.time()
@@ -94,7 +94,7 @@ which processes over 20 million records:
 ``` r
 
 stop - start
-#> Time difference of 1.065003 secs
+#> Time difference of 1.112194 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -118,7 +118,6 @@ on the CITES website. Convenience functions `cites_metadata()`,
 `cites_codes()`, and `cites_parties()` access this information:
 
 ``` r
-
 head(cites_metadata())
 #> # A tibble: 6 x 2
 #>   variable description                                 
@@ -142,15 +141,15 @@ head(cites_codes())
 #> 6 Purpose M     Medical (including biomedical research)
 
 head(cites_parties())
-#> # A tibble: 6 x 6
-#>   country        code  former_code non_ISO_code date       data_source                                                  
-#>   <chr>          <chr> <lgl>       <lgl>        <chr>      <chr>                                                        
-#> 1 Afghanistan    AF    FALSE       FALSE        1986-01-28 'A guide to using the CITES Trade Database', Version 8, Anne…
-#> 2 Africa         XF    FALSE       TRUE         <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
-#> 3 Åland Islands  AX    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
-#> 4 Albania        AL    FALSE       FALSE        2003-09-25 'A guide to using the CITES Trade Database', Version 8, Anne…
-#> 5 Algeria        DZ    FALSE       FALSE        1984-02-21 'A guide to using the CITES Trade Database', Version 8, Anne…
-#> 6 American Samoa AS    FALSE       FALSE        <NA>       'A guide to using the CITES Trade Database', Version 8, Anne…
+#> # A tibble: 6 x 5
+#>   country        code  former_code non_ISO_code date      
+#>   <chr>          <chr> <lgl>       <lgl>        <chr>     
+#> 1 Afghanistan    AF    FALSE       FALSE        1986-01-28
+#> 2 Africa         XF    FALSE       TRUE         <NA>      
+#> 3 Åland Islands  AX    FALSE       FALSE        <NA>      
+#> 4 Albania        AL    FALSE       FALSE        2003-09-25
+#> 5 Algeria        DZ    FALSE       FALSE        1984-02-21
+#> 6 American Samoa AS    FALSE       FALSE        <NA>
 ```
 
 More information on the release of shipment-level CITES data can be
@@ -187,4 +186,4 @@ Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_O
 By participating in this project you agree to abide by its terms.
 
 [![Created by EcoHealth
-Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/man/figures/eha-footer.png)](https://www.ecohealthalliance.org/)
+Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/eha-footer.png)](https://www.ecohealthalliance.org/)
