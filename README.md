@@ -9,6 +9,7 @@ Authors: *Noam Ross and Evan A. Eskew*
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg)](https://doi.org/10.5281/zenodo.2630836)
 [![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield)](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
@@ -92,7 +93,7 @@ which processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 4.537867 secs
+#> Time difference of 0.6653202 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -167,7 +168,6 @@ and source data:
 Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
 of shipment-level CITES trade data. R package v0.1.0. EcoHealth
 Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>.
-<doi:10.5281/zenodo.2630836>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,
