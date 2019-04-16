@@ -93,7 +93,7 @@ which processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 0.6653202 secs
+#> Time difference of 1.099834 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -168,6 +168,7 @@ and source data:
 Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
 of shipment-level CITES trade data. R package v0.1.0. EcoHealth
 Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>.
+<doi:10.5281/zenodo.2630836>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,
