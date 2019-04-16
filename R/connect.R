@@ -102,7 +102,7 @@ cites_shipments <- function() {
 #'   cites_metadata()
 #'   cites_codes()
 #'   cites_parties()
-#'
+#' 
 #'   # For remote connections to these tables,
 #'   # access the database directly:
 #'   dplyr::tbl(cites_db(), "cites_metadata")

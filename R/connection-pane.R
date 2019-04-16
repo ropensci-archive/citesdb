@@ -26,8 +26,9 @@ sql_action <- function() {
 #' @export
 #'
 #' @examples
-#' if (!is.null(getOption("connectionObserver")))
+#' if (!is.null(getOption("connectionObserver"))) {
 #'   cites_pane()
+#' }
 cites_pane <- function() {
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
@@ -52,17 +53,21 @@ cites_pane <- function() {
         )
       },
       listColumns = function(table) {
-        res <- DBI::dbSendQuery(cites_db(),
-                                paste("SELECT * FROM", table, "LIMIT 1"))
+        res <- DBI::dbSendQuery(
+          cites_db(),
+          paste("SELECT * FROM", table, "LIMIT 1")
+        )
         on.exit(DBI::dbClearResult(res))
         data.frame(
           name = res@env$info$names, type = res@env$info$types,
           stringsAsFactors = FALSE
         )
       },
-      previewObject = function(rowLimit, table) {  #nolint
-        DBI::dbGetQuery(cites_db(),
-                        paste("SELECT * FROM", table, "LIMIT", rowLimit))
+      previewObject = function(rowLimit, table) { # nolint
+        DBI::dbGetQuery(
+          cites_db(),
+          paste("SELECT * FROM", table, "LIMIT", rowLimit)
+        )
       },
       actions = list(
         Status = list(

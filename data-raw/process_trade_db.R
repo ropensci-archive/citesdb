@@ -69,7 +69,7 @@ datastorr::github_release_info(
   read = read_tsv,
   filename = "cites_trade_db.tsv.bz2"
 ) %>%
-datastorr::github_release_create(
-  description = "Release of CITES shipment data (v2019.2)",
-  target = "master", ignore_dirty = TRUE
-)
+  datastorr::github_release_create(
+    description = "Release of CITES shipment data (v2019.2)",
+    target = "master", ignore_dirty = TRUE
+  )
