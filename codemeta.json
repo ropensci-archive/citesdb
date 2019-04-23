@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
   "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
@@ -12,10 +15,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.1",
+    "version": "3.5.3",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.1 (2018-07-02)",
+  "runtimePlatform": "R version 3.5.3 (2019-03-11)",
   "author": [
     {
       "@type": "Person",
@@ -187,14 +190,7 @@
     {
       "@type": "SoftwareApplication",
       "identifier": "MonetDBLite",
-      "name": "MonetDBLite",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=MonetDBLite"
+      "name": "MonetDBLite"
     },
     {
       "@type": "SoftwareApplication",
@@ -288,10 +284,19 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "1192.673KB",
-  "contIntegration": ["https://circleci.com/gh/ecohealthalliance/citesdb", "https://codecov.io/gh/ecohealthalliance/citesdb"],
+  "fileSize": "1192.716KB",
+  "contIntegration": [
+    "https://circleci.com/gh/ecohealthalliance/citesdb",
+    "https://codecov.io/gh/ecohealthalliance/citesdb"
+  ],
   "developmentStatus": "http://www.repostatus.org/#wip",
-  "keywords": ["r", "rstats", "r-package", "wildlife", "dataset"],
+  "keywords": [
+    "r",
+    "rstats",
+    "r-package",
+    "wildlife",
+    "dataset"
+  ],
   "citation": [
     {
       "@type": "CreativeWork",

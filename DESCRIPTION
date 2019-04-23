@@ -38,6 +38,8 @@ Suggests:
   ggplot2,
   rcites
 RoxygenNote: 6.1.1
+Remotes:
+  cran/MonetDBLite@0.6.0
 Roxygen: list(markdown = TRUE)
 Language: en-US
 VignetteBuilder: knitr
