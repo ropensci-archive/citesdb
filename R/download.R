@@ -42,7 +42,6 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
     dbRemoveTable(cites_db(), tblname)
   }
 
-
   dbCreateTable(cites_db(), tblname, fields = cites_field_types)
 
   suppressMessages(
@@ -105,7 +104,8 @@ make_status_table <- function(version) {
       DBI::dbGetQuery(cites_db(),
                       "SELECT COUNT(*) FROM cites_shipments;")[[1]],
       format = "d", big.mark = ","),
-    size_on_disk = format(sz, "auto")
+    size_on_disk = format(sz, "auto"),
+    location_on_disk = cites_path()
   )
 }
 
