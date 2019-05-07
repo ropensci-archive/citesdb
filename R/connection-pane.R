@@ -26,8 +26,7 @@ sql_action <- function() {
 #' @export
 #'
 #' @examples
-#' if (!is.null(getOption("connectionObserver")))
-#'   cites_pane()
+#' if (!is.null(getOption("connectionObserver"))) cites_pane()
 cites_pane <- function() {
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {

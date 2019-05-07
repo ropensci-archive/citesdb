@@ -11,6 +11,5 @@ This function launches the RStudio "Connection" pane to interactively
 explore the database.
 }
 \examples{
-if (!is.null(getOption("connectionObserver")))
-  cites_pane()
+if (!is.null(getOption("connectionObserver"))) cites_pane()
 }
