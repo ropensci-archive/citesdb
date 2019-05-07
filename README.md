@@ -27,7 +27,7 @@ Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 Install the **citesdb** package with this command:
 
 ``` r
-source("https://install-github.me/ecohealthalliance/citesdb")
+devtools::install_github("ecohealthalliance/citesdb")
 ```
 
 ## Usage

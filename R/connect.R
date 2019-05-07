@@ -8,7 +8,7 @@ cites_path <- function() {
   }
 }
 
-check_status <- function() {
+cites_check_status <- function() {
   if (!cites_status(FALSE)) {
     stop("Local CITES database empty or corrupt. Download with cites_db_download()") # nolint
   }
@@ -73,7 +73,7 @@ cites_db <- function(dbdir = cites_path()) {
 #' }
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
-  check_status()
+  cites_check_status()
   tbl(cites_db(), "cites_shipments")
 }
 
@@ -110,21 +110,21 @@ cites_shipments <- function() {
 #'   dplyr::tbl(cites_db(), "cites_parties")
 #' }
 cites_metadata <- function() {
-  check_status
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_metadata"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_codes <- function() {
-  check_status()
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_codes"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_parties <- function() {
-  check_status()
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_parties"))
 }
 
