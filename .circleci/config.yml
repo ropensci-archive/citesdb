@@ -129,11 +129,11 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      - build_devel:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
+#      - build_devel:
+#          filters:
+#            branches:
+#              ignore:
+#                - gh-pages
       - build_oldrel:
           filters:
             branches:
