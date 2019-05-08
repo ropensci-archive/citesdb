@@ -76,7 +76,7 @@ cites_db <- function(dbdir = cites_path()) {
 #'
 #' Returns a remote database table with all CITES shipment data.  This is the
 #' bulk of the data in the package and constitutes > 2 million records.  Loading
-#' the whole table into R via the [dplyr::colleect()] command will use over
+#' the whole table into R via the [dplyr::collect()] command will use over
 #' 3 GB of RAM, so you may want to pre-process data in the database, as in
 #' the examples below.
 #'
