@@ -27,7 +27,7 @@ Endangered Species of Wild Fauna and Flora](https://www.cites.org).
 Install the **citesdb** package with this command:
 
 ``` r
-devtools::install_github("ecohealthalliance/citesdb")
+remotes::install_github("ecohealthalliance/citesdb")
 ```
 
 ## Usage
@@ -93,7 +93,7 @@ which processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 1.099834 secs
+#> Time difference of 4.537867 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
