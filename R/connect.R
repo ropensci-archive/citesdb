@@ -18,7 +18,7 @@ cites_check_status <- function() {
 #'
 #' Returns a connection to the local CITES database. This is a DBI-compliant
 #' [MonetDBLite::MonetDBLite()] database connection. When using **dplyr**-based
-#' workflows, one typically acccesses tables with functions such as
+#' workflows, one typically accesses tables with functions such as
 #' [cites_shipments()], but this function lets one interact with the database
 #' directly via SQL.
 #'
@@ -31,10 +31,13 @@ cites_check_status <- function() {
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' \dontrun{
 #' library(DBI)
 #' dbListTables(cites_db())
 #' parties <- dbReadTable(cites_db, "cites_parties")
-#'
+#' }
+#' }
 cites_db <- function(dbdir = cites_path()) {
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
@@ -48,7 +51,7 @@ cites_db <- function(dbdir = cites_path()) {
   tryCatch(
     db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir),
     error = function(e) {
-      if (grepl("Database lock", e)) {
+      if (grepl("(Database lock|bad rolemask)", e)) {
         stop(paste(
           "Local citesdb database is locked by another R session.\n",
           "Try closing or running cites_disconect() in that session."
