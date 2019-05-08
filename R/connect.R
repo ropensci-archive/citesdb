@@ -142,7 +142,7 @@ cites_disconnect <- function() {
 cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
-    MonetDBLite::monetdblite_shutdown()
+    DBI::dbDisconnect(db)
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
