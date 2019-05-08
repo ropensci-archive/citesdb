@@ -35,7 +35,7 @@ cites_check_status <- function() {
 #' \dontrun{
 #' library(DBI)
 #' dbListTables(cites_db())
-#' parties <- dbReadTable(cites_db, "cites_parties")
+#' parties <- dbReadTable(cites_db(), "cites_parties")
 #' }
 #' }
 cites_db <- function(dbdir = cites_path()) {
