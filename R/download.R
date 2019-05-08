@@ -16,7 +16,8 @@
 #'
 #' @return NULL
 #' @export
-#' @importFrom DBI dbRemoveTable dbExistsTable dbCreateTable dbExecute dbWriteTable
+#' @importFrom DBI dbRemoveTable dbExistsTable dbCreateTable dbExecute
+#'   dbWriteTable dbListTables
 #' @importFrom R.utils gunzip
 #'
 #' @examples
@@ -37,11 +38,12 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   temp_tsv <- tempfile(fileext = ".tsv")
   gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
 
-  tblname <- "cites_shipments"
-  if (dbExistsTable(cites_db(), tblname)) {
-    dbRemoveTable(cites_db(), tblname)
+  for (tab in dbListTables(cites_db())) {
+    dbRemoveTable(cites_db(), tab)
   }
 
+  cites_disconnect()
+  tblname <- "cites_shipments"
   dbCreateTable(cites_db(), tblname, fields = cites_field_types)
 
   suppressMessages(
