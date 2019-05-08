@@ -31,12 +31,14 @@ cites_check_status <- function() {
 #' @export
 #'
 #' @examples
-#' \donttest{
-#' \dontrun{
-#' library(DBI)
-#' dbListTables(cites_db())
-#' parties <- dbReadTable(cites_db(), "cites_parties")
-#' }
+#' if (cites_status()) {
+#'   library(DBI)
+#'   dbListTables(cites_db())
+#'   parties <- dbReadTable(cites_db(), "cites_parties")
+#'   dbGetQuery(
+#'    cites_db(),
+#'    'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
+#'    )
 #' }
 cites_db <- function(dbdir = cites_path()) {
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
@@ -72,13 +74,33 @@ cites_db <- function(dbdir = cites_path()) {
 
 #' CITES shipment data
 #'
-#' Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
+#' Returns a remote database table with all CITES shipment data.  This is the
+#' bulk of the data in the package and constitutes > 2 million records.  Loading
+#' the whole table into R via the [dplyr::colleect()] command will use over
+#' 3 GB of RAM, so you may want to pre-process data in the database, as in
+#' the examples below.
+#'
 #' @return A dplyr remote tibble ([dplyr::tbl()])
 #' @export
 #'
 #' @examples
 #' if (cites_status()) {
-#'   cites_shipments()
+#'   library(dplyr)
+#'
+#'   # Examine number of records per year.
+#'   cites_shipments() %>%
+#'     group_by(Year) %>%
+#'     summarize(n_records = n()) %>%
+#'     arrange(desc(Year)) %>%
+#'     collect()
+#'
+#'   # See what Pangolin shipments went to what countries in 1990
+#'    cites_shipments() %>%
+#'      filter(Order == "Pholidota", Year == 1990) %>%
+#'      count(Year, Importer, Term) %>% collect() %>%
+#'      left_join(select(cites_parties(), country, code),
+#'                by = c("Importer"="code"))
+#'
 #' }
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
