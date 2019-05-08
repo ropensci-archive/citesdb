@@ -29,9 +29,22 @@ found in the \link{guidance} help file.
 }
 \examples{
 if (cites_status()) {
+  library(dplyr)
+
+  # Look at the field definitions for cites_shipments()
   cites_metadata()
-  cites_codes()
-  cites_parties()
+  # View the codes used for purpose of shipment
+  cites_codes() \%>\%
+   filter(field == "Purpose")
+
+  # See the most recent countries to join CITES
+  cites_parties() \%>\%
+    arrange(desc(date)) \%>\%
+    head(10)
+
+  # See countries or locations with non-standaard or outdated ISO codes
+  cites_parties() \%>\%
+    filter(former_code | non_ISO_code)
 
   # For remote connections to these tables,
   # access the database directly:
