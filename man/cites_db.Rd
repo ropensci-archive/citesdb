@@ -26,6 +26,10 @@ directly via SQL.
 library(DBI)
 dbListTables(cites_db())
 parties <- dbReadTable(cites_db(), "cites_parties")
+dbGetQuery(
+ cites_db(),
+ 'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
+ )
 }
 }
 }
