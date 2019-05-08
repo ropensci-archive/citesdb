@@ -31,9 +31,10 @@ found in the \link{guidance} help file.
 if (cites_status()) {
   library(dplyr)
 
-  # Look at the field definitions for cites_shipments()
+  # See the field definitions for cites_shipments()
   cites_metadata()
-  # View the codes used for purpose of shipment
+
+  # See the codes used for shipment purpose
   cites_codes() \%>\%
    filter(field == "Purpose")
 
@@ -46,8 +47,7 @@ if (cites_status()) {
   cites_parties() \%>\%
     filter(former_code | non_ISO_code)
 
-  # For remote connections to these tables,
-  # access the database directly:
+  # For remote connections to these tables, access the database directly:
   dplyr::tbl(cites_db(), "cites_metadata")
   dplyr::tbl(cites_db(), "cites_codes")
   dplyr::tbl(cites_db(), "cites_parties")

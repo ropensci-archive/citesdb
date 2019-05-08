@@ -33,8 +33,11 @@ cites_check_status <- function() {
 #' @examples
 #' if (cites_status()) {
 #'   library(DBI)
+#'
 #'   dbListTables(cites_db())
+#'
 #'   parties <- dbReadTable(cites_db(), "cites_parties")
+#'
 #'   dbGetQuery(
 #'    cites_db(),
 #'    'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
@@ -75,31 +78,32 @@ cites_db <- function(dbdir = cites_path()) {
 #' CITES shipment data
 #'
 #' Returns a remote database table with all CITES shipment data.  This is the
-#' bulk of the data in the package and constitutes > 2 million records.  Loading
+#' bulk of the data in the package and constitutes > 20 million records.  Loading
 #' the whole table into R via the [dplyr::collect()] command will use over
 #' 3 GB of RAM, so you may want to pre-process data in the database, as in
 #' the examples below.
 #'
-#' @return A dplyr remote tibble ([dplyr::tbl()])
+#' @return A **dplyr** remote tibble ([dplyr::tbl()])
 #' @export
 #'
 #' @examples
 #' if (cites_status()) {
 #'   library(dplyr)
 #'
-#'   # Examine number of records per year.
+#'   # See the number of CITES shipment records per year
 #'   cites_shipments() %>%
 #'     group_by(Year) %>%
 #'     summarize(n_records = n()) %>%
 #'     arrange(desc(Year)) %>%
 #'     collect()
 #'
-#'   # See what Pangolin shipments went to what countries in 1990
+#'   # See what pangolin shipments went to which countries in 1990
 #'    cites_shipments() %>%
 #'      filter(Order == "Pholidota", Year == 1990) %>%
-#'      count(Year, Importer, Term) %>% collect() %>%
+#'      count(Year, Importer, Term) %>%
+#'      collect() %>%
 #'      left_join(select(cites_parties(), country, code),
-#'                by = c("Importer"="code"))
+#'                by = c("Importer" = "code"))
 #'
 #' }
 #' @importFrom dplyr tbl
@@ -132,10 +136,10 @@ cites_shipments <- function() {
 #' if (cites_status()) {
 #'   library(dplyr)
 #'
-#'   # Look at the field definitions for cites_shipments()
+#'   # See the field definitions for cites_shipments()
 #'   cites_metadata()
-
-#'   # View the codes used for purpose of shipment
+#'
+#'   # See the codes used for shipment purpose
 #'   cites_codes() %>%
 #'    filter(field == "Purpose")
 #'
@@ -148,8 +152,7 @@ cites_shipments <- function() {
 #'   cites_parties() %>%
 #'     filter(former_code | non_ISO_code)
 #'
-#'   # For remote connections to these tables,
-#'   # access the database directly:
+#'   # For remote connections to these tables, access the database directly:
 #'   dplyr::tbl(cites_db(), "cites_metadata")
 #'   dplyr::tbl(cites_db(), "cites_codes")
 #'   dplyr::tbl(cites_db(), "cites_parties")

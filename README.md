@@ -8,7 +8,7 @@ Authors: *Noam Ross and Evan A. Eskew*
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg)](https://doi.org/10.5281/zenodo.2630836)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield)](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb/tree/master.svg?style=shield)](https://circleci.com/gh/ecohealthalliance/citesdb)
 [![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there
@@ -34,7 +34,7 @@ remotes::install_github("ecohealthalliance/citesdb")
 
 ### Getting the data
 
-When you first load the package you will see a message like this:
+When you first load the package, you will see a message like this:
 
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
@@ -47,12 +47,12 @@ temporarily.
 
 ### Using the database
 
-Once you fetch the data you can connect to the database with the
-`cites_db()` command. You can use the `cites_shipments()` command to
-load a remote `tibble` that is backed by the database but not loaded
-into R. You can use this to analyze CITES data without ever loading it
-into memory, then gather your results with the `dplyr` function
-`collect()`. For example:
+Once you fetch the data, you can connect to the database with the
+`cites_db()` command. The `cites_shipments()` command loads a remote
+`tibble` that is backed by the database but is not loaded into R. You
+can use this command to analyze CITES data without ever loading it into
+memory, gathering your results with the `dplyr` function `collect()`.
+For example:
 
 ``` r
 library(citesdb)
@@ -87,13 +87,13 @@ stop <- Sys.time()
 a \>3 GB data frame into memory\!*)
 
 The back-end database, [MonetDB](https://monetdb.org), is very fast and
-powerful, making such analyses quite snappy even on such large data
-using normal desktops and laptops. Here’s the timing of the above query,
-which processes over 20 million records:
+powerful, making analyses on such large data quite snappy using normal
+desktops and laptops. Here’s the timing of the above query, which
+processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 4.537867 secs
+#> Time difference of 1.128675 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -104,7 +104,7 @@ it directly via SQL commands.
 If you don’t need any of the bells and whistles of this package, you can
 download the raw data as a single compressed TSV file from the [releases
 page](https://github.com/ecohealthalliance/citesdb/releases), or as a
-`.zip` file of many CSV files from original source at
+`.zip` file of many CSV files from the original source at
 <https://trade.cites.org/>.
 
 ### Metadata

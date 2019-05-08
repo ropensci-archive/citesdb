@@ -1,18 +1,26 @@
 # Response to reviewers
 
-Thanks to both reviewers for their comments and issues
+Thanks to both reviewers for their comments and issues that have 
+helped us to make a more user-friendly package.
 
 
 ## Changes implemented
 
-- We have changed the installation method to use `remotes` (which has lower
-  dependencies than `devtools`).
-- We have added disk location to `cites_status`
+- We have changed the installation method in the `README` to use **remotes**, 
+  which has fewer dependencies than **devtools**
+  
+- We have added information to the `cites_status` table indicating the location 
+  of the database files on disk
+
 - We now clear out and disconnect the database tables after updating, which
   should trigger disk cleanup and avoid doubling database size
-- We have modified out linter tests to avoid the false positives shown in
+  
+- We have modified our linter tests to avoid the false positives shown in
   https://github.com/ecohealthalliance/citesdb/issues/2
-- We have renamed `cites_status()` to `cites_check_status()` to be less generic
+  
+- We have renamed the internal function `check_status()` to `cites_check_status()`
+  to be less generic
+  
 - We have made more elaborate help and examples for the `cites_db()`, 
   `cites_shipments()`, and metadata functions to illustrate their use and
   distinguish between **dplyr** and **DBI**-based workflows.
@@ -20,27 +28,28 @@ Thanks to both reviewers for their comments and issues
 
 ## Changes not implemented / justifications
 
-- We have opted not to use **glue** but stick with `paste` in the interest of
-  limiting dependencies.  This is a trade-off but we believe a minor one.
+- We have opted not to use the **glue** package and instead stick with the base
+  R `paste()` functions in the interest of limiting dependencies. We believe
+  this is a minor trade-off.
+  
 - The low test coverage shown in https://github.com/ecohealthalliance/citesdb/issues/4
-  is due to tests skippeed on CRAN.  Setting the environment variable to 
-  `NOT_CRAN=true` shows that our test coverage is 65%.  This is lower than
-  typical, but as we note above, this is largely due to the verbose code
-  for interacting with the RStudio connection pane, which can not be
-  tested other than in an interactive session. Other code coverage is 
+  is due to tests skipped on CRAN. Setting the environment variable to 
+  `NOT_CRAN=true` shows that our test coverage is 65%. This is lower than
+  typical, but as we note in the issue above, this is largely due to the 
+  verbose code for interacting with the RStudio connection pane, which cannot be
+  tested except in an interactive session. Other code coverage is 
   [greater than 90%](https://codecov.io/gh/ecohealthalliance/citesdb/tree/master/R).
   We believe that all important functionality is tested, including important
   edge-cases and conditions not reflected in the coverage statistic, such as
   error handling in multiple sessions and changing up upstream data sources.
   
-  
 We have not yet been able to recreate the error in
-https://github.com/ecohealthalliance/citesdb/issues/4, but have made some
-changes that may resolve it.  Can reviewers test this and report back in that
+https://github.com/ecohealthalliance/citesdb/issues/1, but have made some
+changes that may resolve it. Can reviewers test this and report back in that
 issue?
 
-A note - we have heard from the maintainers of MonetDBLite that it will not be
-returning to CRAN (it's current iteration fails on R-devel), but they are
+A final note: we have heard from the maintainers of **MonetDBLite** that it will 
+not be returning to CRAN (its current iteration fails on R-devel), but they are
 working on a successor embedded database package that will replace it and go
-to CRAN later this year. So for now we will host this package on GitHub and
-replace the database back-end and send to CRAN when the successor is ready.
+to CRAN later this year. So, for now, we will host this package on GitHub and
+replace the database back-end and send to CRAN when the successor package is ready.
