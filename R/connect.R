@@ -17,7 +17,10 @@ cites_check_status <- function() {
 #' The local CITES database
 #'
 #' Returns a connection to the local CITES database. This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite()] database connection.
+#' [MonetDBLite::MonetDBLite()] database connection. When using **dplyr**-based
+#' workflows, one typically acccesses tables with functions such as
+#' [cites_shipments()], but this function lets one interact with the database
+#' directly via SQL.
 #'
 #' @param dbdir The location of the database on disk. Defaults to
 #' `citesdb` under [rappdirs::user_data_dir()], or the environment variable `CITES_DB_DIR`.
@@ -28,7 +31,10 @@ cites_check_status <- function() {
 #' @export
 #'
 #' @examples
-#' cites_db()
+#' library(DBI)
+#' dbListTables(cites_db())
+#' parties <- dbReadTable(cites_db, "cites_parties")
+#'
 cites_db <- function(dbdir = cites_path()) {
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
@@ -142,7 +148,7 @@ cites_disconnect <- function() {
 cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
-    DBI::dbDisconnect(db)
+    DBI::dbDisconnect(db, shutdown = TRUE)
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
