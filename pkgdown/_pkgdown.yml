@@ -4,3 +4,8 @@ bootswatch: flatly
 navbar:
   title: citesdb
   type: inverse
+
+authors:
+  EcoHealth Alliance:
+    href: "https://www.ecohealthalliance.org"
+    html: "<img src='https://github.com/ecohealthalliance.png' height=24>"
