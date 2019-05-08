@@ -21,8 +21,11 @@ workflows, one typically acccesses tables with functions such as
 directly via SQL.
 }
 \examples{
+\donttest{
+\dontrun{
 library(DBI)
 dbListTables(cites_db())
 parties <- dbReadTable(cites_db, "cites_parties")
-
+}
+}
 }
