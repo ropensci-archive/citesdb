@@ -1,6 +1,6 @@
 # Response to reviewers
 
-Thanks to both reviewers for their comments and issuees
+Thanks to both reviewers for their comments and issues
 
 
 ## Changes implemented
@@ -13,6 +13,9 @@ Thanks to both reviewers for their comments and issuees
 - We have modified out linter tests to avoid the false positives shown in
   https://github.com/ecohealthalliance/citesdb/issues/2
 - We have renamed `cites_status()` to `cites_check_status()` to be less generic
+- We have made more elaborate help and examples for the `cites_db()`, 
+  `cites_shipments()`, and metadata functions to illustrate their use and
+  distinguish between **dplyr** and **DBI**-based workflows.
 
 
 ## Changes not implemented / justifications
@@ -28,3 +31,13 @@ Thanks to both reviewers for their comments and issuees
   [greater than 90%](https://codecov.io/gh/ecohealthalliance/citesdb/tree/master/R)
   and all major funcionality is tested.
   
+We have not yet been able to recreate the error in
+https://github.com/ecohealthalliance/citesdb/issues/4, but have made some
+changes that may resolve it.  Can reviewers test this and report back in that
+issue?
+
+A note - we have heard from the maintainers of MonetDBLite that it will not be
+returning to CRAN, but they are working on a successor embeedddeed database package that
+will replace it and go to CRAN later this year. So for now we will host this
+package on GitHub and replace the database back-end and send to CRAN when
+the successor is ready.
