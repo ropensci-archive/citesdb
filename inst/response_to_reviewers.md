@@ -28,8 +28,11 @@ Thanks to both reviewers for their comments and issues
   typical, but as we note above, this is largely due to the verbose code
   for interacting with the RStudio connection pane, which can not be
   tested other than in an interactive session. Other code coverage is 
-  [greater than 90%](https://codecov.io/gh/ecohealthalliance/citesdb/tree/master/R)
-  and all major funcionality is tested.
+  [greater than 90%](https://codecov.io/gh/ecohealthalliance/citesdb/tree/master/R).
+  We believe that all important functionality is tested, including important
+  edge-cases and conditions not reflected in the coverage statistic, such as
+  error handling in multiple sessions and changing up upstream data sources.
+  
   
 We have not yet been able to recreate the error in
 https://github.com/ecohealthalliance/citesdb/issues/4, but have made some
