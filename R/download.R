@@ -148,3 +148,20 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
   attr(out_path, "ver") <- release_obj[[1]]$tag_name
   return(out_path)
 }
+
+#' @importFrom utils read.table
+load_citesdb_metadata <- function() {
+  tsvs <- list.files(system.file("extdata", package = "citesdb"),
+                     pattern = "\\.tsv$", full.names = TRUE
+  )
+  tblnames <- tools::file_path_sans_ext(basename(tsvs))
+  for (i in seq_along(tsvs)) {
+    suppressMessages(dbWriteTable(cites_db(), tblnames[i],
+                                  read.table(tsvs[i],
+                                             stringsAsFactors = FALSE, sep = "\t",
+                                             header = TRUE, quote = "\""
+                                  ),
+                                  overwrite = TRUE
+    ))
+  }
+}
