@@ -87,18 +87,6 @@ jobs:
           key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
-      - add_ssh_keys
-      - run:
-          name: Extra diagnostics
-          when: on_success
-          command: |
-            mkdir /root/main/artifacts
-            Rscript -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
-            Rscript -e "Sys.setenv(CI='');cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
-            R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
-      - store_artifacts:
-          path: /root/main/artifacts/
-          destination: artifacts
   build_oldrel:
     working_directory: ~/main
     docker:
@@ -131,18 +119,6 @@ jobs:
           paths:
             - "/usr/local/lib/R/site-library"
       - add_ssh_keys
-      - run:
-          name: Extra diagnostics
-          when: on_success
-          command: |
-            mkdir /root/main/artifacts
-            Rscript -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))" || true
-            Rscript -e "Sys.setenv(CI='');cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/citesdb-coverage.html', browse=FALSE); covr::codecov(coverage=cv)" || true
-            R CMD Rd2pdf --force --output='/root/main/artifacts/citesdb-manual.pdf' . || true
-      - store_artifacts:
-          path: /root/main/artifacts/
-          destination: artifacts
-
 
 workflows:
   version: 2
