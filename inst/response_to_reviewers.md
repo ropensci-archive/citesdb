@@ -38,6 +38,6 @@ issue?
 
 A note - we have heard from the maintainers of MonetDBLite that it will not be
 returning to CRAN (it's current iteration fails on R-devel), but they are
-working on a successor embeedddeed database package that will replace it and go
+working on a successor embedded database package that will replace it and go
 to CRAN later this year. So for now we will host this package on GitHub and
 replace the database back-end and send to CRAN when the successor is ready.
