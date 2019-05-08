@@ -27,7 +27,7 @@ Thanks to both reviewers for their comments and issues
   `NOT_CRAN=true` shows that our test coverage is 65%.  This is lower than
   typical, but as we note above, this is largely due to the verbose code
   for interacting with the RStudio connection pane, which can not be
-  straightforwardly tested. Other code coverage is 
+  tested other than in an interactive session. Other code coverage is 
   [greater than 90%](https://codecov.io/gh/ecohealthalliance/citesdb/tree/master/R)
   and all major funcionality is tested.
   
