@@ -84,7 +84,7 @@ jobs:
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
   build_oldrel:
@@ -97,9 +97,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps2-devel-{{ .Branch }}
-            - deps2-devel
+            - deps2-oldrel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps2-oldrel-{{ .Branch }}
+            - deps2-oldrel
       - run:
           name: Install packages
           command: |
@@ -115,7 +115,7 @@ jobs:
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps2-oldrel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
       - add_ssh_keys
