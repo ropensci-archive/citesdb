@@ -3,7 +3,7 @@
 
 # citesdb
 
-Authors: *Noam Ross and Evan A. Eskew*
+Authors: \_\_
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -20,7 +20,9 @@ shipment-level wildlife trade database, available at
 <https://trade.cites.org/>. This data consists of over 40 years and 20
 million records of reported shipments of wildlife and wildlife products
 subject to oversight under the [Convention on International Trade in
-Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+Endangered Species of Wild Fauna and Flora](https://www.cites.org). The
+source data are maintained by the [UN Environment World Conservation
+Monitoring Centre](https://www.unep-wcmc.org/).
 
 ## Installation
 
@@ -93,7 +95,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 1.128675 secs
+#> Time difference of 4.537867 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the

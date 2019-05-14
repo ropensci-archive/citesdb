@@ -6,6 +6,10 @@ navbar:
   type: inverse
 
 authors:
+  Noam Ross:
+    href: "https://www.ecohealthalliance.org/personnel/dr-noam-ross"
+  Evan A. Eskew:
+    href: "https://www.ecohealthalliance.org/personnel/evan-eskew"
   EcoHealth Alliance:
     href: "https://www.ecohealthalliance.org"
-    html: "<img src='https://github.com/ecohealthalliance.png' height=24>"
+    html: "<img src='https://github.com/ecohealthalliance.png' alt='EcoHealth Alliance' height=24> EcoHealth Alliance"
