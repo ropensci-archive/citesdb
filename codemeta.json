@@ -35,14 +35,24 @@
       "@id": "https://orcid.org/0000-0002-1153-5356"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Organization",
+      "name": "UNEP World Conservation Monitoring Centre"
+    }
+  ],
   "copyrightHolder": [
     {
       "@type": "Organization",
       "name": "EcoHealth Alliance"
     }
   ],
-  "funder": {},
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "EcoHealth Alliance"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
@@ -331,5 +341,6 @@
       "name": "Full CITES Trade Database Download. Version 2019.2",
       "url": "https://trade.cites.org"
     }
-  ]
+  ],
+  "fileSize": "1011.914KB"
 }
