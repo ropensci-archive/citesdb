@@ -3,7 +3,7 @@
 
 # citesdb
 
-Authors: \_\_
+Authors: *Noam Ross and Evan A. Eskew*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -95,7 +95,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 4.537867 secs
+#> Time difference of 1.128675 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
