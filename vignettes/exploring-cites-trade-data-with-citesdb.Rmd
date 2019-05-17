@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 
-**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org). The source data are maintained by the [UN Environment World Conservation Monitoring Centre](https://www.unep-wcmc.org/). @Harfoot_2018 provide a recent overview of broad temporal and spatial trends in the data.
 
 
 ## Installation
@@ -204,7 +204,7 @@ More in-depth description of `rcites` and usage tutorials can be found via the p
 
 ## Pitfalls of Working with CITES Trade Data
 
-The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. @Harrington_2015, @Berec_2018, and @Robinson_2018 all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
+The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. @Harrington_2015, @Berec_2018, @Robinson_2018, and @Eskew_2019 all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
 
 As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:
 
