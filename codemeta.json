@@ -50,6 +50,10 @@
   "funder": [
     {
       "@type": "Organization",
+      "name": "USAID PREDICT"
+    },
+    {
+      "@type": "Organization",
       "name": "EcoHealth Alliance"
     }
   ],
@@ -342,5 +346,5 @@
       "url": "https://trade.cites.org"
     }
   ],
-  "fileSize": "1011.914KB"
+  "fileSize": "1086.861KB"
 }
