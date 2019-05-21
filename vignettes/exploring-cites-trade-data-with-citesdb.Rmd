@@ -170,7 +170,7 @@ spp_taxonconcept(query_taxon = "Carcharodon carcharias")$general$id
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-readRDS(system.file("extdata", "rcites_1.rds", package = "citesdb"))
+readRDS(system.file("extdata", "rcites1.rds", package = "citesdb"))
 ```
 
 Importantly, we can collect the ID for our taxon of interest from this output and store it as an object for ease of reference:
@@ -186,7 +186,7 @@ spp_cites_legislation(great_white_id)$cites_listings
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-readRDS(system.file("extdata", "rcites_2.rds", package = "citesdb"))
+readRDS(system.file("extdata", "rcites2.rds", package = "citesdb"))
 ```
 
 So this function query reveals that the great white is listed under CITES Appendix II (as of 12 January 2005) and that three CITES Parties have active reservations for this species.
@@ -198,7 +198,7 @@ spp_cites_legislation(great_white_id, scope = "all")$cites_listings
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-readRDS(system.file("extdata", "rcites_3.rds", package = "citesdb"))
+readRDS(system.file("extdata", "rcites3.rds", package = "citesdb"))
 ```
 
 
@@ -213,7 +213,7 @@ spp_distributions(great_white_id)$distributions
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-readRDS(system.file("extdata", "rcites_4.rds", package = "citesdb"))
+readRDS(system.file("extdata", "rcites4.rds", package = "citesdb"))
 ```
 
 More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://ropensci.github.io/rcites/index.html).
