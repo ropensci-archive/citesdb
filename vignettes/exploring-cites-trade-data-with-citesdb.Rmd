@@ -202,7 +202,6 @@ spp_cites_legislation(great_white_id, scope = "all")$cites_listings
 readRDS(system.file("extdata", "rcites3.rds", package = "citesdb"))
 ```
 
-
 Here, we see that the species was in fact listed under CITES Appendix III as early as 29 October 2001. This may account for the CITES trade records for this species that date prior to its uplisting to Appendix II, a status which affords more stringent protection and monitoring. 
 
 In general, the historical listing information provides critical context for CITES data interpretation. In this case, for instance, it is clear that the lack of CITES data for great white sharks prior to the year 2002 should not be taken as an indication of a lack of trade in this species during that time frame but rather a lack of intergovernmental oversight and data collection.
