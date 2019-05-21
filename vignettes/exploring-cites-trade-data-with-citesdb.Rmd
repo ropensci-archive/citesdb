@@ -170,6 +170,7 @@ spp_taxonconcept(query_taxon = "Carcharodon carcharias")$general$id
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
+library(rcites)
 readRDS(system.file("extdata", "rcites1.rds", package = "citesdb"))
 ```
 
