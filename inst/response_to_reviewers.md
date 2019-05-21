@@ -3,28 +3,31 @@
 Thanks to both reviewers for their comments and issues that have 
 helped us to make a more user-friendly package.
 
-
 ## Changes implemented
 
 - We have changed the installation method in the `README` to use **remotes**, 
-  which has fewer dependencies than **devtools**
+  which has fewer dependencies than **devtools**.
   
 - We have added information to the `cites_status` table indicating the location 
-  of the database files on disk
+  of the database files on disk.
 
 - We now clear out and disconnect the database tables after updating, which
-  should trigger disk cleanup and avoid doubling database size
+  should trigger disk cleanup and avoid doubling database size.
   
+- We have solved the error that was preventing package-building in 
+  https://github.com/ecohealthalliance/citesdb/issues/1, which had its origins
+  in missing a token for using the **rcites** package.  We now cache this
+  information to avoid having to make remote calls in vignette-buildng.
+
 - We have modified our linter tests to avoid the false positives shown in
-  https://github.com/ecohealthalliance/citesdb/issues/2
+  https://github.com/ecohealthalliance/citesdb/issues/2 .
   
 - We have renamed the internal function `check_status()` to `cites_check_status()`
-  to be less generic
+  to be less generic.
   
 - We have made more elaborate help and examples for the `cites_db()`, 
   `cites_shipments()`, and metadata functions to illustrate their use and
-  distinguish between **dplyr** and **DBI**-based workflows.
-
+  distinguish between **dplyr**- and **DBI**-based workflows.
 
 ## Changes not implemented / justifications
 
@@ -43,12 +46,7 @@ helped us to make a more user-friendly package.
   edge-cases and conditions not reflected in the coverage statistic, such as
   error handling in multiple sessions and changing up upstream data sources.
   
-We have not yet been able to recreate the error in
-https://github.com/ecohealthalliance/citesdb/issues/1, but have made some
-changes that may resolve it. Can reviewers test this and report back in that
-issue?
-
-A final note: we have heard from the maintainers of **MonetDBLite** that it will 
+A final note: we have leaened from the maintainers of **MonetDBLite** that it will 
 not be returning to CRAN (its current iteration fails on R-devel), but they are
 working on a successor embedded database package that will replace it and go
 to CRAN later this year. So, for now, we will host this package on GitHub and
