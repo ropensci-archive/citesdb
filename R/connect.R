@@ -55,7 +55,6 @@ cites_db <- function(dbdir = cites_path()) {
 
   tryCatch(
     {
-      gc(verbose = FALSE)
       db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
     },
     error = function(e) {
@@ -193,7 +192,6 @@ cites_disconnect <- function() {
 cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
-    gc(verbose = FALSE)
     DBI::dbDisconnect(db, shutdown = TRUE)
   }
   observer <- getOption("connectionObserver")
