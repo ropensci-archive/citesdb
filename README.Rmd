@@ -44,8 +44,11 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-remotes::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ecohealthalliance/citesdb")
 ```
+
+Note that since **citesdb** installs a source dependency from GitHub, you
+will need [package build tools](http://stat545.com/packages01_system-prep.html).
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 options(width = 120)

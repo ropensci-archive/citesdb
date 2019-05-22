@@ -29,8 +29,12 @@ Monitoring Centre](https://www.unep-wcmc.org/).
 Install the **citesdb** package with this command:
 
 ``` r
-remotes::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ecohealthalliance/citesdb")
 ```
+
+Note that since **citesdb** installs a source dependency from GitHub,
+you will need [package build
+tools](http://stat545.com/packages01_system-prep.html).
 
 ## Usage
 
@@ -95,7 +99,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 1.128675 secs
+#> Time difference of 4.537867 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
