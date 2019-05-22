@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A high-performance database of shipment-level CITES trade data • citesdb</title>
+<title>A High-Performance Database of Shipment-Level 'CITES' Trade Data • citesdb</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="A high-performance database of shipment-level CITES trade data">
+<script src="pkgdown.js"></script><meta property="og:title" content="A High-Performance Database of Shipment-Level 'CITES' Trade Data">
 <meta property="og:description" content="Provides convenient access to over 40 years and 20 million records of
     endangered wildlife trade data from the Convention on International Trade
     in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">citesdb</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -97,13 +97,14 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#citesdb" class="anchor"></a>citesdb</h1></div>
 <p>Authors: <em>Noam Ross and Evan A. Eskew</em></p>
-<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" data-external="1"></a> <a href="https://doi.org/10.5281/zenodo.2630836"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg" alt="DOI" data-external="1"></a> <a href="https://circleci.com/gh/ecohealthalliance/citesdb"><img src="https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield" alt="CircleCI" data-external="1"></a> <a href="https://github.com/ropensci/software-review/issues/292"><img src="https://badges.ropensci.org/292_status.svg"></a> <a href="https://codecov.io/gh/ecohealthalliance/citesdb"><img src="https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg" alt="codecov" data-external="1"></a> <a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." data-external="1"></a></p>
-<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" data-external="1"></a> <a href="https://doi.org/10.5281/zenodo.2630836"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg" alt="DOI" data-external="1"></a> <a href="https://circleci.com/gh/ecohealthalliance/citesdb"><img src="https://circleci.com/gh/ecohealthalliance/citesdb/tree/master.svg?style=shield" alt="CircleCI" data-external="1"></a> <a href="https://github.com/ropensci/software-review/issues/292"><img src="https://badges.ropensci.org/292_status.svg"></a> <a href="https://codecov.io/gh/ecohealthalliance/citesdb"><img src="https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg" alt="codecov" data-external="1"></a> <a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." data-external="1"></a></p>
+<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>. The source data are maintained by the <a href="https://www.unep-wcmc.org/">UN Environment World Conservation Monitoring Centre</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the <strong>citesdb</strong> package with this command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"ecohealthalliance/citesdb"</span>)</a></code></pre></div>
+<p>Note that since <strong>citesdb</strong> installs a source dependency from GitHub, you will need <a href="http://stat545.com/packages01_system-prep.html">package build tools</a>.</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -111,7 +112,7 @@
 <div id="getting-the-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-the-data" class="anchor"></a>Getting the data</h3>
-<p>When you first load the package you will see a message like this:</p>
+<p>When you first load the package, you will see a message like this:</p>
 <pre><code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(citesdb)
 #&gt; Local CITES database empty or corrupt. Download with cites_db_download()</a></code></pre>
 <p>Not to worry, just do as it says and run <code><a href="reference/cites_db_download.html">cites_db_download()</a></code>. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.</p>
@@ -119,7 +120,7 @@
 <div id="using-the-database" class="section level3">
 <h3 class="hasAnchor">
 <a href="#using-the-database" class="anchor"></a>Using the database</h3>
-<p>Once you fetch the data you can connect to the database with the <code><a href="reference/cites_db.html">cites_db()</a></code> command. You can use the <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> command to load a remote <code>tibble</code> that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example:</p>
+<p>Once you fetch the data, you can connect to the database with the <code><a href="reference/cites_db.html">cites_db()</a></code> command. The <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> command loads a remote <code>tibble</code> that is backed by the database but is not loaded into R. You can use this command to analyze CITES data without ever loading it into memory, gathering your results with the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
@@ -147,11 +148,11 @@
 <a class="sourceLine" id="cb3-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb3-26" data-line-number="26">stop &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()</a></code></pre></div>
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3 GB data frame into memory!</em>)</p>
-<p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
+<p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making analyses on such large data quite snappy using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">stop <span class="op">-</span><span class="st"> </span>start</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Time difference of 0.61643 secs</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Time difference of 0.4968841 secs</span></a></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
-<p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
+<p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ecohealthalliance/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from the original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
 <div id="metadata" class="section level3">
 <h3 class="hasAnchor">
@@ -240,8 +241,14 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Noam Ross <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-2136-0000" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Evan A. Eskew <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1153-5356" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>
+<a href="https://www.ecohealthalliance.org/personnel/dr-noam-ross">Noam Ross</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-2136-0000" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>
+<a href="https://www.ecohealthalliance.org/personnel/evan-eskew">Evan A. Eskew</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1153-5356" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>
+<a href="https://www.ecohealthalliance.org"><img src="https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png" alt="USAID PREDICT" height="24"></a> <br><small class="roles"> Funder </small>  </li>
+<li>
+<a href="https://www.ecohealthalliance.org"><img src="https://github.com/ecohealthalliance.png" alt="EcoHealth Alliance" height="24"> EcoHealth Alliance</a> <br><small class="roles"> Copyright holder, funder </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -252,7 +259,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Noam Ross, Evan A. Eskew.</p>
+  <p>Developed by <a href="https://www.ecohealthalliance.org/personnel/dr-noam-ross">Noam Ross</a>, <a href="https://www.ecohealthalliance.org/personnel/evan-eskew">Evan A. Eskew</a>, <a href="https://www.ecohealthalliance.org"><img src="https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png" alt="USAID PREDICT" height="24"></a>, <a href="https://www.ecohealthalliance.org"><img src="https://github.com/ecohealthalliance.png" alt="EcoHealth Alliance" height="24"> EcoHealth Alliance</a>.</p>
 </div>
 
 <div class="pkgdown">

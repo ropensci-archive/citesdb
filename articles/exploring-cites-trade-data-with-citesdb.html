@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">citesdb</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -96,12 +96,13 @@
 
     
     
-<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>.</p>
+<p><strong>citesdb</strong> is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the <a href="https://www.cites.org">Convention on International Trade in Endangered Species of Wild Fauna and Flora</a>. The source data are maintained by the <a href="https://www.unep-wcmc.org/">UN Environment World Conservation Monitoring Centre</a>. <span class="citation">Harfoot et al. (<a href="#ref-Harfoot_2018">2018</a>)</span> provide a recent overview of broad temporal and spatial trends in the data.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the <strong>citesdb</strong> package with this command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://install-github.me/ecohealthalliance/citesdb"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtool<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ecohealthalliance/citesdb"</span>)</a></code></pre></div>
+<p>Note that since <strong>citesdb</strong> installs a source dependency from GitHub, you will need <a href="http://stat545.com/packages01_system-prep.html">package build tools</a>.</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -227,7 +228,7 @@
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [1] "cites_codes"     "cites_metadata"  "cites_parties"   "cites_shipments" "cites_status"</span></a></code></pre></div>
 <p>Note that MonetDB, as implemented by the <a href="https://github.com/MonetDB/MonetDBLite-R/">MonetDBLite</a> package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:</p>
 <pre><code>Error: Local citesdb database is locked by another R session.
- Try closing or running cites_disconect() in that session.</code></pre>
+ Try closing or running cites_disconnect() in that session.</code></pre>
 <p><code><a href="../reference/cites_disconnect.html">cites_disconnect()</a></code> shuts down the current connection, freeing up your other session to connect.</p>
 <p>If you are using a recent version of RStudio interactively, loading the <code>citesdb</code> package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database tables.</p>
 <p><img src="figures/cites_pane.gif"></p>
@@ -254,71 +255,68 @@
 <p>As an initial step in <code>rcites</code> workflows, it will typically be most useful to call <code><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept()</a></code> on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (<em>Carcharodon carcharias</em>), as a query taxon, we can see that this function returns a variety of information:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rcites)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="dt">query_taxon =</span> <span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; [1] "11210"</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="dt">query_taxon =</span> <span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
+<pre><code>#&gt; [1] "11210"</code></pre>
 <p>Importantly, we can collect the ID for our taxon of interest from this output and store it as an object for ease of reference:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">great_white_id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">great_white_id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
 <p>Using our stored ID variable, we can query other <code>rcites</code> functions like <code><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation()</a></code>, which returns the CITES listing and reservation status for the query taxon. Note that <a href="https://www.cites.org/eng/app/reserve_intro.php">reservations</a> are essentially exemptions declared by particular CITES Parties in reference to specific taxa.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id)<span class="op">$</span>cites_listings</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; &gt;&gt;&gt; Now processing taxon_id '11210'............ done.</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 6</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt;   id    taxon_concept_id is_current appendix change_type effective_at</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1 904   11210            TRUE       II       +           2005-01-12  </span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2 905   11210            TRUE       II       R+          2005-01-12  </span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3 907   11210            TRUE       II       R+          2005-01-12  </span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4 906   11210            TRUE       II       R+          2005-01-12</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id)<span class="op">$</span>cites_listings</a></code></pre></div>
+<pre><code>#&gt; # A tibble: 4 x 6
+#&gt;   id    taxon_concept_id is_current appendix change_type effective_at
+#&gt;   &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
+#&gt; 1 904   11210            TRUE       II       +           2005-01-12  
+#&gt; 2 906   11210            TRUE       II       R+          2005-01-12  
+#&gt; 3 907   11210            TRUE       II       R+          2005-01-12  
+#&gt; 4 905   11210            TRUE       II       R+          2005-01-12</code></pre>
 <p>So this function query reveals that the great white is listed under CITES Appendix II (as of 12 January 2005) and that three CITES Parties have active reservations for this species.</p>
 <p>To reveal the full listing and reservation history, rather than just current information, we use the <code>scope = "all"</code> argument:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id, <span class="dt">scope =</span> <span class="st">"all"</span>)<span class="op">$</span>cites_listings</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; &gt;&gt;&gt; Now processing taxon_id '11210'............ done.</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; # A tibble: 13 x 6</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;    id    taxon_concept_id is_current appendix change_type effective_at</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt;  1 899   11210            FALSE      III      +           2001-10-29  </span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt;  2 904   11210            TRUE       II       +           2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt;  3 898   11210            FALSE      III      R+          2001-10-22  </span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt;  4 900   11210            FALSE      III      R+          2002-03-26  </span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt;  5 901   11210            FALSE      II       R+          2004-07-15  </span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt;  6 902   11210            FALSE      III      R+          2004-07-15  </span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt;  7 905   11210            TRUE       II       R+          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt;  8 907   11210            TRUE       II       R+          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt;  9 906   11210            TRUE       II       R+          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt; 10 22005 11210            FALSE      III      R-          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt; 11 22004 11210            FALSE      III      R-          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt; 12 22003 11210            FALSE      III      R-          2005-01-12  </span></a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; 13 23783 11210            FALSE      II       R-          2016-11-21</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id, <span class="dt">scope =</span> <span class="st">"all"</span>)<span class="op">$</span>cites_listings</a></code></pre></div>
+<pre><code>#&gt; # A tibble: 13 x 6
+#&gt;    id    taxon_concept_id is_current appendix change_type effective_at
+#&gt;    &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
+#&gt;  1 899   11210            FALSE      III      +           2001-10-29  
+#&gt;  2 904   11210            TRUE       II       +           2005-01-12  
+#&gt;  3 898   11210            FALSE      III      R+          2001-10-22  
+#&gt;  4 900   11210            FALSE      III      R+          2002-03-26  
+#&gt;  5 901   11210            FALSE      II       R+          2004-07-15  
+#&gt;  6 902   11210            FALSE      III      R+          2004-07-15  
+#&gt;  7 906   11210            TRUE       II       R+          2005-01-12  
+#&gt;  8 907   11210            TRUE       II       R+          2005-01-12  
+#&gt;  9 905   11210            TRUE       II       R+          2005-01-12  
+#&gt; 10 22005 11210            FALSE      III      R-          2005-01-12  
+#&gt; 11 22003 11210            FALSE      III      R-          2005-01-12  
+#&gt; 12 22004 11210            FALSE      III      R-          2005-01-12  
+#&gt; 13 23783 11210            FALSE      II       R-          2016-11-21</code></pre>
 <p>Here, we see that the species was in fact listed under CITES Appendix III as early as 29 October 2001. This may account for the CITES trade records for this species that date prior to its uplisting to Appendix II, a status which affords more stringent protection and monitoring.</p>
 <p>In general, the historical listing information provides critical context for CITES data interpretation. In this case, for instance, it is clear that the lack of CITES data for great white sharks prior to the year 2002 should not be taken as an indication of a lack of trade in this species during that time frame but rather a lack of intergovernmental oversight and data collection.</p>
 <p><code>rcites</code> also offers functions that return other useful metadata such as species distribution information:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_distributions">spp_distributions</a></span>(great_white_id)<span class="op">$</span>distributions</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#&gt; &gt;&gt;&gt; Now processing taxon_id '11210'............ done.</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; # A tibble: 96 x 5</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;    id    iso_code2 name                      type      tags </span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                     &lt;chr&gt;     &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt;  1 14    BS        Bahamas                   COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt;  2 101   TW        Taiwan, Province of China TERRITORY ""   </span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt;  3 1315  TR        Turkey                    COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt;  4 1704  GH        Ghana                     COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt;  5 5041  CV        Cabo Verde                COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt;  6 5393  HR        Croatia                   COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt;  7 6460  GA        Gabon                     COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt;  8 8056  MA        Morocco                   COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt;  9 8181  ES        Spain                     COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; 10 8286  SD        Sudan                     COUNTRY   ""   </span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; # … with 86 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_distributions">spp_distributions</a></span>(great_white_id)<span class="op">$</span>distributions</a></code></pre></div>
+<pre><code>#&gt; # A tibble: 96 x 5
+#&gt;    id    iso_code2 name                      type      tags 
+#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                     &lt;chr&gt;     &lt;chr&gt;
+#&gt;  1 14    BS        Bahamas                   COUNTRY   ""   
+#&gt;  2 101   TW        Taiwan, Province of China TERRITORY ""   
+#&gt;  3 1315  TR        Turkey                    COUNTRY   ""   
+#&gt;  4 1704  GH        Ghana                     COUNTRY   ""   
+#&gt;  5 5041  CV        Cabo Verde                COUNTRY   ""   
+#&gt;  6 5393  HR        Croatia                   COUNTRY   ""   
+#&gt;  7 6460  GA        Gabon                     COUNTRY   ""   
+#&gt;  8 8056  MA        Morocco                   COUNTRY   ""   
+#&gt;  9 8181  ES        Spain                     COUNTRY   ""   
+#&gt; 10 8286  SD        Sudan                     COUNTRY   ""   
+#&gt; # … with 86 more rows</code></pre>
 <p>More in-depth description of <code>rcites</code> and usage tutorials can be found via the package <a href="http://joss.theoj.org/papers/10.21105/joss.01091">publication</a> and <a href="https://ropensci.github.io/rcites/index.html">website</a>.</p>
 </div>
 <div id="pitfalls-of-working-with-cites-trade-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pitfalls-of-working-with-cites-trade-data" class="anchor"></a>Pitfalls of Working with CITES Trade Data</h2>
-<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. <span class="citation">Harrington (<a href="#ref-Harrington_2015">2015</a>)</span>, <span class="citation">Berec, Vršecká, and Šetlı'ková (<a href="#ref-Berec_2018">2018</a>)</span>, and <span class="citation">Robinson and Sinovas (<a href="#ref-Robinson_2018">2018</a>)</span> all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
+<p>The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. <span class="citation">Harrington (<a href="#ref-Harrington_2015">2015</a>)</span>, <span class="citation">Berec, Vršecká, and Šetlíková (<a href="#ref-Berec_2018">2018</a>)</span>, <span class="citation">Robinson and Sinovas (<a href="#ref-Robinson_2018">2018</a>)</span>, and <span class="citation">Eskew et al. (<a href="#ref-Eskew_2019">2019</a>)</span> all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the <code><a href="../reference/guidance.html">?guidance</a></code> help file.</p>
 <p>As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -472,15 +470,15 @@
 </table>
 <p>See that each pair of shipments is identical except for <code>Reporter.type</code>, indicating that the shipment was reported both from the US and from the Netherlands. Note that while the importer reported both import and export permit numbers, the exporter reported only the export permit numbers.</p>
 <p>How to deal with repeat records? If you are aggregating records to calculate total shipments it is best to remove them, but not every record is recorded twice. This code filters to use only the importer’s records, should all fields other than <code>Reporter.type</code> and <code>Import.permit.RandomID</code> be the same:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/vars">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">|</span><span class="st"> </span>n <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/vars">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">|</span><span class="st"> </span>n <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -658,7 +656,13 @@
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs">
 <div id="ref-Berec_2018">
-<p>Berec, Michal, Lucie Vršecká, and Irena Šetlı'ková. 2018. “What Is the Reality of Wildlife Trade Volume? CITES Trade Database Limitations.” <em>Biological Conservation</em> 224: 111–16. <a href="https://doi.org/10.1016/j.biocon.2018.05.025">https://doi.org/10.1016/j.biocon.2018.05.025</a>.</p>
+<p>Berec, Michal, Lucie Vršecká, and Irena Šetlíková. 2018. “What Is the Reality of Wildlife Trade Volume? CITES Trade Database Limitations.” <em>Biological Conservation</em> 224: 111–16. <a href="https://doi.org/10.1016/j.biocon.2018.05.025">https://doi.org/10.1016/j.biocon.2018.05.025</a>.</p>
+</div>
+<div id="ref-Eskew_2019">
+<p>Eskew, Evan A., Noam Ross, Carlos Zambrana-Torrelio, and William B. Karesh. 2019. “The CITES Trade Database Is Not a "Global Snapshot" of Legal Wildlife Trade: Response to Can et Al., 2019.” <em>Global Ecology and Conservation</em> 18: e00631. <a href="https://doi.org/10.1016/j.gecco.2019.e00631">https://doi.org/10.1016/j.gecco.2019.e00631</a>.</p>
+</div>
+<div id="ref-Harfoot_2018">
+<p>Harfoot, Michael, Satu A. M. Glaser, Derek P. Tittensor, Gregory L. Britten, Claire McLardy, Kelly Malsch, and Neil D. Burgess. 2018. “Unveiling the Patterns and Trends in 40 Years of Global Trade in CITES-Listed Wildlife.” <em>Biological Conservation</em> 223: 47–57. <a href="https://doi.org/10.1016/j.biocon.2018.04.017">https://doi.org/10.1016/j.biocon.2018.04.017</a>.</p>
 </div>
 <div id="ref-Harrington_2015">
 <p>Harrington, Lauren A. 2015. “International Commercial Trade in Live Carnivores and Primates 2006-2012: Response to Bush et Al. 2014.” <em>Conservation Biology</em> 29: 293–96. <a href="https://doi.org/10.1111/cobi.12448">https://doi.org/10.1111/cobi.12448</a>.</p>
@@ -692,7 +696,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Noam Ross, Evan A. Eskew.</p>
+  <p>Developed by <a href="https://www.ecohealthalliance.org/personnel/dr-noam-ross">Noam Ross</a>, <a href="https://www.ecohealthalliance.org/personnel/evan-eskew">Evan A. Eskew</a>, <a href="https://www.ecohealthalliance.org"><img src="https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png" alt="USAID PREDICT" height="24"></a>, <a href="https://www.ecohealthalliance.org"><img src="https://github.com/ecohealthalliance.png" alt="EcoHealth Alliance" height="24"> EcoHealth Alliance</a>.</p>
 </div>
 
 <div class="pkgdown">

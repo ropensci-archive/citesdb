@@ -39,7 +39,11 @@
 
 <meta property="og:title" content="CITES shipment data — cites_shipments" />
 
-<meta property="og:description" content="Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages." />
+<meta property="og:description" content="Returns a remote database table with all CITES shipment data.  This is the
+bulk of the data in the package and constitutes &amp;gt; 20 million records.  Loading
+the whole table into R via the dplyr::collect() command will use over
+3 GB of RAM, so you may want to pre-process data in the database, as in
+the examples below." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -70,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">citesdb</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -128,7 +132,11 @@
 
     <div class="ref-description">
     
-    <p>Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.</p>
+    <p>Returns a remote database table with all CITES shipment data.  This is the
+bulk of the data in the package and constitutes &gt; 20 million records.  Loading
+the whole table into R via the <code><a href='https://dplyr.tidyverse.org/reference/compute.html'>dplyr::collect()</a></code> command will use over
+3 GB of RAM, so you may want to pre-process data in the database, as in
+the examples below.</p>
     
     </div>
 
@@ -136,13 +144,29 @@
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dplyr remote tibble (<code><a href='https://dplyr.tidyverse.org/reference/tbl.html'>dplyr::tbl()</a></code>)</p>
+    <p>A <strong>dplyr</strong> remote tibble (<code><a href='https://dplyr.tidyverse.org/reference/tbl.html'>dplyr::tbl()</a></code>)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (<span class='fu'><a href='cites_status.html'>cites_status</a></span>()) {
-  <span class='fu'>cites_shipments</span>()
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+
+  <span class='co'># See the number of CITES shipment records per year</span>
+  <span class='fu'>cites_shipments</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Year</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/n.html'>n</a></span>()) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>Year</span>)) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/compute.html'>collect</a></span>()
+
+  <span class='co'># See what pangolin shipments went to which countries in 1990</span>
+   <span class='fu'>cites_shipments</span>() <span class='kw'>%&gt;%</span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>Order</span> <span class='kw'>==</span> <span class='st'>"Pholidota"</span>, <span class='no'>Year</span> <span class='kw'>==</span> <span class='fl'>1990</span>) <span class='kw'>%&gt;%</span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>Year</span>, <span class='no'>Importer</span>, <span class='no'>Term</span>) <span class='kw'>%&gt;%</span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/compute.html'>collect</a></span>() <span class='kw'>%&gt;%</span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fu'><a href='cites_metadata.html'>cites_parties</a></span>(), <span class='no'>country</span>, <span class='no'>code</span>),
+               <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Importer"</span> <span class='kw'>=</span> <span class='st'>"code"</span>))
+
 }
 <span class='co'># }</span></pre>
   </div>
@@ -160,7 +184,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Noam Ross, Evan A. Eskew.</p>
+  <p>Developed by <a href='https://www.ecohealthalliance.org/personnel/dr-noam-ross'>Noam Ross</a>, <a href='https://www.ecohealthalliance.org/personnel/evan-eskew'>Evan A. Eskew</a>, <a href='https://www.ecohealthalliance.org'><img src='https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png' alt='USAID PREDICT' height=24></a>, <a href='https://www.ecohealthalliance.org'><img src='https://github.com/ecohealthalliance.png' alt='EcoHealth Alliance' height=24> EcoHealth Alliance</a>.</p>
 </div>
 
 <div class="pkgdown">

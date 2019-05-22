@@ -40,7 +40,10 @@
 <meta property="og:title" content="The local CITES database — cites_db" />
 
 <meta property="og:description" content="Returns a connection to the local CITES database. This is a DBI-compliant
-MonetDBLite::MonetDBLite() database connection." />
+MonetDBLite::MonetDBLite() database connection. When using dplyr-based
+workflows, one typically accesses tables with functions such as
+cites_shipments(), but this function lets one interact with the database
+directly via SQL." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +74,7 @@ MonetDBLite::MonetDBLite() database connection." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">citesdb</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -130,7 +133,10 @@ MonetDBLite::MonetDBLite() database connection." />
     <div class="ref-description">
     
     <p>Returns a connection to the local CITES database. This is a DBI-compliant
-<code><a href='https://www.rdocumentation.org/packages/MonetDBLite/topics/MonetDBLite'>MonetDBLite::MonetDBLite()</a></code> database connection.</p>
+<code><a href='https://www.rdocumentation.org/packages/MonetDBLite/topics/MonetDBLite'>MonetDBLite::MonetDBLite()</a></code> database connection. When using <strong>dplyr</strong>-based
+workflows, one typically accesses tables with functions such as
+<code><a href='cites_shipments.html'>cites_shipments()</a></code>, but this function lets one interact with the database
+directly via SQL.</p>
     
     </div>
 
@@ -153,7 +159,18 @@ MonetDBLite::MonetDBLite() database connection." />
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>cites_db</span>()
+<span class='kw'>if</span> (<span class='fu'><a href='cites_status.html'>cites_status</a></span>()) {
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>DBI</span>)
+
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/DBI/topics/dbListTables'>dbListTables</a></span>(<span class='fu'>cites_db</span>())
+
+  <span class='no'>parties</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/DBI/topics/dbReadTable'>dbReadTable</a></span>(<span class='fu'>cites_db</span>(), <span class='st'>"cites_parties"</span>)
+
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/DBI/topics/dbGetQuery'>dbGetQuery</a></span>(
+   <span class='fu'>cites_db</span>(),
+   <span class='st'>'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'</span>
+   )
+}
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -171,7 +188,7 @@ MonetDBLite::MonetDBLite() database connection." />
 
       <footer>
       <div class="copyright">
-  <p>Developed by Noam Ross, Evan A. Eskew.</p>
+  <p>Developed by <a href='https://www.ecohealthalliance.org/personnel/dr-noam-ross'>Noam Ross</a>, <a href='https://www.ecohealthalliance.org/personnel/evan-eskew'>Evan A. Eskew</a>, <a href='https://www.ecohealthalliance.org'><img src='https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png' alt='USAID PREDICT' height=24></a>, <a href='https://www.ecohealthalliance.org'><img src='https://github.com/ecohealthalliance.png' alt='EcoHealth Alliance' height=24> EcoHealth Alliance</a>.</p>
 </div>
 
 <div class="pkgdown">

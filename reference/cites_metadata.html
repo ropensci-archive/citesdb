@@ -77,7 +77,7 @@ found in the guidance help file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">citesdb</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -160,12 +160,25 @@ found in the <a href='guidance.html'>guidance</a> help file.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (<span class='fu'><a href='cites_status.html'>cites_status</a></span>()) {
-  <span class='fu'>cites_metadata</span>()
-  <span class='fu'>cites_codes</span>()
-  <span class='fu'>cites_parties</span>()
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
 
-  <span class='co'># For remote connections to these tables,</span>
-  <span class='co'># access the database directly:</span>
+  <span class='co'># See the field definitions for cites_shipments()</span>
+  <span class='fu'>cites_metadata</span>()
+
+  <span class='co'># See the codes used for shipment purpose</span>
+  <span class='fu'>cites_codes</span>() <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>field</span> <span class='kw'>==</span> <span class='st'>"Purpose"</span>)
+
+  <span class='co'># See the most recent countries to join CITES</span>
+  <span class='fu'>cites_parties</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>date</span>)) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fl'>10</span>)
+
+  <span class='co'># See countries or locations with non-standaard or outdated ISO codes</span>
+  <span class='fu'>cites_parties</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>former_code</span> <span class='kw'>|</span> <span class='no'>non_ISO_code</span>)
+
+  <span class='co'># For remote connections to these tables, access the database directly:</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_metadata"</span>)
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_codes"</span>)
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_parties"</span>)
@@ -186,7 +199,7 @@ found in the <a href='guidance.html'>guidance</a> help file.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Noam Ross, Evan A. Eskew.</p>
+  <p>Developed by <a href='https://www.ecohealthalliance.org/personnel/dr-noam-ross'>Noam Ross</a>, <a href='https://www.ecohealthalliance.org/personnel/evan-eskew'>Evan A. Eskew</a>, <a href='https://www.ecohealthalliance.org'><img src='https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/usaid-logo.png' alt='USAID PREDICT' height=24></a>, <a href='https://www.ecohealthalliance.org'><img src='https://github.com/ecohealthalliance.png' alt='EcoHealth Alliance' height=24> EcoHealth Alliance</a>.</p>
 </div>
 
 <div class="pkgdown">
