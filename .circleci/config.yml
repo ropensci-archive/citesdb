@@ -51,11 +51,11 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
-#      - run:
-#          name: Check on r-hub
-#          when: on_success
-#          command: |
-#            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
+      - run:
+          name: Check on r-hub
+          when: on_success
+          command: |
+            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
   build_devel:
     working_directory: ~/main
     docker:
