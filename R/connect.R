@@ -62,7 +62,7 @@ cites_db <- function(dbdir = cites_path()) {
       if (grepl("(Database lock|bad rolemask)", e)) {
         stop(paste(
           "Local citesdb database is locked by another R session.\n",
-          "Try closing or running cites_disconect() in that session."
+          "Try closing or running cites_disconnect() in that session."
         ),
         call. = FALSE
         )

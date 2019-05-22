@@ -128,7 +128,7 @@ Note that MonetDB, as implemented by the [MonetDBLite](https://github.com/MonetD
 
 ```
 Error: Local citesdb database is locked by another R session.
- Try closing or running cites_disconect() in that session.
+ Try closing or running cites_disconnect() in that session.
 ```
 
 `cites_disconnect()` shuts down the current connection, freeing up your other session to connect.
