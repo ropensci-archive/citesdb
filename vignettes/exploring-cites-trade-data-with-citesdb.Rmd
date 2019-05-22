@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-source("https://install-github.me/ecohealthalliance/citesdb")
+remotes::install_github("ecohealthalliance/citesdb")
 ```
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
