@@ -250,8 +250,8 @@ cites_shipments() %>%
 ```
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
-# citesdb::cites_disconnect()
-# MonetDBLite::monetdblite_shutdown()
+citesdb::cites_disconnect()
+MonetDBLite::monetdblite_shutdown()
 ```
 
 

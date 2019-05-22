@@ -55,6 +55,7 @@ cites_db <- function(dbdir = cites_path()) {
 
   tryCatch(
     {
+      unlink(file.path(dbdir, ".gdk_lock"))
       db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
     },
     error = function(e) {
@@ -193,6 +194,7 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     DBI::dbDisconnect(db, shutdown = TRUE)
+    MonetDBLite::monetdblite_shutdown()
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
@@ -202,3 +204,4 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
 
 cites_cache <- new.env()
 reg.finalizer(cites_cache, cites_disconnect_, onexit = TRUE)
+

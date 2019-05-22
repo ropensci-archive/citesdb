@@ -29,7 +29,7 @@ sql_action <- function() {
 #' if (!is.null(getOption("connectionObserver"))) cites_pane()
 cites_pane <- function() {
   observer <- getOption("connectionObserver")
-  if (!is.null(observer)) {
+  if (!is.null(observer) && interactive()) {
     observer$connectionOpened(
       type = "CITESDB",
       host = "citesdb",
