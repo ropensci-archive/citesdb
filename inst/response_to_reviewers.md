@@ -5,8 +5,7 @@ helped us to make a more user-friendly package.
 
 ## Changes implemented
 
-- We have changed the installation method in the `README` to use **remotes**, 
-  which has fewer dependencies than **devtools**.
+- We have changed the installation method in the `README` to use **devtools**.
   
 - We have added information to the `cites_status` table indicating the location 
   of the database files on disk.
@@ -14,10 +13,13 @@ helped us to make a more user-friendly package.
 - We now clear out and disconnect the database tables after updating, which
   should trigger disk cleanup and avoid doubling database size.
   
-- We have solved the error that was preventing package-building in 
+- Thanks for the reviewers for sticking with us through a long and merry chase
+  of a bug that was preventing package-building in 
   https://github.com/ecohealthalliance/citesdb/issues/1, which had its origins
-  in a missing token for use with the **rcites** package. We now cache this
-  information to avoid having to make remote calls in vignette-building.
+  in a missing token for use with the **rcites** package as well as a low-level
+  database lock issue. We now cache this the **rcites** information to avoid
+  having to make remote calls in vignette-building, and also have resolved the
+  DB locking conflict.
 
 - We have modified our linter tests to avoid the false positives shown in
   https://github.com/ecohealthalliance/citesdb/issues/2.
@@ -51,3 +53,5 @@ not be returning to CRAN (its current iteration fails on R-devel), but they are
 working on a successor embedded database package that will replace it and go
 to CRAN later this year. So, for now, we will host this package on GitHub and
 replace the database back-end and send to CRAN when the successor package is ready.
+We've added a note to the README showing that users need package build tools for
+the current version.
