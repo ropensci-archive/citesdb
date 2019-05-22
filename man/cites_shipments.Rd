@@ -7,13 +7,33 @@
 cites_shipments()
 }
 \value{
-A dplyr remote tibble (\code{\link[dplyr:tbl]{dplyr::tbl()}})
+A \strong{dplyr} remote tibble (\code{\link[dplyr:tbl]{dplyr::tbl()}})
 }
 \description{
-Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
+Returns a remote database table with all CITES shipment data.  This is the
+bulk of the data in the package and constitutes > 20 million records.  Loading
+the whole table into R via the \code{\link[dplyr:collect]{dplyr::collect()}} command will use over
+3 GB of RAM, so you may want to pre-process data in the database, as in
+the examples below.
 }
 \examples{
 if (cites_status()) {
-  cites_shipments()
+  library(dplyr)
+
+  # See the number of CITES shipment records per year
+  cites_shipments() \%>\%
+    group_by(Year) \%>\%
+    summarize(n_records = n()) \%>\%
+    arrange(desc(Year)) \%>\%
+    collect()
+
+  # See what pangolin shipments went to which countries in 1990
+   cites_shipments() \%>\%
+     filter(Order == "Pholidota", Year == 1990) \%>\%
+     count(Year, Importer, Term) \%>\%
+     collect() \%>\%
+     left_join(select(cites_parties(), country, code),
+               by = c("Importer" = "code"))
+
 }
 }

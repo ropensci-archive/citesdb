@@ -16,7 +16,8 @@
 #'
 #' @return NULL
 #' @export
-#' @importFrom DBI dbRemoveTable dbExistsTable dbCreateTable dbExecute dbWriteTable
+#' @importFrom DBI dbRemoveTable dbExistsTable dbCreateTable dbExecute
+#'   dbWriteTable dbListTables
 #' @importFrom R.utils gunzip
 #'
 #' @examples
@@ -37,12 +38,12 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   temp_tsv <- tempfile(fileext = ".tsv")
   gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
 
-  tblname <- "cites_shipments"
-  if (dbExistsTable(cites_db(), tblname)) {
-    dbRemoveTable(cites_db(), tblname)
+  for (tab in dbListTables(cites_db())) {
+    dbRemoveTable(cites_db(), tab)
   }
 
-
+  cites_disconnect()
+  tblname <- "cites_shipments"
   dbCreateTable(cites_db(), tblname, fields = cites_field_types)
 
   suppressMessages(
@@ -105,7 +106,8 @@ make_status_table <- function(version) {
       DBI::dbGetQuery(cites_db(),
                       "SELECT COUNT(*) FROM cites_shipments;")[[1]],
       format = "d", big.mark = ","),
-    size_on_disk = format(sz, "auto")
+    size_on_disk = format(sz, "auto"),
+    location_on_disk = cites_path()
   )
 }
 
@@ -145,4 +147,22 @@ get_gh_release_file <- function(repo, tag_name = NULL, destdir = tempdir(),
 
   attr(out_path, "ver") <- release_obj[[1]]$tag_name
   return(out_path)
+}
+
+#' @importFrom utils read.table
+load_citesdb_metadata <- function() {
+  tsvs <- list.files(system.file("extdata", package = "citesdb"),
+                     pattern = "\\.tsv$", full.names = TRUE
+  )
+  tblnames <- tools::file_path_sans_ext(basename(tsvs))
+  for (i in seq_along(tsvs)) {
+    suppressMessages(dbWriteTable(cites_db(), tblnames[i],
+                                  read.table(
+                                    tsvs[i],
+                                    stringsAsFactors = FALSE, sep = "\t",
+                                    header = TRUE, quote = "\""
+                                  ),
+                                  overwrite = TRUE
+    ))
+  }
 }

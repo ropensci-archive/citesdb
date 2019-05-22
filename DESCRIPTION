@@ -1,6 +1,6 @@
 Package: citesdb
-Version: 0.1.0
-Title: A high-performance database of shipment-level CITES trade data
+Version: 0.2.0
+Title: A High-Performance Database of Shipment-Level 'CITES' Trade Data
 Description: Provides convenient access to over 40 years and 20 million records of
     endangered wildlife trade data from the Convention on International Trade
     in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,
@@ -8,7 +8,10 @@ Description: Provides convenient access to over 40 years and 20 million records 
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-2136-0000")),
     person("Evan A.", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut"), comment = c(ORCID = "0000-0002-1153-5356")),
-    person("EcoHealth Alliance", role = "cph"))
+    person("UNEP World Conservation Monitoring Centre", role = c("dtc"), comment = "Maintainer of CITES Trade Data Set"),
+    person("USAID PREDICT", role = "fnd"),
+    person("EcoHealth Alliance", role = c("cph", "fnd"))
+    )
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

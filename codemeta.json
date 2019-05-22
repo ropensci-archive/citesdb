@@ -6,19 +6,19 @@
   "@type": "SoftwareSourceCode",
   "identifier": "citesdb",
   "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
-  "name": "citesdb: A high-performance database of shipment-level CITES trade data",
+  "name": "citesdb: A High-Performance Database of Shipment-Level 'CITES' Trade Data",
   "codeRepository": "https://github.com/ecohealthalliance/citesdb",
   "relatedLink": "https://www.cites.org/",
   "issueTracker": "https://github.com/ecohealthalliance/citesdb/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.3",
+    "version": "3.6.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.3 (2019-03-11)",
+  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
   "author": [
     {
       "@type": "Person",
@@ -35,14 +35,28 @@
       "@id": "https://orcid.org/0000-0002-1153-5356"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Organization",
+      "name": "UNEP World Conservation Monitoring Centre"
+    }
+  ],
   "copyrightHolder": [
     {
       "@type": "Organization",
       "name": "EcoHealth Alliance"
     }
   ],
-  "funder": {},
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "USAID PREDICT"
+    },
+    {
+      "@type": "Organization",
+      "name": "EcoHealth Alliance"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
@@ -284,7 +298,6 @@
   ],
   "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
-  "fileSize": "1192.716KB",
   "contIntegration": [
     "https://circleci.com/gh/ecohealthalliance/citesdb",
     "https://codecov.io/gh/ecohealthalliance/citesdb"
@@ -332,5 +345,6 @@
       "name": "Full CITES Trade Database Download. Version 2019.2",
       "url": "https://trade.cites.org"
     }
-  ]
+  ],
+  "fileSize": "1466.228KB"
 }

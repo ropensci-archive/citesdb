@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 
-**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org). The source data are maintained by the [UN Environment World Conservation Monitoring Centre](https://www.unep-wcmc.org/). @Harfoot_2018 provide a recent overview of broad temporal and spatial trends in the data.
 
 
 ## Installation
@@ -27,12 +27,14 @@ knitr::opts_chunk$set(
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-source("https://install-github.me/ecohealthalliance/citesdb")
+devtool::install_github("ecohealthalliance/citesdb")
 ```
+
+Note that since **citesdb** installs a source dependency from GitHub, you
+will need [package build tools](http://stat545.com/packages01_system-prep.html).
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 options(width = 120)
-knitr::opts_chunk$set(cache = TRUE)
 citesdb::cites_disconnect()
 MonetDBLite::monetdblite_shutdown()
 ```
@@ -129,7 +131,7 @@ Note that MonetDB, as implemented by the [MonetDBLite](https://github.com/MonetD
 
 ```
 Error: Local citesdb database is locked by another R session.
- Try closing or running cites_disconect() in that session.
+ Try closing or running cites_disconnect() in that session.
 ```
 
 `cites_disconnect()` shuts down the current connection, freeing up your other session to connect.
@@ -164,30 +166,43 @@ Fortunately, the [**rcites**](https://github.com/ropensci/rcites) package provid
 
 As an initial step in `rcites` workflows, it will typically be most useful to call `spp_taxonconcept()` on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (*Carcharodon carcharias*), as a query taxon, we can see that this function returns a variety of information: 
 
-```{r}
+```{r, eval = FALSE}
 library(rcites)
 
 spp_taxonconcept(query_taxon = "Carcharodon carcharias")$general$id
 ```
 
+```{r, echo = FALSE, eval = TRUE}
+library(rcites)
+readRDS(system.file("extdata", "rcites1.rds", package = "citesdb"))
+```
+
 Importantly, we can collect the ID for our taxon of interest from this output and store it as an object for ease of reference:
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 great_white_id <- spp_taxonconcept("Carcharodon carcharias")$general$id
 ```
 
 Using our stored ID variable, we can query other `rcites` functions like `spp_cites_legislation()`, which returns the CITES listing and reservation status for the query taxon. Note that [reservations](https://www.cites.org/eng/app/reserve_intro.php) are essentially exemptions declared by particular CITES Parties in reference to specific taxa.
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 spp_cites_legislation(great_white_id)$cites_listings
+```
+
+```{r, echo = FALSE, eval = TRUE}
+readRDS(system.file("extdata", "rcites2.rds", package = "citesdb"))
 ```
 
 So this function query reveals that the great white is listed under CITES Appendix II (as of 12 January 2005) and that three CITES Parties have active reservations for this species.
 
 To reveal the full listing and reservation history, rather than just current information, we use the `scope = "all"` argument:
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 spp_cites_legislation(great_white_id, scope = "all")$cites_listings
+```
+
+```{r, echo = FALSE, eval = TRUE}
+readRDS(system.file("extdata", "rcites3.rds", package = "citesdb"))
 ```
 
 Here, we see that the species was in fact listed under CITES Appendix III as early as 29 October 2001. This may account for the CITES trade records for this species that date prior to its uplisting to Appendix II, a status which affords more stringent protection and monitoring. 
@@ -196,8 +211,12 @@ In general, the historical listing information provides critical context for CIT
 
 `rcites` also offers functions that return other useful metadata such as species distribution information:
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 spp_distributions(great_white_id)$distributions
+```
+
+```{r, echo = FALSE, eval = TRUE}
+readRDS(system.file("extdata", "rcites4.rds", package = "citesdb"))
 ```
 
 More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://ropensci.github.io/rcites/index.html).
@@ -205,11 +224,11 @@ More in-depth description of `rcites` and usage tutorials can be found via the p
 
 ## Pitfalls of Working with CITES Trade Data
 
-The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. @Harrington_2015, @Berec_2018, and @Robinson_2018 all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
+The CITES shipment-level data is a valuable resource for understanding part of the global wildlife trade. However, care must be taken in working with this data. Incomplete or ambiguous data can lead to misinterpretation and different approaches to handling the data can lead to different conclusions. @Harrington_2015, @Berec_2018, @Robinson_2018, and @Eskew_2019 all provide greater detail on challenges related to analyzing the CITES Trade Database. Also note the shipment-level guidance provided by CITES, which can be found in the `?guidance` help file.
 
 As an example, single shipments may be recorded multiple times, as they may be reported by both exporting and importing countries. Here we examine a set of shipments of orchids from a US exporter to the Netherlands:
 
-```{r}
+```{r, echo = TRUE, eval = TRUE}
 cites_shipments() %>% 
   filter(Year == 2016, Export.permit.RandomID == "ce63001ff5", Genus == "Paphiopedilum") %>% 
   collect() %>% 

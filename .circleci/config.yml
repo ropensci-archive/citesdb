@@ -56,12 +56,85 @@ jobs:
 #          when: on_success
 #          command: |
 #            Rscript -e "rhub::validate_email(email = 'ross@ecohealthalliance.org', token = Sys.getenv('RHUB_TOKEN')); rhub::check_for_cran(show_status = TRUE)" || true
+  build_devel:
+    working_directory: ~/main
+    docker:
+      - image: rocker/verse:devel
+    environment:
+      NOT_CRAN: true
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps2-devel-{{ .Branch }}
+            - deps2-devel
+      - run:
+          name: Install packages
+          command: |
+            Rscript -e "devtools::install_deps(dependencies = TRUE)"
+            Rscript -e "if(!require(DT)) devtools::install_cran('DT', dependencies = TRUE)"
+            Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
+            Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
+            Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
+      - run:
+          name: Check package
+          command: |
+            Rscript -e "devtools::check()"
+            Rscript -e "devtools::install()"
+      - save_cache:
+          key: deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - "/usr/local/lib/R/site-library"
+  build_oldrel:
+    working_directory: ~/main
+    docker:
+      - image: rocker/verse:3.5.3
+    environment:
+      NOT_CRAN: true
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps2-oldrel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps2-oldrel-{{ .Branch }}
+            - deps2-oldrel
+      - run:
+          name: Install packages
+          command: |
+            Rscript -e "devtools::install_deps(dependencies = TRUE)"
+            Rscript -e "if(!require(DT)) devtools::install_cran('DT', dependencies = TRUE)"
+            Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
+            Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
+            Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
+      - run:
+          name: Check package
+          command: |
+            Rscript -e "devtools::check()"
+            Rscript -e "devtools::install()"
+      - save_cache:
+          key: deps2-oldrel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - "/usr/local/lib/R/site-library"
+      - add_ssh_keys
 
 workflows:
   version: 2
   commit:
     jobs:
       - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+#      - build_devel:
+#          filters:
+#            branches:
+#              ignore:
+#                - gh-pages
+      - build_oldrel:
           filters:
             branches:
               ignore:

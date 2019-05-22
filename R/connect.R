@@ -8,7 +8,7 @@ cites_path <- function() {
   }
 }
 
-check_status <- function() {
+cites_check_status <- function() {
   if (!cites_status(FALSE)) {
     stop("Local CITES database empty or corrupt. Download with cites_db_download()") # nolint
   }
@@ -17,7 +17,10 @@ check_status <- function() {
 #' The local CITES database
 #'
 #' Returns a connection to the local CITES database. This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite()] database connection.
+#' [MonetDBLite::MonetDBLite()] database connection. When using **dplyr**-based
+#' workflows, one typically accesses tables with functions such as
+#' [cites_shipments()], but this function lets one interact with the database
+#' directly via SQL.
 #'
 #' @param dbdir The location of the database on disk. Defaults to
 #' `citesdb` under [rappdirs::user_data_dir()], or the environment variable `CITES_DB_DIR`.
@@ -28,7 +31,18 @@ check_status <- function() {
 #' @export
 #'
 #' @examples
-#' cites_db()
+#' if (cites_status()) {
+#'   library(DBI)
+#'
+#'   dbListTables(cites_db())
+#'
+#'   parties <- dbReadTable(cites_db(), "cites_parties")
+#'
+#'   dbGetQuery(
+#'    cites_db(),
+#'    'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
+#'    )
+#' }
 cites_db <- function(dbdir = cites_path()) {
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
@@ -40,12 +54,15 @@ cites_db <- function(dbdir = cites_path()) {
   dir.create(dbname, FALSE)
 
   tryCatch(
-    db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir),
+    {
+      unlink(file.path(dbdir, ".gdk_lock"))
+      db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
+    },
     error = function(e) {
-      if (grepl("Database lock", e)) {
+      if (grepl("(Database lock|bad rolemask)", e)) {
         stop(paste(
           "Local citesdb database is locked by another R session.\n",
-          "Try closing or running cites_disconect() in that session."
+          "Try closing or running cites_disconnect() in that session."
         ),
         call. = FALSE
         )
@@ -63,17 +80,38 @@ cites_db <- function(dbdir = cites_path()) {
 
 #' CITES shipment data
 #'
-#' Returns a remote table with all CITES shipment data. Requires the dplyr and dbplyr packages.
-#' @return A dplyr remote tibble ([dplyr::tbl()])
+#' Returns a remote database table with all CITES shipment data.  This is the
+#' bulk of the data in the package and constitutes > 20 million records.  Loading
+#' the whole table into R via the [dplyr::collect()] command will use over
+#' 3 GB of RAM, so you may want to pre-process data in the database, as in
+#' the examples below.
+#'
+#' @return A **dplyr** remote tibble ([dplyr::tbl()])
 #' @export
 #'
 #' @examples
 #' if (cites_status()) {
-#'   cites_shipments()
+#'   library(dplyr)
+#'
+#'   # See the number of CITES shipment records per year
+#'   cites_shipments() %>%
+#'     group_by(Year) %>%
+#'     summarize(n_records = n()) %>%
+#'     arrange(desc(Year)) %>%
+#'     collect()
+#'
+#'   # See what pangolin shipments went to which countries in 1990
+#'    cites_shipments() %>%
+#'      filter(Order == "Pholidota", Year == 1990) %>%
+#'      count(Year, Importer, Term) %>%
+#'      collect() %>%
+#'      left_join(select(cites_parties(), country, code),
+#'                by = c("Importer" = "code"))
+#'
 #' }
 #' @importFrom dplyr tbl
 cites_shipments <- function() {
-  check_status()
+  cites_check_status()
   tbl(cites_db(), "cites_shipments")
 }
 
@@ -99,32 +137,45 @@ cites_shipments <- function() {
 #' @aliases metadata cites_metadata
 #' @examples
 #' if (cites_status()) {
-#'   cites_metadata()
-#'   cites_codes()
-#'   cites_parties()
+#'   library(dplyr)
 #'
-#'   # For remote connections to these tables,
-#'   # access the database directly:
+#'   # See the field definitions for cites_shipments()
+#'   cites_metadata()
+#'
+#'   # See the codes used for shipment purpose
+#'   cites_codes() %>%
+#'    filter(field == "Purpose")
+#'
+#'   # See the most recent countries to join CITES
+#'   cites_parties() %>%
+#'     arrange(desc(date)) %>%
+#'     head(10)
+#'
+#'   # See countries or locations with non-standaard or outdated ISO codes
+#'   cites_parties() %>%
+#'     filter(former_code | non_ISO_code)
+#'
+#'   # For remote connections to these tables, access the database directly:
 #'   dplyr::tbl(cites_db(), "cites_metadata")
 #'   dplyr::tbl(cites_db(), "cites_codes")
 #'   dplyr::tbl(cites_db(), "cites_parties")
 #' }
 cites_metadata <- function() {
-  check_status
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_metadata"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_codes <- function() {
-  check_status()
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_codes"))
 }
 
 #' @export
 #' @rdname cites_metadata
 cites_parties <- function() {
-  check_status()
+  cites_check_status()
   as_tibble(dbReadTable(cites_db(), "cites_parties"))
 }
 
@@ -142,6 +193,7 @@ cites_disconnect <- function() {
 cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
+    DBI::dbDisconnect(db, shutdown = TRUE)
     MonetDBLite::monetdblite_shutdown()
   }
   observer <- getOption("connectionObserver")
@@ -152,3 +204,4 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
 
 cites_cache <- new.env()
 reg.finalizer(cites_cache, cites_disconnect_, onexit = TRUE)
+

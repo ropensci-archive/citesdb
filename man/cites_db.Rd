@@ -15,8 +15,22 @@ A MonetDBLite DBI connection
 }
 \description{
 Returns a connection to the local CITES database. This is a DBI-compliant
-\code{\link[MonetDBLite:MonetDBLite]{MonetDBLite::MonetDBLite()}} database connection.
+\code{\link[MonetDBLite:MonetDBLite]{MonetDBLite::MonetDBLite()}} database connection. When using \strong{dplyr}-based
+workflows, one typically accesses tables with functions such as
+\code{\link[=cites_shipments]{cites_shipments()}}, but this function lets one interact with the database
+directly via SQL.
 }
 \examples{
-cites_db()
+if (cites_status()) {
+  library(DBI)
+
+  dbListTables(cites_db())
+
+  parties <- dbReadTable(cites_db(), "cites_parties")
+
+  dbGetQuery(
+   cites_db(),
+   'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
+   )
+}
 }

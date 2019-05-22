@@ -31,12 +31,12 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg){data-external="1"}](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg){data-external="1"}](https://doi.org/10.5281/zenodo.2630836)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb.svg?style=shield){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb/tree/master.svg?style=shield){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
 [![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
 [![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
 
-**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org).
+**citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org). The source data are maintained by the [UN Environment World Conservation Monitoring Centre](https://www.unep-wcmc.org/).
 
 
 ## Installation
@@ -44,8 +44,11 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-source("https://install-github.me/ecohealthalliance/citesdb")
+devtools::install_github("ecohealthalliance/citesdb")
 ```
+
+Note that since **citesdb** installs a source dependency from GitHub, you
+will need [package build tools](http://stat545.com/packages01_system-prep.html).
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 options(width = 120)
@@ -59,7 +62,7 @@ MonetDBLite::monetdblite_shutdown()
 
 ### Getting the data
 
-When you first load the package you will see a message like this:
+When you first load the package, you will see a message like this:
 
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
@@ -68,7 +71,7 @@ Not to worry, just do as it says and run `cites_db_download()`. This will fetch 
 
 ### Using the database
 
-Once you fetch the data you can connect to the database with the `cites_db()` command. You can use the `cites_shipments()` command to load a remote `tibble` that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the `dplyr` function `collect()`. For example:
+Once you fetch the data, you can connect to the database with the `cites_db()` command. The `cites_shipments()` command loads a remote `tibble` that is backed by the database but is not loaded into R. You can use this command to analyze CITES data without ever loading it into memory, gathering your results with the `dplyr` function `collect()`. For example:
 
 ```{r getdata, include = FALSE}
 if (!citesdb::cites_status()) citesdb::cites_db_download()
@@ -91,7 +94,7 @@ stop <- Sys.time()
 
 (_Note that running `collect()` on all of `cites_shipments()` will load a >3 GB data frame into memory!_)
 
-The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making such analyses quite snappy even on such large data using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
+The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making analyses on such large data quite snappy using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
 
 ```{r}
 stop - start
@@ -99,7 +102,7 @@ stop - start
 
 If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the "Connections" tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.
 
-If you don't need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the [releases page](https://github.com/ecohealthalliance/citesdb/releases), or as a `.zip` file of many CSV files from original source at <https://trade.cites.org/>.
+If you don't need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the [releases page](https://github.com/ecohealthalliance/citesdb/releases), or as a `.zip` file of many CSV files from the original source at <https://trade.cites.org/>.
 
 ### Metadata
 
@@ -115,7 +118,6 @@ head(cites_parties())
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 citesdb::cites_disconnect()
-MonetDBLite::monetdblite_shutdown()
 ```
 
 More information on the release of shipment-level CITES data can be found in the `?guidance` help file.

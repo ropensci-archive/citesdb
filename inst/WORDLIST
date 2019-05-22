@@ -1,12 +1,14 @@
 browsable
 carcharias
 Carcharodon
+Centre
 CircleCI
 codecov
 cryptographic
 cryptographically
 csv
-dbplyr
+doi
+DOI
 dplyr
 EcoHealth
 ecohealthalliance
@@ -18,6 +20,7 @@ Lamniformes
 MonetDB
 MonetDBLite
 NIST
+pre
 rcites
 README
 recognise
@@ -26,10 +29,9 @@ SHA
 Speciesplus
 th
 tibble
-Torrelio
 TSV
 UNEP
 uplisting
 WCMC
 WIP
-Zambrana
+zenodo

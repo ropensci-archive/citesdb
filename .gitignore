@@ -16,3 +16,5 @@ artifacts
 tests/testthat/localdb
 docs
 *_cache
+doc
+Meta

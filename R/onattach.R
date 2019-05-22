@@ -1,6 +1,14 @@
+in_chk <- function() {
+  any(
+    grepl("check",
+          sapply(sys.calls(), function(a) paste(deparse(a), collapse = "\n"))
+    )
+  )
+}
+
 .onAttach <- function(libname, pkgname) {
   MonetDBLite::monetdblite_shutdown()
-  if (interactive() && Sys.getenv("RSTUDIO") == "1") {
+  if (interactive() && Sys.getenv("RSTUDIO") == "1"  && !in_chk()) {
     cites_pane()
   }
   if (interactive()) cites_status()
@@ -40,14 +48,14 @@ cites_db_delete <- function() {
 #' cites_status()
 cites_status <- function(verbose = TRUE) {
   if (dbExistsTable(cites_db(), "cites_shipments") &&
-    dbExistsTable(cites_db(), "cites_status")) {
+      dbExistsTable(cites_db(), "cites_status")) {
     status <- DBI::dbReadTable(cites_db(), "cites_status")
     status_msg <-
       paste0(
         "CITES database status:\n",
         paste0(toTitleCase(gsub("_", " ", names(status))),
-          ": ", as.matrix(status),
-          collapse = "\n"
+               ": ", as.matrix(status),
+               collapse = "\n"
         )
       )
     out <- TRUE
@@ -59,20 +67,3 @@ cites_status <- function(verbose = TRUE) {
   invisible(out)
 }
 
-
-#' @importFrom utils read.table
-load_citesdb_metadata <- function() {
-  tsvs <- list.files(system.file("extdata", package = "citesdb"),
-    pattern = "\\.tsv$", full.names = TRUE
-  )
-  tblnames <- tools::file_path_sans_ext(basename(tsvs))
-  for (i in seq_along(tsvs)) {
-    suppressMessages(dbWriteTable(cites_db(), tblnames[i],
-      read.table(tsvs[i],
-        stringsAsFactors = FALSE, sep = "\t",
-        header = TRUE, quote = "\""
-      ),
-      overwrite = TRUE
-    ))
-  }
-}

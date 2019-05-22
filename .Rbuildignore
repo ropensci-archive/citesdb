@@ -20,3 +20,5 @@
 ^README_cache$
 cache$
 ^\.zenodo.json$
+^doc$
+^Meta$

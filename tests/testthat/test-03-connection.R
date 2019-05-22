@@ -5,20 +5,6 @@ Sys.setenv(CITES_DB_DIR = normalizePath(file.path(getwd(), "localdb"),
 
 context("Connection")
 
-test_that("Database lock gives informative error", {
-  skip_on_cran()
-  skip_if_not(cites_status())
-  cites_db()
-  expect_error({
-    callr::r(function() {
-      options(CITES_DB_DIR = "localdb")
-      citesdb::cites_db()
-    })
-  },
-  "Local citesdb database is locked by another R session"
-  )
-})
-
 test_that("Disconnetion works", {
   skip_on_cran()
   skip_if_not(cites_status())
