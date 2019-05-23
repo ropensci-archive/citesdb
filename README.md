@@ -99,7 +99,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 4.537867 secs
+#> Time difference of 0.785367 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -172,7 +172,7 @@ If you use **citesdb** in a publication, please cite both the package
 and source data:
 
 Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
-of shipment-level CITES trade data. R package v0.1.0. EcoHealth
+of shipment-level CITES trade data. R package v0.2.0. EcoHealth
 Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>.
 <doi:10.5281/zenodo.2630836>
 

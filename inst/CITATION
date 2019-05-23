@@ -5,11 +5,11 @@ citEntry(entry = "misc",
   author       = personList(as.person("Noam Ross"), as.person("Evan A. Eskew")),
   institution  = "EcoHealth Alliance",
   address      = "New York, NY",
-  note = "v0.1.0",
+  note = "v0.2.0",
   year = "2019",
   url = "https://github.com/ecohealthalliance/citesdb",
   doi = "10.5281/zenodo.2630836",
-  textVersion  = "Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.1.0. EcoHealth Alliance: New York, NY. https://github.com/ecohealthalliance/citesdb. doi:10.5281/zenodo.2630836"
+  textVersion  = "Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ecohealthalliance/citesdb. doi:10.5281/zenodo.2630836"
 )
 
 citEntry(entry = "misc",
