@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-devtool::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ecohealthalliance/citesdb")
 ```
 
 Note that since **citesdb** installs a source dependency from GitHub, you
