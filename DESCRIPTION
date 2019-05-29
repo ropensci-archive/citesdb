@@ -9,6 +9,12 @@ Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-2136-0000")),
     person("Evan A.", "Eskew", , "eskew@ecohealthalliance.org", role = c("aut"), comment = c(ORCID = "0000-0002-1153-5356")),
     person("UNEP World Conservation Monitoring Centre", role = c("dtc"), comment = "Maintainer of CITES Trade Data Set"),
+    person("Mauricio","Vargas", ole = c("rev"),
+      comment = c(ORCID = "0000-0003-1017-7574",
+                  "Reviewed package for rOpenSci: https://github.com/ropensci/software-review/issues/292")),
+    person("Xavier", "Rotllan-Puig", role = c("rev"),
+      comment = c(ORCID = "0000-0003-2046-0621",
+                  "Reviewed package for rOpenSci: https://github.com/ropensci/software-review/issues/292")),
     person("USAID PREDICT", role = "fnd"),
     person("EcoHealth Alliance", role = c("cph", "fnd"))
     )
