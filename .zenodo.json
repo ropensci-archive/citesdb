@@ -10,6 +10,9 @@
     "name": "Eskew, Evan A.",
     "affiliation": "EcoHealth Alliance, New York, NY, USA",
     "orcid": "0000-0002-1153-5356"
+  },{
+    "name": "Nicolas Ray",
+    "affiliation": "GeoHealth Group, Institute of Global Health, Faculty of Medicine and Institute for Environmental Sciences, University of Geneva, Geneva, Switzerland"
   }],
   "description": "A high-performance database of shipment-level CITES trade data.",
   "access_right": "open",
