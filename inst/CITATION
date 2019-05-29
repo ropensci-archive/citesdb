@@ -2,14 +2,14 @@ citHeader("If you use citesdb in a publication, please cite both the package and
 
 citEntry(entry = "misc",
   title        = "citesdb: A high-performance database of shipment-level CITES trade data",
-  author       = personList(as.person("Noam Ross"), as.person("Evan A. Eskew")),
+  author       = personList(as.person("Noam Ross"), as.person("Evan A. Eskew"), as.person("Nicolas Ray")),
   institution  = "EcoHealth Alliance",
   address      = "New York, NY",
   note = "v0.2.0",
   year = "2019",
   url = "https://github.com/ropensci/citesdb",
   doi = "10.5281/zenodo.2630836",
-  textVersion  = "Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ropensci/citesdb. doi:10.5281/zenodo.2630836"
+  textVersion  = "Ross, Noam, Evan A. Eskew. and Nicolas Ray. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ropensci/citesdb. doi:10.5281/zenodo.2630836"
 )
 
 citEntry(entry = "misc",
