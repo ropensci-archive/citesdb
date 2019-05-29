@@ -11,9 +11,9 @@ MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/
 [![CircleCI](https://circleci.com/gh/ropensci/citesdb/tree/master.svg?style=shield)](https://circleci.com/gh/ropensci/citesdb)
 [![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
 [![codecov](https://codecov.io/gh/ropensci/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/citesdb)
-[![Project Status: WIP - Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 **citesdb** is an R package to conveniently analyze the full CITES
 shipment-level wildlife trade database, available at
