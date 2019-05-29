@@ -9,7 +9,7 @@
 #'
 #' @param tag What release tag of data to download. Defaults to the most recent.
 #' Releases are expected to come twice per year. See all releases at
-#' <https://github.com/ecohealthalliance/citesdb/releases>.
+#' <https://github.com/ropensci/citesdb/releases>.
 #' @param destdir Where to download the compressed file.
 #' @param cleanup Whether to delete the compressed file after loading into the database.
 #' @param verbose Whether to display messages and download progress
@@ -29,7 +29,7 @@
 cites_db_download <- function(tag = NULL, destdir = tempdir(),
                               cleanup = TRUE, verbose = interactive()) {
   if (verbose) message("Downloading data...\n")
-  zfile <- get_gh_release_file("ecohealthalliance/citesdb",
+  zfile <- get_gh_release_file("ropensci/citesdb",
     tag_name = tag,
     destdir = destdir, verbose = verbose
   )

@@ -31,9 +31,9 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg){data-external="1"}](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg){data-external="1"}](https://doi.org/10.5281/zenodo.2630836)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb/tree/master.svg?style=shield){data-external="1"}](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![CircleCI](https://circleci.com/gh/ropensci/citesdb/tree/master.svg?style=shield){data-external="1"}](https://circleci.com/gh/ropensci/citesdb)
 [![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
-[![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ecohealthalliance/citesdb)
+[![codecov](https://codecov.io/gh/ropensci/citesdb/branch/master/graph/badge.svg){data-external="1"}](https://codecov.io/gh/ropensci/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg){data-external="1"}](http://www.repostatus.org/#wip)
 
 **citesdb** is an R package to conveniently analyze the full CITES shipment-level wildlife trade database, available at <https://trade.cites.org/>. This data consists of over 40 years and 20 million records of reported shipments of wildlife and wildlife products subject to oversight under the [Convention on International Trade in Endangered Species of Wild Fauna and Flora](https://www.cites.org). The source data are maintained by the [UN Environment World Conservation Monitoring Centre](https://www.unep-wcmc.org/).
@@ -44,7 +44,7 @@ unclass(desc::desc_get_authors(here::here("DESCRIPTION"))) %>%
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-devtools::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ropensci/citesdb")
 ```
 
 Note that since **citesdb** installs a source dependency from GitHub, you
@@ -102,7 +102,7 @@ stop - start
 
 If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the "Connections" tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.
 
-If you don't need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the [releases page](https://github.com/ecohealthalliance/citesdb/releases), or as a `.zip` file of many CSV files from the original source at <https://trade.cites.org/>.
+If you don't need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the [releases page](https://github.com/ropensci/citesdb/releases), or as a `.zip` file of many CSV files from the original source at <https://trade.cites.org/>.
 
 ### Metadata
 
@@ -139,8 +139,8 @@ print(citation("citesdb"), style = "textVersion")
 
 ## Contributing
 
-Have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
+Have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ropensci/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ropensci/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/eha-footer.png){data-external="1"}](https://www.ecohealthalliance.org/)
+[![Created by EcoHealth Alliance](https://raw.githubusercontent.com/ropensci/citesdb/master/vignettes/figures/eha-footer.png){data-external="1"}](https://www.ecohealthalliance.org/)

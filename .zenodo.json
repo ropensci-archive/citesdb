@@ -18,7 +18,7 @@
       "relation": "hasPart",
       "scheme": "url"
     }, {
-    "identifier": "http://github.com/ecohealthalliance/citesdb",
+    "identifier": "http://github.com/ropensci/citesdb",
     "relation": "isIdenticalTo",
     "scheme": "url"
   }]

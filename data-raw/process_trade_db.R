@@ -65,7 +65,7 @@ file_delete(
 
 # Release the compressed data
 datastorr::github_release_info(
-  "ecohealthalliance/citesdb",
+  "ropensci/citesdb",
   read = read_tsv,
   filename = "cites_trade_db.tsv.bz2"
 ) %>%

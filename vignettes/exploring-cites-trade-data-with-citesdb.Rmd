@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 Install the **citesdb** package with this command:
 
 ```{r install_me, eval = FALSE}
-devtools::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ropensci/citesdb")
 ```
 
 Note that since **citesdb** installs a source dependency from GitHub, you
@@ -271,9 +271,9 @@ print(citation("citesdb"), style = "textVersion")
 
 ## Contributing
 
-Have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
+Have feedback or want to contribute? Great! Please take a look at the [contributing guidelines](https://github.com/ropensci/citesdb/blob/master/.github/CONTRIBUTING.md) before filing an issue or pull request.
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/ropensci/citesdb/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 
 ## References
