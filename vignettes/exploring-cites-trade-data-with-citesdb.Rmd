@@ -49,7 +49,9 @@ When you first load the package you will see a message like this:
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
 
-Not to worry, just do as it says and run `cites_db_download()`. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.
+Not to worry, just do as it says and run `cites_db_download()`. This will fetch the most recent[^1] database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.
+
+[^1]: When data is updated on the CITES website we check for changes in structure, metadata, or documentation that we should pass on to the user (e.g., in the `?guidance` help file) and re-package the data for distribution in our own repository. Data updates are expected twice per year and we expect our repository to update within 2 weeks of the official release.
 
 ### Using the database for basic analyses
 
