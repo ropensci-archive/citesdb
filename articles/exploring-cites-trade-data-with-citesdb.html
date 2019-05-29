@@ -113,7 +113,7 @@
 <p>When you first load the package you will see a message like this:</p>
 <pre><code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(citesdb)
 #&gt; Local CITES database empty or corrupt. Download with cites_db_download()</a></code></pre>
-<p>Not to worry, just do as it says and run <code><a href="../reference/cites_db_download.html">cites_db_download()</a></code>. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.</p>
+<p>Not to worry, just do as it says and run <code><a href="../reference/cites_db_download.html">cites_db_download()</a></code>. This will fetch the most recent<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.</p>
 </div>
 <div id="using-the-database-for-basic-analyses" class="section level3">
 <h3 class="hasAnchor">
@@ -672,6 +672,12 @@
 </div>
 </div>
 <p><a href="https://www.ecohealthalliance.org/"><img src="figures/eha-footer.png" alt="Created by EcoHealth Alliance"></a></p>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>When data is updated on the CITES website we check for changes in structure, metadata, or documentation that we should pass on to the user (e.g., in the <code><a href="../reference/guidance.html">?guidance</a></code> help file) and re-package the data for distribution in our own repository. Data updates are expected twice per year and we expect our repository to update within 2 weeks of the official release.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
   </div>
 
