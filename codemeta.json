@@ -7,9 +7,9 @@
   "identifier": "citesdb",
   "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
   "name": "citesdb: A High-Performance Database of Shipment-Level 'CITES' Trade Data",
-  "codeRepository": "https://github.com/ecohealthalliance/citesdb",
+  "codeRepository": "https://github.com/ropensci/citesdb",
   "relatedLink": "https://www.cites.org/",
-  "issueTracker": "https://github.com/ecohealthalliance/citesdb/issues",
+  "issueTracker": "https://github.com/ropensci/citesdb/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.2.0",
   "programmingLanguage": {
@@ -36,6 +36,11 @@
     }
   ],
   "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Nicolas",
+      "familyName": "Ray"
+    },
     {
       "@type": "Organization",
       "name": "UNEP World Conservation Monitoring Centre"
@@ -296,11 +301,11 @@
       "sameAs": "https://CRAN.R-project.org/package=dbplyr"
     }
   ],
-  "releaseNotes": "https://github.com/ecohealthalliance/citesdb/blob/master/NEWS.md",
-  "readme": "https://github.com/ecohealthalliance/citesdb/blob/master/README.md",
+  "releaseNotes": "https://github.com/ropensci/citesdb/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/citesdb/blob/master/README.md",
   "contIntegration": [
-    "https://circleci.com/gh/ecohealthalliance/citesdb",
-    "https://codecov.io/gh/ecohealthalliance/citesdb"
+    "https://circleci.com/gh/ropensci/citesdb",
+    "https://codecov.io/gh/ropensci/citesdb"
   ],
   "developmentStatus": "http://www.repostatus.org/#wip",
   "keywords": [
@@ -328,7 +333,7 @@
       ],
       "name": "citesdb: A high-performance database of shipment-level CITES trade data",
       "identifier": "10.5281/zenodo.2630836",
-      "url": "https://github.com/ecohealthalliance/citesdb",
+      "url": "https://github.com/ropensci/citesdb",
       "description": "v0.2.0",
       "@id": "https://doi.org/10.5281/zenodo.2630836",
       "sameAs": "https://doi.org/10.5281/zenodo.2630836"
@@ -346,5 +351,5 @@
       "url": "https://trade.cites.org"
     }
   ],
-  "fileSize": "1466.565KB"
+  "fileSize": "1476.108KB"
 }

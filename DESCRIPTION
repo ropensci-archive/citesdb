@@ -13,6 +13,7 @@ Authors@R: c(
       comment = "Reviewed package for rOpenSci: https://github.com/ropensci/software-review/issues/292"),
     person("Xavier", "Rotllan-Puig", role = c("rev"),
       comment = "Reviewed package for rOpenSci: https://github.com/ropensci/software-review/issues/292"),
+    person("Nicolas", "Ray", role = "ctb"),
     person("USAID PREDICT", role = "fnd"),
     person("EcoHealth Alliance", role = c("cph", "fnd"))
     )
@@ -20,8 +21,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-URL: https://github.com/ecohealthalliance/citesdb, https://www.cites.org/
-BugReports: https://github.com/ecohealthalliance/citesdb/issues
+URL: https://github.com/ropensci/citesdb, https://www.cites.org/
+BugReports: https://github.com/ropensci/citesdb/issues
 Imports:
   MonetDBLite,
   rappdirs,

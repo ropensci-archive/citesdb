@@ -8,9 +8,9 @@ Authors: *Noam Ross and Evan A. Eskew*
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg)](https://doi.org/10.5281/zenodo.2630836)
-[![CircleCI](https://circleci.com/gh/ecohealthalliance/citesdb/tree/master.svg?style=shield)](https://circleci.com/gh/ecohealthalliance/citesdb)
+[![CircleCI](https://circleci.com/gh/ropensci/citesdb/tree/master.svg?style=shield)](https://circleci.com/gh/ropensci/citesdb)
 [![](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/software-review/issues/292)
-[![codecov](https://codecov.io/gh/ecohealthalliance/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/citesdb)
+[![codecov](https://codecov.io/gh/ropensci/citesdb/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/citesdb)
 [![Project Status: WIP - Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
@@ -29,7 +29,7 @@ Monitoring Centre](https://www.unep-wcmc.org/).
 Install the **citesdb** package with this command:
 
 ``` r
-devtools::install_github("ecohealthalliance/citesdb")
+devtools::install_github("ropensci/citesdb")
 ```
 
 Note that since **citesdb** installs a source dependency from GitHub,
@@ -99,7 +99,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 0.785367 secs
+#> Time difference of 8.941106 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -109,8 +109,8 @@ it directly via SQL commands.
 
 If you don’t need any of the bells and whistles of this package, you can
 download the raw data as a single compressed TSV file from the [releases
-page](https://github.com/ecohealthalliance/citesdb/releases), or as a
-`.zip` file of many CSV files from the original source at
+page](https://github.com/ropensci/citesdb/releases), or as a `.zip` file
+of many CSV files from the original source at
 <https://trade.cites.org/>.
 
 ### Metadata
@@ -173,7 +173,7 @@ and source data:
 
 Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
 of shipment-level CITES trade data. R package v0.2.0. EcoHealth
-Alliance: New York, NY. <https://github.com/ecohealthalliance/citesdb>.
+Alliance: New York, NY. <https://github.com/ropensci/citesdb>.
 <doi:10.5281/zenodo.2630836>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
@@ -184,12 +184,12 @@ Cambridge, UK. Available at: <https://trade.cites.org>.
 
 Have feedback or want to contribute? Great\! Please take a look at the
 [contributing
-guidelines](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CONTRIBUTING.md)
+guidelines](https://github.com/ropensci/citesdb/blob/master/.github/CONTRIBUTING.md)
 before filing an issue or pull request.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/ecohealthalliance/citesdb/blob/master/.github/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/ropensci/citesdb/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.
 
 [![Created by EcoHealth
-Alliance](https://raw.githubusercontent.com/ecohealthalliance/citesdb/master/vignettes/figures/eha-footer.png)](https://www.ecohealthalliance.org/)
+Alliance](https://raw.githubusercontent.com/ropensci/citesdb/master/vignettes/figures/eha-footer.png)](https://www.ecohealthalliance.org/)
