@@ -67,7 +67,7 @@ When you first load the package, you will see a message like this:
     library(citesdb)
     #> Local CITES database empty or corrupt. Download with cites_db_download()
 
-Not to worry, just do as it says and run `cites_db_download()`. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building up to 3.5 GB of disk space may be used temporarily.
+Not to worry, just do as it says and run `cites_db_download()`. This will fetch the most recent database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building, up to 3.5 GB of disk space may be used temporarily.
 
 ### Using the database
 

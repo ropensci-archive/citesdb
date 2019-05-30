@@ -48,7 +48,7 @@ When you first load the package, you will see a message like this:
 Not to worry, just do as it says and run `cites_db_download()`. This
 will fetch the most recent database from online, an approximately 158 MB
 download. It will expand to over 1 GB in the local database. During the
-download and database building up to 3.5 GB of disk space may be used
+download and database building, up to 3.5 GB of disk space may be used
 temporarily.
 
 ### Using the database
@@ -99,7 +99,7 @@ processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 8.941106 secs
+#> Time difference of 0.841418 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -171,10 +171,10 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam and Evan A. Eskew. 2019. citesdb: A high-performance database
-of shipment-level CITES trade data. R package v0.2.0. EcoHealth
-Alliance: New York, NY. <https://github.com/ropensci/citesdb>.
-<doi:10.5281/zenodo.2630836>
+Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: A
+high-performance database of shipment-level CITES trade data. R package
+v0.2.0. EcoHealth Alliance: New York, NY.
+<https://github.com/ropensci/citesdb>. <doi:10.5281/zenodo.2630836>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,

@@ -9,7 +9,7 @@ citEntry(entry = "misc",
   year = "2019",
   url = "https://github.com/ropensci/citesdb",
   doi = "10.5281/zenodo.2630836",
-  textVersion  = "Ross, Noam, Evan A. Eskew. and Nicolas Ray. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ropensci/citesdb. doi:10.5281/zenodo.2630836"
+  textVersion  = "Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ropensci/citesdb. doi:10.5281/zenodo.2630836"
 )
 
 citEntry(entry = "misc",
