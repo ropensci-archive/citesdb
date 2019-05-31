@@ -1,16 +1,18 @@
 citHeader("If you use citesdb in a publication, please cite both the package and source data:")
 
-citEntry(entry = "misc",
-  title        = "citesdb: A high-performance database of shipment-level CITES trade data",
-  author       = personList(as.person("Noam Ross"), as.person("Evan A. Eskew"), as.person("Nicolas Ray")),
-  institution  = "EcoHealth Alliance",
-  address      = "New York, NY",
-  note = "v0.2.0",
+citEntry(entry = "article",
+  doi = "10.21105/joss.01221",
+  url = "https://doi.org/10.21105%2Fjoss.01221",
   year = "2019",
-  url = "https://github.com/ropensci/citesdb",
-  doi = "10.5281/zenodo.2630836",
-  textVersion  = "Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. https://github.com/ropensci/citesdb. doi:10.5281/zenodo.2630836"
-)
+  month = "May",
+  publisher = "The Open Journal",
+  volume = 4,
+  number = 37,
+  pages = 1483,
+  author = personList(as.person("Noam Ross"), as.person("Evan A. Eskew"), as.person("Nicolas Ray")),
+  title = "citesdb: A high-performance database of shipment-level CITES trade data",
+  journal = "Journal of Open Source Software",
+  textVersion = "Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: An R package to support analysis of CITES Trade Database shipment-level data. Journal of Open Source Software, 4(37), 1483, https://doi.org/10.21105/joss.01483")
 
 citEntry(entry = "misc",
   author = "UNEP-WCMC (Comps.)",

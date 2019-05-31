@@ -317,7 +317,7 @@
   ],
   "citation": [
     {
-      "@type": "CreativeWork",
+      "@type": "ScholarlyArticle",
       "datePublished": "2019",
       "author": [
         {
@@ -329,14 +329,29 @@
           "@type": "Person",
           "givenName": ["Evan", "A."],
           "familyName": "Eskew"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Nicolas",
+          "familyName": "Ray"
         }
       ],
       "name": "citesdb: A high-performance database of shipment-level CITES trade data",
-      "identifier": "10.5281/zenodo.2630836",
-      "url": "https://github.com/ropensci/citesdb",
-      "description": "v0.2.0",
-      "@id": "https://doi.org/10.5281/zenodo.2630836",
-      "sameAs": "https://doi.org/10.5281/zenodo.2630836"
+      "identifier": "10.21105/joss.01221",
+      "url": "https://doi.org/10.21105%2Fjoss.01221",
+      "paginiation": "1483",
+      "@id": "https://doi.org/10.21105/joss.01221",
+      "sameAs": "https://doi.org/10.21105/joss.01221",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "issueNumber": "37",
+        "datePublished": "2019",
+        "isPartOf": {
+          "@type": ["PublicationVolume", "Periodical"],
+          "volumeNumber": "4",
+          "name": "Journal of Open Source Software"
+        }
+      }
     },
     {
       "@type": "CreativeWork",
@@ -351,5 +366,5 @@
       "url": "https://trade.cites.org"
     }
   ],
-  "fileSize": "1089.321KB"
+  "fileSize": "1584.977KB"
 }

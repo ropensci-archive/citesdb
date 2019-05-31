@@ -24,5 +24,9 @@
     "identifier": "http://github.com/ropensci/citesdb",
     "relation": "isIdenticalTo",
     "scheme": "url"
+  }, {
+    "identifier": "10.21105/joss.01483",
+    "relation": "isAlternateIdentifier",
+    "scheme": "doi"
   }]
 }

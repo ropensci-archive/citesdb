@@ -10,9 +10,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps2-{{ .Branch }}
-            - deps2-
+            - deps3-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps3-{{ .Branch }}
+            - deps3-
       - run:
           name: Install packages
           command: |
@@ -21,14 +21,14 @@ jobs:
             Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
             Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
             Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
-            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_github('r-lib/pkgdown', dependencies = TRUE)"
       - run:
           name: Check package
           command: |
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps3-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
       - add_ssh_keys
@@ -66,9 +66,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps2-devel-{{ .Branch }}
-            - deps2-devel
+            - deps3-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps3-devel-{{ .Branch }}
+            - deps3-devel
       - run:
           name: Install packages
           command: |
@@ -77,14 +77,14 @@ jobs:
             Rscript -e "if(!require(covr)) devtools::install_cran('covr', dependencies = TRUE)"
             Rscript -e "if(!require(goodpractice)) devtools::install_cran('goodpractice', dependencies = TRUE)"
             Rscript -e "if(!require(rhub)) devtools::install_cran('rhub', dependencies = TRUE)"
-            Rscript -e "if(!require(pkgdown)) devtools::install_cran('pkgdown', dependencies = TRUE)"
+            Rscript -e "if(!require(pkgdown)) devtools::install_github('r-lib/pkgdown', dependencies = TRUE)"
       - run:
           name: Check package
           command: |
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps2-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps3-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
   build_oldrel:
