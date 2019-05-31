@@ -16,7 +16,7 @@ authors:
    orcid: 0000-0002-1153-5356
    affiliation:
     - 1
--  name: Nicolas Ray
+ - name: Nicolas Ray
    affiliation:
     - 2
     - 3
