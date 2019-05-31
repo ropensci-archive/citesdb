@@ -10,16 +10,12 @@ tags:
 authors:
  - name: Noam Ross
    orcid: 0000-0002-2136-0000
-   affiliation:
-    - 1
+   affiliation: 1
  - name: Evan A. Eskew
    orcid: 0000-0002-1153-5356
-   affiliation:
-    - 1
+   affiliation: 1
  - name: Nicolas Ray
-   affiliation:
-    - 2
-    - 3
+   affiliation: "2, 3"
 affiliations:
  - name: EcoHealth Alliance, New York, NY 10001
    index: 1
