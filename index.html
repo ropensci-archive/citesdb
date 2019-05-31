@@ -150,7 +150,7 @@
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3 GB data frame into memory!</em>)</p>
 <p>The back-end database, <a href="https://monetdb.org">MonetDB</a>, is very fast and powerful, making analyses on such large data quite snappy using normal desktops and laptops. Here’s the timing of the above query, which processes over 20 million records:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">stop <span class="op">-</span><span class="st"> </span>start</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Time difference of 0.6358953 secs</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Time difference of 0.6094794 secs</span></a></code></pre></div>
 <p>If you are using a recent version of RStudio interactively, loading the CITES package also brings up a browsable pane in the “Connections” tab that lets you explore and preview the database, as well as interact with it directly via SQL commands.</p>
 <p>If you don’t need any of the bells and whistles of this package, you can download the raw data as a single compressed TSV file from the <a href="https://github.com/ropensci/citesdb/releases">releases page</a>, or as a <code>.zip</code> file of many CSV files from the original source at <a href="https://trade.cites.org/" class="uri">https://trade.cites.org/</a>.</p>
 </div>
