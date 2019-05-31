@@ -26,7 +26,7 @@
     "scheme": "url"
   }, {
     "identifier": "10.21105/joss.01483",
-    "relation": "isAlternateIdentifier",
+    "relation": "isDocumentedBy",
     "scheme": "doi"
   }]
 }
