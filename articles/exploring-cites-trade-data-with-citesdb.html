@@ -13,8 +13,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Exploring CITES Trade Data with citesdb">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -44,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -70,7 +71,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/ropensci/citesdb">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +102,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the <strong>citesdb</strong> package with this command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"ropensci/citesdb"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"ropensci/citesdb"</span>)</a></code></pre></div>
 <p>Note that since <strong>citesdb</strong> installs a source dependency from GitHub, you will need <a href="http://stat545.com/packages01_system-prep.html">package build tools</a>.</p>
 </div>
 <div id="usage" class="section level2">
@@ -111,7 +112,7 @@
 <h3 class="hasAnchor">
 <a href="#getting-the-data" class="anchor"></a>Getting the data</h3>
 <p>When you first load the package you will see a message like this:</p>
-<pre><code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(citesdb)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(citesdb)
 #&gt; Local CITES database empty or corrupt. Download with cites_db_download()</a></code></pre>
 <p>Not to worry, just do as it says and run <code><a href="../reference/cites_db_download.html">cites_db_download()</a></code>. This will fetch the most recent<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> database from online, an approximately 158 MB download. It will expand to over 1 GB in the local database. During the download and database building, up to 3.5 GB of disk space may be used temporarily.</p>
 </div>
@@ -119,8 +120,8 @@
 <h3 class="hasAnchor">
 <a href="#using-the-database-for-basic-analyses" class="anchor"></a>Using the database for basic analyses</h3>
 <p>Once you fetch the data you can connect to the database with the <code><a href="../reference/cites_db.html">cites_db()</a></code> command. You can use the <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> command to load a remote <code>tibble</code> that is backed by the database but not loaded into R. You can use this to analyze CITES data without ever loading it into memory, then gather your results with the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. For example, as demonstrated in the package README file, one could compute the number of shipment records per year like so:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(citesdb)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(citesdb)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
@@ -150,41 +151,41 @@
 <a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; 10  2009    908669</span></a>
 <a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; # … with 34 more rows</span></a></code></pre></div>
 <p>(<em>Note that running <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on all of <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> will load a &gt;3 GB data frame into memory!</em>)</p>
-<p>Alternatively, one could visualize the same information by piping results from a <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> call directly into <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot()</a></code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<p>Alternatively, one could visualize the same information by piping results from a <code><a href="../reference/cites_shipments.html">cites_shipments()</a></code> call directly into <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dt">from =</span> <span class="dv">1975</span>, <span class="dt">to =</span> <span class="dv">2020</span>, <span class="dt">by =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">breaks &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dt">from =</span> <span class="dv">1975</span>, <span class="dt">to =</span> <span class="dv">2020</span>, <span class="dt">by =</span> <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Year) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n_records =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">log10_n_records =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Log">log10</a></span>(n_records)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> n_records)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">ylab</a></span>(<span class="st">"Number of Records"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks)</a></code></pre></div>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">log10_n_records =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log10</a></span>(n_records)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> n_records)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">ylab</a></span>(<span class="st">"Number of Records"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks)</a></code></pre></div>
 <p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-4-1.png" width="624" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Year) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n_records =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">log10_n_records =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Log">log10</a></span>(n_records)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> log10_n_records)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">ylab</a></span>(<span class="st">"log10(Number of Records)"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/lims">ylim</a></span>(<span class="fl">1.5</span>, <span class="fl">6.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks)</a></code></pre></div>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">log10_n_records =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log10</a></span>(n_records)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> log10_n_records)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">ylab</a></span>(<span class="st">"log10(Number of Records)"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/lims.html">ylim</a></span>(<span class="fl">1.5</span>, <span class="fl">6.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks)</a></code></pre></div>
 <p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-4-2.png" width="624" style="display: block; margin: auto;"></p>
 </div>
 <div id="metadata" class="section level3">
 <h3 class="hasAnchor">
 <a href="#metadata" class="anchor"></a>Metadata</h3>
 <p>The package database also contains tables of field metadata, codes used, and CITES countries. This information comes from <a href="https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf">“A guide to using the CITES Trade Database”</a>, on the CITES website. Convenience functions <code><a href="../reference/cites_metadata.html">cites_metadata()</a></code>, <code><a href="../reference/cites_metadata.html">cites_codes()</a></code>, and <code><a href="../reference/cites_metadata.html">cites_parties()</a></code> access this information:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_metadata</a></span>())</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_metadata</a></span>())</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   variable description                                 </span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                       </span></a>
@@ -195,7 +196,7 @@
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 5 Order    scientific name of animal or plant concerned</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 6 Family   scientific name of animal or plant concerned</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_codes</a></span>())</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_codes</a></span>())</a>
 <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;   field   code  description                                    </span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;                                          </span></a>
@@ -206,7 +207,7 @@
 <a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; 5 Purpose L     Law enforcement / judicial / forensic          </span></a>
 <a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 6 Purpose M     Medical (including biomedical research)</span></a>
 <a class="sourceLine" id="cb6-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_parties</a></span>())</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="../reference/cites_metadata.html">cites_parties</a></span>())</a>
 <a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
 <a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;   country        code  former_code non_ISO_code date       data_source                                                  </span></a>
 <a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt; &lt;lgl&gt;       &lt;lgl&gt;        &lt;chr&gt;      &lt;chr&gt;                                                        </span></a>
@@ -224,7 +225,7 @@
 <a href="#direct-database-connection" class="anchor"></a>Direct Database Connection</h2>
 <p><strong>citesdb</strong> stores data in an on-disk <a href="https://www.monetdb.org/">MonetDB</a> SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the <code><a href="../reference/cites_db.html">cites_db()</a></code> command:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cites_db.html">cites_db</a></span>()</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbListTables">dbListTables</a></span>(con)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">DBI<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/DBI/man/dbListTables.html">dbListTables</a></span>(con)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [1] "cites_codes"     "cites_metadata"  "cites_parties"   "cites_shipments" "cites_status"</span></a></code></pre></div>
 <p>Note that MonetDB, as implemented by the <a href="https://github.com/MonetDB/MonetDBLite-R/">MonetDBLite</a> package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:</p>
 <pre><code>Error: Local citesdb database is locked by another R session.
@@ -243,24 +244,24 @@
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Order <span class="op">==</span><span class="st"> "Lamniformes"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Year, Taxon) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n_records =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> n_records, <span class="dt">color =</span> Taxon)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">ylab</a></span>(<span class="st">"Number of Records"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks, <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1990</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(breaks)))</a></code></pre></div>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> n_records, <span class="dt">color =</span> Taxon)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span>(<span class="dt">linetype =</span> <span class="st">"dashed"</span>, <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">ylab</a></span>(<span class="st">"Number of Records"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">breaks =</span> breaks, <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1990</span>, <span class="kw"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(breaks)))</a></code></pre></div>
 <p><img src="exploring-cites-trade-data-with-citesdb_files/figure-html/unnamed-chunk-7-1.png" width="624" style="display: block; margin: auto;"></p>
 <p>What accounts for the temporal differences in the number of CITES records we observe? Why are there no data prior to 2001? It would be helpful to know more about the history of these particular species within CITES.</p>
-<p>Fortunately, the <a href="https://github.com/ropensci/rcites"><strong>rcites</strong></a> package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to <a href="https://api.speciesplus.net/users/sign_up">sign up for a Speciesplus API account</a> in order to generate a personal access token. This token can then be set for the current R session using <code><a href="https://www.rdocumentation.org/packages/rcites/topics/set_token">rcites::set_token()</a></code> or can be stored permanently if written to the user’s <code>.Renviron</code> file (the approach taken in this tutorial). See <a href="https://ropensci.github.io/rcites/articles/get_started.html">here</a> for more information on use of the API access tokens.</p>
-<p>As an initial step in <code>rcites</code> workflows, it will typically be most useful to call <code><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept()</a></code> on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (<em>Carcharodon carcharias</em>), as a query taxon, we can see that this function returns a variety of information:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rcites)</a>
+<p>Fortunately, the <a href="https://github.com/ropensci/rcites"><strong>rcites</strong></a> package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to <a href="https://api.speciesplus.net/users/sign_up">sign up for a Speciesplus API account</a> in order to generate a personal access token. This token can then be set for the current R session using <code><a href="https://rdrr.io/pkg/rcites/man/set_token.html">rcites::set_token()</a></code> or can be stored permanently if written to the user’s <code>.Renviron</code> file (the approach taken in this tutorial). See <a href="https://ropensci.github.io/rcites/articles/get_started.html">here</a> for more information on use of the API access tokens.</p>
+<p>As an initial step in <code>rcites</code> workflows, it will typically be most useful to call <code><a href="https://rdrr.io/pkg/rcites/man/spp_taxonconcept.html">spp_taxonconcept()</a></code> on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (<em>Carcharodon carcharias</em>), as a query taxon, we can see that this function returns a variety of information:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rcites)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="dt">query_taxon =</span> <span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/pkg/rcites/man/spp_taxonconcept.html">spp_taxonconcept</a></span>(<span class="dt">query_taxon =</span> <span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
 <pre><code>#&gt; [1] "11210"</code></pre>
 <p>Importantly, we can collect the ID for our taxon of interest from this output and store it as an object for ease of reference:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">great_white_id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_taxonconcept">spp_taxonconcept</a></span>(<span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
-<p>Using our stored ID variable, we can query other <code>rcites</code> functions like <code><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation()</a></code>, which returns the CITES listing and reservation status for the query taxon. Note that <a href="https://www.cites.org/eng/app/reserve_intro.php">reservations</a> are essentially exemptions declared by particular CITES Parties in reference to specific taxa.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id)<span class="op">$</span>cites_listings</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">great_white_id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/rcites/man/spp_taxonconcept.html">spp_taxonconcept</a></span>(<span class="st">"Carcharodon carcharias"</span>)<span class="op">$</span>general<span class="op">$</span>id</a></code></pre></div>
+<p>Using our stored ID variable, we can query other <code>rcites</code> functions like <code><a href="https://rdrr.io/pkg/rcites/man/spp_cites_legislation.html">spp_cites_legislation()</a></code>, which returns the CITES listing and reservation status for the query taxon. Note that <a href="https://www.cites.org/eng/app/reserve_intro.php">reservations</a> are essentially exemptions declared by particular CITES Parties in reference to specific taxa.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/rcites/man/spp_cites_legislation.html">spp_cites_legislation</a></span>(great_white_id)<span class="op">$</span>cites_listings</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 4 x 6
 #&gt;   id    taxon_concept_id is_current appendix change_type effective_at
 #&gt;   &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
@@ -270,7 +271,7 @@
 #&gt; 4 905   11210            TRUE       II       R+          2005-01-12</code></pre>
 <p>So this function query reveals that the great white is listed under CITES Appendix II (as of 12 January 2005) and that three CITES Parties have active reservations for this species.</p>
 <p>To reveal the full listing and reservation history, rather than just current information, we use the <code>scope = "all"</code> argument:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_cites_legislation">spp_cites_legislation</a></span>(great_white_id, <span class="dt">scope =</span> <span class="st">"all"</span>)<span class="op">$</span>cites_listings</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/rcites/man/spp_cites_legislation.html">spp_cites_legislation</a></span>(great_white_id, <span class="dt">scope =</span> <span class="st">"all"</span>)<span class="op">$</span>cites_listings</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 13 x 6
 #&gt;    id    taxon_concept_id is_current appendix change_type effective_at
 #&gt;    &lt;chr&gt; &lt;chr&gt;            &lt;lgl&gt;      &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
@@ -290,7 +291,7 @@
 <p>Here, we see that the species was in fact listed under CITES Appendix III as early as 29 October 2001. This may account for the CITES trade records for this species that date prior to its uplisting to Appendix II, a status which affords more stringent protection and monitoring.</p>
 <p>In general, the historical listing information provides critical context for CITES data interpretation. In this case, for instance, it is clear that the lack of CITES data for great white sharks prior to the year 2002 should not be taken as an indication of a lack of trade in this species during that time frame but rather a lack of intergovernmental oversight and data collection.</p>
 <p><code>rcites</code> also offers functions that return other useful metadata such as species distribution information:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/rcites/topics/spp_distributions">spp_distributions</a></span>(great_white_id)<span class="op">$</span>distributions</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/rcites/man/spp_distributions.html">spp_distributions</a></span>(great_white_id)<span class="op">$</span>distributions</a></code></pre></div>
 <pre><code>#&gt; # A tibble: 96 x 5
 #&gt;    id    iso_code2 name                      type      tags 
 #&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                     &lt;chr&gt;     &lt;chr&gt;
@@ -315,8 +316,8 @@
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -473,12 +474,12 @@
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/cites_shipments.html">cites_shipments</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span>, Export.permit.RandomID <span class="op">==</span><span class="st"> "ce63001ff5"</span>, Genus <span class="op">==</span><span class="st"> "Paphiopedilum"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/vars">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/vars.html">vars</a></span>(<span class="op">-</span>Reporter.type, <span class="op">-</span>Import.permit.RandomID)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Reporter.type <span class="op">==</span><span class="st"> "I"</span>) <span class="op">|</span><span class="st"> </span>n <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -642,7 +643,7 @@
 <h2 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h2>
 <p>If you use <strong>citesdb</strong> in a publication, please cite both the package and source data:</p>
-<p>Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: A high-performance database of shipment-level CITES trade data. R package v0.2.0. EcoHealth Alliance: New York, NY. <a href="https://github.com/ropensci/citesdb" class="uri">https://github.com/ropensci/citesdb</a>. <a href="doi:10.5281/zenodo.2630836" class="uri">doi:10.5281/zenodo.2630836</a></p>
+<p>Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: An R package to support analysis of CITES Trade Database shipment-level data. Journal of Open Source Software, 4(37), 1483, <a href="https://doi.org/10.21105/joss.01483" class="uri">https://doi.org/10.21105/joss.01483</a></p>
 <p>UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC, Cambridge, UK. Available at: <a href="https://trade.cites.org" class="uri">https://trade.cites.org</a>.</p>
 </div>
 <div id="contributing" class="section level2">
@@ -706,7 +707,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
 </div>
