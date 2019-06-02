@@ -336,12 +336,12 @@
           "familyName": "Ray"
         }
       ],
-      "name": "citesdb: A high-performance database of shipment-level CITES trade data",
-      "identifier": "10.21105/joss.01221",
-      "url": "https://doi.org/10.21105%2Fjoss.01221",
+      "name": "citesdb: An R package to support analysis of CITES Trade Database shipment-level data",
+      "identifier": "10.21105/joss.01483",
+      "url": "https://doi.org/10.21105/joss.01483",
       "paginiation": "1483",
-      "@id": "https://doi.org/10.21105/joss.01221",
-      "sameAs": "https://doi.org/10.21105/joss.01221",
+      "@id": "https://doi.org/10.21105/joss.01483",
+      "sameAs": "https://doi.org/10.21105/joss.01483",
       "isPartOf": {
         "@type": "PublicationIssue",
         "issueNumber": "37",

@@ -1,8 +1,8 @@
 citHeader("If you use citesdb in a publication, please cite both the package and source data:")
 
 citEntry(entry = "article",
-  doi = "10.21105/joss.01221",
-  url = "https://doi.org/10.21105%2Fjoss.01221",
+  doi = "10.21105/joss.01483",
+  url = "https://doi.org/10.21105/joss.01483",
   year = "2019",
   month = "May",
   publisher = "The Open Journal",
@@ -10,7 +10,7 @@ citEntry(entry = "article",
   number = 37,
   pages = 1483,
   author = personList(as.person("Noam Ross"), as.person("Evan A. Eskew"), as.person("Nicolas Ray")),
-  title = "citesdb: A high-performance database of shipment-level CITES trade data",
+  title = "citesdb: An R package to support analysis of CITES Trade Database shipment-level data",
   journal = "Journal of Open Source Software",
   textVersion = "Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: An R package to support analysis of CITES Trade Database shipment-level data. Journal of Open Source Software, 4(37), 1483, https://doi.org/10.21105/joss.01483")
 
@@ -22,4 +22,3 @@ citEntry(entry = "misc",
   address = "Geneva, Switzerland",
   url = "https://trade.cites.org",
   textVersion = "UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC, Cambridge, UK. Available at: https://trade.cites.org.")
-
