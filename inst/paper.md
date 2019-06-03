@@ -35,6 +35,6 @@ International trade is a significant threat to wildlife globally [@Bennett_2002;
 
 # Acknowledgements
 
-NR and EAE were funded by the generous support of the American people through the United States Agency for International Development (USAID) Emerging Pandemic Threats PREDICT project.
+Authors N. Ross and E. A. Eskew were funded by the generous support of the American people through the United States Agency for International Development (USAID) Emerging Pandemic Threats PREDICT project.
 
 # References
