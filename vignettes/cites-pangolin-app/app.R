@@ -3,8 +3,10 @@ library(tidyverse)
 library(echarts4r)
 library(RColorBrewer)
 
-dat <- read_rds(here::here("vignettes", "pangolin_dat.rds")) %>%
-    arrange(year, n)
+#my_scale <- function(x) scales::rescale(x, to = c(3, 10))
+
+dat <- read_rds("pangolin_dat.rds") %>%
+    mutate(n_scale = scales::rescale(n, to = c(3, 10)))
 
 ui <- fluidPage(
 
@@ -44,15 +46,13 @@ server <- function(input, output) {
 
         pal <-  scales::hue_pal()(n_distinct(dat2$term))
 
-        my_scale <- function(x) scales::rescale(x, to = c(3, 10))
-
         # note cannot add bind to e_lines...can fork repo and try?
         dat2 %>%
             e_charts(start_lon) %>%
             e_geo(roam = TRUE, label = list(emphasis = list(show = FALSE)),
                   itemStyle = list(normal = list(areaColor = '#323c48', borderColor = '#404a59'),
                                    emphasis = list(areaColor = '#2a333d', borderColor = '#2a333d')
-                                   )
+                  )
             ) %>%
             e_color(background = "black") %>%
             e_theme("chalk") %>%
@@ -60,8 +60,8 @@ server <- function(input, output) {
                     effect = list(show=T, period=3, trailLength=0, symbolSize=3),
                     lineStyle = list(normal = list(curveness = -.20, width = 1))) %>%
             e_effect_scatter(start_lat, coord_system = "geo",
-                             size = n,
-                             scale = my_scale,
+                             size = n_scale,
+                             scale = NULL,
                              #symbol_size = 1,
                              bind = start,
                              silent = FALSE) %>%
