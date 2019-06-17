@@ -6,7 +6,7 @@ library(sf)
 
 pangolin_shipments <- cites_shipments() %>%
   filter(Order == "Pholidota", Purpose %in% c(NA_character_, "T")) %>%
-  select(-Purpose, -Import.permit.RandomID, -Export.permit.RandomID, -Origin.permit.RandomID, -Class, -Order, -Family, -Genus, -Reporter.type ) %>%
+  select(-Purpose, -Import.permit.RandomID, -Export.permit.RandomID, -Origin.permit.RandomID, -Class, -Order, -Family, -Genus ) %>%
   collect()
 cites_disconnect()
 
@@ -25,27 +25,29 @@ pangolin_shipments <- pangolin_shipments %>%
   filter(!is.na(start.lon), !is.na(end.lon), !is.na(start.lat), !is.na(end.lat)) %>%
   mutate(id = seq_len(n()))
 
-
 dat <- pangolin_shipments %>%
   janitor::clean_names() %>%
   mutate(
-    # reporting_country = ifelse(reporter_type == "I", importer, exporter),
-    # reporting_country  = countrycode(sourcevar = reporting_country,
-    #                                  origin = "iso2c",
-    #                                  destination = "country.name"),
-    start2 = countrycode(sourcevar = start,
+    reporting_country = ifelse(reporter_type == "I", importer, exporter),
+    reporting_country_full_name  = countrycode(sourcevar = reporting_country,
+                                     origin = "iso2c",
+                                     destination = "country.name"),
+    start = countrycode(sourcevar = start,
                          origin = "iso2c",
                          destination = "country.name"),
     end = countrycode(sourcevar = importer,
                       origin = "iso2c",
                       destination = "country.name")) %>%
-  select(year, start2, end, term, start_lon, start_lat, end_lon, end_lat) %>%
-  rename(start = start2)
-
+  mutate(term = ifelse(term %in% c("leather products (small)", "leather products (large)", "leather items"), "leather products", term)) %>%
+  mutate(term = fct_lump_min(term, min = 5, other_level = "other")) %>%
+  mutate(start = ifelse(start == reporting_country_full_name, paste0(start, "*"), start),
+         end = ifelse(end == reporting_country_full_name, paste0(end, "*"), end)) %>%
+  select(year, start, end, term, start_lon, start_lat, end_lon, end_lat)
 
 dat2 <- dat %>%
-  group_by_all() %>%
+  group_by_at(vars(-start, -end)) %>%
   mutate(n = n()) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(n_scale = scales::rescale(n, to = c(3, 10)))
 
 write_rds(dat2, here::here("vignettes", "pangolin_dat.rds"))
