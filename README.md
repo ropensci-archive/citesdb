@@ -9,6 +9,7 @@ Authors: *Noam Ross and Evan A. Eskew*
 
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![rOpensci\_Badge](https://badges.ropensci.org/292_status.svg)](https://github.com/ropensci/onboarding/issues/292)
 [![Published in the Journal of Open Source
 Software](http://joss.theoj.org/papers/10.21105/joss.01483/status.svg)](https://doi.org/10.21105/joss.01483)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2630836.svg)](https://doi.org/10.5281/zenodo.2630836)
