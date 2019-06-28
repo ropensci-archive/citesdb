@@ -1,6 +1,6 @@
 pandoc: 2.3.1
 pkgdown: 1.3.0.9100
-pkgdown_sha: b17fc6b19175c955348e88471316b3cbdd011f15
+pkgdown_sha: 4d9fbe32dda7dea2360636130d8f32ce0ae5fd45
 articles:
   exploring-cites-trade-data-with-citesdb: exploring-cites-trade-data-with-citesdb.html
 
