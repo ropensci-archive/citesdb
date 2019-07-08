@@ -7,11 +7,6 @@ set.seed(101)
 
 dat <- read_rds(here::here("vignettes/pangolin_dat.rds"))
 
-pal <- c("#FC97AF", "#87F7CF", "#F7F494", "#72CCFF", "#F7C5A0",
-         "#D4A4EB", "#D2F5A6", "#76F2F2", "#D6D963", "#F4F4F0")
-names(pal) <- unique(as.character(dat$term))[sample(x = 10, 10)]
-pal <- pal[levels(dat$term)]
-
 ui <- fluidPage(
 
     sidebarLayout(
@@ -43,24 +38,19 @@ server <- function(input, output) {
     # echarts4r map
     output$map <- renderEcharts4r({
 
-        dat2 = dat %>%
+        mdat <- dat %>%
             filter(year == input$year
             ) %>%
             arrange(term) %>%
             group_by(term)
 
-        sub_pal <- unname(pal[as.character(unique(dat2$term))])
+        title <- input$year
+        subtitle <- paste("CITES Reporting Countries:", unique(mdat$n_reporting))
 
-        e <- dat2 %>% e_charts(start_lon)
-        e$x$data <- e$x$data[sort(names(e$x$data ))]
-
-        e %>%
+        mdat %>%
+            e_charts(start_lon) %>%
             e_geo(roam = TRUE,
                   label = list(emphasis = list(show = FALSE)),
-                  # region = list(
-                  #     name = "China",
-                  #     itemStyle = list(areaColor = "red", color ='red')
-                  #https://ecomfe.github.io/echarts-doc/public/en/option.html#geo
                   itemStyle = list(normal = list(areaColor = '#323c48', borderColor = '#404a59'),
                                    emphasis = list(areaColor = '#323c48', borderColor = '#404a59')
                   )
@@ -74,7 +64,8 @@ server <- function(input, output) {
                              scale = NULL,
                              #bind = start, # signals to tooltip
                              silent = TRUE) %>%
-            e_color(color = sub_pal , background = "black") %>%
+            e_color(background = "black") %>%
+            e_theme("chalk") %>%
             e_tooltip(trigger = "item",
                       formatter = htmlwidgets::JS("
              function(params){
@@ -82,7 +73,8 @@ server <- function(input, output) {
                     'Destination: ' + params.data.target_name
                         )
              }")) %>%
-            e_legend(textStyle = list(color = '#fff'))
+            e_legend(textStyle = list(color = '#fff'), bottom = "5%") %>%
+            e_title(title, subtitle, left = "50%", textAlign = "center")
 
     })
 }
