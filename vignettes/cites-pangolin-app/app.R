@@ -7,6 +7,13 @@ set.seed(101)
 
 dat <- read_rds(here::here("vignettes/pangolin_dat.rds"))
 
+species_notes <- tribble(~year,      ~notes,
+                         1979:1994, "5 species threatened, some trade authorized (App II)\n3 species included at the request of a Party (App III)",
+                         1995:2016, "8 species threatened, some trade authorized (App II)",
+                         2017,      "8 species endangered, strictly regulated (App I)"
+                         )
+
+
 ui <- fluidPage(
 
     sidebarLayout(
@@ -44,11 +51,20 @@ server <- function(input, output) {
             arrange(term) %>%
             group_by(term)
 
-        title <- input$year
-        subtitle <- paste("CITES Reporting Countries:", unique(mdat$n_reporting))
+        species_note <- species_notes %>%
+            filter(map_lgl(year, ~input$year %in% .)) %>%
+            pull(notes)
 
-        mdat %>%
-            e_charts(start_lon) %>%
+        title <- paste(input$year, "Legal Pangolin Trade")
+        subtitle <- paste0("CITES Reporting Countries: ", unique(mdat$n_parties),
+                          "\n", species_note)
+
+        e <- mdat %>%
+            e_charts(start_lon)
+
+        e$x$data <- e$x$data[order(names(e$x$data))]
+
+        e %>%
             e_geo(roam = TRUE,
                   label = list(emphasis = list(show = FALSE)),
                   itemStyle = list(normal = list(areaColor = '#323c48', borderColor = '#404a59'),
@@ -73,8 +89,8 @@ server <- function(input, output) {
                     'Destination: ' + params.data.target_name
                         )
              }")) %>%
-            e_legend(textStyle = list(color = '#fff'), bottom = "5%") %>%
-            e_title(title, subtitle, left = "50%", textAlign = "center")
+            e_legend(textStyle = list(color = '#fff'), top = "5%") %>%
+            e_title(title, subtitle, left = "0%", textAlign = "left", bottom = "5%")
 
     })
 }
