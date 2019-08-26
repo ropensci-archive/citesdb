@@ -164,7 +164,7 @@ cites_shipments() %>%
 
 What accounts for the temporal differences in the number of CITES records we observe? Why are there no data prior to 2001? It would be helpful to know more about the history of these particular species within CITES.
 
-Fortunately, the [**rcites**](https://github.com/ropensci/rcites) package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to [sign up for a Speciesplus API account](https://api.speciesplus.net/users/sign_up) in order to generate a personal access token. This token can then be set for the current R session using `rcites::set_token()` or can be stored permanently if written to the user's `.Renviron` file (the approach taken in this tutorial). See [here](https://ropensci.github.io/rcites/articles/get_started.html) for more information on use of the API access tokens.
+Fortunately, the [**rcites**](https://github.com/ropensci/rcites) package provides access to the Speciesplus/CITES Checklist API, which includes metadata about species and their protected status through time. To use the functions within this package, users will first need to [sign up for a Speciesplus API account](https://api.speciesplus.net/users/sign_up) in order to generate a personal access token. This token can then be set for the current R session using `rcites::set_token()` or can be stored permanently if written to the user's `.Renviron` file (the approach taken in this tutorial). See [here](https://docs.ropensci.org/rcites/articles/a_get_started.html) for more information on use of the API access tokens.
 
 As an initial step in `rcites` workflows, it will typically be most useful to call `spp_taxonconcept()` on some taxa of interest. Using the specific example of one of our Lamniformes sharks, the great white (*Carcharodon carcharias*), as a query taxon, we can see that this function returns a variety of information: 
 
@@ -221,7 +221,7 @@ spp_distributions(great_white_id)$distributions
 readRDS(system.file("extdata", "rcites4.rds", package = "citesdb"))
 ```
 
-More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://ropensci.github.io/rcites/index.html).
+More in-depth description of `rcites` and usage tutorials can be found via the package [publication](http://joss.theoj.org/papers/10.21105/joss.01091) and [website](https://docs.ropensci.org/rcites/).
 
 
 ## Pitfalls of Working with CITES Trade Data
