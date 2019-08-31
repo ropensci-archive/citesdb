@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -39,8 +41,8 @@
 
 
 
-<meta property="og:title" content="CITES shipment metadata — cites_metadata" />
 
+<meta property="og:title" content="CITES shipment metadata — cites_metadata" />
 <meta property="og:description" content="The CITES database also includes tables of column-level metadata and
 meanings of codes in columns, as well as a listing of CITES Parties/country abbreviations.
 Convenience functions access these tables. As they are small, the functions
@@ -50,6 +52,7 @@ This information is drawn from
 from the CITES website. More information on the shipment-level data can be
 found in the guidance help file." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -111,7 +114,6 @@ found in the guidance help file." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/citesdb">
@@ -138,7 +140,6 @@ found in the guidance help file." />
     </div>
 
     <div class="ref-description">
-    
     <p>The CITES database also includes tables of column-level metadata and
 meanings of codes in columns, as well as a listing of CITES Parties/country abbreviations.
 Convenience functions access these tables. As they are small, the functions
@@ -147,7 +148,6 @@ collect the tables into R session memory, rather than returning a remote table.<
 <a href='https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf'>"A guide to using the CITES Trade Database"</a>,
 from the CITES website. More information on the shipment-level data can be
 found in the <a href='guidance.html'>guidance</a> help file.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>cites_metadata</span>()
@@ -155,15 +155,14 @@ found in the <a href='guidance.html'>guidance</a> help file.</p>
 <span class='fu'>cites_codes</span>()
 
 <span class='fu'>cites_parties</span>()</pre>
-        
+
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of metadata</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'><a href='cites_status.html'>cites_status</a></span>()) {
+    <pre class="examples"><span class='kw'>if</span> (<span class='fu'><a href='cites_status.html'>cites_status</a></span>()) {
   <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
   <span class='co'># See the field definitions for cites_shipments()</span>
@@ -186,15 +185,12 @@ found in the <a href='guidance.html'>guidance</a> help file.</p>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_metadata"</span>)
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_codes"</span>)
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='fu'><a href='cites_db.html'>cites_db</a></span>(), <span class='st'>"cites_parties"</span>)
-}
-<span class='co'># }</span></pre>
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

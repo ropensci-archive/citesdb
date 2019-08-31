@@ -15,11 +15,13 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -39,12 +41,13 @@
 
 
 
-<meta property="og:title" content="Download the CITES database to your local computer — cites_db_download" />
 
+<meta property="og:title" content="Download the CITES database to your local computer — cites_db_download" />
 <meta property="og:description" content="This command downloads the CITES shipments database and populates a local
 database. The download is large (~158 MB), and the database will be over
 1 GB on disk. During import over 3.5 GB of disk space may be used temporarily." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -106,7 +109,6 @@ database. The download is large (~158 MB), and the database will be over
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/citesdb">
@@ -133,16 +135,14 @@ database. The download is large (~158 MB), and the database will be over
     </div>
 
     <div class="ref-description">
-    
     <p>This command downloads the CITES shipments database and populates a local
 database. The download is large (~158 MB), and the database will be over
 1 GB on disk. During import over 3.5 GB of disk space may be used temporarily.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>cites_db_download</span>(<span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>destdir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='kw'>cleanup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -165,26 +165,24 @@ Releases are expected to come twice per year. See all releases at
       <td><p>Whether to display messages and download progress</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The database is stored by default under <code><a href='https://rdrr.io/pkg/rappdirs/man/user_data_dir.html'>rappdirs::user_data_dir()</a></code>, or its
 location can be set with the environment variable <code>CITES_DB_DIR</code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><span class='co'># \donttest{</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>cites_db_download</span>()
-
+}
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
