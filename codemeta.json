@@ -8,17 +8,17 @@
   "description": "Provides convenient access to over 40 years and 20 million records of\n    endangered wildlife trade data from the Convention on International Trade\n    in Endangered Species of Wild Fauna and Flora, stored on a local on-disk,\n    out-of memory 'MonetDB' database for bulk analysis.",
   "name": "citesdb: A High-Performance Database of Shipment-Level 'CITES' Trade Data",
   "codeRepository": "https://github.com/ropensci/citesdb",
-  "relatedLink": "https://www.cites.org/",
+  "relatedLink": ["https://www.cites.org/", "https://docs.ropensci.org/citesdb"],
   "issueTracker": "https://github.com/ropensci/citesdb/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
   "author": [
     {
       "@type": "Person",
@@ -303,11 +303,8 @@
   ],
   "releaseNotes": "https://github.com/ropensci/citesdb/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/citesdb/blob/master/README.md",
-  "contIntegration": [
-    "https://circleci.com/gh/ropensci/citesdb",
-    "https://codecov.io/gh/ropensci/citesdb"
-  ],
-  "developmentStatus": "http://www.repostatus.org/#wip",
+  "contIntegration": ["https://circleci.com/gh/ropensci/citesdb", "https://codecov.io/gh/ropensci/citesdb"],
+  "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": [
     "r",
     "rstats",
@@ -366,5 +363,10 @@
       "url": "https://trade.cites.org"
     }
   ],
-  "fileSize": "1584.977KB"
+  "fileSize": "1087.063KB",
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/292",
+    "provider": "https://ropensci.org"
+  }
 }
