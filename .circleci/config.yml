@@ -10,9 +10,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps3-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps3-{{ .Branch }}
-            - deps3-
+            - deps4-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps4-{{ .Branch }}
+            - deps4-
       - run:
           name: Install packages
           command: |
@@ -28,7 +28,7 @@ jobs:
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps3-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps4-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
       - add_ssh_keys
@@ -66,9 +66,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deps3-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps3-devel-{{ .Branch }}
-            - deps3-devel
+            - deps4-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps4-devel-{{ .Branch }}
+            - deps4-devel
       - run:
           name: Install packages
           command: |
@@ -84,7 +84,7 @@ jobs:
             Rscript -e "devtools::check()"
             Rscript -e "devtools::install()"
       - save_cache:
-          key: deps3-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps4-devel-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - "/usr/local/lib/R/site-library"
   build_oldrel:
