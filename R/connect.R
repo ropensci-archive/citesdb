@@ -53,8 +53,7 @@ cites_db <- function(dbdir = cites_path()) {
   dbname <- dbdir
   dir.create(dbname, FALSE)
 
-  tryCatch(
-    {
+  tryCatch({
       unlink(file.path(dbdir, ".gdk_lock"))
       db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
     },
@@ -125,7 +124,7 @@ cites_shipments <- function() {
 #' collect the tables into R session memory, rather than returning a remote table.
 #'
 #' This information is drawn from
-#' ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
+#' ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf), #nolint
 #' from the CITES website. More information on the shipment-level data can be
 #' found in the [guidance] help file.
 #'
@@ -204,4 +203,3 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
 
 cites_cache <- new.env()
 reg.finalizer(cites_cache, cites_disconnect_, onexit = TRUE)
-
