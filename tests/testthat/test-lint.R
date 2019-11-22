@@ -6,7 +6,8 @@ if (requireNamespace("lintr", quietly = TRUE)) {
       linters = lintr::with_defaults(
         camel_case_linter = NULL,
         snake_case_linter = NULL,
-        absolute_paths_linter = NULL
+        absolute_paths_linter = NULL,
+        line_length_linter = lintr::line_length_linter(120)
       ))
   })
 }

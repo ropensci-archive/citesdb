@@ -6,7 +6,7 @@ in_chk <- function() {
   )
 }
 
-.onAttach <- function(libname, pkgname) {
+.onAttach <- function(libname, pkgname) {  #nolint
   MonetDBLite::monetdblite_shutdown()
   if (interactive() && Sys.getenv("RSTUDIO") == "1"  && !in_chk()) {
     cites_pane()
@@ -66,4 +66,3 @@ cites_status <- function(verbose = TRUE) {
   if (verbose) message(status_msg)
   invisible(out)
 }
-
