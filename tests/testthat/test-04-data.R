@@ -11,5 +11,5 @@ test_that("CITES data source hasn't changed", {
   hash <- tools::md5sum(tmpf)
   unlink(tmpf)
   skip_if(httr::http_error(response))
-  expect_equivalent(hash, "3d774b109c3ebf3594cf0fd4c20c1d1b")
+  expect_equivalent(hash, "d64d99182bdfb3696f6ce91687ccdd81")
 })
