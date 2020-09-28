@@ -51,11 +51,10 @@ cites_pane <- function() {
         )
       },
       listColumns = function(table) {
-        res <- DBI::dbSendQuery(cites_db(),
+        res <- DBI::dbGetQuery(cites_db(),
                                 paste("SELECT * FROM", table, "LIMIT 1"))
-        on.exit(DBI::dbClearResult(res))
         data.frame(
-          name = res@env$info$names, type = res@env$info$types,
+          name = names(res), type = vapply(res, function(x) class(x)[1], character(1)),
           stringsAsFactors = FALSE
         )
       },

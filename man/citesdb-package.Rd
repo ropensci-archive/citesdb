@@ -14,12 +14,13 @@ CITES member countries to the CITES secretariat.
 This package allows you to download the full database of historic transactions
 (commonly called the \href{https://trade.cites.org/}{CITES Trade Database})
 to analyze locally on your computer. Because of the large size of this data,
-the \strong{citesdb} package stores it as an on-disk \href{https://www.monetdb.org/}{MonetDB}
+the \strong{citesdb} package stores it as an on-disk \href{https://duckdb.org/}{DuckDB}
 that can be queried without loading into RAM.
 }
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://docs.ropensci.org/citesdb}
   \item \url{https://github.com/ropensci/citesdb}
   \item \url{https://www.cites.org/}
   \item Report bugs at \url{https://github.com/ropensci/citesdb/issues}

@@ -59,7 +59,7 @@ will need [package build tools](http://stat545.com/packages01_system-prep.html).
 options(width = 120)
 knitr::opts_chunk$set(cache = TRUE)
 citesdb::cites_disconnect()
-MonetDBLite::monetdblite_shutdown()
+duckdb::duckdb_shutdown()
 ```
 
 

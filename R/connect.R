@@ -17,7 +17,7 @@ cites_check_status <- function() {
 #' The local CITES database
 #'
 #' Returns a connection to the local CITES database. This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite()] database connection. When using **dplyr**-based
+#' [duckdb::duckdb()] database connection. When using **dplyr**-based
 #' workflows, one typically accesses tables with functions such as
 #' [cites_shipments()], but this function lets one interact with the database
 #' directly via SQL.
@@ -25,9 +25,9 @@ cites_check_status <- function() {
 #' @param dbdir The location of the database on disk. Defaults to
 #' `citesdb` under [rappdirs::user_data_dir()], or the environment variable `CITES_DB_DIR`.
 #'
-#' @return A MonetDBLite DBI connection
+#' @return A DuckDB DBI connection
 #' @importFrom DBI dbIsValid dbConnect
-#' @importFrom MonetDBLite MonetDBLite
+#' @importFrom duckdb duckdb
 #' @export
 #'
 #' @examples
@@ -55,7 +55,7 @@ cites_db <- function(dbdir = cites_path()) {
 
   tryCatch({
       unlink(file.path(dbdir, ".gdk_lock"))
-      db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
+      db <- DBI::dbConnect(duckdb::duckdb(), paste0(dbdir, "/citesdb.duckdb"))
     },
     error = function(e) {
       if (grepl("(Database lock|bad rolemask)", e)) {
@@ -193,7 +193,7 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     DBI::dbDisconnect(db, shutdown = TRUE)
-    MonetDBLite::monetdblite_shutdown()
+    duckdb::duckdb_shutdown(duckdb::duckdb())
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
