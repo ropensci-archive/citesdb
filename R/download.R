@@ -54,7 +54,7 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
       paste0(
         "COPY ", tblname, " FROM '",
         temp_tsv,
-        "' ( DELIMITER '\t', HEADER )"
+        "' ( DELIMITER '\t', HEADER 1, NULL 'NA' )"
       )
     )
   )
