@@ -73,6 +73,7 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
 }
 
 cites_field_types <- c(
+  Id = "INTEGER",
   Year = "INTEGER",
   Appendix = "STRING",
   Taxon = "STRING",

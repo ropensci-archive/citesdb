@@ -2,9 +2,9 @@
 cites_path <- function() {
   sys_cites_path <- Sys.getenv("CITES_DB_DIR")
   if (sys_cites_path == "") {
-    return(rappdirs::user_data_dir("citesdb"))
+    return(gsub("\\\\", "/", paste0(rappdirs::user_data_dir(), "/citesdb")))
   } else {
-    return(sys_cites_path)
+    return(gsub("\\\\", "/", paste0(sys_cites_path, "/citesdb")))
   }
 }
 
