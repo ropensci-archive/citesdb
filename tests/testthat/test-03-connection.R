@@ -14,7 +14,7 @@ test_that("Disconnetion works", {
     success <- callr::r(function() {
       options(CITES_DB_DIR = "localdb")
       con <- DBI::dbConnect(
-        MonetDBLite::MonetDBLite(),
+        duckdb::duckdb(),
         getOption("CITES_DB_DIR")
       )
       out <- inherits(con, "MonetDBEmbeddedConnection")

@@ -11,11 +11,11 @@ cites_db(dbdir = cites_path())
 \code{citesdb} under \code{\link[rappdirs:user_data_dir]{rappdirs::user_data_dir()}}, or the environment variable \code{CITES_DB_DIR}.}
 }
 \value{
-A MonetDBLite DBI connection
+A DuckDB DBI connection
 }
 \description{
 Returns a connection to the local CITES database. This is a DBI-compliant
-\code{\link[MonetDBLite:MonetDBLite]{MonetDBLite::MonetDBLite()}} database connection. When using \strong{dplyr}-based
+\code{\link[duckdb:duckdb]{duckdb::duckdb()}} database connection. When using \strong{dplyr}-based
 workflows, one typically accesses tables with functions such as
 \code{\link[=cites_shipments]{cites_shipments()}}, but this function lets one interact with the database
 directly via SQL.

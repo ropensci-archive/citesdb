@@ -12,7 +12,7 @@ A \strong{dplyr} remote tibble (\code{\link[dplyr:tbl]{dplyr::tbl()}})
 \description{
 Returns a remote database table with all CITES shipment data.  This is the
 bulk of the data in the package and constitutes > 20 million records.  Loading
-the whole table into R via the \code{\link[dplyr:collect]{dplyr::collect()}} command will use over
+the whole table into R via the \code{\link[dplyr:compute]{dplyr::collect()}} command will use over
 3 GB of RAM, so you may want to pre-process data in the database, as in
 the examples below.
 }

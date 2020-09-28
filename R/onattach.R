@@ -7,7 +7,7 @@ in_chk <- function() {
 }
 
 .onAttach <- function(libname, pkgname) {  #nolint
-  MonetDBLite::monetdblite_shutdown()
+  duckdb::duckdb_shutdown(duckdb::duckdb())
   if (interactive() && Sys.getenv("RSTUDIO") == "1"  && !in_chk()) {
     cites_pane()
   }

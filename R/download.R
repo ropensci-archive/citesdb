@@ -2,7 +2,7 @@
 #'
 #' This command downloads the CITES shipments database and populates a local
 #' database. The download is large (~158 MB), and the database will be over
-#' 1 GB on disk. During import over 3.5 GB of disk space may be used temporarily.
+#' 4.7 GB on disk. During import over 5 GB of disk space may be used temporarily.
 #'
 #' The database is stored by default under [rappdirs::user_data_dir()], or its
 #' location can be set with the environment variable `CITES_DB_DIR`.
@@ -19,6 +19,7 @@
 #' @importFrom DBI dbRemoveTable dbExistsTable dbCreateTable dbExecute
 #'   dbWriteTable dbListTables
 #' @importFrom R.utils gunzip
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' \donttest{
@@ -44,15 +45,16 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
 
   cites_disconnect()
   tblname <- "cites_shipments"
+
   dbCreateTable(cites_db(), tblname, fields = cites_field_types)
 
   suppressMessages(
     dbExecute(
       cites_db(),
       paste0(
-        "COPY OFFSET 2 INTO ", tblname, " FROM '",
+        "COPY ", tblname, " FROM '",
         temp_tsv,
-        "' USING DELIMITERS '\t','\n','\"' NULL as 'NA'"
+        "' ( DELIMITER '\t', HEADER )"
       )
     )
   )

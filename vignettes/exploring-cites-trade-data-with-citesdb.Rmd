@@ -36,7 +36,7 @@ will need [package build tools](http://stat545.com/packages01_system-prep.html).
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 options(width = 120)
 citesdb::cites_disconnect()
-MonetDBLite::monetdblite_shutdown()
+duckdb::duckdb_shutdown(duckdb::duckdb())
 ```
 
 
@@ -122,14 +122,14 @@ More information on the release of shipment-level data can be found in the `?gui
 
 ## Direct Database Connection 
 
-**citesdb** stores data in an on-disk [MonetDB](https://www.monetdb.org/) SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the `cites_db()` command:
+**citesdb** stores data in an on-disk [DuckDB](https://duckdb.org/) SQL database. If you want to use SQL commands for complex queries or otherwise want to directly access the database connection, use the `cites_db()` command:
 
 ```{r}
 con <- cites_db()
 DBI::dbListTables(con)
 ```
 
-Note that MonetDB, as implemented by the [MonetDBLite](https://github.com/MonetDB/MonetDBLite-R/) package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:
+Note that DuckDB, as implemented by the [DuckDB](https://cran.r-project.org/package=duckdb) package, currently has a limitation of only one connection to the database at a time. Therefore, if you are running R in multiple sessions (say, one in a console and separately knitting an R Markdown document), you will receive this error:
 
 ```
 Error: Local citesdb database is locked by another R session.
@@ -256,7 +256,7 @@ cites_shipments() %>%
 
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 citesdb::cites_disconnect()
-MonetDBLite::monetdblite_shutdown()
+duckdb::duckdb_shutdown(duckdb::duckdb())
 ```
 
 
