@@ -61,7 +61,7 @@ write_tsv(
 
 # Clean up
 file_delete(
-  dir_ls(here("data-raw"), regexp = "(zip|csv|docx)$")
+  list.files(here("data-raw"), pattern = "(zip|csv|docx)$", full.names = TRUE)
 )
 
 # Release the compressed data
