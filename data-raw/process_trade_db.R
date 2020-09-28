@@ -18,9 +18,10 @@ unzip(here("data-raw", "Trade_database.zip"),
 )
 
 tdb <- map_dfr(
-  dir_ls(here("data-raw"), regexp = "^trade_db_\\d+\\.csv$"),
+  list.files(here("data-raw"), pattern = "^trade_db_\\d+\\.csv$", full.names = TRUE),
   ~ read_csv(.,
     col_types = cols(
+      Id = col_character(),
       Year = col_integer(),
       Appendix = col_character(),
       Taxon = col_character(),
@@ -46,7 +47,7 @@ tdb <- map_dfr(
 
 # Removing invalid records to be fixed if possible in the future
 tdb <- tdb %>%
-  filter(!is.na(Year) & Year > 1970 & Year < 2020)
+  filter(!is.na(Year) & Year > 1970 & Year < 2021)
 
 # Arrange values; improves compressibility
 tdb <- tdb %>%
@@ -70,6 +71,6 @@ datastorr::github_release_info(
   filename = "cites_trade_db.tsv.bz2"
 ) %>%
 datastorr::github_release_create(
-  description = "Release of CITES shipment data (v2019.2)",
+  description = "Release of CITES shipment data (v2020.1)",
   target = "master", ignore_dirty = TRUE
 )
