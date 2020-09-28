@@ -4,7 +4,7 @@ cites_path <- function() {
   if (sys_cites_path == "") {
     return(gsub("\\\\", "/", paste0(rappdirs::user_data_dir(), "/citesdb")))
   } else {
-    return(gsub("\\\\", "/", sys_cites_path,))
+    return(gsub("\\\\", "/", sys_cites_path))
   }
 }
 
