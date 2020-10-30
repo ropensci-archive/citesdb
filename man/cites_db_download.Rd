@@ -24,8 +24,8 @@ Releases are expected to come twice per year. See all releases at
 }
 \description{
 This command downloads the CITES shipments database and populates a local
-database. The download is large (~158 MB), and the database will be over
-4.7 GB on disk. During import over 5 GB of disk space may be used temporarily.
+database. The download is large (~158 MB), and the database will be ~5 GB
+on disk. During import 10 GB of disk space may be used temporarily.
 }
 \details{
 The database is stored by default under \code{\link[rappdirs:user_data_dir]{rappdirs::user_data_dir()}}, or its

@@ -8,16 +8,16 @@ context("Connection")
 test_that("Disconnetion works", {
   skip_on_cran()
   skip_if_not(cites_status())
-
   cites_disconnect()
   expect_error({
     success <- callr::r(function() {
-      options(CITES_DB_DIR = "localdb")
+      Sys.setenv(CITES_DB_DIR = normalizePath(file.path(getwd(), "localdb"),
+                                              mustWork = FALSE))
       con <- DBI::dbConnect(
         duckdb::duckdb(),
-        getOption("CITES_DB_DIR")
+        dbdir = file.path(Sys.getenv("CITES_DB_DIR"))
       )
-      out <- inherits(con, "MonetDBEmbeddedConnection")
+      out <- inherits(con, "duckdb_connection")
       citesdb::cites_disconnect()
       options(CITES_DB_DIR = NULL)
       return(out)
@@ -46,5 +46,5 @@ test_that("Tables fail when database is deleted", {
   expect_error(cites_parties())
 })
 
-unlink(Sys.getenv("CITES_DB_DIR"), recursive = TRUE)
+#unlink(Sys.getenv("CITES_DB_DIR"), recursive = TRUE)
 Sys.setenv(CITES_DB_DIR = olddir)

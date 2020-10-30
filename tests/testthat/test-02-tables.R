@@ -8,7 +8,7 @@ context("Tables")
 test_that("Tables have expected types", {
   skip_on_cran()
   skip_if_not(cites_status())
-  expect_is(cites_shipments(), "tbl_MonetDBEmbeddedConnection")
+  expect_is(cites_shipments(), "tbl_duckdb_connection")
   expect_is(cites_metadata(), "data.frame")
   expect_is(cites_codes(), "data.frame")
   expect_is(cites_parties(), "data.frame")

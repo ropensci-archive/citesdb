@@ -11,10 +11,11 @@ data-raw/*
 !data-raw/*.R
 !data-raw/country_code_data
 scraps/
-localdb
+localdb/
 artifacts
 tests/testthat/localdb
 docs
 *_cache
 doc
 Meta
+*.wal

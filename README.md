@@ -3,7 +3,7 @@
 
 # citesdb
 
-Authors: *Noam Ross and Evan A. Eskew*
+Authors: *Noam Ross, Evan A. Eskew and Mauricio Vargas*
 
 <!-- badges: start -->
 
@@ -77,20 +77,20 @@ cites_shipments() %>%
   summarize(n_records = n()) %>%
   arrange(desc(Year)) %>%
   collect()
-#> # A tibble: 44 x 2
+#> # A tibble: 45 x 2
 #>     Year n_records
 #>    <int>     <dbl>
-#>  1  2018      1326
-#>  2  2017   1015719
-#>  3  2016   1262632
-#>  4  2015   1296532
-#>  5  2014   1109872
-#>  6  2013   1127363
-#>  7  2012   1096645
-#>  8  2011    950144
-#>  9  2010    894011
-#> 10  2009    908669
-#> # … with 34 more rows
+#>  1  2019     12610
+#>  2  2018   1143044
+#>  3  2017   1246684
+#>  4  2016   1293178
+#>  5  2015   1299183
+#>  6  2014   1109877
+#>  7  2013   1127377
+#>  8  2012   1096664
+#>  9  2011    950148
+#> 10  2010    894115
+#> # … with 35 more rows
 
 stop <- Sys.time()
 ```
@@ -98,14 +98,14 @@ stop <- Sys.time()
 (*Note that running `collect()` on all of `cites_shipments()` will load
 a \>3 GB data frame into memory\!*)
 
-The back-end database, [MonetDB](https://monetdb.org), is very fast and
+The back-end database, [duckdb](https://duckdb.org/), is very fast and
 powerful, making analyses on such large data quite snappy using normal
 desktops and laptops. Here’s the timing of the above query, which
 processes over 20 million records:
 
 ``` r
 stop - start
-#> Time difference of 0.841418 secs
+#> Time difference of 0.4658868 secs
 ```
 
 If you are using a recent version of RStudio interactively, loading the
@@ -177,10 +177,10 @@ about species and their protected status through time.
 If you use **citesdb** in a publication, please cite both the package
 and source data:
 
-Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: A
-high-performance database of shipment-level CITES trade data. R package
-v0.2.0. EcoHealth Alliance: New York, NY.
-<https://github.com/ropensci/citesdb>. <doi:10.5281/zenodo.2630836>
+Ross, Noam, Evan A. Eskew, and Nicolas Ray. 2019. citesdb: An R package
+to support analysis of CITES Trade Database shipment-level data. Journal
+of Open Source Software, 4(37), 1483,
+<https://doi.org/10.21105/joss.01483>
 
 UNEP-WCMC (Comps.) 2019. Full CITES Trade Database Download. Version
 2019.2. CITES Secretariat, Geneva, Switzerland. Compiled by UNEP-WCMC,

@@ -7,7 +7,6 @@ in_chk <- function() {
 }
 
 .onAttach <- function(libname, pkgname) {  #nolint
-  duckdb::duckdb_shutdown(duckdb::duckdb())
   if (interactive() && Sys.getenv("RSTUDIO") == "1"  && !in_chk()) {
     cites_pane()
   }
@@ -29,10 +28,8 @@ in_chk <- function() {
 #' }
 #' }
 cites_db_delete <- function() {
-  for (t in dbListTables(cites_db())) {
-    dbRemoveTable(cites_db(), t)
-  }
-  update_cites_pane()
+  cites_disconnect()
+  unlink(cites_path(), recursive = TRUE, force = TRUE, expand = FALSE)
 }
 
 
@@ -47,8 +44,8 @@ cites_db_delete <- function() {
 #' @examples
 #' cites_status()
 cites_status <- function(verbose = TRUE) {
-  if (dbExistsTable(cites_db(), "cites_shipments") &&
-      dbExistsTable(cites_db(), "cites_status")) {
+  if (DBI::dbExistsTable(cites_db(), "cites_shipments") &&
+      DBI::dbExistsTable(cites_db(), "cites_status")) {
     status <- DBI::dbReadTable(cites_db(), "cites_status")
     status_msg <-
       paste0(

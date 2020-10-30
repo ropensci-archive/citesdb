@@ -59,7 +59,6 @@ will need [package build tools](http://stat545.com/packages01_system-prep.html).
 options(width = 120)
 knitr::opts_chunk$set(cache = TRUE)
 citesdb::cites_disconnect()
-duckdb::duckdb_shutdown()
 ```
 
 
@@ -99,7 +98,7 @@ stop <- Sys.time()
 
 (_Note that running `collect()` on all of `cites_shipments()` will load a >3 GB data frame into memory!_)
 
-The back-end database, [MonetDB](https://monetdb.org), is very fast and powerful, making analyses on such large data quite snappy using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
+The back-end database, [duckdb](https://duckdb.org/), is very fast and powerful, making analyses on such large data quite snappy using normal desktops and laptops. Here's the timing of the above query, which processes over 20 million records:
 
 ```{r}
 stop - start

@@ -36,7 +36,6 @@ will need [package build tools](http://stat545.com/packages01_system-prep.html).
 ```{r message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 options(width = 120)
 citesdb::cites_disconnect()
-duckdb::duckdb_shutdown(duckdb::duckdb())
 ```
 
 

@@ -1,8 +1,8 @@
 #' Download the CITES database to your local computer
 #'
 #' This command downloads the CITES shipments database and populates a local
-#' database. The download is large (~158 MB), and the database will be over
-#' 4.7 GB on disk. During import over 5 GB of disk space may be used temporarily.
+#' database. The download is large (~158 MB), and the database will be ~5 GB
+#' on disk. During import 10 GB of disk space may be used temporarily.
 #'
 #' The database is stored by default under [rappdirs::user_data_dir()], or its
 #' location can be set with the environment variable `CITES_DB_DIR`.
@@ -29,6 +29,7 @@
 #' }
 cites_db_download <- function(tag = NULL, destdir = tempdir(),
                               cleanup = TRUE, verbose = interactive()) {
+
   if (verbose) message("Downloading data...\n")
   zfile <- get_gh_release_file("ropensci/citesdb",
     tag_name = tag,
@@ -39,14 +40,18 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   temp_tsv <- tempfile(fileext = ".tsv")
   gunzip(zfile, destname = temp_tsv, overwrite = TRUE, remove = cleanup)
 
-  for (tab in dbListTables(cites_db())) {
-    dbRemoveTable(cites_db(), tab)
-  }
+  # for (tab in dbListTables(cites_db())) {
+  #   dbRemoveTable(cites_db(), tab)
+  # }
+  # cites_disconnect()
+  # invisible(cites_db())
+  unlink(cites_path(), recursive = TRUE, force = TRUE, expand = FALSE)
 
-  cites_disconnect()
   tblname <- "cites_shipments"
 
-  dbCreateTable(cites_db(), tblname, fields = cites_field_types)
+  try(dbRemoveTable(cites_db(read_only = FALSE), tblname), silent = TRUE)
+  cites_disconnect()
+  dbCreateTable(cites_db(read_only = FALSE), tblname, fields = cites_field_types)
 
   suppressMessages(
     dbExecute(
@@ -58,8 +63,8 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
       )
     )
   )
-
-  dbWriteTable(cites_db(), "cites_status", make_status_table(version = ver),
+  cites_disconnect()
+  dbWriteTable(cites_db(read_only = FALSE), "cites_status", make_status_table(version = ver),
     overwrite = TRUE
   )
 
@@ -69,10 +74,12 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
 
   update_cites_pane()
 
-  invisible(cites_status)
+  cites_status()
+  cites_disconnect()
 }
 
 cites_field_types <- c(
+  Id = "STRING",
   Year = "INTEGER",
   Appendix = "STRING",
   Taxon = "STRING",

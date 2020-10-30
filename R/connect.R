@@ -43,34 +43,33 @@ cites_check_status <- function() {
 #'    'SELECT "Taxon", "Importer" FROM cites_shipments WHERE "Year" = 1976 LIMIT 100;'
 #'    )
 #' }
-cites_db <- function(dbdir = cites_path()) {
-  db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
+cites_db <- function(dbdir = cites_path(), read_only = TRUE) {
+  db <- mget("cites_db", envir = citesdb:::cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
-    if (DBI::dbIsValid(db)) {
+    if (DBI::dbIsValid(db) && (!read_only && !dbIsReadOnly(db))) {
       return(db)
     }
   }
-  dbname <- dbdir
-  dir.create(dbname, FALSE)
+  dbname <- file.path(dbdir, "citesdb")
+  dir.create(dbdir, FALSE, recursive = TRUE)
 
-  tryCatch({
-      unlink(file.path(dbdir, ".gdk_lock"))
-      db <- DBI::dbConnect(duckdb::duckdb(), paste0(dbdir, "/citesdb.duckdb"))
-    },
-    error = function(e) {
-      if (grepl("(Database lock|bad rolemask)", e)) {
-        stop(paste(
-          "Local citesdb database is locked by another R session.\n",
-          "Try closing or running cites_disconnect() in that session."
-        ),
-        call. = FALSE
-        )
-      } else {
-        stop(e)
-      }
-    },
-    finally = NULL
-  )
+  # tryCatch({
+      db <- DBI::dbConnect(duckdb::duckdb(dbdir=dbname), debug = FALSE, read_only = read_only)
+#
+  #   error = function(e) {
+  #     if (grepl("(Database lock|bad rolemask)", e)) {
+  #       stop(paste(
+  #         "Local citesdb database is locked by another R session.\n",
+  #         "Try closing or running cites_disconnect() in that session."
+  #       ),
+  #       call. = FALSE
+  #       )
+  #     } else {
+  #       stop(e)
+  #     }
+  #   },
+  #   finally = NULL
+  # )
 
   assign("cites_db", db, envir = cites_cache)
   db
@@ -124,7 +123,7 @@ cites_shipments <- function() {
 #' collect the tables into R session memory, rather than returning a remote table.
 #'
 #' This information is drawn from
-#' ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf), #nolint
+#' ["A guide to using the CITES Trade Database"](https://trade.cites.org/cites_trade_guidelines/en-CITES_Trade_Database_Guide.pdf),
 #' from the CITES website. More information on the shipment-level data can be
 #' found in the [guidance] help file.
 #'
@@ -193,7 +192,6 @@ cites_disconnect_ <- function(environment = cites_cache) { # nolint
   db <- mget("cites_db", envir = cites_cache, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     DBI::dbDisconnect(db, shutdown = TRUE)
-    duckdb::duckdb_shutdown(duckdb::duckdb())
   }
   observer <- getOption("connectionObserver")
   if (!is.null(observer)) {
