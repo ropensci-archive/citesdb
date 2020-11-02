@@ -45,7 +45,7 @@ cites_db_download <- function(tag = NULL, destdir = tempdir(),
   # }
   # cites_disconnect()
   # invisible(cites_db())
-  unlink(cites_path(), recursive = TRUE, force = TRUE, expand = FALSE)
+  unlink(cites_path(), recursive = TRUE, force = TRUE)
 
   tblname <- "cites_shipments"
 
