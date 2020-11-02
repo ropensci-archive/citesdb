@@ -4,7 +4,7 @@
 \alias{cites_db}
 \title{The local CITES database}
 \usage{
-cites_db(dbdir = cites_path())
+cites_db(dbdir = cites_path(), read_only = TRUE)
 }
 \arguments{
 \item{dbdir}{The location of the database on disk. Defaults to
