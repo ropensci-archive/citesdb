@@ -29,7 +29,7 @@ in_chk <- function() {
 #' }
 cites_db_delete <- function() {
   cites_disconnect()
-  unlink(cites_path(), recursive = TRUE, force = TRUE, expand = FALSE)
+  unlink(cites_path(), recursive = TRUE, force = TRUE)
 }
 
 
